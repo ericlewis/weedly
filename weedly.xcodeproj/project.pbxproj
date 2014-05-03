@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4D9DDDF01915AC89006E5B03 /* EELWMClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9DDDEF1915AC89006E5B03 /* EELWMClient.m */; };
+		4D9DDDF31915AFD4006E5B03 /* EELDoctor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9DDDF21915AFD4006E5B03 /* EELDoctor.m */; };
+		4D9DDDF61915AFEB006E5B03 /* EELDispensary.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9DDDF51915AFEB006E5B03 /* EELDispensary.m */; };
 		4DC1A1121912F9A200228F5A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC1A1111912F9A200228F5A /* Foundation.framework */; };
 		4DC1A1141912F9A200228F5A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC1A1131912F9A200228F5A /* CoreGraphics.framework */; };
 		4DC1A1161912F9A200228F5A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC1A1151912F9A200228F5A /* UIKit.framework */; };
@@ -48,6 +50,10 @@
 /* Begin PBXFileReference section */
 		4D9DDDEE1915AC89006E5B03 /* EELWMClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELWMClient.h; path = models/EELWMClient.h; sourceTree = "<group>"; };
 		4D9DDDEF1915AC89006E5B03 /* EELWMClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELWMClient.m; path = models/EELWMClient.m; sourceTree = "<group>"; };
+		4D9DDDF11915AFD4006E5B03 /* EELDoctor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELDoctor.h; path = models/EELDoctor.h; sourceTree = "<group>"; };
+		4D9DDDF21915AFD4006E5B03 /* EELDoctor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELDoctor.m; path = models/EELDoctor.m; sourceTree = "<group>"; };
+		4D9DDDF41915AFEB006E5B03 /* EELDispensary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELDispensary.h; path = models/EELDispensary.h; sourceTree = "<group>"; };
+		4D9DDDF51915AFEB006E5B03 /* EELDispensary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELDispensary.m; path = models/EELDispensary.m; sourceTree = "<group>"; };
 		4DC1A10E1912F9A200228F5A /* weedly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weedly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DC1A1111912F9A200228F5A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4DC1A1131912F9A200228F5A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -130,6 +136,10 @@
 			children = (
 				4D9DDDEE1915AC89006E5B03 /* EELWMClient.h */,
 				4D9DDDEF1915AC89006E5B03 /* EELWMClient.m */,
+				4D9DDDF11915AFD4006E5B03 /* EELDoctor.h */,
+				4D9DDDF21915AFD4006E5B03 /* EELDoctor.m */,
+				4D9DDDF41915AFEB006E5B03 /* EELDispensary.h */,
+				4D9DDDF51915AFEB006E5B03 /* EELDispensary.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -398,6 +408,7 @@
 				4DD4932D1915980C001A6203 /* EELSidebarTableViewController.m in Sources */,
 				4DD493261915951E001A6203 /* EELFavoritesTableViewController.m in Sources */,
 				4DD4933319159A66001A6203 /* EELDetailTableViewController.m in Sources */,
+				4D9DDDF31915AFD4006E5B03 /* EELDoctor.m in Sources */,
 				4DC1A11E1912F9A200228F5A /* main.m in Sources */,
 				4DD4933F19159B63001A6203 /* EELAccountTableViewController.m in Sources */,
 				4DD4932319158DBC001A6203 /* EELDealsViewController.m in Sources */,
@@ -408,6 +419,7 @@
 				4DD4933C19159B18001A6203 /* EELLoginViewController.m in Sources */,
 				4D9DDDF01915AC89006E5B03 /* EELWMClient.m in Sources */,
 				4DD4932919159554001A6203 /* EELMainTableViewController.m in Sources */,
+				4D9DDDF61915AFEB006E5B03 /* EELDispensary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

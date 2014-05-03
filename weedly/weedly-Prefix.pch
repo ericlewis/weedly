@@ -13,4 +13,17 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+    #import <SystemConfiguration/SystemConfiguration.h>
+    #import <CoreData/CoreData.h>
+
+    #if TARGET_OS_IPHONE
+        #import <MobileCoreServices/MobileCoreServices.h>
+        #import <MapKit/MapKit.h>
+    #else
+        #import <CoreServices/CoreServices.h>
+    #endif
+
+    #import <Overcoat/Overcoat.h>
+    #import <Mantle/Mantle.h>
+    #import "MTLocation.h"
 #endif

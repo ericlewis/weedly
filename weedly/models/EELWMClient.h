@@ -6,8 +6,10 @@
 //  Copyright (c) 2014 Eric Lewis. All rights reserved.
 //
 
-#import "OVCClient.h"
-
 @interface EELWMClient : OVCClient
+
+/* search actions */
+- (void)searchDoctorsWithTerm:(NSString *)term completionBlock:(void (^)(NSArray *results, NSError *error))block;
+- (void)searchDispensariesWithTerm:(NSString *)term completionBlock:(void (^)(NSArray *results, NSError *error))block;
 
 @end

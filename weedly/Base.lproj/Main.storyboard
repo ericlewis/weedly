@@ -44,7 +44,7 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="Fid-Hp-5y6"/>
                                 </connections>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jpN-jt-KmS">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jpN-jt-KmS" customClass="MTLocateMeButton">
                                 <rect key="frame" x="20" y="491" width="57" height="57"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="findme">
@@ -162,7 +162,13 @@
                             <outlet property="delegate" destination="Dde-Ni-cwG" id="Kfl-0Q-yPP"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Favorites" id="dFH-kS-thA"/>
+                    <navigationItem key="navigationItem" title="Favorites" id="dFH-kS-thA">
+                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="JQs-6u-jTG">
+                            <connections>
+                                <action selector="dismissView:" destination="Dde-Ni-cwG" id="ol6-g0-N0C"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="E4k-M5-Cyr" kind="push" id="89F-62-Jkn"/>
                     </connections>
@@ -420,6 +426,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Menu" id="BPL-Nq-302"/>
+                    <connections>
+                        <outlet property="webView" destination="s5A-ML-8jv" id="uiM-Sl-dYg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MEZ-dx-wZQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -465,7 +474,11 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="List View" id="J0m-Zb-Cwf">
-                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="dza-Nc-AsH"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="dza-Nc-AsH">
+                            <connections>
+                                <action selector="dismissView:" destination="9km-jh-8uj" id="LqF-ti-JMz"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="filter" id="3KW-3E-GaX"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -494,6 +507,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="hnI-g6-UyI"/>
-        <segue reference="RQi-ur-TKs"/>
+        <segue reference="9XJ-N9-8Dl"/>
     </inferredMetricsTieBreakers>
 </document>

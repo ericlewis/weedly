@@ -10,6 +10,8 @@
 
 @interface EELMenuViewController ()
 
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
+
 @end
 
 @implementation EELMenuViewController
