@@ -1,12 +1,11 @@
 weedly
 ======
-
 An easier, better to use weedmaps. 
-
-running is simple!
-
+## Installation
+In order to build and run weedly, you must install first project dependencies via **CocoaPods**. To do so:
 ```
-pod install
+$ gem install cocoapods # If necessary
+$ cd weedly
+$ pod install
 ```
-
-then build!
+Once CocoaPods has finished the installation, open weedly.xcworkspace using Xcode and run the sample.
