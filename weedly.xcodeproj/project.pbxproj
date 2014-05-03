@@ -1,0 +1,566 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4DC1A1121912F9A200228F5A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC1A1111912F9A200228F5A /* Foundation.framework */; };
+		4DC1A1141912F9A200228F5A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC1A1131912F9A200228F5A /* CoreGraphics.framework */; };
+		4DC1A1161912F9A200228F5A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC1A1151912F9A200228F5A /* UIKit.framework */; };
+		4DC1A11C1912F9A200228F5A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4DC1A11A1912F9A200228F5A /* InfoPlist.strings */; };
+		4DC1A11E1912F9A200228F5A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC1A11D1912F9A200228F5A /* main.m */; };
+		4DC1A1221912F9A200228F5A /* EELAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC1A1211912F9A200228F5A /* EELAppDelegate.m */; };
+		4DC1A1251912F9A200228F5A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DC1A1231912F9A200228F5A /* Main.storyboard */; };
+		4DC1A12A1912F9A200228F5A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DC1A1291912F9A200228F5A /* Images.xcassets */; };
+		4DC1A1311912F9A200228F5A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC1A1301912F9A200228F5A /* XCTest.framework */; };
+		4DC1A1321912F9A200228F5A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC1A1111912F9A200228F5A /* Foundation.framework */; };
+		4DC1A1331912F9A200228F5A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC1A1151912F9A200228F5A /* UIKit.framework */; };
+		4DC1A13B1912F9A200228F5A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4DC1A1391912F9A200228F5A /* InfoPlist.strings */; };
+		4DC1A13D1912F9A200228F5A /* weedlyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC1A13C1912F9A200228F5A /* weedlyTests.m */; };
+		4DC1A1471912FAA300228F5A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC1A1461912FAA300228F5A /* MapKit.framework */; };
+		4DD4930C1915827D001A6203 /* EELMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4930B1915827D001A6203 /* EELMainViewController.m */; };
+		4DD4932319158DBC001A6203 /* EELDealsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4932219158DBC001A6203 /* EELDealsViewController.m */; };
+		4DD493261915951E001A6203 /* EELFavoritesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD493251915951E001A6203 /* EELFavoritesTableViewController.m */; };
+		4DD4932919159554001A6203 /* EELMainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4932819159554001A6203 /* EELMainTableViewController.m */; };
+		4DD4932D1915980C001A6203 /* EELSidebarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4932C1915980C001A6203 /* EELSidebarTableViewController.m */; };
+		4DD4933019159845001A6203 /* EELSmokinOnTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4932F19159845001A6203 /* EELSmokinOnTableViewController.m */; };
+		4DD4933319159A66001A6203 /* EELDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4933219159A66001A6203 /* EELDetailTableViewController.m */; };
+		4DD4933919159A96001A6203 /* EELMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4933819159A96001A6203 /* EELMenuViewController.m */; };
+		4DD4933C19159B18001A6203 /* EELLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4933B19159B18001A6203 /* EELLoginViewController.m */; };
+		4DD4933F19159B63001A6203 /* EELAccountTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4933E19159B63001A6203 /* EELAccountTableViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4DC1A1341912F9A200228F5A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DC1A1061912F9A200228F5A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4DC1A10D1912F9A200228F5A;
+			remoteInfo = weedly;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4DC1A10E1912F9A200228F5A /* weedly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weedly.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DC1A1111912F9A200228F5A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		4DC1A1131912F9A200228F5A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		4DC1A1151912F9A200228F5A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		4DC1A1191912F9A200228F5A /* weedly-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "weedly-Info.plist"; sourceTree = "<group>"; };
+		4DC1A11B1912F9A200228F5A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4DC1A11D1912F9A200228F5A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4DC1A11F1912F9A200228F5A /* weedly-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "weedly-Prefix.pch"; sourceTree = "<group>"; };
+		4DC1A1201912F9A200228F5A /* EELAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EELAppDelegate.h; sourceTree = "<group>"; };
+		4DC1A1211912F9A200228F5A /* EELAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EELAppDelegate.m; sourceTree = "<group>"; };
+		4DC1A1241912F9A200228F5A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4DC1A1291912F9A200228F5A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		4DC1A12F1912F9A200228F5A /* weedlyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = weedlyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DC1A1301912F9A200228F5A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		4DC1A1381912F9A200228F5A /* weedlyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "weedlyTests-Info.plist"; sourceTree = "<group>"; };
+		4DC1A13A1912F9A200228F5A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4DC1A13C1912F9A200228F5A /* weedlyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = weedlyTests.m; sourceTree = "<group>"; };
+		4DC1A1461912FAA300228F5A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		4DC1A1481912FB6E00228F5A /* EELUsefulConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EELUsefulConstants.h; sourceTree = "<group>"; };
+		4DD4930A1915827D001A6203 /* EELMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELMainViewController.h; path = controllers/EELMainViewController.h; sourceTree = "<group>"; };
+		4DD4930B1915827D001A6203 /* EELMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELMainViewController.m; path = controllers/EELMainViewController.m; sourceTree = "<group>"; };
+		4DD4932119158DBC001A6203 /* EELDealsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELDealsViewController.h; path = controllers/EELDealsViewController.h; sourceTree = "<group>"; };
+		4DD4932219158DBC001A6203 /* EELDealsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELDealsViewController.m; path = controllers/EELDealsViewController.m; sourceTree = "<group>"; };
+		4DD493241915951E001A6203 /* EELFavoritesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELFavoritesTableViewController.h; path = controllers/EELFavoritesTableViewController.h; sourceTree = "<group>"; };
+		4DD493251915951E001A6203 /* EELFavoritesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELFavoritesTableViewController.m; path = controllers/EELFavoritesTableViewController.m; sourceTree = "<group>"; };
+		4DD4932719159554001A6203 /* EELMainTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELMainTableViewController.h; path = controllers/EELMainTableViewController.h; sourceTree = "<group>"; };
+		4DD4932819159554001A6203 /* EELMainTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELMainTableViewController.m; path = controllers/EELMainTableViewController.m; sourceTree = "<group>"; };
+		4DD4932B1915980C001A6203 /* EELSidebarTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELSidebarTableViewController.h; path = controllers/EELSidebarTableViewController.h; sourceTree = "<group>"; };
+		4DD4932C1915980C001A6203 /* EELSidebarTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELSidebarTableViewController.m; path = controllers/EELSidebarTableViewController.m; sourceTree = "<group>"; };
+		4DD4932E19159845001A6203 /* EELSmokinOnTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELSmokinOnTableViewController.h; path = controllers/EELSmokinOnTableViewController.h; sourceTree = "<group>"; };
+		4DD4932F19159845001A6203 /* EELSmokinOnTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELSmokinOnTableViewController.m; path = controllers/EELSmokinOnTableViewController.m; sourceTree = "<group>"; };
+		4DD4933119159A66001A6203 /* EELDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELDetailTableViewController.h; path = controllers/EELDetailTableViewController.h; sourceTree = "<group>"; };
+		4DD4933219159A66001A6203 /* EELDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELDetailTableViewController.m; path = controllers/EELDetailTableViewController.m; sourceTree = "<group>"; };
+		4DD4933719159A96001A6203 /* EELMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELMenuViewController.h; path = controllers/EELMenuViewController.h; sourceTree = "<group>"; };
+		4DD4933819159A96001A6203 /* EELMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELMenuViewController.m; path = controllers/EELMenuViewController.m; sourceTree = "<group>"; };
+		4DD4933A19159B18001A6203 /* EELLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELLoginViewController.h; path = controllers/EELLoginViewController.h; sourceTree = "<group>"; };
+		4DD4933B19159B18001A6203 /* EELLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELLoginViewController.m; path = controllers/EELLoginViewController.m; sourceTree = "<group>"; };
+		4DD4933D19159B63001A6203 /* EELAccountTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELAccountTableViewController.h; path = controllers/EELAccountTableViewController.h; sourceTree = "<group>"; };
+		4DD4933E19159B63001A6203 /* EELAccountTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELAccountTableViewController.m; path = controllers/EELAccountTableViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4DC1A10B1912F9A200228F5A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DC1A1471912FAA300228F5A /* MapKit.framework in Frameworks */,
+				4DC1A1141912F9A200228F5A /* CoreGraphics.framework in Frameworks */,
+				4DC1A1161912F9A200228F5A /* UIKit.framework in Frameworks */,
+				4DC1A1121912F9A200228F5A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DC1A12C1912F9A200228F5A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DC1A1311912F9A200228F5A /* XCTest.framework in Frameworks */,
+				4DC1A1331912F9A200228F5A /* UIKit.framework in Frameworks */,
+				4DC1A1321912F9A200228F5A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4DB1757419159DD400B3A22F /* detail controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4DD4933719159A96001A6203 /* EELMenuViewController.h */,
+				4DD4933819159A96001A6203 /* EELMenuViewController.m */,
+				4DD4933119159A66001A6203 /* EELDetailTableViewController.h */,
+				4DD4933219159A66001A6203 /* EELDetailTableViewController.m */,
+			);
+			name = "detail controllers";
+			sourceTree = "<group>";
+		};
+		4DB1757519159DEE00B3A22F /* sidebar controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4DD4933D19159B63001A6203 /* EELAccountTableViewController.h */,
+				4DD4933E19159B63001A6203 /* EELAccountTableViewController.m */,
+				4DD4933A19159B18001A6203 /* EELLoginViewController.h */,
+				4DD4933B19159B18001A6203 /* EELLoginViewController.m */,
+				4DD4932B1915980C001A6203 /* EELSidebarTableViewController.h */,
+				4DD4932C1915980C001A6203 /* EELSidebarTableViewController.m */,
+				4DD4932E19159845001A6203 /* EELSmokinOnTableViewController.h */,
+				4DD4932F19159845001A6203 /* EELSmokinOnTableViewController.m */,
+			);
+			name = "sidebar controllers";
+			sourceTree = "<group>";
+		};
+		4DB1757619159E1400B3A22F /* main view controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4DD4930A1915827D001A6203 /* EELMainViewController.h */,
+				4DD4930B1915827D001A6203 /* EELMainViewController.m */,
+				4DD4932719159554001A6203 /* EELMainTableViewController.h */,
+				4DD4932819159554001A6203 /* EELMainTableViewController.m */,
+				4DD4932119158DBC001A6203 /* EELDealsViewController.h */,
+				4DD4932219158DBC001A6203 /* EELDealsViewController.m */,
+				4DD493241915951E001A6203 /* EELFavoritesTableViewController.h */,
+				4DD493251915951E001A6203 /* EELFavoritesTableViewController.m */,
+			);
+			name = "main view controllers";
+			sourceTree = "<group>";
+		};
+		4DB1757719159E1D00B3A22F /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4DB1757519159DEE00B3A22F /* sidebar controllers */,
+				4DB1757419159DD400B3A22F /* detail controllers */,
+				4DB1757619159E1400B3A22F /* main view controllers */,
+			);
+			name = controllers;
+			sourceTree = "<group>";
+		};
+		4DC1A1051912F9A200228F5A = {
+			isa = PBXGroup;
+			children = (
+				4DC1A1171912F9A200228F5A /* weedly */,
+				4DC1A1361912F9A200228F5A /* weedlyTests */,
+				4DC1A1101912F9A200228F5A /* Frameworks */,
+				4DC1A10F1912F9A200228F5A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4DC1A10F1912F9A200228F5A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4DC1A10E1912F9A200228F5A /* weedly.app */,
+				4DC1A12F1912F9A200228F5A /* weedlyTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4DC1A1101912F9A200228F5A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4DC1A1461912FAA300228F5A /* MapKit.framework */,
+				4DC1A1111912F9A200228F5A /* Foundation.framework */,
+				4DC1A1131912F9A200228F5A /* CoreGraphics.framework */,
+				4DC1A1151912F9A200228F5A /* UIKit.framework */,
+				4DC1A1301912F9A200228F5A /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4DC1A1171912F9A200228F5A /* weedly */ = {
+			isa = PBXGroup;
+			children = (
+				4DC1A1201912F9A200228F5A /* EELAppDelegate.h */,
+				4DC1A1211912F9A200228F5A /* EELAppDelegate.m */,
+				4DC1A1481912FB6E00228F5A /* EELUsefulConstants.h */,
+				4DC1A1231912F9A200228F5A /* Main.storyboard */,
+				4DB1757719159E1D00B3A22F /* controllers */,
+				4DC1A1291912F9A200228F5A /* Images.xcassets */,
+				4DC1A1181912F9A200228F5A /* Supporting Files */,
+			);
+			path = weedly;
+			sourceTree = "<group>";
+		};
+		4DC1A1181912F9A200228F5A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4DC1A1191912F9A200228F5A /* weedly-Info.plist */,
+				4DC1A11A1912F9A200228F5A /* InfoPlist.strings */,
+				4DC1A11D1912F9A200228F5A /* main.m */,
+				4DC1A11F1912F9A200228F5A /* weedly-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4DC1A1361912F9A200228F5A /* weedlyTests */ = {
+			isa = PBXGroup;
+			children = (
+				4DC1A13C1912F9A200228F5A /* weedlyTests.m */,
+				4DC1A1371912F9A200228F5A /* Supporting Files */,
+			);
+			path = weedlyTests;
+			sourceTree = "<group>";
+		};
+		4DC1A1371912F9A200228F5A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4DC1A1381912F9A200228F5A /* weedlyTests-Info.plist */,
+				4DC1A1391912F9A200228F5A /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4DC1A10D1912F9A200228F5A /* weedly */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4DC1A1401912F9A200228F5A /* Build configuration list for PBXNativeTarget "weedly" */;
+			buildPhases = (
+				4DC1A10A1912F9A200228F5A /* Sources */,
+				4DC1A10B1912F9A200228F5A /* Frameworks */,
+				4DC1A10C1912F9A200228F5A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = weedly;
+			productName = weedly;
+			productReference = 4DC1A10E1912F9A200228F5A /* weedly.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4DC1A12E1912F9A200228F5A /* weedlyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4DC1A1431912F9A200228F5A /* Build configuration list for PBXNativeTarget "weedlyTests" */;
+			buildPhases = (
+				4DC1A12B1912F9A200228F5A /* Sources */,
+				4DC1A12C1912F9A200228F5A /* Frameworks */,
+				4DC1A12D1912F9A200228F5A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4DC1A1351912F9A200228F5A /* PBXTargetDependency */,
+			);
+			name = weedlyTests;
+			productName = weedlyTests;
+			productReference = 4DC1A12F1912F9A200228F5A /* weedlyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4DC1A1061912F9A200228F5A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = EEL;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Eric Lewis";
+				TargetAttributes = {
+					4DC1A12E1912F9A200228F5A = {
+						TestTargetID = 4DC1A10D1912F9A200228F5A;
+					};
+				};
+			};
+			buildConfigurationList = 4DC1A1091912F9A200228F5A /* Build configuration list for PBXProject "weedly" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4DC1A1051912F9A200228F5A;
+			productRefGroup = 4DC1A10F1912F9A200228F5A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4DC1A10D1912F9A200228F5A /* weedly */,
+				4DC1A12E1912F9A200228F5A /* weedlyTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4DC1A10C1912F9A200228F5A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DC1A12A1912F9A200228F5A /* Images.xcassets in Resources */,
+				4DC1A11C1912F9A200228F5A /* InfoPlist.strings in Resources */,
+				4DC1A1251912F9A200228F5A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DC1A12D1912F9A200228F5A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DC1A13B1912F9A200228F5A /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4DC1A10A1912F9A200228F5A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DD4932D1915980C001A6203 /* EELSidebarTableViewController.m in Sources */,
+				4DD493261915951E001A6203 /* EELFavoritesTableViewController.m in Sources */,
+				4DD4933319159A66001A6203 /* EELDetailTableViewController.m in Sources */,
+				4DC1A11E1912F9A200228F5A /* main.m in Sources */,
+				4DD4933F19159B63001A6203 /* EELAccountTableViewController.m in Sources */,
+				4DD4932319158DBC001A6203 /* EELDealsViewController.m in Sources */,
+				4DD4933019159845001A6203 /* EELSmokinOnTableViewController.m in Sources */,
+				4DD4933919159A96001A6203 /* EELMenuViewController.m in Sources */,
+				4DD4930C1915827D001A6203 /* EELMainViewController.m in Sources */,
+				4DC1A1221912F9A200228F5A /* EELAppDelegate.m in Sources */,
+				4DD4933C19159B18001A6203 /* EELLoginViewController.m in Sources */,
+				4DD4932919159554001A6203 /* EELMainTableViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DC1A12B1912F9A200228F5A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DC1A13D1912F9A200228F5A /* weedlyTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4DC1A1351912F9A200228F5A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4DC1A10D1912F9A200228F5A /* weedly */;
+			targetProxy = 4DC1A1341912F9A200228F5A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4DC1A11A1912F9A200228F5A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4DC1A11B1912F9A200228F5A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		4DC1A1231912F9A200228F5A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4DC1A1241912F9A200228F5A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4DC1A1391912F9A200228F5A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4DC1A13A1912F9A200228F5A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4DC1A13E1912F9A200228F5A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		4DC1A13F1912F9A200228F5A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4DC1A1411912F9A200228F5A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "weedly/weedly-Prefix.pch";
+				INFOPLIST_FILE = "weedly/weedly-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		4DC1A1421912F9A200228F5A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "weedly/weedly-Prefix.pch";
+				INFOPLIST_FILE = "weedly/weedly-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		4DC1A1441912F9A200228F5A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/weedly.app/weedly";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "weedly/weedly-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "weedlyTests/weedlyTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		4DC1A1451912F9A200228F5A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/weedly.app/weedly";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "weedly/weedly-Prefix.pch";
+				INFOPLIST_FILE = "weedlyTests/weedlyTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4DC1A1091912F9A200228F5A /* Build configuration list for PBXProject "weedly" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DC1A13E1912F9A200228F5A /* Debug */,
+				4DC1A13F1912F9A200228F5A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4DC1A1401912F9A200228F5A /* Build configuration list for PBXNativeTarget "weedly" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DC1A1411912F9A200228F5A /* Debug */,
+				4DC1A1421912F9A200228F5A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4DC1A1431912F9A200228F5A /* Build configuration list for PBXNativeTarget "weedlyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DC1A1441912F9A200228F5A /* Debug */,
+				4DC1A1451912F9A200228F5A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4DC1A1061912F9A200228F5A /* Project object */;
+}
