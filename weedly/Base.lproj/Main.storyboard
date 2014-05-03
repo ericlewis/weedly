@@ -37,21 +37,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G1a-u0-yEh">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G1a-u0-yEh">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="Fid-Hp-5y6"/>
                                 </connections>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jpN-jt-KmS">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jpN-jt-KmS">
                                 <rect key="frame" x="20" y="491" width="57" height="57"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="findme">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fna-Fa-We5">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fna-Fa-We5">
                                 <rect key="frame" x="93" y="491" width="57" height="57"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="deals">
@@ -61,7 +61,7 @@
                                     <segue destination="OWq-gG-4J3" kind="modal" identifier="ShowDeals" id="h40-Gj-yKh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ef1-Hp-KZ5">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ef1-Hp-KZ5">
                                 <rect key="frame" x="169" y="491" width="57" height="57"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="list">
@@ -71,7 +71,7 @@
                                     <segue destination="Trp-cL-tCV" kind="modal" id="ueC-xP-ELR"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HFk-sP-qaR">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HFk-sP-qaR">
                                 <rect key="frame" x="243" y="491" width="57" height="57"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="favorites">
@@ -83,6 +83,26 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jpN-jt-KmS" firstAttribute="baseline" secondItem="Ef1-Hp-KZ5" secondAttribute="baseline" id="1P8-gY-z3C"/>
+                            <constraint firstAttribute="bottom" secondItem="G1a-u0-yEh" secondAttribute="bottom" id="500-cc-HwC"/>
+                            <constraint firstItem="HFk-sP-qaR" firstAttribute="leading" secondItem="Ef1-Hp-KZ5" secondAttribute="trailing" constant="17" id="77A-N6-suJ"/>
+                            <constraint firstItem="HFk-sP-qaR" firstAttribute="baseline" secondItem="Fna-Fa-We5" secondAttribute="baseline" id="8ZG-1Y-EIg"/>
+                            <constraint firstItem="jpN-jt-KmS" firstAttribute="baseline" secondItem="Fna-Fa-We5" secondAttribute="baseline" id="DOk-Zt-tSP"/>
+                            <constraint firstItem="Fna-Fa-We5" firstAttribute="baseline" secondItem="Ef1-Hp-KZ5" secondAttribute="baseline" id="FPk-eh-eFv"/>
+                            <constraint firstItem="jpN-jt-KmS" firstAttribute="top" secondItem="Fna-Fa-We5" secondAttribute="top" id="GOm-bN-fgH"/>
+                            <constraint firstItem="Fna-Fa-We5" firstAttribute="leading" secondItem="jpN-jt-KmS" secondAttribute="trailing" constant="16" id="R95-VK-yAR"/>
+                            <constraint firstAttribute="trailing" secondItem="HFk-sP-qaR" secondAttribute="trailing" constant="20" symbolic="YES" id="RMA-xc-22A"/>
+                            <constraint firstItem="G1a-u0-yEh" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Sxl-oK-QlJ"/>
+                            <constraint firstItem="HFk-sP-qaR" firstAttribute="top" secondItem="Ef1-Hp-KZ5" secondAttribute="top" id="XuE-Um-awJ"/>
+                            <constraint firstItem="jpN-jt-KmS" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" symbolic="YES" id="bCE-0s-ZVn"/>
+                            <constraint firstItem="G1a-u0-yEh" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="cQc-hN-38y"/>
+                            <constraint firstItem="Ef1-Hp-KZ5" firstAttribute="top" secondItem="Fna-Fa-We5" secondAttribute="top" id="gH5-5n-Gk4"/>
+                            <constraint firstAttribute="bottom" secondItem="jpN-jt-KmS" secondAttribute="bottom" constant="20" symbolic="YES" id="gm9-qQ-PGx"/>
+                            <constraint firstItem="HFk-sP-qaR" firstAttribute="baseline" secondItem="jpN-jt-KmS" secondAttribute="baseline" id="iiI-WH-Ta6"/>
+                            <constraint firstItem="Ef1-Hp-KZ5" firstAttribute="baseline" secondItem="HFk-sP-qaR" secondAttribute="baseline" id="saX-dc-nD3"/>
+                            <constraint firstAttribute="trailing" secondItem="G1a-u0-yEh" secondAttribute="trailing" id="yb4-Us-d5s"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="68Z-QI-bP2">
                         <barButtonItem key="leftBarButtonItem" image="hamburger" id="HlO-OD-JRn"/>
@@ -345,7 +365,7 @@
             </objects>
             <point key="canvasLocation" x="-776" y="-258"/>
         </scene>
-        <!--Detail Table View Controller-->
+        <!--Detail Table View Controller - Merchant-->
         <scene sceneID="1ny-dC-lD9">
             <objects>
                 <tableViewController id="E4k-M5-Cyr" customClass="EELDetailTableViewController" sceneMemberID="viewController">
@@ -368,7 +388,7 @@
                             <outlet property="delegate" destination="E4k-M5-Cyr" id="FcT-2Q-rRw"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="5ke-U3-VuL"/>
+                    <navigationItem key="navigationItem" title="Merchant" id="5ke-U3-VuL"/>
                     <size key="freeformSize" width="0.0" height="0.0"/>
                     <connections>
                         <segue destination="bYk-bg-qIU" kind="push" id="VoE-DU-ogM"/>
@@ -379,7 +399,7 @@
             </objects>
             <point key="canvasLocation" x="-776" y="694"/>
         </scene>
-        <!--Menu View Controller-->
+        <!--Menu View Controller - Menu-->
         <scene sceneID="A2Z-ZO-4mF">
             <objects>
                 <viewController id="bYk-bg-qIU" customClass="EELMenuViewController" sceneMemberID="viewController">
@@ -390,13 +410,20 @@
                     <view key="view" contentMode="scaleToFill" id="pXA-jF-aor">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s5A-ML-8jv">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </webView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="BPL-Nq-302"/>
+                    <navigationItem key="navigationItem" title="Menu" id="BPL-Nq-302"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MEZ-dx-wZQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-201" y="694"/>
+            <point key="canvasLocation" x="-277" y="694"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6cT-d6-inL">
@@ -466,7 +493,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="9XJ-N9-8Dl"/>
-        <segue reference="ugs-9Z-yWN"/>
+        <segue reference="hnI-g6-UyI"/>
+        <segue reference="RQi-ur-TKs"/>
     </inferredMetricsTieBreakers>
 </document>
