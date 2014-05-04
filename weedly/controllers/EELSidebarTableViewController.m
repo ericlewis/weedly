@@ -10,6 +10,8 @@
 
 @interface EELSidebarTableViewController ()
 
+@property (nonatomic, strong) NSArray *sidebarItems;
+
 @end
 
 @implementation EELSidebarTableViewController
@@ -27,11 +29,16 @@
 {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    self.tableView.tableFooterView = [[UIView alloc] init];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.sidebarItems = @[
+                          @{@"image": [UIImage imageNamed:@"accountIcon"],  @"title": @"Account"},
+                          @{@"image": [UIImage imageNamed:@"dealsIcon"],    @"title": @"Today's Deals"},
+                          @{@"image": [UIImage imageNamed:@"smokinonIcon"], @"title": @"Smokin' On"},
+                          @{@"image": [UIImage imageNamed:@"alarmIcon"],    @"title": @"420 Alarm"},
+                          ];
+    
+    [self.revealController setMinimumWidth:270.0 maximumWidth:270.0 forViewController:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,66 +51,86 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    // header cell
+    if (section == 0) return 1;
+
+    return self.sidebarItems.count;
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell;
+    
+    if (indexPath.section == 0) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"HeaderCell" forIndexPath:indexPath];
+        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, cell.bounds.size.width);
+        return cell;
+    }else if(indexPath.row != self.sidebarItems.count - 1){
+        cell = [tableView dequeueReusableCellWithIdentifier:@"SidebarItemSingleLine" forIndexPath:indexPath];
+    }else{
+        cell = [tableView dequeueReusableCellWithIdentifier:@"SidebarItemDoubleLine" forIndexPath:indexPath];
+        cell.detailTextLabel.text = @"Set a reminder to toke up!";
+    }
     
     // Configure the cell...
+    cell.textLabel.text = [[self.sidebarItems objectAtIndex:indexPath.row] valueForKey:@"title"];
+    cell.imageView.image = [[self.sidebarItems objectAtIndex:indexPath.row] valueForKey:@"image"];
+    
+    // last cell
+    
     
     return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 0) {
+        return 130;
+    }
+    
+    // height for sidebar options
+    return 55;
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 0) {
+        // wiggle the logo
+    }else{
+        
+        NSUInteger index = indexPath.row;
+        
+        // account
+        if (index == 0){
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+            
+            if ([[EELWMClient sharedClient] isAccountLoggedIn]) {
+                // needs to push to nav controller
+                [self performSegueWithIdentifier:@"ShowAccount" sender:self];
+            }else{
+                // prompt that they need to login
+                [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"Would you like to login?" delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil] show];
+            }
+        }
+        
+        // Today's Deals
+        else if (index == 1){
+            [self performSegueWithIdentifier:@"ShowTodaysDeals" sender:self];
+        }
+        
+        // Smokin' On
+        else if (index == 2){
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+            [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"alloc init yet to occur ;)" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
+            // needs to push to nav controller
+            //[self performSegueWithIdentifier:@"ShowSmokinOn" sender:self];
+        }
+    }
 }
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 /*
 #pragma mark - Navigation

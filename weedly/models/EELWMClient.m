@@ -66,10 +66,10 @@
     NSParameterAssert(ID);
     
     // POST add-review
-    if (!self.account){
+    if (![self isAccountLoggedIn]){
         block(nil, [NSError errorWithDomain:@"NeedSignIn" code:0 userInfo:nil]);
         return;
-    }else if(!self.account.confirmed){
+    }else if(![self isAccountConfirmed]){
         block(nil, [NSError errorWithDomain:@"NeedToConfirm" code:0 userInfo:nil]);
         return;
     }
@@ -80,10 +80,10 @@
     NSParameterAssert(ID);
 
     // DELETE delete-review
-    if (!self.account){
+    if (![self isAccountLoggedIn]){
         block(nil, [NSError errorWithDomain:@"NeedSignIn" code:0 userInfo:nil]);
         return;
-    }else if(!self.account.confirmed){
+    }else if(![self isAccountConfirmed]){
         block(nil, [NSError errorWithDomain:@"NeedToConfirm" code:0 userInfo:nil]);
         return;
     }
@@ -110,10 +110,10 @@
     NSParameterAssert(status);
 
     // POST smoking-post
-    if (!self.account){
+    if (![self isAccountLoggedIn]){
         block(nil, [NSError errorWithDomain:@"NeedSignIn" code:0 userInfo:nil]);
         return;
-    }else if(!self.account.confirmed){
+    }else if(![self isAccountConfirmed]){
         block(nil, [NSError errorWithDomain:@"NeedToConfirm" code:0 userInfo:nil]);
         return;
     }
@@ -151,6 +151,22 @@
     self.account = nil;
 }
 
+- (BOOL)isAccountLoggedIn{
+    if (!self.account) {
+        return NO;
+    }
+    
+    return YES;
+}
+
+- (BOOL)isAccountConfirmed{
+    if (!self.account.confirmed) {
+        return NO;
+    }
+    
+    return YES;
+}
+
 - (void)getAccountWithID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
     NSParameterAssert(ID);
 
@@ -162,7 +178,7 @@
 - (void)getFavoritesWithAccountID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
     NSParameterAssert(ID);
     
-    if (!self.account){
+    if (![self isAccountConfirmed]){
         block(nil, [NSError errorWithDomain:@"NeedSignIn" code:0 userInfo:nil]);
         return;
     }
@@ -175,7 +191,7 @@
 - (void)getReviewsWithAccountID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
     NSParameterAssert(ID);
     
-    if (!self.account){
+    if (![self isAccountConfirmed]){
         block(nil, [NSError errorWithDomain:@"NeedSignIn" code:0 userInfo:nil]);
         return;
     }

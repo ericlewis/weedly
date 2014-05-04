@@ -286,18 +286,77 @@
         <scene sceneID="vzr-fI-ETV">
             <objects>
                 <tableViewController storyboardIdentifier="SideViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mdm-bT-9Xe" customClass="EELSidebarTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="6mp-GO-ez4">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="131" sectionHeaderHeight="22" sectionFooterHeight="22" id="6mp-GO-ez4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <inset key="separatorInset" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="6aL-5Y-mRY">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="5" reuseIdentifier="HeaderCell" rowHeight="130" id="6aL-5Y-mRY">
+                                <rect key="frame" x="0.0" y="22" width="320" height="130"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6aL-5Y-mRY" id="STY-zV-c28">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="129"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wmslogo" translatesAutoresizingMaskIntoConstraints="NO" id="3v5-Sn-yB1">
+                                            <rect key="frame" x="89" y="36" width="95" height="57"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="3v5-Sn-yB1" firstAttribute="leading" secondItem="STY-zV-c28" secondAttribute="leading" constant="89" id="GHk-QR-vns"/>
+                                        <constraint firstItem="3v5-Sn-yB1" firstAttribute="centerY" secondItem="STY-zV-c28" secondAttribute="centerY" id="ckJ-3J-5bE"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <inset key="separatorInset" minX="55" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="5" reuseIdentifier="SidebarItemSingleLine" textLabel="b5h-QR-7HB" rowHeight="55" style="IBUITableViewCellStyleDefault" id="O4r-ov-aqC">
+                                <rect key="frame" x="0.0" y="152" width="320" height="55"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O4r-ov-aqC" id="UCz-8D-gvp">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="54"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="b5h-QR-7HB">
+                                            <rect key="frame" x="55" y="0.0" width="250" height="54"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                            <color key="textColor" red="0.4745098352432251" green="0.4745098352432251" blue="0.4745098352432251" alpha="1" colorSpace="deviceRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <inset key="separatorInset" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="5" reuseIdentifier="SidebarItemDoubleLine" textLabel="Zpm-Ef-wdo" detailTextLabel="7xH-zE-j4I" rowHeight="55" style="IBUITableViewCellStyleSubtitle" id="V4g-eF-rTO">
+                                <rect key="frame" x="0.0" y="207" width="320" height="55"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="V4g-eF-rTO" id="eEb-k9-1Hv">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="54"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Zpm-Ef-wdo">
+                                            <rect key="frame" x="55" y="10" width="32" height="22"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                            <color key="textColor" red="0.4745098352432251" green="0.4745098352432251" blue="0.4745098352432251" alpha="1" colorSpace="deviceRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7xH-zE-j4I">
+                                            <rect key="frame" x="55" y="32" width="36" height="13"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="11"/>
+                                            <color key="textColor" red="0.4745098352432251" green="0.4745098352432251" blue="0.4745098352432251" alpha="1" colorSpace="deviceRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pbO-NH-wVI">
+                                            <rect key="frame" x="205" y="12" width="51" height="31"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </switch>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <inset key="separatorInset" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -307,8 +366,9 @@
                     </tableView>
                     <connections>
                         <segue destination="fCw-8P-d85" kind="modal" id="ICM-MS-7kf"/>
-                        <segue destination="TyC-Gt-drW" kind="modal" id="t0i-KZ-jSh"/>
-                        <segue destination="BAJ-Va-k2y" kind="modal" id="dOT-zv-Mpn"/>
+                        <segue destination="TyC-Gt-drW" kind="modal" identifier="ShowAccount" id="t0i-KZ-jSh"/>
+                        <segue destination="BAJ-Va-k2y" kind="modal" identifier="ShowSmokinOn" id="dOT-zv-Mpn"/>
+                        <segue destination="OWq-gG-4J3" kind="modal" identifier="ShowTodaysDeals" modalTransitionStyle="crossDissolve" id="3rN-vu-ic9"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SqS-g0-yLN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -526,6 +586,7 @@
         <image name="findme" width="57" height="57"/>
         <image name="hamburger" width="21" height="15"/>
         <image name="list" width="57" height="57"/>
+        <image name="wmslogo" width="95" height="57"/>
     </resources>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -534,6 +595,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="h40-Gj-yKh"/>
         <segue reference="hnI-g6-UyI"/>
         <segue reference="RQi-ur-TKs"/>
     </inferredMetricsTieBreakers>

@@ -38,6 +38,8 @@
 - (void)loginAccountWithUsername:(NSString*)username password:(NSString*)password completionBlock:(void (^)(NSArray *results, NSError *error))block;
 - (void)registerAccountWithUsername:(NSString*)username password:(NSString*)password completionBlock:(void (^)(NSArray *results, NSError *error))block;
 - (void)logoutAccount;
+- (BOOL)isAccountLoggedIn;
+- (BOOL)isAccountConfirmed;
 
 - (void)getAccountWithID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block;
 - (void)getReviewsWithAccountID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block;
