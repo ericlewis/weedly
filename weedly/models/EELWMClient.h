@@ -18,12 +18,12 @@
 
 #pragma mark -
 #pragma mark Merchant Actions
-- (void)getMerchantWithID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block;
-- (void)getMenuItemsWithMerchantID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block;
+- (void)getDispensaryWithID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block;
+- (void)getMenuItemsWithDispensaryID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block;
 
 #pragma mark Review Actions
-- (void)getReviewsWithMerchantID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block;
-- (void)postReviewForMerchantWithID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block;
+- (void)getReviewsWithDispensaryID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block;
+- (void)postReviewForDispensaryWithID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block;
 - (void)deleteReviewWithID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block;
 
 #pragma mark -

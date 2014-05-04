@@ -16,6 +16,7 @@
              @"email"       : @"email",
              @"username"    : @"username",
              @"photo"       : @"avatar",
+             @"session"     : @"session",
              };
 }
 

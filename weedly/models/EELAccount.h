@@ -11,6 +11,7 @@
 @property (copy, nonatomic, readonly) NSNumber *id;
 @property (copy, nonatomic, readonly) NSString *username;
 @property (copy, nonatomic, readonly) NSString *email;
+@property (copy, nonatomic, readonly) NSString *session;
 @property (copy, nonatomic, readonly) NSURL    *photo;
 
 @end

@@ -37,45 +37,105 @@
 
 #pragma mark -
 #pragma mark Merchant Actions
-- (void)getMerchantWithID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
-    
+- (void)getDispensaryWithID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
+    NSParameterAssert(ID);
+
+    [self GET:[NSString stringWithFormat:@"listing/dispensary/%@", ID] parameters:nil resultClass:[EELDispensary class] resultKeyPath:@"docs" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+        block(responseObject, error);
+    }];
 }
 
-- (void)getMenuItemsWithMerchantID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
-    [self GET:@"/dispensaries/633/menu_items.json" parameters:nil resultClass:[EELMenuItem class] resultKeyPath:@"" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+- (void)getMenuItemsWithDispensaryID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
+    NSParameterAssert(ID);
+
+    [self GET:[NSString stringWithFormat:@"dispensaries/%@/menu_items.json", ID] parameters:nil resultClass:[EELMenuItem class] resultKeyPath:@"" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
         block(responseObject, error);
     }];
 }
 
 #pragma mark Review Actions
-- (void)getReviewsWithMerchantID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
+- (void)getReviewsWithDispensaryID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
+    NSParameterAssert(ID);
     
+    [self GET:[NSString stringWithFormat:@"reviews/dispensary/%@", ID] parameters:nil resultClass:[EELReview class] resultKeyPath:@"" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+        block(responseObject, error);
+    }];
 }
 
-- (void)postReviewForMerchantWithID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
-    
+- (void)postReviewForDispensaryWithID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
+    NSParameterAssert(ID);
+
 }
 
 - (void)deleteReviewWithID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
-    
+    NSParameterAssert(ID);
+
 }
 
 #pragma mark -
 #pragma mark Smokin On Actions
 - (void)getSmokinOnListWithCompletionBlock:(void (^)(NSArray *results, NSError *error))block{
-
+    CLLocationCoordinate2D coords = [MTLocationManager sharedInstance].lastKnownLocation.coordinate;
+    
+    NSDictionary *params = @{
+                             @"lat"  : [NSString stringWithFormat:@"%f", coords.latitude ?: 37.773972],
+                             @"lng"  : [NSString stringWithFormat:@"%f", coords.longitude ?: -122.431297],
+                             @"l"    : @"50"
+                             };
+    
+    [self GET:@"smoking" parameters:params resultClass:[EELSmokinOn class] resultKeyPath:@"" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+        block(responseObject, error);
+    }];
 }
 
 - (void)postSmokinOnStatus:(NSString*)status completionBlock:(void (^)(NSArray *results, NSError *error))block{
+    NSParameterAssert(status);
 
 }
 
 #pragma mark -
 #pragma mark Account Actions
-- (void)loginAccountWithUsername:(NSString*)username password:(NSString*)password completionBlock:(void (^)(NSArray *results, NSError *error))block{}
-- (void)getAccountWithID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{}
-- (void)getReviewsWithAccountID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{}
-- (void)getFavoritesWithAccountID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{}
+- (void)loginAccountWithUsername:(NSString*)username password:(NSString*)password completionBlock:(void (^)(NSArray *results, NSError *error))block{
+    NSParameterAssert(username);
+    NSParameterAssert(password);
+
+    NSDictionary *params = @{
+                             @"agent": @"iphone",
+                             @"username" : username,
+                             @"password" : password};
+    
+    [self POST:@"login" parameters:params resultClass:[EELAccount class] resultKeyPath:@"" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+        
+        // if successful, setup the account in the singleton
+        NSLog(@"%@", responseObject);
+        
+        block(responseObject, error);
+    }];
+}
+
+- (void)getAccountWithID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
+    NSParameterAssert(ID);
+
+    [self GET:[NSString stringWithFormat:@"user/id/%@", ID] parameters:nil resultClass:[EELAccount class] resultKeyPath:@"info" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+        block(responseObject, error);
+    }];
+}
+
+- (void)getFavoritesWithAccountID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
+    NSParameterAssert(ID);
+
+    [self GET:@"favorites" parameters:@{@"user_id": ID} resultClass:[EELDispensary class] resultKeyPath:@"hits" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+        block(responseObject, error);
+    }];
+}
+
+- (void)getReviewsWithAccountID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
+    NSParameterAssert(ID);
+
+    [self GET:@"user/reviews" parameters:nil resultClass:[EELReview class] resultKeyPath:@"hits" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+        block(responseObject, error);
+    }];
+}
 
 #pragma mark -
 #pragma mark Private
