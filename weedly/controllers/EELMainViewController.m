@@ -86,6 +86,8 @@
 #define MakeLocation(lat,lon) [[CLLocation alloc] initWithLatitude:lat longitude:lon];
 
 - (void)addPins{
+    [self.mapView removeAnnotations:self.mapView.annotations];
+    
     NSArray *locations = self.dataSource.items;
 
     for (int i = 0; i < [locations count]; i++) {
