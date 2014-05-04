@@ -14,10 +14,30 @@
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
-             @"address" : @"a",
-             @"city" : @"c",
-             @"name" : @"n"
+             @"id"          : @"id",
+             @"name"        : @"n",
+             @"address"     : @"a",
+             @"city"        : @"c",
+             @"state"       : @"state",
+             @"zip"         : @"zip",
+             @"rating"      : @"r",
+             @"ratingCount" : @"rc",
+             @"type"        : @"type",
+             @"icon"        : @"marker",
+             @"lng"         : @"longitude",
+             @"lat"         : @"latitude",
+             @"photoURL"    : @"photo1",
+             @"phone"       : @"phone",
+             @"license"     : @"license_type",
+             @"closesAt"    : @"todaysHours.closes_at",
+             @"opensAt"     : @"todaysHours.opens_at",
+             @"dayOTW"      : @"todaysHours.day_of_the_week",
+             @"isOpen"      : @"is_open",
              };
+}
+
++ (NSValueTransformer *)photoURLJSONTransformer {
+    return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
 }
 
 #pragma mark - Managed object serialization
