@@ -79,8 +79,7 @@
 #define MakeLocation(lat,lon) [[CLLocation alloc] initWithLatitude:lat longitude:lon];
 
 - (void)addPins{
-    [self.mapView removeAnnotations:self.mapView.annotations];
-    
+    NSArray *oldAnnotations = self.mapView.annotations;
     NSArray *locations = self.dataSource.items;
 
     for (int i = 0; i < [locations count]; i++) {
@@ -92,6 +91,8 @@
         
         [self.mapView addAnnotation:annotation];
     }
+    
+    [self.mapView removeAnnotations:oldAnnotations];
 }
 
 - (void)setupKVO{
@@ -183,7 +184,10 @@
 #pragma mark -
 #pragma mark - Actions
 - (void)performSearch:(NSString*)searchTerm{
-    [self performSearch:searchTerm lat:(CGFloat)self.mapView.centerCoordinate.latitude lng:(CGFloat)self.mapView.centerCoordinate.longitude];
+    NSString *latVal = [NSString stringWithFormat:@"%.1f", self.mapView.centerCoordinate.latitude];
+    NSString *lngVal = [NSString stringWithFormat:@"%.1f", self.mapView.centerCoordinate.longitude];
+
+    [self performSearch:searchTerm lat:(CGFloat)latVal.floatValue lng:(CGFloat)lngVal.floatValue];
 }
 
 - (void)performSearch:(NSString*)searchTerm lat:(CGFloat)lat lng:(CGFloat)lng{
@@ -329,8 +333,6 @@
         }
     }
     
-    NSLog(@"%@ - %@ - %i - %i", disp.name, disp.icon, disp.featured, disp.type);
-    
     return annotationView;
 }
 
@@ -378,7 +380,7 @@
         }
     }
     
-    [self performSearch:@""];
+    [self performSearch:self.searchBar.text];
 }
 
 #pragma mark -
