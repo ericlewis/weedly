@@ -30,6 +30,7 @@
     #import <POP/POP.h>
     #import "MTLocation.h"
     #import "PKRevealController.h"
+    #import "REMenu.h"
 
     // models
     #import "EELAccount.h"

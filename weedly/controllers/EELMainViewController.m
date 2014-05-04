@@ -25,6 +25,8 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *filterButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sideBarButton;
 
+
+@property (strong, nonatomic) REMenu *filterMenu;
 @property (strong, nonatomic) UISearchBar *searchBar;
 @property (strong, nonatomic) EELArrayDataSource *dataSource;
 
@@ -195,6 +197,35 @@
 #pragma mark - Actions
 - (IBAction)showSidebar:(id)sender {
     [self.revealController showViewController:self.revealController.leftViewController];
+}
+
+- (IBAction)showFilterDropdown:(id)sender {
+    if (self.filterMenu.isOpen) {
+        [self.filterMenu close];
+    }else{
+        REMenuItem *dispensaryItem = [[REMenuItem alloc] initWithTitle:@"Dispensary"
+                                                        subtitle:nil
+                                                           image:nil
+                                                highlightedImage:nil
+                                                          action:^(REMenuItem *item) {
+                                                              NSLog(@"Item: %@", item);
+                                                          }];
+        
+        REMenuItem *doctorItem = [[REMenuItem alloc] initWithTitle:@"Doctor"
+                                                        subtitle:nil
+                                                           image:nil
+                                                highlightedImage:nil
+                                                          action:^(REMenuItem *item) {
+                                                              NSLog(@"Item: %@", item);
+                                                          }];
+        
+        self.filterMenu = [[REMenu alloc] initWithItems:@[dispensaryItem, doctorItem]];
+        self.filterMenu.backgroundColor = [UIColor whiteColor];
+        self.filterMenu.borderColor = [UIColor whiteColor];
+        self.filterMenu.separatorColor = [UIColor whiteColor];
+        
+        [self.filterMenu showFromNavigationController:self.navigationController];
+    }
 }
 
 - (void)zoomToUser{

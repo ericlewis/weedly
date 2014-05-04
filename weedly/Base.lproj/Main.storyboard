@@ -130,7 +130,11 @@
                                 <action selector="showSidebar:" destination="vXZ-lx-hvc" id="YaH-pq-LKq"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="filter" id="mfD-hb-9eu"/>
+                        <barButtonItem key="rightBarButtonItem" image="filter" id="mfD-hb-9eu">
+                            <connections>
+                                <action selector="showFilterDropdown:" destination="vXZ-lx-hvc" id="EhS-ww-8HN"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="dealsButton" destination="Fna-Fa-We5" id="5qr-DG-l4y"/>
@@ -531,6 +535,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="hnI-g6-UyI"/>
-        <segue reference="89F-62-Jkn"/>
+        <segue reference="RQi-ur-TKs"/>
     </inferredMetricsTieBreakers>
 </document>
