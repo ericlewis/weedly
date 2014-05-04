@@ -31,8 +31,16 @@
     [self searchWithType:@"doctor" model:[EELDispensary class] term:term completionBlock:block];
 }
 
+- (void)searchDoctorsWithTerm:(NSString *)term lat:(CGFloat)lat lng:(CGFloat)lng completionBlock:(void (^)(NSArray *results, NSError *error))block {
+    [self searchWithType:@"doctor" model:[EELDispensary class] term:term lat:lat lng:lng completionBlock:block];
+}
+
 - (void)searchDispensariesWithTerm:(NSString *)term completionBlock:(void (^)(NSArray *results, NSError *error))block {
     [self searchWithType:@"dispensary" model:[EELDispensary class] term:term completionBlock:block];
+}
+
+- (void)searchDispensariesWithTerm:(NSString *)term lat:(CGFloat)lat lng:(CGFloat)lng completionBlock:(void (^)(NSArray *results, NSError *error))block {
+    [self searchWithType:@"dispensary" model:[EELDispensary class] term:term lat:lat lng:lng completionBlock:block];
 }
 
 #pragma mark -
@@ -203,23 +211,28 @@
 
 #pragma mark -
 #pragma mark Private
-- (void)searchWithType:(NSString*)type model:(id)class term:(NSString*)term completionBlock:(void (^)(NSArray *results, NSError *error))block{
+- (void)searchWithType:(NSString*)type model:(id)class term:(NSString*)term lat:(CGFloat)lat lng:(CGFloat)lng completionBlock:(void (^)(NSArray *results, NSError *error))block{
     NSParameterAssert(type);
     NSParameterAssert(term);
     NSParameterAssert(block);
-    
-    CLLocationCoordinate2D coords = [MTLocationManager sharedInstance].lastKnownLocation.coordinate;
+    NSParameterAssert(lng);
+    NSParameterAssert(lat);
     
     NSDictionary *parameters = @{
                                  @"type" : type,
-                                 @"lat"  : [NSString stringWithFormat:@"%f", coords.latitude ?: 37.773972],
-                                 @"lng"  : [NSString stringWithFormat:@"%f", coords.longitude ?: -122.431297],
+                                 @"lat"  : [NSString stringWithFormat:@"%f", lat],
+                                 @"lng"  : [NSString stringWithFormat:@"%f", lng],
                                  @"q"    : term
                                  };
     
     [self GET:@"search" parameters:parameters resultClass:class resultKeyPath:@"hits" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
         block(responseObject, error);
     }];
+}
+
+- (void)searchWithType:(NSString*)type model:(id)class term:(NSString*)term completionBlock:(void (^)(NSArray *results, NSError *error))block{
+    CLLocationCoordinate2D coords = [MTLocationManager sharedInstance].lastKnownLocation.coordinate;
+    [self searchWithType:type model:class term:type lat:coords.latitude ?: 37.773972 lng:coords.longitude ?: -122.431297 completionBlock:block];
 }
 
 @end

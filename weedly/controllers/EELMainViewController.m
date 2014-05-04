@@ -73,7 +73,7 @@
 #pragma mark -
 #pragma mark setup
 - (void)getInitialListings{
-    [self performSearch:@""];
+    [self performSearch:self.searchBar.text];
 }
 
 #define MakeLocation(lat,lon) [[CLLocation alloc] initWithLatitude:lat longitude:lon];
@@ -92,10 +92,6 @@
         
         [self.mapView addAnnotation:annotation];
     }
-    
-    self.notification = [CWStatusBarNotification new];
-    [self.notification displayNotificationWithMessage:[NSString stringWithFormat:@"Showing %lu results", (unsigned long)locations.count]
-                                          forDuration:2.0f];
 }
 
 - (void)setupKVO{
@@ -187,8 +183,12 @@
 #pragma mark -
 #pragma mark - Actions
 - (void)performSearch:(NSString*)searchTerm{
+    [self performSearch:searchTerm lat:(CGFloat)self.mapView.centerCoordinate.latitude lng:(CGFloat)self.mapView.centerCoordinate.longitude];
+}
+
+- (void)performSearch:(NSString*)searchTerm lat:(CGFloat)lat lng:(CGFloat)lng{
     if (self.searchBar.tag == 420) {
-        [[EELWMClient sharedClient] searchDispensariesWithTerm:searchTerm completionBlock:^(NSArray *results, NSError *error) {
+        [[EELWMClient sharedClient] searchDispensariesWithTerm:searchTerm lat:lat lng:lng completionBlock:^(NSArray *results, NSError *error) {
             if (error) {
                 NSLog(@"noooo: %@", error);
                 return;
@@ -199,7 +199,7 @@
             [self addPins];
         }];
     }else{
-        [[EELWMClient sharedClient] searchDoctorsWithTerm:searchTerm completionBlock:^(NSArray *results, NSError *error) {
+        [[EELWMClient sharedClient] searchDoctorsWithTerm:searchTerm lat:lat lng:lng completionBlock:^(NSArray *results, NSError *error) {
             if (error) {
                 NSLog(@"noooo: %@", error);
                 return;
@@ -210,7 +210,6 @@
             [self addPins];
         }];
     }
-    
 }
 
 - (IBAction)showSidebar:(id)sender {
@@ -378,6 +377,8 @@
             [[view superview] bringSubviewToFront:view];
         }
     }
+    
+    [self performSearch:@""];
 }
 
 #pragma mark -
@@ -404,7 +405,7 @@
 - (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar{
     // non optimal hack for getting results back
     if (searchBar.text.length == 0) {
-        [self performSearch:@""];
+        [self performSearch:self.searchBar.text];
     }
     
     return YES;
