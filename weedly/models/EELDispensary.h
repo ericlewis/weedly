@@ -8,13 +8,14 @@
 
 @interface EELDispensary : MTLModel <MTLJSONSerializing, MTLManagedObjectSerializing>
 
+@property (copy, nonatomic, readonly) NSNumber *id;
 @property (copy, nonatomic, readonly) NSString *name;
 @property (copy, nonatomic, readonly) NSString *phone;
 @property (copy, nonatomic, readonly) NSString *address;
 @property (copy, nonatomic, readonly) NSString *city;
 @property (copy, nonatomic, readonly) NSString *state;
 @property (copy, nonatomic, readonly) NSString *zip;
-@property (copy, nonatomic, readonly) NSURL *photoURL;
+@property (copy, nonatomic, readonly) NSURL    *photoURL;
 @property (copy, nonatomic, readonly) NSString *icon;
 @property (copy, nonatomic, readonly) NSString *license;
 @property (copy, nonatomic, readonly) NSString *isOpen;

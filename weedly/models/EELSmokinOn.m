@@ -10,4 +10,32 @@
 
 @implementation EELSmokinOn
 
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{
+             @"id"          : @"id",
+             @"name"        : @"u",
+             @"status"      : @"s",
+             @"timeAgo"     : @"c",
+             @"photo"       : @"photo_url",
+             };
+}
+
++ (NSValueTransformer *)photoURLJSONTransformer {
+    return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
+}
+
+#pragma mark - Managed object serialization
+
++ (NSString *)managedObjectEntityName {
+    return @"SmokinOn";
+}
+
++ (NSDictionary *)managedObjectKeysByPropertyKey {
+    return nil;
+}
+
++ (NSValueTransformer *)photoURLEntityAttributeTransformer {
+    return [[NSValueTransformer valueTransformerForName:MTLURLValueTransformerName] mtl_invertedTransformer];
+}
+
 @end

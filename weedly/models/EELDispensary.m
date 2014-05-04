@@ -50,7 +50,7 @@
     return nil;
 }
 
-+ (NSValueTransformer *)coverURLEntityAttributeTransformer {
++ (NSValueTransformer *)photoURLEntityAttributeTransformer {
     return [[NSValueTransformer valueTransformerForName:MTLURLValueTransformerName] mtl_invertedTransformer];
 }
 

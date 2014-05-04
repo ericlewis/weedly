@@ -10,4 +10,31 @@
 
 @implementation EELAccount
 
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{
+             @"id"          : @"id",
+             @"email"       : @"email",
+             @"username"    : @"username",
+             @"photo"       : @"avatar",
+             };
+}
+
++ (NSValueTransformer *)photoURLJSONTransformer {
+    return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
+}
+
+#pragma mark - Managed object serialization
+
++ (NSString *)managedObjectEntityName {
+    return @"Account";
+}
+
++ (NSDictionary *)managedObjectKeysByPropertyKey {
+    return nil;
+}
+
++ (NSValueTransformer *)photoURLEntityAttributeTransformer {
+    return [[NSValueTransformer valueTransformerForName:MTLURLValueTransformerName] mtl_invertedTransformer];
+}
+
 @end
