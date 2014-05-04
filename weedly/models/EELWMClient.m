@@ -137,6 +137,7 @@
         
         // if successful, setup the account in the singleton
         // or do something, not sure yet. i think they use cookies
+        // post a notice stating we are logged in
         self.account = responseObject;
         
         block(responseObject, error);
@@ -145,7 +146,10 @@
 
 - (void)registerAccountWithUsername:(NSString*)username password:(NSString*)password completionBlock:(void (^)(NSArray *results, NSError *error))block{}
 
-- (void)logoutAccount{}
+- (void)logoutAccount{
+    // post a notice stating we are logged out
+    self.account = nil;
+}
 
 - (void)getAccountWithID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
     NSParameterAssert(ID);
