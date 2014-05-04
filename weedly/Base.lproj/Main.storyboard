@@ -187,7 +187,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Favorites" id="dFH-kS-thA">
-                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="JQs-6u-jTG">
+                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="JQs-6u-jTG">
                             <connections>
                                 <action selector="dismissView:" destination="Dde-Ni-cwG" id="ol6-g0-N0C"/>
                             </connections>
@@ -245,7 +245,7 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="td0-dA-wcX"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Today's Deals" id="Ejf-hs-qOy">
-                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="tdh-fR-0jh">
+                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="tdh-fR-0jh">
                             <connections>
                                 <action selector="dismissView:" destination="iu2-vF-8HS" id="pg2-MN-pTz"/>
                             </connections>
@@ -531,6 +531,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="hnI-g6-UyI"/>
-        <segue reference="RQi-ur-TKs"/>
+        <segue reference="89F-62-Jkn"/>
     </inferredMetricsTieBreakers>
 </document>
