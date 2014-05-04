@@ -178,7 +178,8 @@
     self.searchBar.translucent = YES;
     self.searchBar.tintColor = [UIColor lightGrayColor];
     
-    self.searchBar.placeholder = @"Search";
+    self.searchBar.placeholder = @"Search Dispensaries";
+    self.searchBar.tag = 420;
     
     [self.navigationController.navigationBar addSubview:self.searchBar];
 }
@@ -186,16 +187,30 @@
 #pragma mark -
 #pragma mark - Actions
 - (void)performSearch:(NSString*)searchTerm{
-    [[EELWMClient sharedClient] searchDispensariesWithTerm:searchTerm completionBlock:^(NSArray *results, NSError *error) {
-        if (error) {
-            NSLog(@"noooo: %@", error);
-            return;
-        }
-        
-        self.dataSource = [EELArrayDataSource dataSourceWithItems:results];
-
-        [self addPins];
-    }];
+    if (self.searchBar.tag == 420) {
+        [[EELWMClient sharedClient] searchDispensariesWithTerm:searchTerm completionBlock:^(NSArray *results, NSError *error) {
+            if (error) {
+                NSLog(@"noooo: %@", error);
+                return;
+            }
+            
+            self.dataSource = [EELArrayDataSource dataSourceWithItems:results];
+            
+            [self addPins];
+        }];
+    }else{
+        [[EELWMClient sharedClient] searchDoctorsWithTerm:searchTerm completionBlock:^(NSArray *results, NSError *error) {
+            if (error) {
+                NSLog(@"noooo: %@", error);
+                return;
+            }
+            
+            self.dataSource = [EELArrayDataSource dataSourceWithItems:results];
+            
+            [self addPins];
+        }];
+    }
+    
 }
 
 - (IBAction)showSidebar:(id)sender {
@@ -206,22 +221,27 @@
     if (self.filterMenu.isOpen) {
         [self.filterMenu close];
     }else{
-        REMenuItem *dispensaryItem = [[REMenuItem alloc] initWithTitle:@"Dispensary"
+        REMenuItem *dispensaryItem = [[REMenuItem alloc] initWithTitle:@"Dispensaries"
                                                            image:nil
                                                 highlightedImage:nil
                                                           action:^(REMenuItem *item) {
                                                               NSLog(@"Item: %@", item);
+                                                              self.searchBar.placeholder = @"Search Dispensaries";
+                                                              self.searchBar.tag = 420;
+                                                              [self performSearch:self.searchBar.text];
                                                           }];
         
-        REMenuItem *doctorItem = [[REMenuItem alloc] initWithTitle:@"Doctor"
+        REMenuItem *doctorItem = [[REMenuItem alloc] initWithTitle:@"Doctors"
                                                            image:nil
                                                 highlightedImage:nil
                                                           action:^(REMenuItem *item) {
                                                               NSLog(@"Item: %@", item);
+                                                              self.searchBar.placeholder = @"Search Doctors";
+                                                              self.searchBar.tag = 911;
+                                                              [self performSearch:self.searchBar.text];
                                                           }];
         
         self.filterMenu = [[REMenu alloc] initWithItems:@[dispensaryItem, doctorItem]];
-        self.filterMenu.closeOnSelection = NO;
         self.filterMenu.backgroundColor = [UIColor whiteColor];
         self.filterMenu.borderColor = [UIColor clearColor];
         self.filterMenu.separatorColor = [UIColor clearColor];
@@ -280,7 +300,37 @@
         return nil;
     }
     
-    MKPinAnnotationView *annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"loc"];
+    MKAnnotationView *annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"loc"];
+    
+    EELDispensary *disp = [self.dataSource.items objectAtIndex:[annotation.title integerValue]];
+    
+    // disp
+    if (disp.type == 0) {
+        if (disp.featured == 4) {
+            annotationView.image = [UIImage imageNamed:@"featured_marker"];
+        }else{
+            annotationView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_marker", disp.icon]];
+        }
+    }
+    
+    // doctor
+    else if(disp.type == 1){
+        if (disp.featured == 4) {
+            // gold
+            annotationView.image = [UIImage imageNamed:@"doctor_marker_featured"];
+        }else if (disp.featured == 1){
+            // bronze
+            annotationView.image = [UIImage imageNamed:@"dr_bronze_marker"];
+        }else if (disp.featured == 0){
+            // free
+            annotationView.image = [UIImage imageNamed:@"doctor_marker"];
+        }else{
+            // else
+            annotationView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_marker", disp.icon]];
+        }
+    }
+    
+    NSLog(@"%@ - %@ - %i - %i", disp.name, disp.icon, disp.featured, disp.type);
     
     return annotationView;
 }

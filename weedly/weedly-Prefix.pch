@@ -36,7 +36,6 @@
     // models
     #import "EELAccount.h"
     #import "EELDispensary.h"
-    #import "EELDoctor.h"
     #import "EELReview.h"
     #import "EELSmokinOn.h"
     #import "EELMenuItem.h"

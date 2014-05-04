@@ -28,7 +28,7 @@
 #pragma mark -
 #pragma mark Search Actions
 - (void)searchDoctorsWithTerm:(NSString *)term completionBlock:(void (^)(NSArray *results, NSError *error))block {
-    [self searchWithType:@"doctor" model:[EELDoctor class] term:term completionBlock:block];
+    [self searchWithType:@"doctor" model:[EELDispensary class] term:term completionBlock:block];
 }
 
 - (void)searchDispensariesWithTerm:(NSString *)term completionBlock:(void (^)(NSArray *results, NSError *error))block {

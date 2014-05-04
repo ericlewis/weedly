@@ -33,6 +33,7 @@
              @"opensAt"     : @"todaysHours.opens_at",
              @"dayOTW"      : @"todaysHours.day_of_the_week",
              @"isOpen"      : @"is_open",
+             @"featured"    : @"featured",
              };
 }
 
