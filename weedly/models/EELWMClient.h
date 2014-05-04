@@ -8,6 +8,8 @@
 
 @interface EELWMClient : OVCClient
 
+// users account for singleton usage
+@property (nonatomic, strong) EELAccount *account;
 
 + (instancetype)sharedClient;
 

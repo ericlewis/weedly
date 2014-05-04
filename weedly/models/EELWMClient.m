@@ -66,12 +66,28 @@
     NSParameterAssert(ID);
     
     // POST add-review
+    if (!self.account){
+        block(nil, [NSError errorWithDomain:@"NeedSignIn" code:0 userInfo:nil]);
+        return;
+    }else if(!self.account.confirmed){
+        block(nil, [NSError errorWithDomain:@"NeedToConfirm" code:0 userInfo:nil]);
+        return;
+    }
+    
 }
 
 - (void)deleteReviewWithID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
     NSParameterAssert(ID);
 
     // DELETE delete-review
+    if (!self.account){
+        block(nil, [NSError errorWithDomain:@"NeedSignIn" code:0 userInfo:nil]);
+        return;
+    }else if(!self.account.confirmed){
+        block(nil, [NSError errorWithDomain:@"NeedToConfirm" code:0 userInfo:nil]);
+        return;
+    }
+    
 }
 
 #pragma mark -
@@ -94,6 +110,14 @@
     NSParameterAssert(status);
 
     // POST smoking-post
+    if (!self.account){
+        block(nil, [NSError errorWithDomain:@"NeedSignIn" code:0 userInfo:nil]);
+        return;
+    }else if(!self.account.confirmed){
+        block(nil, [NSError errorWithDomain:@"NeedToConfirm" code:0 userInfo:nil]);
+        return;
+    }
+    
 }
 
 #pragma mark -
@@ -113,6 +137,7 @@
         
         // if successful, setup the account in the singleton
         // or do something, not sure yet. i think they use cookies
+        self.account = responseObject;
         
         block(responseObject, error);
     }];
@@ -132,6 +157,11 @@
 
 - (void)getFavoritesWithAccountID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
     NSParameterAssert(ID);
+    
+    if (!self.account){
+        block(nil, [NSError errorWithDomain:@"NeedSignIn" code:0 userInfo:nil]);
+        return;
+    }
 
     [self GET:@"favorites" parameters:@{@"user_id": ID} resultClass:[EELDispensary class] resultKeyPath:@"hits" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
         block(responseObject, error);
@@ -140,7 +170,12 @@
 
 - (void)getReviewsWithAccountID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
     NSParameterAssert(ID);
-
+    
+    if (!self.account){
+        block(nil, [NSError errorWithDomain:@"NeedSignIn" code:0 userInfo:nil]);
+        return;
+    }
+    
     [self GET:@"user/reviews" parameters:nil resultClass:[EELReview class] resultKeyPath:@"hits" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
         block(responseObject, error);
     }];
