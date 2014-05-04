@@ -65,7 +65,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="OWq-gG-4J3" kind="modal" identifier="ShowDeals" id="h40-Gj-yKh"/>
+                                    <segue destination="OWq-gG-4J3" kind="modal" identifier="ShowDeals" modalTransitionStyle="crossDissolve" id="h40-Gj-yKh"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ef1-Hp-KZ5">
@@ -241,7 +241,7 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="td0-dA-wcX"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Today's Deals" id="Ejf-hs-qOy">
-                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="tdh-fR-0jh">
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="tdh-fR-0jh">
                             <connections>
                                 <action selector="dismissView:" destination="iu2-vF-8HS" id="pg2-MN-pTz"/>
                             </connections>
@@ -318,7 +318,7 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
                     </navigationBar>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="P9K-iN-7Mn">
+                    <toolbar key="toolbar" hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="P9K-iN-7Mn">
                         <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
