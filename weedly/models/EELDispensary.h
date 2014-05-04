@@ -30,6 +30,6 @@
 @property (nonatomic, readonly) int ratingCount;
 
 @property (nonatomic, readonly) int type;
-@property (nonatomic, readonly) BOOL featured;
+@property (nonatomic, readonly) int featured;
 
 @end
