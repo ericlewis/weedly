@@ -66,11 +66,11 @@
     NSDictionary *parameters = @{
                                  @"type" : type,
                                  @"lat"  : [NSString stringWithFormat:@"%f", coords.latitude ?: 37.773972],
-                                 @"lng"  : [NSString stringWithFormat:@"%f", coords.longitude ?: -122.431297]
+                                 @"lng"  : [NSString stringWithFormat:@"%f", coords.longitude ?: -122.431297],
+                                 @"q"    : term
                                  };
     
     [self GET:@"search" parameters:parameters resultClass:class resultKeyPath:@"hits" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
-        NSLog(@"%@", operation);
         block(responseObject, error);
     }];
 }
