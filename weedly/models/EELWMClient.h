@@ -8,6 +8,9 @@
 
 @interface EELWMClient : OVCClient
 
+
++ (instancetype)sharedClient;
+
 /* search actions */
 - (void)searchDoctorsWithTerm:(NSString *)term completionBlock:(void (^)(NSArray *results, NSError *error))block;
 - (void)searchDispensariesWithTerm:(NSString *)term completionBlock:(void (^)(NSArray *results, NSError *error))block;

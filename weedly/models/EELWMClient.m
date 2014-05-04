@@ -9,10 +9,24 @@
 #import "EELWMClient.h"
 
 // models
-#import "EELDoctor.h"
+#import "EELAccount.h"
 #import "EELDispensary.h"
+#import "EELDoctor.h"
+#import "EELReview.h"
+#import "EELSmokinOn.h"
 
 @implementation EELWMClient
+
+
++ (instancetype)sharedClient {
+    static EELWMClient *_sharedClient = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _sharedClient = [[EELWMClient alloc] init];
+    });
+    
+    return _sharedClient;
+}
 
 - (id)init {
     return [super initWithBaseURL:[NSURL URLWithString:@"https://api.legalmarijuanadispensary.com/api/v4"]];
@@ -33,13 +47,16 @@
     NSParameterAssert(term);
     NSParameterAssert(block);
     
+    CLLocationCoordinate2D coords = [MTLocationManager sharedInstance].lastKnownLocation.coordinate;
+    
     NSDictionary *parameters = @{
                                  @"type" : type,
-                                 @"lat"  : @"0", // temp for now till i get location up and running
-                                 @"lng"  : @"0"  // dittio
+                                 @"lat"  : [NSString stringWithFormat:@"%f", coords.latitude ?: 37.773972],
+                                 @"lng"  : [NSString stringWithFormat:@"%f", coords.longitude ?: -122.431297]
                                  };
     
-    [self GET:@"search" parameters:parameters resultClass:class resultKeyPath:@"results" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+    [self GET:@"search" parameters:parameters resultClass:class resultKeyPath:@"hits" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+        NSLog(@"%@", operation);
         block(responseObject, error);
     }];
 }

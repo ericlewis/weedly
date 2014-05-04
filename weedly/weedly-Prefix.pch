@@ -25,5 +25,6 @@
 
     #import <Overcoat/Overcoat.h>
     #import <Mantle/Mantle.h>
+    #import <POP/POP.h>
     #import "MTLocation.h"
 #endif

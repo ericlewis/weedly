@@ -45,15 +45,22 @@
                                 </connections>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jpN-jt-KmS" customClass="MTLocateMeButton">
-                                <rect key="frame" x="20" y="491" width="57" height="57"/>
+                                <rect key="frame" x="48" y="519" width="1" height="1"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="1" id="6qM-Vr-rnZ"/>
+                                    <constraint firstAttribute="height" constant="1" id="fUW-ZE-zhD"/>
+                                </constraints>
                                 <state key="normal" backgroundImage="findme">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fna-Fa-We5">
-                                <rect key="frame" x="93" y="491" width="57" height="57"/>
+                                <rect key="frame" x="121" y="519" width="1" height="1"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="1" id="tmU-Cp-7o6"/>
+                                </constraints>
                                 <state key="normal" backgroundImage="deals">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -62,8 +69,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ef1-Hp-KZ5">
-                                <rect key="frame" x="169" y="491" width="57" height="57"/>
+                                <rect key="frame" x="198" y="519" width="1" height="1"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="1" id="ufY-hd-dAl"/>
+                                </constraints>
                                 <state key="normal" backgroundImage="list">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -72,8 +82,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HFk-sP-qaR">
-                                <rect key="frame" x="243" y="491" width="57" height="57"/>
+                                <rect key="frame" x="271" y="519" width="1" height="1"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="1" id="nj4-y7-hGI"/>
+                                </constraints>
                                 <state key="normal" backgroundImage="favorites">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -84,24 +97,27 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="jpN-jt-KmS" firstAttribute="baseline" secondItem="Ef1-Hp-KZ5" secondAttribute="baseline" id="1P8-gY-z3C"/>
-                            <constraint firstAttribute="bottom" secondItem="G1a-u0-yEh" secondAttribute="bottom" id="500-cc-HwC"/>
-                            <constraint firstItem="HFk-sP-qaR" firstAttribute="leading" secondItem="Ef1-Hp-KZ5" secondAttribute="trailing" constant="17" id="77A-N6-suJ"/>
-                            <constraint firstItem="HFk-sP-qaR" firstAttribute="baseline" secondItem="Fna-Fa-We5" secondAttribute="baseline" id="8ZG-1Y-EIg"/>
-                            <constraint firstItem="jpN-jt-KmS" firstAttribute="baseline" secondItem="Fna-Fa-We5" secondAttribute="baseline" id="DOk-Zt-tSP"/>
-                            <constraint firstItem="Fna-Fa-We5" firstAttribute="baseline" secondItem="Ef1-Hp-KZ5" secondAttribute="baseline" id="FPk-eh-eFv"/>
-                            <constraint firstItem="jpN-jt-KmS" firstAttribute="top" secondItem="Fna-Fa-We5" secondAttribute="top" id="GOm-bN-fgH"/>
-                            <constraint firstItem="Fna-Fa-We5" firstAttribute="leading" secondItem="jpN-jt-KmS" secondAttribute="trailing" constant="16" id="R95-VK-yAR"/>
-                            <constraint firstAttribute="trailing" secondItem="HFk-sP-qaR" secondAttribute="trailing" constant="20" symbolic="YES" id="RMA-xc-22A"/>
-                            <constraint firstItem="G1a-u0-yEh" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Sxl-oK-QlJ"/>
-                            <constraint firstItem="HFk-sP-qaR" firstAttribute="top" secondItem="Ef1-Hp-KZ5" secondAttribute="top" id="XuE-Um-awJ"/>
-                            <constraint firstItem="jpN-jt-KmS" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" symbolic="YES" id="bCE-0s-ZVn"/>
-                            <constraint firstItem="G1a-u0-yEh" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="cQc-hN-38y"/>
-                            <constraint firstItem="Ef1-Hp-KZ5" firstAttribute="top" secondItem="Fna-Fa-We5" secondAttribute="top" id="gH5-5n-Gk4"/>
-                            <constraint firstAttribute="bottom" secondItem="jpN-jt-KmS" secondAttribute="bottom" constant="20" symbolic="YES" id="gm9-qQ-PGx"/>
-                            <constraint firstItem="HFk-sP-qaR" firstAttribute="baseline" secondItem="jpN-jt-KmS" secondAttribute="baseline" id="iiI-WH-Ta6"/>
-                            <constraint firstItem="Ef1-Hp-KZ5" firstAttribute="baseline" secondItem="HFk-sP-qaR" secondAttribute="baseline" id="saX-dc-nD3"/>
-                            <constraint firstAttribute="trailing" secondItem="G1a-u0-yEh" secondAttribute="trailing" id="yb4-Us-d5s"/>
+                            <constraint firstItem="jpN-jt-KmS" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="48" id="4hT-Ib-RHC"/>
+                            <constraint firstItem="Fna-Fa-We5" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="121" id="4lb-mw-BpK"/>
+                            <constraint firstItem="Fna-Fa-We5" firstAttribute="top" secondItem="jpN-jt-KmS" secondAttribute="top" id="APp-bC-FA6"/>
+                            <constraint firstItem="Fna-Fa-We5" firstAttribute="baseline" secondItem="HFk-sP-qaR" secondAttribute="baseline" id="FMa-Z0-6MH"/>
+                            <constraint firstAttribute="trailing" secondItem="Ef1-Hp-KZ5" secondAttribute="trailing" constant="121" id="Fam-vI-wJu"/>
+                            <constraint firstAttribute="trailing" secondItem="HFk-sP-qaR" secondAttribute="trailing" constant="48" id="IY0-gR-6QE"/>
+                            <constraint firstAttribute="trailing" secondItem="G1a-u0-yEh" secondAttribute="trailing" id="MSc-nO-frI"/>
+                            <constraint firstAttribute="bottom" secondItem="G1a-u0-yEh" secondAttribute="bottom" id="ROD-cj-2hv"/>
+                            <constraint firstItem="Ef1-Hp-KZ5" firstAttribute="baseline" secondItem="Fna-Fa-We5" secondAttribute="baseline" id="Rko-DJ-TUp"/>
+                            <constraint firstAttribute="bottom" secondItem="jpN-jt-KmS" secondAttribute="bottom" constant="48" id="SS9-Ut-x39"/>
+                            <constraint firstItem="Ef1-Hp-KZ5" firstAttribute="baseline" secondItem="HFk-sP-qaR" secondAttribute="baseline" id="X9h-DA-wVw"/>
+                            <constraint firstItem="HFk-sP-qaR" firstAttribute="bottom" secondItem="Ef1-Hp-KZ5" secondAttribute="bottom" id="apH-uF-Rqg"/>
+                            <constraint firstItem="Ef1-Hp-KZ5" firstAttribute="top" secondItem="HFk-sP-qaR" secondAttribute="top" id="l5n-ts-Pj8"/>
+                            <constraint firstItem="jpN-jt-KmS" firstAttribute="bottom" secondItem="Fna-Fa-We5" secondAttribute="bottom" id="lOJ-DA-MBX"/>
+                            <constraint firstItem="G1a-u0-yEh" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="ptQ-W1-1Iw"/>
+                            <constraint firstItem="Fna-Fa-We5" firstAttribute="bottom" secondItem="Ef1-Hp-KZ5" secondAttribute="bottom" id="rAD-Kq-cOi"/>
+                            <constraint firstItem="jpN-jt-KmS" firstAttribute="baseline" secondItem="HFk-sP-qaR" secondAttribute="baseline" id="xFN-SQ-daH"/>
+                            <constraint firstItem="G1a-u0-yEh" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="xqV-Ps-wsz"/>
+                            <constraint firstItem="Fna-Fa-We5" firstAttribute="top" secondItem="Ef1-Hp-KZ5" secondAttribute="top" id="y0r-pl-ln3"/>
+                            <constraint firstItem="jpN-jt-KmS" firstAttribute="baseline" secondItem="Ef1-Hp-KZ5" secondAttribute="baseline" id="y3H-bv-noD"/>
+                            <constraint firstItem="Fna-Fa-We5" firstAttribute="baseline" secondItem="jpN-jt-KmS" secondAttribute="baseline" id="yuc-HF-0NK"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="68Z-QI-bP2">
@@ -507,6 +523,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="hnI-g6-UyI"/>
-        <segue reference="9XJ-N9-8Dl"/>
+        <segue reference="RQi-ur-TKs"/>
     </inferredMetricsTieBreakers>
 </document>

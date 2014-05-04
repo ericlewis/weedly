@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 Eric Lewis. All rights reserved.
 //
 
-#import "MTLModel.h"
-
-@interface EELReview : MTLModel
+@interface EELReview : MTLModel <MTLJSONSerializing, MTLManagedObjectSerializing>
 
 @end

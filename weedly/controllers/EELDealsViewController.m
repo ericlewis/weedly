@@ -31,7 +31,11 @@
     [super viewDidLoad];
 
     // load the deals page
-    [self loadExternalPage:@"https://weedmaps.com/deals?device=iphone&width=320px&lat=0.000000&lon=0.000000"];
+    CLLocationCoordinate2D coords = [MTLocationManager sharedInstance].lastKnownLocation.coordinate;
+    
+    [self loadExternalPage:[NSString stringWithFormat:@"https://weedmaps.com/deals?device=iphone&width=320px&lat=%f&lon=%f", coords.latitude, coords.longitude]];
+    
+    self.navigationController.toolbarHidden = YES;
 }
 
 - (IBAction)dismissView:(id)sender {

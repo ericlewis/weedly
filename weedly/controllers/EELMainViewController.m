@@ -12,6 +12,8 @@
 #import "EELFavoritesTableViewController.h"
 #import "EELMainTableViewController.h"
 
+#import "EELWMClient.h"
+
 @interface EELMainViewController ()
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
@@ -44,13 +46,26 @@
     
     [self setupLocationManager];
     [self setupSearchBar];
-    [self setupBottomButtons];
     
     [self performSelector:@selector(zoomToUser) withObject:self afterDelay:0.2];
+    
+    [[EELWMClient sharedClient] searchDispensariesWithTerm:@"" completionBlock:^(NSArray *results, NSError *error) {
+        if (error) {
+            NSLog(@"noooo: %@", error);
+            return;
+        }
+        
+        NSLog(@"results: %@", results);
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     self.mapView.showsUserLocation = YES;
+    [self setupBottomButtons];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [self hideBottomButtons];
 }
 
 - (void)viewDidDisappear:(BOOL)animated{
@@ -84,9 +99,46 @@
 
 - (void)setupBottomButtons{
     // do animation stuff
-    
+    [self showBottomButtons];
+
     // find me button
     [self.findMeButton addTarget:self action:@selector(zoomToUser) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)showBottomButtons{
+    POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerBounds];
+    anim.toValue = [NSValue valueWithCGRect:CGRectMake(0, 0, 57, 57)];
+    [self.findMeButton pop_addAnimation:anim forKey:@"bottomBar"];
+    
+    POPSpringAnimation *anim2 = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerBounds];
+    anim2.toValue = [NSValue valueWithCGRect:CGRectMake(0, 0, 57, 57)];
+    [self.dealsButton pop_addAnimation:anim2 forKey:@"bottomBar"];
+    
+    POPSpringAnimation *anim3 = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerBounds];
+    anim3.toValue = [NSValue valueWithCGRect:CGRectMake(0, 0, 57, 57)];
+    [self.listButton pop_addAnimation:anim3 forKey:@"bottomBar"];
+    
+    POPSpringAnimation *anim4 = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerBounds];
+    anim4.toValue = [NSValue valueWithCGRect:CGRectMake(0, 0, 57, 57)];
+    [self.favoritesButton pop_addAnimation:anim4 forKey:@"bottomBar"];
+}
+
+- (void)hideBottomButtons{
+    POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerBounds];
+    anim.toValue = [NSValue valueWithCGRect:CGRectMake(0, 0, 0, 0)];
+    [self.findMeButton pop_addAnimation:anim forKey:@"bottomBar"];
+    
+    POPSpringAnimation *anim2 = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerBounds];
+    anim2.toValue = [NSValue valueWithCGRect:CGRectMake(0, 0, 0, 0)];
+    [self.dealsButton pop_addAnimation:anim2 forKey:@"bottomBar"];
+    
+    POPSpringAnimation *anim3 = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerBounds];
+    anim3.toValue = [NSValue valueWithCGRect:CGRectMake(0, 0, 0, 0)];
+    [self.listButton pop_addAnimation:anim3 forKey:@"bottomBar"];
+    
+    POPSpringAnimation *anim4 = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerBounds];
+    anim4.toValue = [NSValue valueWithCGRect:CGRectMake(0, 0, 0, 0)];
+    [self.favoritesButton pop_addAnimation:anim4 forKey:@"bottomBar"];
 }
 
 - (void)setupSearchBar{
