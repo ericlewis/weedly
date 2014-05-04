@@ -13,6 +13,8 @@
 		4D9DDDF91915BA75006E5B03 /* EELAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9DDDF81915BA75006E5B03 /* EELAccount.m */; };
 		4D9DDDFC1915BA81006E5B03 /* EELReview.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9DDDFB1915BA81006E5B03 /* EELReview.m */; };
 		4D9DDDFF1915BAA4006E5B03 /* EELSmokinOn.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9DDDFE1915BAA4006E5B03 /* EELSmokinOn.m */; };
+		4D9DDE0419169629006E5B03 /* EELMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9DDE0319169629006E5B03 /* EELMenuItem.m */; };
+		4D9DDE0719169B2E006E5B03 /* EELMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9DDE0619169B2E006E5B03 /* EELMenuTableViewController.m */; };
 		4DC1A1121912F9A200228F5A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC1A1111912F9A200228F5A /* Foundation.framework */; };
 		4DC1A1141912F9A200228F5A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC1A1131912F9A200228F5A /* CoreGraphics.framework */; };
 		4DC1A1161912F9A200228F5A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC1A1151912F9A200228F5A /* UIKit.framework */; };
@@ -34,7 +36,6 @@
 		4DD4932D1915980C001A6203 /* EELSidebarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4932C1915980C001A6203 /* EELSidebarTableViewController.m */; };
 		4DD4933019159845001A6203 /* EELSmokinOnTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4932F19159845001A6203 /* EELSmokinOnTableViewController.m */; };
 		4DD4933319159A66001A6203 /* EELDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4933219159A66001A6203 /* EELDetailTableViewController.m */; };
-		4DD4933919159A96001A6203 /* EELMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4933819159A96001A6203 /* EELMenuViewController.m */; };
 		4DD4933C19159B18001A6203 /* EELLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4933B19159B18001A6203 /* EELLoginViewController.m */; };
 		4DD4933F19159B63001A6203 /* EELAccountTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4933E19159B63001A6203 /* EELAccountTableViewController.m */; };
 		BE8BDD8F4BD4453BBD4478C3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F50009311F37485CA198D2EA /* libPods.a */; };
@@ -63,6 +64,10 @@
 		4D9DDDFB1915BA81006E5B03 /* EELReview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELReview.m; path = models/EELReview.m; sourceTree = "<group>"; };
 		4D9DDDFD1915BAA4006E5B03 /* EELSmokinOn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELSmokinOn.h; path = models/EELSmokinOn.h; sourceTree = "<group>"; };
 		4D9DDDFE1915BAA4006E5B03 /* EELSmokinOn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELSmokinOn.m; path = models/EELSmokinOn.m; sourceTree = "<group>"; };
+		4D9DDE0219169629006E5B03 /* EELMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELMenuItem.h; path = models/EELMenuItem.h; sourceTree = "<group>"; };
+		4D9DDE0319169629006E5B03 /* EELMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELMenuItem.m; path = models/EELMenuItem.m; sourceTree = "<group>"; };
+		4D9DDE0519169B2E006E5B03 /* EELMenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELMenuTableViewController.h; path = controllers/EELMenuTableViewController.h; sourceTree = "<group>"; };
+		4D9DDE0619169B2E006E5B03 /* EELMenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELMenuTableViewController.m; path = controllers/EELMenuTableViewController.m; sourceTree = "<group>"; };
 		4DC1A10E1912F9A200228F5A /* weedly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weedly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DC1A1111912F9A200228F5A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4DC1A1131912F9A200228F5A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -96,8 +101,6 @@
 		4DD4932F19159845001A6203 /* EELSmokinOnTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELSmokinOnTableViewController.m; path = controllers/EELSmokinOnTableViewController.m; sourceTree = "<group>"; };
 		4DD4933119159A66001A6203 /* EELDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELDetailTableViewController.h; path = controllers/EELDetailTableViewController.h; sourceTree = "<group>"; };
 		4DD4933219159A66001A6203 /* EELDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELDetailTableViewController.m; path = controllers/EELDetailTableViewController.m; sourceTree = "<group>"; };
-		4DD4933719159A96001A6203 /* EELMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELMenuViewController.h; path = controllers/EELMenuViewController.h; sourceTree = "<group>"; };
-		4DD4933819159A96001A6203 /* EELMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELMenuViewController.m; path = controllers/EELMenuViewController.m; sourceTree = "<group>"; };
 		4DD4933A19159B18001A6203 /* EELLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELLoginViewController.h; path = controllers/EELLoginViewController.h; sourceTree = "<group>"; };
 		4DD4933B19159B18001A6203 /* EELLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELLoginViewController.m; path = controllers/EELLoginViewController.m; sourceTree = "<group>"; };
 		4DD4933D19159B63001A6203 /* EELAccountTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELAccountTableViewController.h; path = controllers/EELAccountTableViewController.h; sourceTree = "<group>"; };
@@ -145,6 +148,8 @@
 			children = (
 				4D9DDDEE1915AC89006E5B03 /* EELWMClient.h */,
 				4D9DDDEF1915AC89006E5B03 /* EELWMClient.m */,
+				4D9DDE0219169629006E5B03 /* EELMenuItem.h */,
+				4D9DDE0319169629006E5B03 /* EELMenuItem.m */,
 				4D9DDDFA1915BA81006E5B03 /* EELReview.h */,
 				4D9DDDFB1915BA81006E5B03 /* EELReview.m */,
 				4D9DDDFD1915BAA4006E5B03 /* EELSmokinOn.h */,
@@ -162,10 +167,10 @@
 		4DB1757419159DD400B3A22F /* detail controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4DD4933719159A96001A6203 /* EELMenuViewController.h */,
-				4DD4933819159A96001A6203 /* EELMenuViewController.m */,
 				4DD4933119159A66001A6203 /* EELDetailTableViewController.h */,
 				4DD4933219159A66001A6203 /* EELDetailTableViewController.m */,
+				4D9DDE0519169B2E006E5B03 /* EELMenuTableViewController.h */,
+				4D9DDE0619169B2E006E5B03 /* EELMenuTableViewController.m */,
 			);
 			name = "detail controllers";
 			sourceTree = "<group>";
@@ -429,11 +434,12 @@
 				4DD4933F19159B63001A6203 /* EELAccountTableViewController.m in Sources */,
 				4DD4932319158DBC001A6203 /* EELDealsViewController.m in Sources */,
 				4DD4933019159845001A6203 /* EELSmokinOnTableViewController.m in Sources */,
-				4DD4933919159A96001A6203 /* EELMenuViewController.m in Sources */,
+				4D9DDE0419169629006E5B03 /* EELMenuItem.m in Sources */,
 				4DD4930C1915827D001A6203 /* EELMainViewController.m in Sources */,
 				4D9DDDF91915BA75006E5B03 /* EELAccount.m in Sources */,
 				4DC1A1221912F9A200228F5A /* EELAppDelegate.m in Sources */,
 				4DD4933C19159B18001A6203 /* EELLoginViewController.m in Sources */,
+				4D9DDE0719169B2E006E5B03 /* EELMenuTableViewController.m in Sources */,
 				4D9DDDFF1915BAA4006E5B03 /* EELSmokinOn.m in Sources */,
 				4D9DDDF01915AC89006E5B03 /* EELWMClient.m in Sources */,
 				4DD4932919159554001A6203 /* EELMainTableViewController.m in Sources */,

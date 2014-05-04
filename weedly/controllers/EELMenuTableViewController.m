@@ -1,18 +1,18 @@
 //
-//  EELFavoritesTableViewController.m
+//  EELMenuTableViewController.m
 //  weedly
 //
-//  Created by 1debit on 5/3/14.
+//  Created by 1debit on 5/4/14.
 //  Copyright (c) 2014 Eric Lewis. All rights reserved.
 //
 
-#import "EELFavoritesTableViewController.h"
+#import "EELMenuTableViewController.h"
 
-@interface EELFavoritesTableViewController ()
+@interface EELMenuTableViewController ()
 
 @end
 
-@implementation EELFavoritesTableViewController
+@implementation EELMenuTableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -26,10 +26,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-}
-
-- (IBAction)dismissView:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+    
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning

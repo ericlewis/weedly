@@ -23,8 +23,21 @@
         #import <CoreServices/CoreServices.h>
     #endif
 
+    // pods
     #import <Overcoat/Overcoat.h>
     #import <Mantle/Mantle.h>
     #import <POP/POP.h>
     #import "MTLocation.h"
+
+    // models
+    #import "EELAccount.h"
+    #import "EELDispensary.h"
+    #import "EELDoctor.h"
+    #import "EELReview.h"
+    #import "EELSmokinOn.h"
+    #import "EELMenuItem.h"
+
+    // api client
+    #import "EELWMClient.h"
+
 #endif

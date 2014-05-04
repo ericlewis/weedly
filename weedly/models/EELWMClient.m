@@ -8,13 +8,6 @@
 
 #import "EELWMClient.h"
 
-// models
-#import "EELAccount.h"
-#import "EELDispensary.h"
-#import "EELDoctor.h"
-#import "EELReview.h"
-#import "EELSmokinOn.h"
-
 @implementation EELWMClient
 
 
@@ -44,18 +37,38 @@
 
 #pragma mark -
 #pragma mark Merchant Actions
-- (void)getMerchantWithID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{}
+- (void)getMerchantWithID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
+    
+}
+
+- (void)getMenuItemsWithMerchantID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
+    [self GET:@"/dispensaries/633/menu_items.json" parameters:nil resultClass:[EELMenuItem class] resultKeyPath:@"" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+        block(responseObject, error);
+    }];
+}
+
+#pragma mark Review Actions
+- (void)getReviewsWithMerchantID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
+    
+}
+
+- (void)postReviewForMerchantWithID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
+    
+}
+
+- (void)deleteReviewWithID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
+    
+}
 
 #pragma mark -
 #pragma mark Smokin On Actions
-- (void)getSmokinOnListWithCompletionBlock:(void (^)(NSArray *results, NSError *error))block{}
-- (void)postSmokinOnStatus:(NSString*)status completionBlock:(void (^)(NSArray *results, NSError *error))block{}
+- (void)getSmokinOnListWithCompletionBlock:(void (^)(NSArray *results, NSError *error))block{
 
-#pragma mark -
-#pragma mark Review Actions
-- (void)getReviewsWithMerchantID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{}
-- (void)postReviewForMerchantWithID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{}
-- (void)deleteReviewWithID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{}
+}
+
+- (void)postSmokinOnStatus:(NSString*)status completionBlock:(void (^)(NSArray *results, NSError *error))block{
+
+}
 
 #pragma mark -
 #pragma mark Account Actions

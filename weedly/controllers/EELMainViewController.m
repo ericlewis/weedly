@@ -12,8 +12,6 @@
 #import "EELFavoritesTableViewController.h"
 #import "EELMainTableViewController.h"
 
-#import "EELWMClient.h"
-
 @interface EELMainViewController ()
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;

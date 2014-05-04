@@ -417,42 +417,42 @@
                     <navigationItem key="navigationItem" title="Merchant" id="5ke-U3-VuL"/>
                     <size key="freeformSize" width="0.0" height="0.0"/>
                     <connections>
-                        <segue destination="bYk-bg-qIU" kind="push" id="VoE-DU-ogM"/>
                         <segue destination="fCw-8P-d85" kind="modal" id="ugs-9Z-yWN"/>
+                        <segue destination="ThX-tb-Utd" kind="push" id="uYF-Nx-gus"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KCy-jX-c8L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-776" y="694"/>
         </scene>
-        <!--Menu View Controller - Menu-->
-        <scene sceneID="A2Z-ZO-4mF">
+        <!--Menu Table View Controller - Menu-->
+        <scene sceneID="adN-eC-AZB">
             <objects>
-                <viewController id="bYk-bg-qIU" customClass="EELMenuViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="SNN-Ah-lKi"/>
-                        <viewControllerLayoutGuide type="bottom" id="ekz-zN-PIa"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="pXA-jF-aor">
+                <tableViewController id="ThX-tb-Utd" customClass="EELMenuTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ao9-eH-ft7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s5A-ML-8jv">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </webView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Menu" id="BPL-Nq-302"/>
-                    <connections>
-                        <outlet property="webView" destination="s5A-ML-8jv" id="uiM-Sl-dYg"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MEZ-dx-wZQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="U0n-qJ-VpN">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U0n-qJ-VpN" id="SJH-l3-b9l">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ThX-tb-Utd" id="QUu-e8-Dn6"/>
+                            <outlet property="delegate" destination="ThX-tb-Utd" id="V4D-yd-Peu"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Menu" id="VN4-Ux-gIg"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xul-PZ-zI2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-277" y="694"/>
+            <point key="canvasLocation" x="-299" y="694"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6cT-d6-inL">
@@ -526,7 +526,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="hnI-g6-UyI"/>
         <segue reference="89F-62-Jkn"/>
+        <segue reference="ugs-9Z-yWN"/>
     </inferredMetricsTieBreakers>
 </document>

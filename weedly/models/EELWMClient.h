@@ -19,17 +19,17 @@
 #pragma mark -
 #pragma mark Merchant Actions
 - (void)getMerchantWithID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block;
+- (void)getMenuItemsWithMerchantID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block;
+
+#pragma mark Review Actions
+- (void)getReviewsWithMerchantID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block;
+- (void)postReviewForMerchantWithID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block;
+- (void)deleteReviewWithID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block;
 
 #pragma mark -
 #pragma mark Smokin On Actions
 - (void)getSmokinOnListWithCompletionBlock:(void (^)(NSArray *results, NSError *error))block;
 - (void)postSmokinOnStatus:(NSString*)status completionBlock:(void (^)(NSArray *results, NSError *error))block;
-
-#pragma mark -
-#pragma mark Review Actions
-- (void)getReviewsWithMerchantID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block;
-- (void)postReviewForMerchantWithID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block;
-- (void)deleteReviewWithID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block;
 
 #pragma mark -
 #pragma mark Account Actions
