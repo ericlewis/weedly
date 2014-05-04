@@ -165,6 +165,9 @@
 
 #pragma mark -
 #pragma mark - Actions
+- (IBAction)showSidebar:(id)sender {
+    [self.revealController showViewController:self.revealController.leftViewController];
+}
 
 - (void)zoomToUser{
     if (self.mapView.userLocationVisible) {

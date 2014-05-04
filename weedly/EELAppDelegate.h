@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EELAppDelegate : UIResponder <UIApplicationDelegate>
+@interface EELAppDelegate : UIResponder <UIApplicationDelegate, PKRevealing>
 
 @property (strong, nonatomic) UIWindow *window;
 

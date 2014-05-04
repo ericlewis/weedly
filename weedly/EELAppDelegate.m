@@ -20,6 +20,14 @@
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 
+    UINavigationController *front = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"FrontViewController"];
+    UINavigationController *left = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SideViewController"];
+    
+    PKRevealController *revealController = [PKRevealController revealControllerWithFrontViewController:front leftViewController:left];
+    revealController.delegate = self;
+    
+    self.window.rootViewController = revealController;
+    
     return YES;
 }
 							

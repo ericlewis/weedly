@@ -7,7 +7,7 @@
         <!--Navigation Controller-->
         <scene sceneID="jNJ-dS-dfg">
             <objects>
-                <navigationController definesPresentationContext="YES" id="4Ij-oe-8ya" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="FrontViewController" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4Ij-oe-8ya" sceneMemberID="viewController">
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2h3-AF-9sU">
                         <autoresizingMask key="autoresizingMask"/>
@@ -125,7 +125,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="68Z-QI-bP2">
-                        <barButtonItem key="leftBarButtonItem" image="hamburger" id="HlO-OD-JRn"/>
+                        <barButtonItem key="leftBarButtonItem" image="hamburger" id="HlO-OD-JRn">
+                            <connections>
+                                <action selector="showSidebar:" destination="vXZ-lx-hvc" id="YaH-pq-LKq"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="filter" id="mfD-hb-9eu"/>
                     </navigationItem>
                     <connections>
@@ -277,7 +281,7 @@
         <!--Sidebar Table View Controller-->
         <scene sceneID="vzr-fI-ETV">
             <objects>
-                <tableViewController id="mdm-bT-9Xe" customClass="EELSidebarTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SideViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mdm-bT-9Xe" customClass="EELSidebarTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="6mp-GO-ez4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -526,7 +530,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="89F-62-Jkn"/>
-        <segue reference="ugs-9Z-yWN"/>
+        <segue reference="hnI-g6-UyI"/>
+        <segue reference="RQi-ur-TKs"/>
     </inferredMetricsTieBreakers>
 </document>

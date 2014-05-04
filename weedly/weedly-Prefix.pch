@@ -28,6 +28,7 @@
     #import <Mantle/Mantle.h>
     #import <POP/POP.h>
     #import "MTLocation.h"
+    #import "PKRevealController.h"
 
     // models
     #import "EELAccount.h"
