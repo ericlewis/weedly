@@ -14,4 +14,6 @@
 @property (copy, nonatomic, readonly) NSString *session;
 @property (copy, nonatomic, readonly) NSURL    *photo;
 
+@property (nonatomic, readonly) BOOL confirmed;
+
 @end

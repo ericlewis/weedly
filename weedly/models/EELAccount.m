@@ -17,6 +17,7 @@
              @"username"    : @"username",
              @"photo"       : @"avatar",
              @"session"     : @"session",
+             @"activation"  : @"activation",
              };
 }
 
