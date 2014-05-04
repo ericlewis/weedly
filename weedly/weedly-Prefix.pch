@@ -31,6 +31,7 @@
     #import "MTLocation.h"
     #import "PKRevealController.h"
     #import "REMenu.h"
+    #import "CWStatusBarNotification.h"
 
     // models
     #import "EELAccount.h"

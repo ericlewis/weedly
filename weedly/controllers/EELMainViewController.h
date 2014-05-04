@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EELMainViewController : UIViewController<MKMapViewDelegate, UISearchBarDelegate>
+@interface EELMainViewController : UIViewController<MKMapViewDelegate, UISearchBarDelegate, UITextFieldDelegate>
 
 @end

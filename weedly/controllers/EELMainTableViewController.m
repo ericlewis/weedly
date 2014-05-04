@@ -8,9 +8,12 @@
 
 #import "EELMainTableViewController.h"
 
+#import "EELArrayDataSource.h"
+
 @interface EELMainTableViewController ()
 
 @property (strong, nonatomic) UISearchBar *searchBar;
+@property (strong, nonatomic) EELArrayDataSource *dataSource;
 
 @end
 
@@ -29,6 +32,23 @@
 {
     [super viewDidLoad];
     [self setupSearchBar];
+    [self performSearch:@""];
+    
+    self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
+}
+
+#pragma mark -
+#pragma mark - Actions
+- (void)performSearch:(NSString*)searchTerm{
+    [[EELWMClient sharedClient] searchDispensariesWithTerm:searchTerm completionBlock:^(NSArray *results, NSError *error) {
+        if (error) {
+            NSLog(@"noooo: %@", error);
+            return;
+        }
+        
+        self.dataSource = [EELArrayDataSource dataSourceWithItems:results];
+        [self.tableView reloadData];
+    }];
 }
 
 - (IBAction)dismissView:(id)sender {
@@ -45,66 +65,28 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return self.dataSource.items.count;
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ItemCell" forIndexPath:indexPath];
+    
+    EELDispensary *dispensary = [self.dataSource.items objectAtIndex:indexPath.row];
     
     // Configure the cell...
+    cell.textLabel.text = dispensary.name;
+    cell.detailTextLabel.text = dispensary.icon;
     
     return cell;
 }
-*/
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 /*
 #pragma mark - Navigation
@@ -120,25 +102,35 @@
 - (void)setupSearchBar{
     // add the search bar to the navigation menu
     self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 230, 44)];
+    self.searchBar.delegate = self;
     self.searchBar.center = CGPointMake(self.navigationController.navigationBar.center.x, self.navigationController.navigationBar.center.y / 2);
     
     self.searchBar.translucent = YES;
     self.searchBar.tintColor = [UIColor lightGrayColor];
     
-    UITextField *searchBarTextField = nil;
-    for (UIView *subview in self.searchBar.subviews)
-    {
-        if ([subview isKindOfClass:[UITextField class]])
-        {
-            searchBarTextField = (UITextField *)subview;
-            searchBarTextField.clearButtonMode = UITextFieldViewModeAlways;
-            break;
-        }
-    }
-    
     self.searchBar.placeholder = @"Search";
     
     [self.navigationController.navigationBar addSubview:self.searchBar];
+}
+
+#pragma mark -
+#pragma mark - UISearchDelegate
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    [self performSearch:searchBar.text];
+    [searchBar resignFirstResponder];
+}
+
+- (BOOL)searchBar:(UISearchBar *)searchBar shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    return YES;
+}
+
+- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar{
+    // non optimal hack for getting results back
+    if (searchBar.text.length == 0) {
+        [self performSearch:@""];
+    }
+    
+    return YES;
 }
 
 @end

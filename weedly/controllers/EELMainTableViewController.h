@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EELMainTableViewController : UITableViewController
+@interface EELMainTableViewController : UITableViewController <UISearchBarDelegate>
 
 @end

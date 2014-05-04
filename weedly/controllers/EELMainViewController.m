@@ -29,6 +29,7 @@
 @property (strong, nonatomic) REMenu *filterMenu;
 @property (strong, nonatomic) UISearchBar *searchBar;
 @property (strong, nonatomic) EELArrayDataSource *dataSource;
+@property (strong, nonatomic) CWStatusBarNotification *notification;
 
 @end
 
@@ -72,15 +73,7 @@
 #pragma mark -
 #pragma mark setup
 - (void)getInitialListings{
-    [[EELWMClient sharedClient] searchDispensariesWithTerm:@"" completionBlock:^(NSArray *results, NSError *error) {
-        if (error) {
-            NSLog(@"noooo: %@", error);
-            return;
-        }
-        
-        self.dataSource = [EELArrayDataSource dataSourceWithItems:results];
-        [self addPins];
-    }];
+    [self performSearch:@""];
 }
 
 #define MakeLocation(lat,lon) [[CLLocation alloc] initWithLatitude:lat longitude:lon];
@@ -97,8 +90,12 @@
         CLLocation *location = MakeLocation(merchant.lat, merchant.lng);
         annotation.coordinate = [location coordinate];
         
-        [self.mapView addAnnotation: annotation];
+        [self.mapView addAnnotation:annotation];
     }
+    
+    self.notification = [CWStatusBarNotification new];
+    [self.notification displayNotificationWithMessage:[NSString stringWithFormat:@"Showing %lu results", (unsigned long)locations.count]
+                                          forDuration:2.0f];
 }
 
 - (void)setupKVO{
@@ -175,21 +172,11 @@
 - (void)setupSearchBar{
     // add the search bar to the navigation menu
     self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 230, 44)];
+    self.searchBar.delegate = self;
     self.searchBar.center = CGPointMake(self.navigationController.navigationBar.center.x, self.navigationController.navigationBar.center.y / 2);
     
     self.searchBar.translucent = YES;
     self.searchBar.tintColor = [UIColor lightGrayColor];
-    
-    UITextField *searchBarTextField = nil;
-    for (UIView *subview in self.searchBar.subviews)
-    {
-        if ([subview isKindOfClass:[UITextField class]])
-        {
-            searchBarTextField = (UITextField *)subview;
-            searchBarTextField.clearButtonMode = UITextFieldViewModeAlways;
-            break;
-        }
-    }
     
     self.searchBar.placeholder = @"Search";
     
@@ -198,6 +185,19 @@
 
 #pragma mark -
 #pragma mark - Actions
+- (void)performSearch:(NSString*)searchTerm{
+    [[EELWMClient sharedClient] searchDispensariesWithTerm:searchTerm completionBlock:^(NSArray *results, NSError *error) {
+        if (error) {
+            NSLog(@"noooo: %@", error);
+            return;
+        }
+        
+        self.dataSource = [EELArrayDataSource dataSourceWithItems:results];
+
+        [self addPins];
+    }];
+}
+
 - (IBAction)showSidebar:(id)sender {
     [self.revealController showViewController:self.revealController.leftViewController];
 }
@@ -280,8 +280,8 @@
         return nil;
     }
     
-    MKAnnotationView *annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"loc"];
-
+    MKPinAnnotationView *annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"loc"];
+    
     return annotationView;
 }
 
@@ -313,11 +313,13 @@
 }
 
 - (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated{
+    [self hideBottomButtons];
     [self.searchBar resignFirstResponder];
 }
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
+    [self showBottomButtons];
     for (NSObject *annotation in [mapView annotations])
     {
         if ([annotation isKindOfClass:[MKUserLocation class]])
@@ -340,5 +342,22 @@
 
 #pragma mark -
 #pragma mark - UISearchDelegate
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    [self performSearch:searchBar.text];
+    [searchBar resignFirstResponder];
+}
+
+- (BOOL)searchBar:(UISearchBar *)searchBar shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    return YES;
+}
+
+- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar{
+    // non optimal hack for getting results back
+    if (searchBar.text.length == 0) {
+        [self performSearch:@""];
+    }
+    
+    return YES;
+}
 
 @end

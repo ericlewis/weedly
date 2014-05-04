@@ -26,4 +26,9 @@
     return self.items[(NSUInteger) indexPath.row];
 }
 
+#pragma mark - UITableViewDataSource methods
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.items.count;
+}
+
 @end
