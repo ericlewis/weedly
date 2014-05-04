@@ -78,7 +78,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Trp-cL-tCV" kind="modal" id="ueC-xP-ELR"/>
+                                    <segue destination="Trp-cL-tCV" kind="modal" modalTransitionStyle="crossDissolve" id="ueC-xP-ELR"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HFk-sP-qaR">
@@ -99,9 +99,13 @@
                         <constraints>
                             <constraint firstItem="jpN-jt-KmS" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="48" id="4hT-Ib-RHC"/>
                             <constraint firstItem="Fna-Fa-We5" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="121" id="4lb-mw-BpK"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="jpN-jt-KmS" secondAttribute="bottom" constant="48" id="5f8-de-iW2"/>
+                            <constraint firstAttribute="bottom" secondItem="Ef1-Hp-KZ5" secondAttribute="bottom" constant="48" id="9xh-p3-gsh"/>
                             <constraint firstItem="Fna-Fa-We5" firstAttribute="top" secondItem="jpN-jt-KmS" secondAttribute="top" id="APp-bC-FA6"/>
+                            <constraint firstAttribute="bottom" secondItem="HFk-sP-qaR" secondAttribute="bottom" constant="48" id="Eyg-Ld-vw1"/>
                             <constraint firstItem="Fna-Fa-We5" firstAttribute="baseline" secondItem="HFk-sP-qaR" secondAttribute="baseline" id="FMa-Z0-6MH"/>
                             <constraint firstAttribute="trailing" secondItem="Ef1-Hp-KZ5" secondAttribute="trailing" constant="121" id="Fam-vI-wJu"/>
+                            <constraint firstAttribute="bottom" secondItem="Fna-Fa-We5" secondAttribute="bottom" constant="48" id="G4g-Ds-iD6"/>
                             <constraint firstAttribute="trailing" secondItem="HFk-sP-qaR" secondAttribute="trailing" constant="48" id="IY0-gR-6QE"/>
                             <constraint firstAttribute="trailing" secondItem="G1a-u0-yEh" secondAttribute="trailing" id="MSc-nO-frI"/>
                             <constraint firstAttribute="bottom" secondItem="G1a-u0-yEh" secondAttribute="bottom" id="ROD-cj-2hv"/>

@@ -125,19 +125,19 @@
 
 - (void)hideBottomButtons{
     POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerBounds];
-    anim.toValue = [NSValue valueWithCGRect:CGRectMake(0, 0, 0, 0)];
+    anim.toValue = [NSValue valueWithCGRect:CGRectMake(0, 0, 1, 1)];
     [self.findMeButton pop_addAnimation:anim forKey:@"bottomBar"];
     
     POPSpringAnimation *anim2 = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerBounds];
-    anim2.toValue = [NSValue valueWithCGRect:CGRectMake(0, 0, 0, 0)];
+    anim2.toValue = [NSValue valueWithCGRect:CGRectMake(0, 0, 1, 1)];
     [self.dealsButton pop_addAnimation:anim2 forKey:@"bottomBar"];
     
     POPSpringAnimation *anim3 = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerBounds];
-    anim3.toValue = [NSValue valueWithCGRect:CGRectMake(0, 0, 0, 0)];
+    anim3.toValue = [NSValue valueWithCGRect:CGRectMake(0, 0, 1, 1)];
     [self.listButton pop_addAnimation:anim3 forKey:@"bottomBar"];
     
     POPSpringAnimation *anim4 = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerBounds];
-    anim4.toValue = [NSValue valueWithCGRect:CGRectMake(0, 0, 0, 0)];
+    anim4.toValue = [NSValue valueWithCGRect:CGRectMake(0, 0, 1, 1)];
     [self.favoritesButton pop_addAnimation:anim4 forKey:@"bottomBar"];
 }
 
