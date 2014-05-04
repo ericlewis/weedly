@@ -64,12 +64,14 @@
 
 - (void)postReviewForDispensaryWithID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
     NSParameterAssert(ID);
-
+    
+    // POST add-review
 }
 
 - (void)deleteReviewWithID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
     NSParameterAssert(ID);
 
+    // DELETE delete-review
 }
 
 #pragma mark -
@@ -91,10 +93,13 @@
 - (void)postSmokinOnStatus:(NSString*)status completionBlock:(void (^)(NSArray *results, NSError *error))block{
     NSParameterAssert(status);
 
+    // POST smoking-post
 }
 
 #pragma mark -
 #pragma mark Account Actions
+
+// this may need to use NSURLSession instead.
 - (void)loginAccountWithUsername:(NSString*)username password:(NSString*)password completionBlock:(void (^)(NSArray *results, NSError *error))block{
     NSParameterAssert(username);
     NSParameterAssert(password);
@@ -107,11 +112,15 @@
     [self POST:@"login" parameters:params resultClass:[EELAccount class] resultKeyPath:@"" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
         
         // if successful, setup the account in the singleton
-        NSLog(@"%@", responseObject);
+        // or do something, not sure yet. i think they use cookies
         
         block(responseObject, error);
     }];
 }
+
+- (void)registerAccountWithUsername:(NSString*)username password:(NSString*)password completionBlock:(void (^)(NSArray *results, NSError *error))block{}
+
+- (void)logoutAccount{}
 
 - (void)getAccountWithID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
     NSParameterAssert(ID);
