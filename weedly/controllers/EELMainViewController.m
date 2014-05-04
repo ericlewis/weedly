@@ -249,9 +249,14 @@
         region.center = self.mapView.userLocation.coordinate;
         
         MKCoordinateSpan span;
-        span.latitudeDelta  = 0.15; // Change these values to change the zoom
-        span.longitudeDelta = 0.15;
-        region.span = span;
+        
+        if (self.mapView.region.span.latitudeDelta > 1) {
+            span.latitudeDelta  = 0.15; // Change these values to change the zoom
+            span.longitudeDelta = 0.15;
+            region.span = span;
+        }else{
+            region.span = self.mapView.region.span;
+        }
         
         [self.mapView setRegion:region animated:animated];
     }else{
@@ -271,6 +276,10 @@
 #pragma mark - MapKitDelegate
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
+    if ([annotation isKindOfClass:[MKUserLocation class]]) {
+        return nil;
+    }
+    
     MKAnnotationView *annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"loc"];
 
     return annotationView;
@@ -280,14 +289,43 @@
 {
     [mapView deselectAnnotation:view.annotation animated:YES];
 
-    EELDispensary *disp = [self.dataSource.items objectAtIndex:[view.annotation.title integerValue]];
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Tapped" message:disp.name delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-    [alert show];
+    if (![view.annotation isKindOfClass:[MKUserLocation class]]) {
+        EELDispensary *disp = [self.dataSource.items objectAtIndex:[view.annotation.title integerValue]];
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Tapped" message:disp.name delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+    }
+}
+
+- (void) mapView:(MKMapView *)aMapView didAddAnnotationViews:(NSArray *)views
+{
+    for (MKAnnotationView *view in views)
+    {
+        if ([[view annotation] isKindOfClass:[MKUserLocation class]])
+        {
+            [[view superview] bringSubviewToFront:view];
+        }
+        else
+        {
+            [[view superview] sendSubviewToBack:view];
+        }
+    }
 }
 
 - (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated{
     [self.searchBar resignFirstResponder];
+}
+
+- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
+{
+    for (NSObject *annotation in [mapView annotations])
+    {
+        if ([annotation isKindOfClass:[MKUserLocation class]])
+        {
+            MKAnnotationView *view = [mapView viewForAnnotation:(MKUserLocation *)annotation];
+            [[view superview] bringSubviewToFront:view];
+        }
+    }
 }
 
 #pragma mark -
