@@ -12,6 +12,8 @@
 #import "EELFavoritesTableViewController.h"
 #import "EELMainTableViewController.h"
 
+#import "EELArrayDataSource.h"
+
 @interface EELMainViewController ()
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
@@ -24,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sideBarButton;
 
 @property (strong, nonatomic) UISearchBar *searchBar;
+@property (strong, nonatomic) EELArrayDataSource *dataSource;
 
 @end
 
@@ -42,19 +45,13 @@
 {
     [super viewDidLoad];
     
+    [self setupKVO];
     [self setupLocationManager];
     [self setupSearchBar];
     
-    [self performSelector:@selector(zoomToUser) withObject:self afterDelay:0.2];
+    [self getInitialListings];
     
-    [[EELWMClient sharedClient] searchDispensariesWithTerm:@"" completionBlock:^(NSArray *results, NSError *error) {
-        if (error) {
-            NSLog(@"noooo: %@", error);
-            return;
-        }
-        
-        NSLog(@"results: %@", results);
-    }];
+    [self performSelector:@selector(zoomToUserNotAnimated) withObject:self afterDelay:0.2];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -72,6 +69,37 @@
 
 #pragma mark -
 #pragma mark setup
+- (void)getInitialListings{
+    [[EELWMClient sharedClient] searchDispensariesWithTerm:@"" completionBlock:^(NSArray *results, NSError *error) {
+        if (error) {
+            NSLog(@"noooo: %@", error);
+            return;
+        }
+        
+        self.dataSource = [EELArrayDataSource dataSourceWithItems:results];
+        [self addPins];
+    }];
+}
+
+#define MakeLocation(lat,lon) [[CLLocation alloc] initWithLatitude:lat longitude:lon];
+
+- (void)addPins{
+    NSArray *locations = self.dataSource.items;
+    NSLog(@"%@", locations);
+    for (int i = 0; i < [locations count]; i++) {
+        MKPointAnnotation *annotation = [MKPointAnnotation new];
+        EELDispensary *merchant = locations[i];
+        CLLocation *location = MakeLocation(merchant.lat, merchant.lng);
+        annotation.coordinate = [location coordinate];
+        
+        [self.mapView addAnnotation: annotation];
+    }
+}
+
+- (void)setupKVO{
+    // create KVO controller with observer
+    FBKVOController *KVOController = [FBKVOController controllerWithObserver:self];
+}
 
 - (void)setupLocationManager{
     // Configure Location Manager
@@ -170,6 +198,14 @@
 }
 
 - (void)zoomToUser{
+    [self zoomToUser:YES];
+}
+
+- (void)zoomToUserNotAnimated{
+    [self zoomToUser:NO];
+}
+
+- (void)zoomToUser:(BOOL)animated{
     if (self.mapView.userLocationVisible) {
         MKCoordinateRegion region;
         region.center = self.mapView.userLocation.coordinate;
@@ -179,7 +215,7 @@
         span.longitudeDelta = 0.15;
         region.span = span;
         
-        [self.mapView setRegion:region animated:YES];
+        [self.mapView setRegion:region animated:animated];
     }else{
         MKCoordinateRegion region;
         region.center = CLLocationCoordinate2DMake(37.773972, -122.431297);
@@ -189,7 +225,7 @@
         span.longitudeDelta = 0.15;
         region.span = span;
         
-        [self.mapView setRegion:region animated:YES];
+        [self.mapView setRegion:region animated:animated];
     }
 }
 
@@ -209,5 +245,8 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
+
+#pragma mark -
+#pragma mark - UISearchDelegate
 
 @end

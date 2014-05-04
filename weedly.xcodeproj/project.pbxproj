@@ -15,6 +15,7 @@
 		4D9DDDFF1915BAA4006E5B03 /* EELSmokinOn.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9DDDFE1915BAA4006E5B03 /* EELSmokinOn.m */; };
 		4D9DDE0419169629006E5B03 /* EELMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9DDE0319169629006E5B03 /* EELMenuItem.m */; };
 		4D9DDE0719169B2E006E5B03 /* EELMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9DDE0619169B2E006E5B03 /* EELMenuTableViewController.m */; };
+		4D9DDE0B1916AD74006E5B03 /* EELArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9DDE0A1916AD74006E5B03 /* EELArrayDataSource.m */; };
 		4DC1A1121912F9A200228F5A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC1A1111912F9A200228F5A /* Foundation.framework */; };
 		4DC1A1141912F9A200228F5A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC1A1131912F9A200228F5A /* CoreGraphics.framework */; };
 		4DC1A1161912F9A200228F5A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC1A1151912F9A200228F5A /* UIKit.framework */; };
@@ -68,6 +69,8 @@
 		4D9DDE0319169629006E5B03 /* EELMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELMenuItem.m; path = models/EELMenuItem.m; sourceTree = "<group>"; };
 		4D9DDE0519169B2E006E5B03 /* EELMenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELMenuTableViewController.h; path = controllers/EELMenuTableViewController.h; sourceTree = "<group>"; };
 		4D9DDE0619169B2E006E5B03 /* EELMenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELMenuTableViewController.m; path = controllers/EELMenuTableViewController.m; sourceTree = "<group>"; };
+		4D9DDE091916AD74006E5B03 /* EELArrayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELArrayDataSource.h; path = "data sources/EELArrayDataSource.h"; sourceTree = "<group>"; };
+		4D9DDE0A1916AD74006E5B03 /* EELArrayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELArrayDataSource.m; path = "data sources/EELArrayDataSource.m"; sourceTree = "<group>"; };
 		4DC1A10E1912F9A200228F5A /* weedly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weedly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DC1A1111912F9A200228F5A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4DC1A1131912F9A200228F5A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -195,6 +198,8 @@
 			children = (
 				4DD4930A1915827D001A6203 /* EELMainViewController.h */,
 				4DD4930B1915827D001A6203 /* EELMainViewController.m */,
+				4D9DDE091916AD74006E5B03 /* EELArrayDataSource.h */,
+				4D9DDE0A1916AD74006E5B03 /* EELArrayDataSource.m */,
 				4DD4932719159554001A6203 /* EELMainTableViewController.h */,
 				4DD4932819159554001A6203 /* EELMainTableViewController.m */,
 				4DD4932119158DBC001A6203 /* EELDealsViewController.h */,
@@ -444,6 +449,7 @@
 				4D9DDDF01915AC89006E5B03 /* EELWMClient.m in Sources */,
 				4DD4932919159554001A6203 /* EELMainTableViewController.m in Sources */,
 				4D9DDDF61915AFEB006E5B03 /* EELDispensary.m in Sources */,
+				4D9DDE0B1916AD74006E5B03 /* EELArrayDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
