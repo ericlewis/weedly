@@ -11,8 +11,31 @@
 
 + (instancetype)sharedClient;
 
-/* search actions */
+#pragma mark -
+#pragma mark Search Actions
 - (void)searchDoctorsWithTerm:(NSString *)term completionBlock:(void (^)(NSArray *results, NSError *error))block;
 - (void)searchDispensariesWithTerm:(NSString *)term completionBlock:(void (^)(NSArray *results, NSError *error))block;
+
+#pragma mark -
+#pragma mark Merchant Actions
+- (void)getMerchantWithID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block;
+
+#pragma mark -
+#pragma mark Smokin On Actions
+- (void)getSmokinOnListWithCompletionBlock:(void (^)(NSArray *results, NSError *error))block;
+- (void)postSmokinOnStatus:(NSString*)status completionBlock:(void (^)(NSArray *results, NSError *error))block;
+
+#pragma mark -
+#pragma mark Review Actions
+- (void)getReviewsWithMerchantID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block;
+- (void)postReviewForMerchantWithID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block;
+- (void)deleteReviewWithID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block;
+
+#pragma mark -
+#pragma mark Account Actions
+- (void)loginAccountWithUsername:(NSString*)username password:(NSString*)password completionBlock:(void (^)(NSArray *results, NSError *error))block;
+- (void)getAccountWithID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block;
+- (void)getReviewsWithAccountID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block;
+- (void)getFavoritesWithAccountID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block;
 
 @end
