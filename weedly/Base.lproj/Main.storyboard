@@ -91,7 +91,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="xKw-wh-zSl" kind="modal" id="gsI-cq-UoA"/>
+                                    <segue destination="xKw-wh-zSl" kind="modal" modalTransitionStyle="crossDissolve" id="gsI-cq-UoA"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -183,7 +183,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Favorites" id="dFH-kS-thA">
-                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="JQs-6u-jTG">
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="JQs-6u-jTG">
                             <connections>
                                 <action selector="dismissView:" destination="Dde-Ni-cwG" id="ol6-g0-N0C"/>
                             </connections>
@@ -527,6 +527,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="hnI-g6-UyI"/>
-        <segue reference="RQi-ur-TKs"/>
+        <segue reference="89F-62-Jkn"/>
     </inferredMetricsTieBreakers>
 </document>
