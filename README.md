@@ -1,6 +1,6 @@
 weedly
 ======
-An easier, better to use weedmaps. 
+An easier, better to use weedmaps. With medical marijuana being so important to impaired users, the need for a clear and focused app is present. The goal of weedly is to provide that clarity without sacrificing the quality of data patients love.
 
 <img src="https://raw.github.com/ericlewis/weedly/master/Screenshots/ss1.png" alt="weedly" width="320" height="568" />
 &nbsp;
