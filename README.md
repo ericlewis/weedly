@@ -14,3 +14,7 @@ $ cd weedly
 $ pod install
 ```
 Once CocoaPods has finished the installation, open weedly.xcworkspace using Xcode and run the sample.
+
+## Author(s)
+**Eric Lewis**
++ http://twitter.com/ericlewis
