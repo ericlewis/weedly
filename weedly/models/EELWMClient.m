@@ -32,6 +32,8 @@
     return [super initWithBaseURL:[NSURL URLWithString:@"https://api.legalmarijuanadispensary.com/api/v4"]];
 }
 
+#pragma mark -
+#pragma mark Search Actions
 - (void)searchDoctorsWithTerm:(NSString *)term completionBlock:(void (^)(NSArray *results, NSError *error))block {
     [self searchWithType:@"doctor" model:[EELDoctor class] term:term completionBlock:block];
 }
@@ -39,6 +41,18 @@
 - (void)searchDispensariesWithTerm:(NSString *)term completionBlock:(void (^)(NSArray *results, NSError *error))block {
     [self searchWithType:@"dispensary" model:[EELDispensary class] term:term completionBlock:block];
 }
+
+#pragma mark -
+#pragma mark Merchant Actions
+
+#pragma mark -
+#pragma mark Smokin On Actions
+
+#pragma mark -
+#pragma mark Review Actions
+
+#pragma mark -
+#pragma mark Account Actions
 
 #pragma mark -
 #pragma mark Private
