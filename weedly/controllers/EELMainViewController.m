@@ -87,9 +87,10 @@
 
 - (void)addPins{
     NSArray *locations = self.dataSource.items;
-    NSLog(@"%@", locations);
+
     for (int i = 0; i < [locations count]; i++) {
         MKPointAnnotation *annotation = [MKPointAnnotation new];
+        annotation.title = [NSString stringWithFormat:@"%d", i];
         EELDispensary *merchant = locations[i];
         CLLocation *location = MakeLocation(merchant.lat, merchant.lng);
         annotation.coordinate = [location coordinate];
@@ -204,7 +205,6 @@
         [self.filterMenu close];
     }else{
         REMenuItem *dispensaryItem = [[REMenuItem alloc] initWithTitle:@"Dispensary"
-                                                        subtitle:nil
                                                            image:nil
                                                 highlightedImage:nil
                                                           action:^(REMenuItem *item) {
@@ -212,7 +212,6 @@
                                                           }];
         
         REMenuItem *doctorItem = [[REMenuItem alloc] initWithTitle:@"Doctor"
-                                                        subtitle:nil
                                                            image:nil
                                                 highlightedImage:nil
                                                           action:^(REMenuItem *item) {
@@ -220,9 +219,15 @@
                                                           }];
         
         self.filterMenu = [[REMenu alloc] initWithItems:@[dispensaryItem, doctorItem]];
+        self.filterMenu.closeOnSelection = NO;
         self.filterMenu.backgroundColor = [UIColor whiteColor];
-        self.filterMenu.borderColor = [UIColor whiteColor];
-        self.filterMenu.separatorColor = [UIColor whiteColor];
+        self.filterMenu.borderColor = [UIColor clearColor];
+        self.filterMenu.separatorColor = [UIColor clearColor];
+        self.filterMenu.textColor = [UIColor grayColor];
+        self.filterMenu.textAlignment = NSTextAlignmentLeft;
+        self.filterMenu.textOffset = CGSizeMake(50, 0);
+        
+        self.filterMenu.liveBlur = YES;
         
         [self.filterMenu showFromNavigationController:self.navigationController];
     }
@@ -262,6 +267,22 @@
 
 #pragma mark -
 #pragma mark - MapKitDelegate
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
+{
+    MKAnnotationView *annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"loc"];
+
+    return annotationView;
+}
+
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
+{
+    [mapView deselectAnnotation:view.annotation animated:YES];
+
+    EELDispensary *disp = [self.dataSource.items objectAtIndex:[view.annotation.title integerValue]];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Tapped" message:disp.name delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert show];
+}
 
 - (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated{
     [self.searchBar resignFirstResponder];
