@@ -91,7 +91,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="xKw-wh-zSl" kind="modal" modalTransitionStyle="crossDissolve" id="gsI-cq-UoA"/>
+                                    <segue destination="xKw-wh-zSl" kind="modal" id="gsI-cq-UoA"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -144,8 +144,8 @@
                         <outlet property="listButton" destination="Ef1-Hp-KZ5" id="3Sc-Wd-yrf"/>
                         <outlet property="mapView" destination="G1a-u0-yEh" id="7Wx-bc-ZFa"/>
                         <outlet property="sideBarButton" destination="HlO-OD-JRn" id="lKS-5Z-Upx"/>
-                        <segue destination="E4k-M5-Cyr" kind="push" identifier="ShowItemDetail" id="RQi-ur-TKs"/>
                         <segue destination="fCw-8P-d85" kind="modal" id="hnI-g6-UyI"/>
+                        <segue destination="a1a-iQ-MlQ" kind="modal" identifier="ShowItemDetail" id="RYR-2U-jS3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -197,9 +197,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <segue destination="E4k-M5-Cyr" kind="push" id="89F-62-Jkn"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B5x-v8-FKy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -368,7 +365,7 @@
                         <segue destination="fCw-8P-d85" kind="modal" id="ICM-MS-7kf"/>
                         <segue destination="TyC-Gt-drW" kind="modal" identifier="ShowAccount" id="t0i-KZ-jSh"/>
                         <segue destination="BAJ-Va-k2y" kind="modal" identifier="ShowSmokinOn" id="dOT-zv-Mpn"/>
-                        <segue destination="OWq-gG-4J3" kind="modal" identifier="ShowTodaysDeals" modalTransitionStyle="crossDissolve" id="3rN-vu-ic9"/>
+                        <segue destination="OWq-gG-4J3" kind="modal" identifier="ShowTodaysDeals" id="3rN-vu-ic9"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SqS-g0-yLN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -459,7 +456,7 @@
             </objects>
             <point key="canvasLocation" x="-776" y="-258"/>
         </scene>
-        <!--Detail Table View Controller - Merchant-->
+        <!--Detail Table View Controller - Grassroots Collective-->
         <scene sceneID="1ny-dC-lD9">
             <objects>
                 <tableViewController id="E4k-M5-Cyr" customClass="EELDetailTableViewController" sceneMemberID="viewController">
@@ -468,22 +465,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemActionCell" textLabel="h0x-2r-op6" rowHeight="57" style="IBUITableViewCellStyleDefault" id="ndH-qa-i5O">
-                                <rect key="frame" x="0.0" y="86" width="320" height="57"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ndH-qa-i5O" id="efg-dM-81Y">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="5" reuseIdentifier="ItemActionCell" textLabel="mkG-TH-aDe" rowHeight="45" style="IBUITableViewCellStyleDefault" id="IHq-AX-I4D">
+                                <rect key="frame" x="0.0" y="86" width="320" height="45"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IHq-AX-I4D" id="zD2-R5-Gxt">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="h0x-2r-op6">
-                                            <rect key="frame" x="15" y="0.0" width="290" height="56"/>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mkG-TH-aDe">
+                                            <rect key="frame" x="55" y="0.0" width="230" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                            <color key="textColor" red="0.47450983520000001" green="0.47450983520000001" blue="0.47450983520000001" alpha="1" colorSpace="deviceRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <inset key="separatorInset" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -491,16 +489,39 @@
                             <outlet property="delegate" destination="E4k-M5-Cyr" id="FcT-2Q-rRw"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Merchant" id="5ke-U3-VuL"/>
+                    <navigationItem key="navigationItem" title="Grassroots Collective" id="5ke-U3-VuL">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="9PB-5K-LZm"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="0RS-Yk-Dba">
+                            <connections>
+                                <action selector="dismissView:" destination="E4k-M5-Cyr" id="eeX-2W-Cef"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <size key="freeformSize" width="0.0" height="0.0"/>
                     <connections>
                         <segue destination="fCw-8P-d85" kind="modal" id="ugs-9Z-yWN"/>
-                        <segue destination="ThX-tb-Utd" kind="push" id="uYF-Nx-gus"/>
+                        <segue destination="ThX-tb-Utd" kind="push" identifier="ShowMenu" id="uYF-Nx-gus"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KCy-jX-c8L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-776" y="694"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="B9d-JY-bzt">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="a1a-iQ-MlQ" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="siw-kJ-vYU"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gb8-wl-AGv">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="E4k-M5-Cyr" kind="relationship" relationship="rootViewController" id="uao-lf-yRi"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Lv-E4-UWc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1197" y="694"/>
         </scene>
         <!--Menu Table View Controller - Menu-->
         <scene sceneID="adN-eC-AZB">
@@ -525,7 +546,14 @@
                             <outlet property="delegate" destination="ThX-tb-Utd" id="V4D-yd-Peu"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Menu" id="VN4-Ux-gIg"/>
+                    <navigationItem key="navigationItem" title="Menu" id="VN4-Ux-gIg">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="DCJ-xD-ZsY"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="cDc-gF-wYz">
+                            <connections>
+                                <action selector="dismissView:" destination="ThX-tb-Utd" id="ZNa-ty-Xyf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xul-PZ-zI2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -595,9 +623,6 @@
                         <barButtonItem key="rightBarButtonItem" image="filter" id="3KW-3E-GaX"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <segue destination="E4k-M5-Cyr" kind="push" id="9XJ-N9-8Dl"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I33-Y1-q6J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -620,8 +645,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="h40-Gj-yKh"/>
-        <segue reference="RQi-ur-TKs"/>
         <segue reference="ugs-9Z-yWN"/>
+        <segue reference="3rN-vu-ic9"/>
     </inferredMetricsTieBreakers>
 </document>

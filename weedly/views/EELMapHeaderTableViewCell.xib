@@ -13,12 +13,19 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="119"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="JaU-f3-zHd">
+                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JaU-f3-zHd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="119"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </mapView>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="JaU-f3-zHd" secondAttribute="bottom" id="0b7-2x-g6Q"/>
+                    <constraint firstItem="JaU-f3-zHd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="4Po-d8-ll7"/>
+                    <constraint firstAttribute="trailing" secondItem="JaU-f3-zHd" secondAttribute="trailing" id="DSl-DF-wf5"/>
+                    <constraint firstItem="JaU-f3-zHd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="c5g-2P-fOb"/>
+                </constraints>
             </tableViewCellContentView>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
         </tableViewCell>
     </objects>
 </document>

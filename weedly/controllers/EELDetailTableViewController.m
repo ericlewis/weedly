@@ -19,6 +19,12 @@
     [super viewDidLoad];
     [self.tableView registerNib:[UINib nibWithNibName:@"EELItemHeaderViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"ItemHeaderCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"EELMapHeaderTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"MapHeaderCell"];
+    
+    self.tableView.tableFooterView = [[UIView alloc] init];
+}
+
+- (IBAction)dismissView:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -32,7 +38,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -40,9 +46,11 @@
     // map + header
     if (section == 0) {
         return 2;
+    }else if(section == 1){
+        return 6;
     }
     
-    return 3;
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -61,6 +69,28 @@
     // set the action menu
     else if(indexPath.section == 1){
         cell = [tableView dequeueReusableCellWithIdentifier:@"ItemActionCell" forIndexPath:indexPath];
+        
+        NSUInteger row = indexPath.row;
+        
+        if (row == 0) {
+            cell.textLabel.text = @"Directions";
+            cell.imageView.image = [UIImage imageNamed:@"map_marker-128"];
+        }else if (row == 1) {
+            cell.textLabel.text = @"Call";
+            cell.imageView.image = [UIImage imageNamed:@"phone1-128"];
+        }else if (row == 2) {
+            cell.textLabel.text = @"Menu";
+            cell.imageView.image = [UIImage imageNamed:@"list_ingredients-128"];
+        }else if (row == 3) {
+            cell.textLabel.text = @"Deals";
+            cell.imageView.image = [UIImage imageNamed:@"price_tag-128 2"];
+        }else if (row == 4) {
+            cell.textLabel.text = @"Add Review";
+            cell.imageView.image = [UIImage imageNamed:@"quote-128"];
+        }else if (row == 5) {
+            cell.textLabel.text = @"More Info";
+            cell.imageView.image = [UIImage imageNamed:@"info-128"];
+        }
     }
     
     // Configure the cell...
@@ -70,49 +100,30 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section != 0) {
-        return 55;
+        return 45;
     }
     
     return 120;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    return [[UIView alloc] init];
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if (section == 1 || section == 2) {
+        return 5;
+    }
+    
+    return 0;
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    // show menu!
+    if (indexPath.row == 2) {
+        [self performSegueWithIdentifier:@"ShowMenu" sender:self];
+    }
 }
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 /*
 #pragma mark - Navigation
