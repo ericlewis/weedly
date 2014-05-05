@@ -93,8 +93,6 @@
     [self performSearch:self.searchBar.text];
 }
 
-#define MakeLocation(lat,lon) [[CLLocation alloc] initWithLatitude:lat longitude:lon];
-
 - (void)addPins{
     NSArray *oldAnnotations = self.mapView.annotations;
     NSArray *locations = self.dataSource.items;
@@ -358,11 +356,7 @@
     [mapView deselectAnnotation:view.annotation animated:YES];
 
     if (![view.annotation isKindOfClass:[MKUserLocation class]]) {
-        EELDispensary *disp = [self.dataSource.items objectAtIndex:[view.annotation.title integerValue]];
-        
-        //UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Tapped" message:disp.name delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        //[alert show];
-        
+        self.selectedDispensary = [self.dataSource.items objectAtIndex:[view.annotation.title integerValue]];
         [self performSegueWithIdentifier:@"ShowItemDetail" sender:self];
     }
 }
@@ -411,6 +405,7 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     if ([[segue identifier] isEqualToString:@"ShowItemDetail"]) {
+        [(id)[[segue destinationViewController] topViewController] setDispensary:self.selectedDispensary];
         [self hideSearchBar];
     }
 }

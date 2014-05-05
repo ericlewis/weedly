@@ -10,4 +10,6 @@
 
 @interface EELMainViewController : UIViewController<MKMapViewDelegate, UISearchBarDelegate, UITextFieldDelegate>
 
+@property (strong, nonatomic) EELDispensary *selectedDispensary;
+
 @end

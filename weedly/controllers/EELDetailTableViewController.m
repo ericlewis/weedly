@@ -8,6 +8,10 @@
 
 #import "EELDetailTableViewController.h"
 
+// cells
+#import "EELItemHeaderViewCell.h"
+#import "EELMapHeaderTableViewCell.h"
+
 @interface EELDetailTableViewController ()
 
 @end
@@ -17,6 +21,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.title = self.dispensary.name;
+    
     [self.tableView registerNib:[UINib nibWithNibName:@"EELItemHeaderViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"ItemHeaderCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"EELMapHeaderTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"MapHeaderCell"];
     
@@ -56,13 +63,17 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell;
+    EELItemHeaderViewCell *headerCell;
+    EELMapHeaderTableViewCell *mapCell;
     
     // set the map
     if (indexPath.section == 0){
         if (indexPath.row == 0){
-            cell = [tableView dequeueReusableCellWithIdentifier:@"MapHeaderCell" forIndexPath:indexPath];
+            mapCell = [tableView dequeueReusableCellWithIdentifier:@"MapHeaderCell" forIndexPath:indexPath];
+            cell = mapCell;
         }else if(indexPath.row == 1){
-            cell = [tableView dequeueReusableCellWithIdentifier:@"ItemHeaderCell" forIndexPath:indexPath];
+            headerCell = [tableView dequeueReusableCellWithIdentifier:@"ItemHeaderCell" forIndexPath:indexPath];
+            cell = headerCell;
         }
     }
     
@@ -73,11 +84,37 @@
         NSUInteger row = indexPath.row;
         
         if (row == 0) {
+            if (self.dispensary.address.length > 0 && ![self.dispensary.icon isEqualToString:@"delivery"]) {
+                cell.userInteractionEnabled = YES;
+                cell.textLabel.enabled = YES;
+            }else{
+                cell.userInteractionEnabled = NO;
+                cell.textLabel.enabled = NO;
+            }
             cell.textLabel.text = @"Directions";
             cell.imageView.image = [UIImage imageNamed:@"map_marker-128"];
         }else if (row == 1) {
-            cell.textLabel.text = @"Call";
+            
+            // handle if phone is enabled
+            if (self.dispensary.phone.length > 0) {
+                if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"tel://"]]) {
+                    cell.userInteractionEnabled = YES;
+                    cell.textLabel.enabled = YES;
+                }else{
+                    cell.userInteractionEnabled = NO;
+                    cell.textLabel.enabled = NO;
+                }
+                
+                cell.textLabel.text = [NSString stringWithFormat:@"Call                   %@", self.dispensary.phone];
+            }else{
+                cell.userInteractionEnabled = NO;
+                cell.textLabel.enabled = NO;
+                cell.textLabel.text = @"Call";
+            }
+            
             cell.imageView.image = [UIImage imageNamed:@"phone1-128"];
+            cell.accessoryView = [[UIView alloc] init];
+            
         }else if (row == 2) {
             cell.textLabel.text = @"Menu";
             cell.imageView.image = [UIImage imageNamed:@"list_ingredients-128"];
@@ -93,7 +130,86 @@
         }
     }
     
-    // Configure the cell...
+    // Configure the Map cell
+    [mapCell setUserInteractionEnabled:NO];
+    [mapCell setDispensary:self.dispensary];
+    [mapCell zoomToLocation];
+    [mapCell addPin];
+    
+    // Configure the header cell
+    
+    // fix HTML entities in the names of some dispensaries.
+    NSAttributedString *formattedName = [[NSAttributedString alloc] initWithData:[self.dispensary.name dataUsingEncoding:NSUTF8StringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: [NSNumber numberWithInt:NSUTF8StringEncoding]} documentAttributes:nil error:nil];
+    headerCell.nameLabel.text = formattedName.string;
+    
+    // we will just text replace the icon names for types
+    NSString *dispensaryType  = self.dispensary.icon;
+    
+    // disps
+    if (self.dispensary.type == 0) {
+        dispensaryType = [dispensaryType stringByReplacingOccurrencesOfString:@"gold" withString:@"Dispensary"];
+        dispensaryType = [dispensaryType stringByReplacingOccurrencesOfString:@"silver" withString:@"Dispensary"];
+        dispensaryType = [dispensaryType stringByReplacingOccurrencesOfString:@"bronze" withString:@"Dispensary"];
+        dispensaryType = [dispensaryType stringByReplacingOccurrencesOfString:@"lp" withString:@"Dispensary"];
+    }
+    
+    // doctors
+    else if(self.dispensary.type == 1){
+        dispensaryType = [dispensaryType stringByReplacingOccurrencesOfString:@"free" withString:@"Doctor"];
+        dispensaryType = [dispensaryType stringByReplacingOccurrencesOfString:@"bronze" withString:@"Doctor"];
+        dispensaryType = [dispensaryType stringByReplacingOccurrencesOfString:@"silver" withString:@"Doctor"];
+        dispensaryType = [dispensaryType stringByReplacingOccurrencesOfString:@"gold" withString:@"Doctor"];
+    }
+    
+    headerCell.typeLabel.text = dispensaryType.capitalizedString;
+    
+    
+    if (self.dispensary.opensAt.length > 0 && self.dispensary.closesAt.length > 0) {
+        headerCell.hoursLabel.text = [NSString stringWithFormat:@"Hours: %@ - %@", self.dispensary.opensAt, self.dispensary.closesAt];
+    }else{
+        headerCell.hoursLabel.text = @"Hours unavailable";
+    }
+    
+    // switch the text and color if we are closed
+    if (self.dispensary.isOpen.boolValue) {
+        headerCell.isOpenLabel.text = @"Currently Open";
+    }else{
+        headerCell.isOpenLabel.text = @"Currently Closed";
+    }
+    
+    // hide reviews if we don't have a count
+    if (self.dispensary.ratingCount == 0) {
+        [headerCell.reviewsView setHidden:YES];
+    }else{
+        [headerCell.reviewsView setHidden:NO];
+        
+        headerCell.reviewsLabel.text = [NSString stringWithFormat:@"%.1f • %i reviews", self.dispensary.rating, self.dispensary.ratingCount];
+        [headerCell.reviewsLabel sizeToFit];
+        
+        CGFloat reviewStarsWidth = headerCell.reviewsStarsImage.frame.size.width;
+        reviewStarsWidth = (reviewStarsWidth*2) * (self.dispensary.rating * 0.1);
+        
+        CALayer *maskLayer = [CALayer layer];
+        maskLayer.backgroundColor = [UIColor blackColor].CGColor;
+        maskLayer.frame = CGRectMake(0.0, 0.0, reviewStarsWidth, reviewStarsWidth);
+        
+        headerCell.reviewsStarsImage.layer.mask = maskLayer;
+    }
+    
+    NSString *cleanState = self.dispensary.state;
+    NSString *cleanAddress = [self.dispensary.address stringByReplacingOccurrencesOfString:@"." withString:@""];
+
+    // long state name, change to short one
+    if (self.dispensary.state.length > 2) {
+        cleanState = [cleanState stateAbbreviationFromFullName];
+    }
+    
+    // delivery
+    if ([self.dispensary.icon isEqualToString:@"delivery"]) {
+        headerCell.addressLabel.text = [NSString stringWithFormat:@"%@, %@", self.dispensary.city.capitalizedString, cleanState.uppercaseString];
+    }else{
+        headerCell.addressLabel.text = [NSString stringWithFormat:@"%@, %@, %@", cleanAddress, self.dispensary.city.capitalizedString, cleanState.uppercaseString];
+    }
     
     return cell;
 }
@@ -119,8 +235,32 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    // open directions
+    if (indexPath.row == 0) {
+        [tableView deselectRowAtIndexPath:indexPath animated:NO];
+        
+        NSAttributedString *formattedName = [[NSAttributedString alloc] initWithData:[self.dispensary.name dataUsingEncoding:NSUTF8StringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: [NSNumber numberWithInt:NSUTF8StringEncoding]} documentAttributes:nil error:nil];
+        
+        CLLocationCoordinate2D coords = CLLocationCoordinate2DMake(self.dispensary.lat, self.dispensary.lng);
+
+        MKPlacemark *place = [[MKPlacemark alloc] initWithCoordinate:coords addressDictionary: nil];
+        MKMapItem *destination = [[MKMapItem alloc] initWithPlacemark: place];
+        destination.name = formattedName.string;
+        NSArray *items = [[NSArray alloc] initWithObjects:destination, nil];
+        NSDictionary *options = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                 MKLaunchOptionsDirectionsModeDriving,
+                                 MKLaunchOptionsDirectionsModeKey, nil];
+        [MKMapItem openMapsWithItems:items launchOptions:options];
+    }
+    
+    // call location
+    else if(indexPath.row == 1){
+        NSString *phoneNumber = [@"tel://" stringByAppendingString:self.dispensary.phone];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
+    }
+    
     // show menu!
-    if (indexPath.row == 2) {
+    else if (indexPath.row == 2) {
         [self performSegueWithIdentifier:@"ShowMenu" sender:self];
     }
 }

@@ -8,6 +8,8 @@
 
 #import "EELSidebarTableViewController.h"
 
+#import "EELMainViewController.h"
+
 @interface EELSidebarTableViewController ()
 
 @property (nonatomic, strong) NSArray *sidebarItems;
@@ -34,6 +36,7 @@
     self.sidebarItems = @[
                           @{@"image": [UIImage imageNamed:@"accountIcon"],  @"title": @"Account"},
                           @{@"image": [UIImage imageNamed:@"dealsIcon"],    @"title": @"Today's Deals"},
+                          @{@"image": [UIImage imageNamed:@"map_marker-128"], @"title": @"Find Dispensaries"},
                           @{@"image": [UIImage imageNamed:@"smokinonIcon"], @"title": @"Smokin' On"},
                           @{@"image": [UIImage imageNamed:@"alarmIcon"],    @"title": @"420 Alarm"},
                           ];
@@ -139,8 +142,15 @@
             [self performSegueWithIdentifier:@"ShowTodaysDeals" sender:self];
         }
         
-        // Smokin' On
         else if (index == 2){
+            UINavigationController *nav = (UINavigationController*)self.revealController.frontViewController;
+            if ([nav.topViewController isKindOfClass:[EELMainViewController class]]) {
+                [self.revealController showViewController:self.revealController.frontViewController];
+            }
+        }
+        
+        // Smokin' On
+        else if (index == 3){
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
             [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"alloc init yet to occur ;)" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
             // needs to push to nav controller
@@ -149,7 +159,6 @@
     }
 }
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -158,6 +167,5 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
 
 @end

@@ -6,6 +6,8 @@
 
 #import <Availability.h>
 
+#define MakeLocation(lat,lon) [[CLLocation alloc] initWithLatitude:lat longitude:lon];
+
 #ifndef __IPHONE_5_0
 #warning "This project uses features only available in iOS SDK 5.0 and later."
 #endif
@@ -32,6 +34,7 @@
     #import "PKRevealController.h"
     #import "REMenu.h"
     #import "CWStatusBarNotification.h"
+    #import "NSString+USStateMap.h"
 
     // models
     #import "EELAccount.h"

@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EELMapHeaderTableViewCell : UITableViewCell
+@interface EELMapHeaderTableViewCell : UITableViewCell<MKMapViewDelegate>
+
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
+
+@property (strong, nonatomic) EELDispensary *dispensary;
+
+- (void)zoomToLocation;
+- (void)addPin;
 
 @end
