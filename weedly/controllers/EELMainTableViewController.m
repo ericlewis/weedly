@@ -37,6 +37,15 @@
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    // landscape fix search
+    if (UIDeviceOrientationIsLandscape(self.interfaceOrientation)) {
+        self.searchBar.frame = CGRectMake(90, -6.5f, 400, 40);
+    }else{
+        self.searchBar.frame = CGRectMake(45, 0, 230, 44);
+    }
+}
+
 #pragma mark -
 #pragma mark - Actions
 - (void)performSearch:(NSString*)searchTerm{
@@ -102,13 +111,14 @@
 - (void)setupSearchBar{
     // add the search bar to the navigation menu
     self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 230, 44)];
-    self.searchBar.delegate = self;
     self.searchBar.center = CGPointMake(self.navigationController.navigationBar.center.x, self.navigationController.navigationBar.center.y / 2);
+    
+    self.searchBar.delegate = self;
     
     self.searchBar.translucent = YES;
     self.searchBar.tintColor = [UIColor lightGrayColor];
     
-    self.searchBar.placeholder = @"Search";
+    self.searchBar.placeholder = @"Search Dispensaries";
     
     [self.navigationController.navigationBar addSubview:self.searchBar];
 }
@@ -131,6 +141,15 @@
     }
     
     return YES;
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    
+    if (toInterfaceOrientation==UIInterfaceOrientationLandscapeRight || toInterfaceOrientation==UIInterfaceOrientationLandscapeLeft) {
+        self.searchBar.frame = CGRectMake(90, -6.5f, 400, 40);
+    }else{
+        self.searchBar.frame = CGRectMake(45, 0, 230, 44);
+    }
 }
 
 @end

@@ -105,7 +105,7 @@
                     cell.textLabel.enabled = NO;
                 }
                 
-                cell.textLabel.text = [NSString stringWithFormat:@"Call                   %@", self.dispensary.phone];
+                cell.textLabel.text = [NSString stringWithFormat:@"Call: %@", self.dispensary.phone];
             }else{
                 cell.userInteractionEnabled = NO;
                 cell.textLabel.enabled = NO;
@@ -255,6 +255,8 @@
     
     // call location
     else if(indexPath.row == 1){
+        [tableView deselectRowAtIndexPath:indexPath animated:NO];
+
         NSString *phoneNumber = [@"tel://" stringByAppendingString:self.dispensary.phone];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
     }

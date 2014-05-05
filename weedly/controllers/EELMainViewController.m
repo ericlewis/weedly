@@ -62,6 +62,15 @@
     self.mapView.showsUserLocation = YES;
     [self setupBottomButtons];
     [self performSelector:@selector(showSearchBar) withObject:self afterDelay:0.15];
+    
+    
+    
+    // landscape fix search
+    if (UIDeviceOrientationIsLandscape(self.interfaceOrientation)) {
+        self.searchBar.frame = CGRectMake(90, -6.5f, 400, 40);
+    }else{
+        self.searchBar.frame = CGRectMake(45, 0, 230, 44);
+    }
 }
 
 - (void)showSearchBar{
@@ -182,10 +191,11 @@
 }
 
 - (void)setupSearchBar{
-    // add the search bar to the navigation menu
     self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 230, 44)];
-    self.searchBar.delegate = self;
     self.searchBar.center = CGPointMake(self.navigationController.navigationBar.center.x, self.navigationController.navigationBar.center.y / 2);
+    
+    // add the search bar to the navigation menu
+    self.searchBar.delegate = self;
     
     self.searchBar.translucent = YES;
     self.searchBar.tintColor = [UIColor lightGrayColor];
@@ -428,6 +438,15 @@
     }
     
     return YES;
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    
+    if (toInterfaceOrientation==UIInterfaceOrientationLandscapeRight || toInterfaceOrientation==UIInterfaceOrientationLandscapeLeft) {
+        self.searchBar.frame = CGRectMake(90, -6.5f, 400, 40);
+    }else{
+        self.searchBar.frame = CGRectMake(45, 0, 230, 44);
+    }
 }
 
 @end
