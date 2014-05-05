@@ -91,8 +91,8 @@
     EELDispensary *dispensary = [self.dataSource.items objectAtIndex:indexPath.row];
     
     // Configure the cell...
-    cell.textLabel.text = dispensary.name;
-    cell.detailTextLabel.text = dispensary.icon;
+    cell.textLabel.text = [dispensary formattedNameString];
+    cell.detailTextLabel.text = [dispensary formattedTypeString];
     
     return cell;
 }

@@ -217,7 +217,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9nU-1R-yE6">
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9nU-1R-yE6">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -227,6 +227,12 @@
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9nU-1R-yE6" firstAttribute="top" secondItem="kCV-OZ-q2D" secondAttribute="top" id="Cn1-75-Ggu"/>
+                            <constraint firstItem="9nU-1R-yE6" firstAttribute="leading" secondItem="kCV-OZ-q2D" secondAttribute="leading" id="GJA-3F-c8f"/>
+                            <constraint firstAttribute="trailing" secondItem="9nU-1R-yE6" secondAttribute="trailing" id="SMZ-aR-OpF"/>
+                            <constraint firstAttribute="bottom" secondItem="9nU-1R-yE6" secondAttribute="bottom" id="eSP-y5-7jR"/>
+                        </constraints>
                     </view>
                     <toolbarItems>
                         <barButtonItem width="20" systemItem="refresh" id="gc4-vJ-nPF">

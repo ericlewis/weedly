@@ -22,7 +22,7 @@
 {
     [super viewDidLoad];
     
-    self.title = self.dispensary.name;
+    self.title = [self.dispensary formattedNameString];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"EELItemHeaderViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"ItemHeaderCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"EELMapHeaderTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"MapHeaderCell"];
@@ -105,11 +105,11 @@
                     cell.textLabel.enabled = NO;
                 }
                 
-                cell.textLabel.text = [NSString stringWithFormat:@"Call: %@", self.dispensary.phone];
+                cell.textLabel.text = [NSString stringWithFormat:@"%@", [self.dispensary formattedPhoneString]];
             }else{
                 cell.userInteractionEnabled = NO;
                 cell.textLabel.enabled = NO;
-                cell.textLabel.text = @"Call";
+                cell.textLabel.text = @"Phone number unavailable";
             }
             
             cell.imageView.image = [UIImage imageNamed:@"phone1-128"];
@@ -139,29 +139,8 @@
     // Configure the header cell
     
     // fix HTML entities in the names of some dispensaries.
-    NSAttributedString *formattedName = [[NSAttributedString alloc] initWithData:[self.dispensary.name dataUsingEncoding:NSUTF8StringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: [NSNumber numberWithInt:NSUTF8StringEncoding]} documentAttributes:nil error:nil];
-    headerCell.nameLabel.text = formattedName.string;
-    
-    // we will just text replace the icon names for types
-    NSString *dispensaryType  = self.dispensary.icon;
-    
-    // disps
-    if (self.dispensary.type == 0) {
-        dispensaryType = [dispensaryType stringByReplacingOccurrencesOfString:@"gold" withString:@"Dispensary"];
-        dispensaryType = [dispensaryType stringByReplacingOccurrencesOfString:@"silver" withString:@"Dispensary"];
-        dispensaryType = [dispensaryType stringByReplacingOccurrencesOfString:@"bronze" withString:@"Dispensary"];
-        dispensaryType = [dispensaryType stringByReplacingOccurrencesOfString:@"lp" withString:@"Dispensary"];
-    }
-    
-    // doctors
-    else if(self.dispensary.type == 1){
-        dispensaryType = [dispensaryType stringByReplacingOccurrencesOfString:@"free" withString:@"Doctor"];
-        dispensaryType = [dispensaryType stringByReplacingOccurrencesOfString:@"bronze" withString:@"Doctor"];
-        dispensaryType = [dispensaryType stringByReplacingOccurrencesOfString:@"silver" withString:@"Doctor"];
-        dispensaryType = [dispensaryType stringByReplacingOccurrencesOfString:@"gold" withString:@"Doctor"];
-    }
-    
-    headerCell.typeLabel.text = dispensaryType.capitalizedString;
+    headerCell.nameLabel.text = [self.dispensary formattedNameString];
+    headerCell.typeLabel.text = [self.dispensary formattedTypeString];
     
     
     if (self.dispensary.opensAt.length > 0 && self.dispensary.closesAt.length > 0) {
@@ -196,20 +175,7 @@
         headerCell.reviewsStarsImage.layer.mask = maskLayer;
     }
     
-    NSString *cleanState = self.dispensary.state;
-    NSString *cleanAddress = [self.dispensary.address stringByReplacingOccurrencesOfString:@"." withString:@""];
-
-    // long state name, change to short one
-    if (self.dispensary.state.length > 2) {
-        cleanState = [cleanState stateAbbreviationFromFullName];
-    }
-    
-    // delivery
-    if ([self.dispensary.icon isEqualToString:@"delivery"]) {
-        headerCell.addressLabel.text = [NSString stringWithFormat:@"%@, %@", self.dispensary.city.capitalizedString, cleanState.uppercaseString];
-    }else{
-        headerCell.addressLabel.text = [NSString stringWithFormat:@"%@, %@, %@", cleanAddress, self.dispensary.city.capitalizedString, cleanState.uppercaseString];
-    }
+    headerCell.addressLabel.text = [self.dispensary formattedAddressString];
     
     return cell;
 }
@@ -239,13 +205,11 @@
     if (indexPath.row == 0) {
         [tableView deselectRowAtIndexPath:indexPath animated:NO];
         
-        NSAttributedString *formattedName = [[NSAttributedString alloc] initWithData:[self.dispensary.name dataUsingEncoding:NSUTF8StringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: [NSNumber numberWithInt:NSUTF8StringEncoding]} documentAttributes:nil error:nil];
-        
         CLLocationCoordinate2D coords = CLLocationCoordinate2DMake(self.dispensary.lat, self.dispensary.lng);
 
         MKPlacemark *place = [[MKPlacemark alloc] initWithCoordinate:coords addressDictionary: nil];
         MKMapItem *destination = [[MKMapItem alloc] initWithPlacemark: place];
-        destination.name = formattedName.string;
+        destination.name = [self.dispensary formattedNameString];
         NSArray *items = [[NSArray alloc] initWithObjects:destination, nil];
         NSDictionary *options = [[NSDictionary alloc] initWithObjectsAndKeys:
                                  MKLaunchOptionsDirectionsModeDriving,

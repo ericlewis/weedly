@@ -32,4 +32,9 @@
 @property (nonatomic, readonly) int type;
 @property (nonatomic, readonly) int featured;
 
+- (NSString*)formattedNameString;
+- (NSString*)formattedTypeString;
+- (NSString*)formattedAddressString;
+- (NSString*)formattedPhoneString;
+
 @end
