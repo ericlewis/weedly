@@ -65,7 +65,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="OWq-gG-4J3" kind="modal" identifier="ShowDeals" modalTransitionStyle="crossDissolve" id="h40-Gj-yKh"/>
+                                    <segue destination="OWq-gG-4J3" kind="modal" identifier="ShowDeals" id="h40-Gj-yKh"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ef1-Hp-KZ5">
@@ -150,7 +150,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-398" y="-646"/>
+            <point key="canvasLocation" x="-140" y="-984"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4aw-ZN-FGh">
@@ -183,6 +183,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="a1a-iQ-MlQ" kind="modal" id="XSa-6o-UOw"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -277,7 +280,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OEJ-5T-UQv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-201" y="-244"/>
+            <point key="canvasLocation" x="-315" y="-258"/>
         </scene>
         <!--Sidebar Table View Controller-->
         <scene sceneID="vzr-fI-ETV">
@@ -606,6 +609,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="a1a-iQ-MlQ" kind="modal" id="gnh-mc-w7x"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -645,7 +651,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ugs-9Z-yWN"/>
-        <segue reference="3rN-vu-ic9"/>
+        <segue reference="hnI-g6-UyI"/>
+        <segue reference="RYR-2U-jS3"/>
+        <segue reference="h40-Gj-yKh"/>
     </inferredMetricsTieBreakers>
 </document>
