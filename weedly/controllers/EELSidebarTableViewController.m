@@ -107,8 +107,8 @@
         CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform"];
         animation.toValue = [NSValue valueWithCATransform3D:transform];
         animation.autoreverses = YES;
-        animation.duration = 0.1;
-        animation.repeatCount = 1;
+        animation.duration = 0.12;
+        animation.repeatCount = 2;
         animation.delegate=self;
         
         for(UIView *view in cell.contentView.subviews) {

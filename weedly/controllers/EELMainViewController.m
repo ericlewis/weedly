@@ -11,6 +11,7 @@
 #import "EELDealsViewController.h"
 #import "EELFavoritesTableViewController.h"
 #import "EELMainTableViewController.h"
+#import "EELDetailTableViewController.h"
 
 #import "EELArrayDataSource.h"
 
@@ -60,10 +61,26 @@
 - (void)viewWillAppear:(BOOL)animated{
     self.mapView.showsUserLocation = YES;
     [self setupBottomButtons];
+    [self performSelector:@selector(showSearchBar) withObject:self afterDelay:0.15];
+}
+
+- (void)showSearchBar{
+    POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerOpacity];
+    anim.springSpeed = 15.0;
+    anim.toValue = @(1.0);
+    [self.searchBar.layer pop_addAnimation:anim forKey:@"searchBarShow"];
+}
+
+- (void)hideSearchBar{
+    POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerOpacity];
+    anim.springSpeed = 20.0;
+    anim.toValue = @(0.0);
+    [self.searchBar.layer pop_addAnimation:anim forKey:@"searchBarShow"];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
     [self hideBottomButtons];
+    [self.searchBar resignFirstResponder];
 }
 
 - (void)viewDidDisappear:(BOOL)animated{
@@ -343,8 +360,10 @@
     if (![view.annotation isKindOfClass:[MKUserLocation class]]) {
         EELDispensary *disp = [self.dataSource.items objectAtIndex:[view.annotation.title integerValue]];
         
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Tapped" message:disp.name delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
+        //UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Tapped" message:disp.name delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        //[alert show];
+        
+        [self performSegueWithIdentifier:@"ShowItemDetail" sender:self];
     }
 }
 
@@ -391,6 +410,9 @@
 {    
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:@"ShowItemDetail"]) {
+        [self hideSearchBar];
+    }
 }
 
 #pragma mark -

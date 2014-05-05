@@ -32,6 +32,7 @@
     #import "PKRevealController.h"
     #import "REMenu.h"
     #import "CWStatusBarNotification.h"
+    #import "SLParallaxController.h"
 
     // models
     #import "EELAccount.h"
