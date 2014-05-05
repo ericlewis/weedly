@@ -99,7 +99,24 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
+        
         // wiggle the logo
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        
+        CATransform3D transform = CATransform3DMakeRotation(0.1, 0, 0, 1.0);
+        CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform"];
+        animation.toValue = [NSValue valueWithCATransform3D:transform];
+        animation.autoreverses = YES;
+        animation.duration = 0.1;
+        animation.repeatCount = 1;
+        animation.delegate=self;
+        
+        for(UIView *view in cell.contentView.subviews) {
+            if ([view isKindOfClass:[UIImageView class]]) {
+                [view.layer addAnimation:animation forKey:@"wiggleAnimation"];
+            }
+        }
+        
     }else{
         
         NSUInteger index = indexPath.row;
