@@ -130,7 +130,38 @@
     // the menu cells
     else if(indexPath.section == 1){
         cell.textLabel.text = menuItem.name;
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ 1/8", menuItem.priceEighth];
+        
+        NSString *pricesString = @"";
+        
+        if (menuItem.priceHalfGram > 0) {
+            pricesString = [pricesString stringByAppendingString:[NSString stringWithFormat:@"%d 1/2gm  ", menuItem.priceHalfGram]];
+        }
+        
+        if (menuItem.priceGram > 0) {
+            pricesString = [pricesString stringByAppendingString:[NSString stringWithFormat:@"%d 1gm  ", menuItem.priceGram]];
+        }
+        
+        if (menuItem.priceEighth > 0) {
+            pricesString = [pricesString stringByAppendingString:[NSString stringWithFormat:@"%d 1/8  ", menuItem.priceEighth]];
+        }
+        
+        if (menuItem.priceQtr > 0) {
+            pricesString = [pricesString stringByAppendingString:[NSString stringWithFormat:@"%d 1/4  ", menuItem.priceQtr]];
+        }
+        
+        if (menuItem.priceHalfOZ > 0) {
+            pricesString = [pricesString stringByAppendingString:[NSString stringWithFormat:@"%d 1/2  ", menuItem.priceHalfOZ]];
+        }
+        
+        if (menuItem.priceOZ > 0) {
+            pricesString = [pricesString stringByAppendingString:[NSString stringWithFormat:@"%d OZ  ", menuItem.priceOZ]];
+        }
+        
+        if (menuItem.priceUnit > 0) {
+            pricesString = [pricesString stringByAppendingString:[NSString stringWithFormat:@"%d Per  ", menuItem.priceUnit]];
+        }
+        
+        cell.detailTextLabel.text = pricesString;
     }
     
     return cell;
