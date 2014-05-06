@@ -61,9 +61,8 @@
 - (void)viewWillAppear:(BOOL)animated{
     self.mapView.showsUserLocation = YES;
     [self setupBottomButtons];
+    
     [self performSelector:@selector(showSearchBar) withObject:self afterDelay:0.15];
-    
-    
     
     // landscape fix search
     if (UIDeviceOrientationIsLandscape(self.interfaceOrientation)) {
@@ -71,6 +70,15 @@
     }else{
         self.searchBar.frame = CGRectMake(45, 0, 230, 44);
     }
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [self hideBottomButtons];
+    [self.searchBar resignFirstResponder];
+}
+
+- (void)viewDidDisappear:(BOOL)animated{
+    self.mapView.showsUserLocation = NO;
 }
 
 - (void)showSearchBar{
@@ -85,15 +93,6 @@
     anim.springSpeed = 20.0;
     anim.toValue = @(0.0);
     [self.searchBar.layer pop_addAnimation:anim forKey:@"searchBarShow"];
-}
-
-- (void)viewWillDisappear:(BOOL)animated{
-    [self hideBottomButtons];
-    [self.searchBar resignFirstResponder];
-}
-
-- (void)viewDidDisappear:(BOOL)animated{
-    self.mapView.showsUserLocation = NO;
 }
 
 #pragma mark -
@@ -417,6 +416,9 @@
     if ([[segue identifier] isEqualToString:@"ShowItemDetail"]) {
         [(id)[[segue destinationViewController] topViewController] setDispensary:self.selectedDispensary];
         [self hideSearchBar];
+    }else if([[segue identifier] isEqualToString:@"ShowList"]){
+        [(id)[[segue destinationViewController] topViewController] setSearchTerm:self.searchBar.text];
+        [(id)[[segue destinationViewController] topViewController] setSearchType:self.searchBar.tag];
     }
 }
 

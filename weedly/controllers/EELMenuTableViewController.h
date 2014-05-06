@@ -10,4 +10,6 @@
 
 @interface EELMenuTableViewController : UITableViewController
 
+@property (strong, nonatomic) EELDispensary *dispensary;
+
 @end

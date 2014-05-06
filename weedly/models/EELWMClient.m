@@ -22,7 +22,7 @@
 }
 
 - (id)init {
-    return [super initWithBaseURL:[NSURL URLWithString:@"https://api.legalmarijuanadispensary.com/api/v4"]];
+    return [super initWithBaseURL:[NSURL URLWithString:@"https://api.legalmarijuanadispensary.com"]];
 }
 
 #pragma mark -
@@ -48,7 +48,15 @@
 - (void)getDispensaryWithID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
     NSParameterAssert(ID);
 
-    [self GET:[NSString stringWithFormat:@"listing/dispensary/%@", ID] parameters:nil resultClass:[EELDispensary class] resultKeyPath:@"docs" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+    [self GET:[NSString stringWithFormat:@"api/v4/listing/dispensary/%@", ID] parameters:nil resultClass:[EELDispensary class] resultKeyPath:@"docs" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+        block(responseObject, error);
+    }];
+}
+
+- (void)getMenuWithDispensaryID:(NSString*)ID completionBlock:(void (^)(EELMenu *result, NSError *error))block{
+    NSParameterAssert(ID);
+    
+    [self GET:[NSString stringWithFormat:@"dispensaries/%@/menu.json", ID] parameters:nil resultClass:[EELMenu class] resultKeyPath:@"" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
         block(responseObject, error);
     }];
 }
@@ -65,7 +73,7 @@
 - (void)getReviewsWithDispensaryID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
     NSParameterAssert(ID);
     
-    [self GET:[NSString stringWithFormat:@"reviews/dispensary/%@", ID] parameters:nil resultClass:[EELReview class] resultKeyPath:@"" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+    [self GET:[NSString stringWithFormat:@"api/v4/reviews/dispensary/%@", ID] parameters:nil resultClass:[EELReview class] resultKeyPath:@"" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
         block(responseObject, error);
     }];
 }
@@ -109,7 +117,7 @@
                              @"l"    : @"50"
                              };
     
-    [self GET:@"smoking" parameters:params resultClass:[EELSmokinOn class] resultKeyPath:@"" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+    [self GET:@"api/v4/smoking" parameters:params resultClass:[EELSmokinOn class] resultKeyPath:@"" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
         block(responseObject, error);
     }];
 }
@@ -141,7 +149,7 @@
                              @"username" : username,
                              @"password" : password};
     
-    [self POST:@"login" parameters:params resultClass:[EELAccount class] resultKeyPath:@"" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+    [self POST:@"api/v4/login" parameters:params resultClass:[EELAccount class] resultKeyPath:@"" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
         
         // if successful, setup the account in the singleton
         // or do something, not sure yet. i think they use cookies
@@ -178,7 +186,7 @@
 - (void)getAccountWithID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
     NSParameterAssert(ID);
 
-    [self GET:[NSString stringWithFormat:@"user/id/%@", ID] parameters:nil resultClass:[EELAccount class] resultKeyPath:@"info" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+    [self GET:[NSString stringWithFormat:@"api/v4/user/id/%@", ID] parameters:nil resultClass:[EELAccount class] resultKeyPath:@"info" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
         block(responseObject, error);
     }];
 }
@@ -191,7 +199,7 @@
         return;
     }
 
-    [self GET:@"favorites" parameters:@{@"user_id": ID} resultClass:[EELDispensary class] resultKeyPath:@"hits" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+    [self GET:@"api/v4/favorites" parameters:@{@"user_id": ID} resultClass:[EELDispensary class] resultKeyPath:@"hits" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
         block(responseObject, error);
     }];
 }
@@ -204,7 +212,7 @@
         return;
     }
     
-    [self GET:@"user/reviews" parameters:nil resultClass:[EELReview class] resultKeyPath:@"hits" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+    [self GET:@"api/v4/user/reviews" parameters:nil resultClass:[EELReview class] resultKeyPath:@"hits" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
         block(responseObject, error);
     }];
 }
@@ -225,7 +233,7 @@
                                  @"q"    : term
                                  };
     
-    [self GET:@"search" parameters:parameters resultClass:class resultKeyPath:@"hits" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+    [self GET:@"api/v4/search" parameters:parameters resultClass:class resultKeyPath:@"hits" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
         block(responseObject, error);
     }];
 }

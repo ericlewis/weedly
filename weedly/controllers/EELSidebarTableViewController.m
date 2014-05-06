@@ -133,7 +133,7 @@
                 [self performSegueWithIdentifier:@"ShowAccount" sender:self];
             }else{
                 // prompt that they need to login
-                [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"Would you like to login?" delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil] show];
+                [[[UIAlertView alloc] initWithTitle:@"Would you like to login?" message:nil delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil] show];
             }
         }
         
@@ -152,7 +152,6 @@
         // Smokin' On
         else if (index == 3){
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
-            [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"alloc init yet to occur ;)" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
             // needs to push to nav controller
             //[self performSegueWithIdentifier:@"ShowSmokinOn" sender:self];
         }

@@ -10,7 +10,7 @@
 
 @property (copy, nonatomic, readonly) NSNumber *id;
 @property (copy, nonatomic, readonly) NSString *name;
-@property (copy, nonatomic, readonly) NSString *description;
+@property (copy, nonatomic, readonly) NSString *strainDescription;
 @property (copy, nonatomic, readonly) NSString *priceEighth;
 @property (copy, nonatomic, readonly) NSString *priceGram;
 @property (copy, nonatomic, readonly) NSString *priceHalfGram;

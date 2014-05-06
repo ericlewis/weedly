@@ -10,4 +10,8 @@
 
 @interface EELMainTableViewController : UITableViewController <UISearchBarDelegate>
 
+@property (strong, nonatomic) EELDispensary *selectedDispensary;
+@property (strong, nonatomic) NSString *searchTerm;
+@property (nonatomic, assign) NSInteger searchType;
+
 @end

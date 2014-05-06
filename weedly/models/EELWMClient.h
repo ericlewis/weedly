@@ -23,6 +23,7 @@
 #pragma mark -
 #pragma mark Merchant Actions
 - (void)getDispensaryWithID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block;
+- (void)getMenuWithDispensaryID:(NSString*)ID completionBlock:(void (^)(EELMenu *result, NSError *error))block;
 - (void)getMenuItemsWithDispensaryID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block;
 
 #pragma mark Review Actions

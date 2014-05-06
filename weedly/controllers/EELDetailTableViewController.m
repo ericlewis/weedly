@@ -28,6 +28,10 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"EELMapHeaderTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"MapHeaderCell"];
     
     self.tableView.tableFooterView = [[UIView alloc] init];
+    
+    if (self.navigationController.childViewControllers.count == 1) {
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(dismissView:)];
+    }
 }
 
 - (IBAction)dismissView:(id)sender {
@@ -90,6 +94,7 @@
             }else{
                 cell.userInteractionEnabled = NO;
                 cell.textLabel.enabled = NO;
+                cell.accessoryView = [[UIView alloc] init];
             }
             cell.textLabel.text = @"Directions";
             cell.imageView.image = [UIImage imageNamed:@"map_marker-128"];
@@ -103,6 +108,7 @@
                 }else{
                     cell.userInteractionEnabled = NO;
                     cell.textLabel.enabled = NO;
+                    cell.accessoryView = [[UIView alloc] init];
                 }
                 
                 cell.textLabel.text = [NSString stringWithFormat:@"%@", [self.dispensary formattedPhoneString]];
@@ -110,10 +116,10 @@
                 cell.userInteractionEnabled = NO;
                 cell.textLabel.enabled = NO;
                 cell.textLabel.text = @"Phone number unavailable";
+                cell.accessoryView = [[UIView alloc] init];
             }
             
             cell.imageView.image = [UIImage imageNamed:@"phone1-128"];
-            cell.accessoryView = [[UIView alloc] init];
             
         }else if (row == 2) {
             cell.textLabel.text = @"Menu";
@@ -231,7 +237,6 @@
     }
 }
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -239,7 +244,9 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:@"ShowMenu"]) {
+        [[segue destinationViewController] setDispensary:self.dispensary];
+    }
 }
-*/
 
 @end
