@@ -9,6 +9,7 @@
 #import "EELSidebarTableViewController.h"
 
 #import "EELMainViewController.h"
+#import "EELSmokinOnTableViewController.h"
 
 @interface EELSidebarTableViewController ()
 
@@ -133,7 +134,7 @@
                 [self performSegueWithIdentifier:@"ShowAccount" sender:self];
             }else{
                 // prompt that they need to login
-                [[[UIAlertView alloc] initWithTitle:@"Would you like to login?" message:nil delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil] show];
+                [self performSegueWithIdentifier:@"ShowLogin" sender:self];
             }
         }
         
@@ -144,9 +145,12 @@
         
         else if (index == 2){
             UINavigationController *nav = (UINavigationController*)self.revealController.frontViewController;
-            if ([nav.topViewController isKindOfClass:[EELMainViewController class]]) {
-                [self.revealController showViewController:self.revealController.frontViewController];
+            if (![nav.topViewController isKindOfClass:[EELMainViewController class]]) {
+                UINavigationController *front = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"FrontViewController"];
+                [self.revealController setFrontViewController:front];
             }
+            
+            [self.revealController showViewController:self.revealController.frontViewController animated:YES completion:nil];
         }
         
         // Smokin' On
@@ -154,6 +158,14 @@
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
             // needs to push to nav controller
             //[self performSegueWithIdentifier:@"ShowSmokinOn" sender:self];
+            UINavigationController *nav = (UINavigationController*)self.revealController.frontViewController;
+            if (![nav.topViewController isKindOfClass:[EELSmokinOnTableViewController class]]) {
+                UINavigationController *front = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SmokinOnNav"];
+                [self.revealController setFrontViewController:front];
+            }
+            
+            [self.revealController showViewController:self.revealController.frontViewController animated:YES completion:nil];
+
         }
     }
 }

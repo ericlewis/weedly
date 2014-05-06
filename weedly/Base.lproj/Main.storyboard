@@ -270,7 +270,22 @@
             </objects>
             <point key="canvasLocation" x="1051" y="-244"/>
         </scene>
-        <!--Login View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="K2F-P8-1du">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="g4b-Qs-YcW" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jVq-Ht-CEL">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="fCw-8P-d85" kind="relationship" relationship="rootViewController" id="KqX-RY-2Lu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0bY-uY-bDR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-425" y="-258"/>
+        </scene>
+        <!--Login View Controller - Login-->
         <scene sceneID="9Hh-d2-sU4">
             <objects>
                 <viewController id="fCw-8P-d85" customClass="EELLoginViewController" sceneMemberID="viewController">
@@ -278,11 +293,50 @@
                         <viewControllerLayoutGuide type="top" id="5oN-CR-cAq"/>
                         <viewControllerLayoutGuide type="bottom" id="0Gm-1E-Z4P"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="t0s-c4-XAV">
+                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" id="kGh-2O-MOU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="7Hh-cb-lzV">
+                                <rect key="frame" x="48" y="71" width="237" height="59"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yIP-CU-8Kf">
+                                <rect key="frame" x="42" y="156" width="237" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BRA-h8-GW3">
+                                <rect key="frame" x="42" y="214" width="237" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TtJ-5c-jtF">
+                                <rect key="frame" x="42" y="291" width="237" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Sign In"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V7a-dw-aO7">
+                                <rect key="frame" x="42" y="351" width="237" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.021723027404489552" green="0.51621511773251672" blue="0.90040457248687744" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Create Account"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.16251267286740001" green="0.88193558673469385" blue="0.65786710552900429" alpha="1" colorSpace="calibratedRGB"/>
+                    </scrollView>
+                    <navigationItem key="navigationItem" title="Login" id="xK3-VF-WPz">
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="AXh-nb-RC5">
+                            <connections>
+                                <action selector="dismissView:" destination="fCw-8P-d85" id="2dz-o9-N3y"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OEJ-5T-UQv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -371,10 +425,9 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <segue destination="fCw-8P-d85" kind="modal" id="ICM-MS-7kf"/>
                         <segue destination="TyC-Gt-drW" kind="modal" identifier="ShowAccount" id="t0i-KZ-jSh"/>
-                        <segue destination="BAJ-Va-k2y" kind="modal" identifier="ShowSmokinOn" id="dOT-zv-Mpn"/>
                         <segue destination="OWq-gG-4J3" kind="modal" identifier="ShowTodaysDeals" id="3rN-vu-ic9"/>
+                        <segue destination="g4b-Qs-YcW" kind="modal" identifier="ShowLogin" id="dxw-M2-Slh"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SqS-g0-yLN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -434,7 +487,7 @@
             </objects>
             <point key="canvasLocation" x="-1197" y="-258"/>
         </scene>
-        <!--Smokin On Table View Controller-->
+        <!--Smokin On Table View Controller - Smokin' On-->
         <scene sceneID="mZd-qS-0ta">
             <objects>
                 <tableViewController id="BAJ-Va-k2y" customClass="EELSmokinOnTableViewController" sceneMemberID="viewController">
@@ -443,12 +496,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="oy0-eT-a0v">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ItemCell" textLabel="vhJ-y2-hsx" detailTextLabel="Uw4-ex-zOv" style="IBUITableViewCellStyleSubtitle" id="oy0-eT-a0v">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oy0-eT-a0v" id="BTa-cF-rUh">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vhJ-y2-hsx">
+                                            <rect key="frame" x="15" y="3" width="34" height="22"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="43" id="Uw4-ex-zOv">
+                                            <rect key="frame" x="15" y="25" width="43" height="15"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -457,6 +526,16 @@
                             <outlet property="delegate" destination="BAJ-Va-k2y" id="tyL-GJ-sJx"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Smokin' On" id="KGj-se-OMn">
+                        <barButtonItem key="leftBarButtonItem" image="hamburger" id="PL7-Wx-tA1">
+                            <connections>
+                                <action selector="showSidebar:" destination="BAJ-Va-k2y" id="9WG-78-ruN"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="ffv-Gb-i3g"/>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="fCw-8P-d85" kind="modal" id="O3G-vj-1H4"/>
                     </connections>
@@ -464,6 +543,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Uh-i7-5oF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-776" y="-258"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="uR3-f8-o1F">
+            <objects>
+                <navigationController storyboardIdentifier="SmokinOnNav" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JhZ-7U-Rad" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9aw-jT-cF4">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BAJ-Va-k2y" kind="relationship" relationship="rootViewController" id="HCg-YR-qLC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xLI-li-eto" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-848" y="-258"/>
         </scene>
         <!--Detail Table View Controller - Grassroots Collective-->
         <scene sceneID="1ny-dC-lD9">
@@ -693,6 +787,7 @@
         <image name="hamburger" width="21" height="15"/>
         <image name="like-75" width="23" height="21"/>
         <image name="list" width="57" height="57"/>
+        <image name="logo" width="237" height="59"/>
         <image name="wmslogo" width="95" height="57"/>
     </resources>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -702,9 +797,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ugs-9Z-yWN"/>
+        <segue reference="O3G-vj-1H4"/>
         <segue reference="uao-lf-yRi"/>
-        <segue reference="XSa-6o-UOw"/>
-        <segue reference="h40-Gj-yKh"/>
+        <segue reference="RYR-2U-jS3"/>
+        <segue reference="3rN-vu-ic9"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -31,6 +31,8 @@
 }
 
 - (void)addPin{
+    [self.mapView removeAnnotations:self.mapView.annotations];
+    
     MKPointAnnotation *annotation = [MKPointAnnotation new];
     CLLocation *location = MakeLocation(self.dispensary.lat, self.dispensary.lng);
     annotation.coordinate = [location coordinate];
