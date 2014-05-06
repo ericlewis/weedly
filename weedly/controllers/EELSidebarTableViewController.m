@@ -39,7 +39,7 @@
                           @{@"image": [UIImage imageNamed:@"dealsIcon"],    @"title": @"Today's Deals"},
                           @{@"image": [UIImage imageNamed:@"map_marker-128"], @"title": @"Find Dispensaries"},
                           @{@"image": [UIImage imageNamed:@"smokinonIcon"], @"title": @"Smokin' On"},
-                          @{@"image": [UIImage imageNamed:@"alarmIcon"],    @"title": @"420 Alarm"},
+                          @{@"image": [UIImage imageNamed:@"alarmIcon"],    @"title": @"4:20 Alarm"},
                           ];
     
     [self.revealController setMinimumWidth:270.0 maximumWidth:270.0 forViewController:self];
@@ -86,8 +86,26 @@
     cell.textLabel.text = [[self.sidebarItems objectAtIndex:indexPath.row] valueForKey:@"title"];
     cell.imageView.image = [[self.sidebarItems objectAtIndex:indexPath.row] valueForKey:@"image"];
     
-    // last cell
     
+    // configure the switch for alarm
+    // i didn't feel like making a new tablecell
+    // so loop and assign as needed
+
+    UISwitch *alarmSwitch;
+    
+    for (UIView *view in cell.contentView.subviews) {
+        if ([view isKindOfClass:[UISwitch class]]) {
+            alarmSwitch = (UISwitch*)view;
+        }
+    }
+    
+    if ([[[UIApplication sharedApplication] scheduledLocalNotifications] count] > 0) {
+        [alarmSwitch setOn:YES];
+    }else{
+        [alarmSwitch setOn:NO];
+    }
+    
+    [alarmSwitch addTarget:self action:@selector(toggleAlarm:) forControlEvents:UIControlEventValueChanged];
     
     return cell;
 }
@@ -168,6 +186,45 @@
 
         }
     }
+}
+
+- (IBAction)toggleAlarm:(id)sender {
+    UISwitch *alarmSwitch = (UISwitch*)sender;
+    
+    if (alarmSwitch.isOn) {
+        [self scheduleAlarm];
+    }else{
+        [self cancelAlarm];
+    }
+}
+
+- (void)scheduleAlarm{
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+
+    UILocalNotification *notif = [[UILocalNotification alloc] init];
+    
+    NSDate *today = [NSDate date];
+    NSCalendar *gregorian = [[NSCalendar alloc]
+                             initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *weekdayComponents =
+    [gregorian components:(NSDayCalendarUnit | NSWeekdayCalendarUnit) fromDate:today];
+    [weekdayComponents setHour:16];
+    [weekdayComponents setMinute:20];
+    NSDate *referenceTime = [gregorian dateFromComponents:weekdayComponents];
+    
+    notif.fireDate = referenceTime;
+    notif.timeZone = [NSTimeZone defaultTimeZone];
+    
+    notif.alertBody = @"It's 4:20! Toke up!";
+    notif.hasAction = NO;
+    notif.soundName = UILocalNotificationDefaultSoundName;
+    notif.repeatInterval = NSDayCalendarUnit;
+    
+    [[UIApplication sharedApplication] scheduleLocalNotification:notif];
+}
+
+- (void)cancelAlarm{
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
 }
 
 #pragma mark - Navigation
