@@ -8,11 +8,15 @@
 
 #import "EELDetailTableViewController.h"
 
+#import "EELArrayDataSource.h"
+
 // cells
 #import "EELItemHeaderViewCell.h"
 #import "EELMapHeaderTableViewCell.h"
 
 @interface EELDetailTableViewController ()
+
+@property (strong, nonatomic) EELArrayDataSource *reviewDataSource;
 
 @end
 
@@ -32,6 +36,20 @@
     if (self.navigationController.childViewControllers.count == 1) {
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(dismissView:)];
     }
+    
+    [self getReviews];
+}
+
+- (void)getReviews{
+    [[EELWMClient sharedClient] getReviewsWithDispensaryID:self.dispensary.id.stringValue completionBlock:^(NSArray *results, NSError *error) {
+        if (error) {
+            NSLog(@"noooo: %@", error);
+            return;
+        }
+        
+        self.reviewDataSource = [EELArrayDataSource dataSourceWithItems:results];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }];
 }
 
 - (IBAction)dismissView:(id)sender {
@@ -49,6 +67,11 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
+    
+    // 1. map && header
+    // 2. actions
+    // 3. reviews
+    
     return 3;
 }
 
@@ -61,12 +84,13 @@
         return 6;
     }
     
-    return 0;
+    return self.reviewDataSource.items.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell;
+    UITableViewCell *reviewCell;
     EELItemHeaderViewCell *headerCell;
     EELMapHeaderTableViewCell *mapCell;
     
@@ -134,6 +158,9 @@
             cell.textLabel.text = @"More Info";
             cell.imageView.image = [UIImage imageNamed:@"info-128"];
         }
+    }else{
+        reviewCell = [tableView dequeueReusableCellWithIdentifier:@"ReviewCell" forIndexPath:indexPath];
+        cell = reviewCell;
     }
     
     // Configure the Map cell
@@ -183,10 +210,25 @@
     
     headerCell.addressLabel.text = [self.dispensary formattedAddressString];
     
+    // handle review cells
+    if (indexPath.section == 2) {
+        EELReview *review = self.reviewDataSource.items[indexPath.row];
+        reviewCell.textLabel.text = review.title;
+        reviewCell.detailTextLabel.text = review.comment;
+    }
+    
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 2){
+        NSString *text = [[self.reviewDataSource.items objectAtIndex:[indexPath row]] comment];
+        CGSize constraint = CGSizeMake(320 - (20 * 2), 20000.0f);
+        CGSize size = [text sizeWithFont:[UIFont systemFontOfSize:12] constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
+        CGFloat height = MAX(size.height, 50.0f);
+        
+        return height + (20 * 2);
+    }
     if (indexPath.section != 0) {
         return 45;
     }
