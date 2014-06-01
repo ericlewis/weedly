@@ -56,6 +56,25 @@
     [self getInitialListings];
     
     [self performSelector:@selector(zoomToUserNotAnimated) withObject:self afterDelay:0.2];
+    
+    UIPanGestureRecognizer* panRec = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didDragMap:)];
+    [panRec setDelegate:self];
+    [self.mapView addGestureRecognizer:panRec];
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return YES;
+}
+
+- (void)didDragMap:(UIGestureRecognizer*)gestureRecognizer {
+    if (gestureRecognizer.state == UIGestureRecognizerStateEnded){
+        [self showBottomButtons];
+        [self performSearch:self.searchBar.text];
+    } else if(gestureRecognizer.state == UIGestureRecognizerStateBegan){
+        [self hideBottomButtons];
+        [self.searchBar resignFirstResponder];
+
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -385,14 +404,8 @@
     }
 }
 
-- (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated{
-    [self hideBottomButtons];
-    [self.searchBar resignFirstResponder];
-}
-
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
-    [self showBottomButtons];
     for (NSObject *annotation in [mapView annotations])
     {
         if ([annotation isKindOfClass:[MKUserLocation class]])
@@ -402,7 +415,9 @@
         }
     }
     
-    [self performSearch:self.searchBar.text];
+    if (self.dataSource.items.count == 0) {
+        [self performSearch:self.searchBar.text];
+    }
 }
 
 #pragma mark -
