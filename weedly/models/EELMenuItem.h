@@ -25,4 +25,6 @@
 @property (nonatomic, readonly) BOOL tested;
 @property (nonatomic, readonly) BOOL published;
 
+- (NSString*)formattedNameString;
+
 @end
