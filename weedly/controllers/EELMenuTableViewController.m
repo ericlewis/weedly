@@ -318,7 +318,7 @@
     else if(indexPath.section == 1){
         EELMenuItem *menuItem = self.dataSource.items[indexPath.row];
 
-        cell.textLabel.text = menuItem.name;
+        cell.textLabel.text = [menuItem formattedNameString];
         
         NSString *pricesString = @"";
         
