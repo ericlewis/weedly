@@ -688,14 +688,16 @@
                             <outlet property="delegate" destination="ThX-tb-Utd" id="V4D-yd-Peu"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Menu" id="VN4-Ux-gIg">
                         <barButtonItem key="backBarButtonItem" title="Back" id="DCJ-xD-ZsY"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="cDc-gF-wYz">
+                        <barButtonItem key="rightBarButtonItem" image="filter" id="dL4-cp-WId">
                             <connections>
-                                <action selector="dismissView:" destination="ThX-tb-Utd" id="ZNa-ty-Xyf"/>
+                                <action selector="showFilterDropdown:" destination="ThX-tb-Utd" id="6SS-U4-QRD"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xul-PZ-zI2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -797,9 +799,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="O3G-vj-1H4"/>
-        <segue reference="uao-lf-yRi"/>
+        <segue reference="h40-Gj-yKh"/>
         <segue reference="RYR-2U-jS3"/>
-        <segue reference="3rN-vu-ic9"/>
+        <segue reference="hnI-g6-UyI"/>
+        <segue reference="uao-lf-yRi"/>
     </inferredMetricsTieBreakers>
 </document>

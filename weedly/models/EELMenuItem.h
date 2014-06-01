@@ -11,6 +11,8 @@
 @property (copy, nonatomic, readonly) NSNumber *id;
 @property (copy, nonatomic, readonly) NSString *name;
 @property (copy, nonatomic, readonly) NSString *strainDescription;
+@property (copy, nonatomic, readonly) NSDate *lastUpdated;
+
 @property (nonatomic, readonly) int priceEighth;
 @property (nonatomic, readonly) int priceGram;
 @property (nonatomic, readonly) int priceHalfGram;

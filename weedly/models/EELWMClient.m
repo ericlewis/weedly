@@ -56,7 +56,7 @@
 - (void)getMenuWithDispensaryID:(NSString*)ID completionBlock:(void (^)(EELMenu *result, NSError *error))block{
     NSParameterAssert(ID);
     
-    [self GET:[NSString stringWithFormat:@"dispensaries/%@/menu.json", ID] parameters:nil resultClass:[EELMenu class] resultKeyPath:@"" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+    [self GET:[NSString stringWithFormat:@"dispensaries/%@/menu.json", ID] parameters:nil resultClass:[EELMenu class] resultKeyPath:nil completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
         block(responseObject, error);
     }];
 }
@@ -64,7 +64,7 @@
 - (void)getMenuItemsWithDispensaryID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
     NSParameterAssert(ID);
 
-    [self GET:[NSString stringWithFormat:@"dispensaries/%@/menu_items.json", ID] parameters:nil resultClass:[EELMenuItem class] resultKeyPath:@"" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+    [self GET:[NSString stringWithFormat:@"dispensaries/%@/menu_items.json", ID] parameters:nil resultClass:[EELMenuItem class] resultKeyPath:nil completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
         block(responseObject, error);
     }];
 }
@@ -73,7 +73,7 @@
 - (void)getReviewsWithDispensaryID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
     NSParameterAssert(ID);
     
-    [self GET:[NSString stringWithFormat:@"api/v4/reviews/dispensary/%@", ID] parameters:nil resultClass:[EELReview class] resultKeyPath:@"" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+    [self GET:[NSString stringWithFormat:@"api/v4/reviews/dispensary/%@", ID] parameters:nil resultClass:[EELReview class] resultKeyPath:nil completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
         block(responseObject, error);
     }];
 }

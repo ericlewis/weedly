@@ -8,18 +8,15 @@
 
 #import "EELMenuItem.h"
 
+#define kAPIDateFormat @"yyyy-MM-dd'T'HH:mm:ssz"
+
 @implementation EELMenuItem
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
              @"id"                : @"id",
              @"name"              : @"name",
-             @"tested"            : @"tested",
-             @"cbd"               : @"cbd",
-             @"cbn"               : @"cbn",
-             @"thc"               : @"thc",
-             @"catID"             : @"menu_item_category_id",
-             @"strainDescription" : @"body",
+
              @"priceEighth"       : @"price_eighth",
              @"priceGram"         : @"price_gram",
              @"priceHalfGram"     : @"price_half_gram",
@@ -27,9 +24,25 @@
              @"priceOZ"           : @"price_ounce",
              @"priceQtr"          : @"price_quarter",
              @"priceUnit"         : @"price_unit",
+             
+             @"tested"            : @"tested",
+             @"catID"             : @"menu_item_category_id",
+             @"strainDescription" : @"body",
              @"published"         : @"published",
+             
              @"lastUpdated"       : @"updated_at",
              };
+}
+
++ (NSValueTransformer *)lastUpdatedJSONTransformer{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:kAPIDateFormat];
+    
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSString *str) {
+        return [dateFormatter dateFromString:str];
+    } reverseBlock:^(NSDate *date) {
+        return [dateFormatter stringFromDate:date];
+    }];
 }
 
 #pragma mark - Managed object serialization
