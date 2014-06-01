@@ -466,4 +466,8 @@
     }
 }
 
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
+    [self showBottomButtons];
+}
+
 @end
