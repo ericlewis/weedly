@@ -48,34 +48,50 @@
 - (void)getDispensaryWithID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
     NSParameterAssert(ID);
 
-    [self GET:[NSString stringWithFormat:@"api/v4/listing/dispensary/%@", ID] parameters:nil resultClass:[EELDispensary class] resultKeyPath:@"docs" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
-        block(responseObject, error);
-    }];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^(void){
+        [self GET:[NSString stringWithFormat:@"api/v4/listing/dispensary/%@", ID] parameters:nil resultClass:[EELDispensary class] resultKeyPath:@"docs" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^(void){
+                block(responseObject, error);
+            });
+        }];
+    });
 }
 
 - (void)getMenuWithDispensaryID:(NSString*)ID completionBlock:(void (^)(EELMenu *result, NSError *error))block{
     NSParameterAssert(ID);
     
-    [self GET:[NSString stringWithFormat:@"dispensaries/%@/menu.json", ID] parameters:nil resultClass:[EELMenu class] resultKeyPath:nil completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
-        block(responseObject, error);
-    }];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^(void){
+        [self GET:[NSString stringWithFormat:@"dispensaries/%@/menu.json", ID] parameters:nil resultClass:[EELMenu class] resultKeyPath:nil completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^(void){
+                block(responseObject, error);
+            });
+        }];
+    });
 }
 
 - (void)getMenuItemsWithDispensaryID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
     NSParameterAssert(ID);
 
-    [self GET:[NSString stringWithFormat:@"dispensaries/%@/menu_items.json", ID] parameters:nil resultClass:[EELMenuItem class] resultKeyPath:nil completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
-        block(responseObject, error);
-    }];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^(void){
+        [self GET:[NSString stringWithFormat:@"dispensaries/%@/menu_items.json", ID] parameters:nil resultClass:[EELMenuItem class] resultKeyPath:nil completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^(void){
+                block(responseObject, error);
+            });
+        }];
+    });
 }
 
 #pragma mark Review Actions
 - (void)getReviewsWithDispensaryID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
     NSParameterAssert(ID);
     
-    [self GET:[NSString stringWithFormat:@"api/v4/reviews/dispensary/%@", ID] parameters:nil resultClass:[EELReview class] resultKeyPath:nil completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
-        block(responseObject, error);
-    }];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^(void){
+        [self GET:[NSString stringWithFormat:@"api/v4/reviews/dispensary/%@", ID] parameters:nil resultClass:[EELReview class] resultKeyPath:nil completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^(void){
+                block(responseObject, error);
+            });
+        }];
+    });
 }
 
 - (void)postReviewForDispensaryWithID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
@@ -117,9 +133,13 @@
                              @"l"    : @"50"
                              };
     
-    [self GET:@"api/v4/smoking" parameters:params resultClass:[EELSmokinOn class] resultKeyPath:@"" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
-        block(responseObject, error);
-    }];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^(void){
+        [self GET:@"api/v4/smoking" parameters:params resultClass:[EELSmokinOn class] resultKeyPath:@"" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^(void){
+                block(responseObject, error);
+            });
+        }];
+    });
 }
 
 - (void)postSmokinOnStatus:(NSString*)status completionBlock:(void (^)(NSArray *results, NSError *error))block{
@@ -186,9 +206,13 @@
 - (void)getAccountWithID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
     NSParameterAssert(ID);
 
-    [self GET:[NSString stringWithFormat:@"api/v4/user/id/%@", ID] parameters:nil resultClass:[EELAccount class] resultKeyPath:@"info" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
-        block(responseObject, error);
-    }];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^(void){
+        [self GET:[NSString stringWithFormat:@"api/v4/user/id/%@", ID] parameters:nil resultClass:[EELAccount class] resultKeyPath:@"info" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^(void){
+                block(responseObject, error);
+            });
+        }];
+    });
 }
 
 - (void)getFavoritesWithAccountID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
@@ -199,9 +223,13 @@
         return;
     }
 
-    [self GET:@"api/v4/favorites" parameters:@{@"user_id": ID} resultClass:[EELDispensary class] resultKeyPath:@"hits" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
-        block(responseObject, error);
-    }];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^(void){
+        [self GET:@"api/v4/favorites" parameters:@{@"user_id": ID} resultClass:[EELDispensary class] resultKeyPath:@"hits" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^(void){
+                block(responseObject, error);
+            });
+        }];
+    });
 }
 
 - (void)getReviewsWithAccountID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
@@ -212,9 +240,13 @@
         return;
     }
     
-    [self GET:@"api/v4/user/reviews" parameters:nil resultClass:[EELReview class] resultKeyPath:@"hits" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
-        block(responseObject, error);
-    }];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^(void){
+        [self GET:@"api/v4/user/reviews" parameters:nil resultClass:[EELReview class] resultKeyPath:@"hits" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^(void){
+                block(responseObject, error);
+            });
+        }];
+    });
 }
 
 #pragma mark -
@@ -233,9 +265,13 @@
                                  @"q"    : term
                                  };
     
-    [self GET:@"api/v4/search" parameters:parameters resultClass:class resultKeyPath:@"hits" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
-        block(responseObject, error);
-    }];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^(void){
+        [self GET:@"api/v4/search" parameters:parameters resultClass:class resultKeyPath:@"hits" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^(void){
+                block(responseObject, error);
+            });
+        }];
+    });
 }
 
 - (void)searchWithType:(NSString*)type model:(id)class term:(NSString*)term completionBlock:(void (^)(NSArray *results, NSError *error))block{
