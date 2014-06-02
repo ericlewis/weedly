@@ -37,6 +37,11 @@
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(dismissView:)];
     }
     
+    NSMutableArray *favoritesOnDisk = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:FAVORITES_KEY]];
+    if ([favoritesOnDisk containsObject:self.dispensary]) {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"liked-75"] style:UIBarButtonItemStylePlain target:self action:@selector(favoriteButton:)];
+    }
+    
     [self getReviews];
 }
 
@@ -81,7 +86,7 @@
     if (section == 0) {
         return 2;
     }else if(section == 1){
-        return 6;
+        return 3;
     }
     
     return self.reviewDataSource.items.count;
@@ -213,27 +218,36 @@
     // handle review cells
     if (indexPath.section == 2) {
         EELReview *review = self.reviewDataSource.items[indexPath.row];
-        reviewCell.textLabel.text = review.title;
+        reviewCell.textLabel.numberOfLines = 2;
+        reviewCell.textLabel.text = [NSString stringWithFormat:@"%@ \n%@ • %@", review.title, [@"" stringByPaddingToLength:review.rating withString:@"★" startingAtIndex:0], review.name];
         reviewCell.detailTextLabel.text = review.comment;
     }
     
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return UITableViewAutomaticDimension;
+}
+
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    // reviews
     if (indexPath.section == 2){
         NSString *text = [[self.reviewDataSource.items objectAtIndex:[indexPath row]] comment];
         CGSize constraint = CGSizeMake(320 - (20 * 2), 20000.0f);
         CGSize size = [text sizeWithFont:[UIFont systemFontOfSize:12] constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
         CGFloat height = MAX(size.height, 50.0f);
         
-        return height + (20 * 2);
-    }
-    if (indexPath.section != 0) {
-        return 45;
+        return height + (30 * 2);
     }
     
-    return 120;
+    if (indexPath.section == 0) {
+        return 122;
+    }
+    
+    return 44;
 }
 
 - (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -289,6 +303,47 @@
     if ([[segue identifier] isEqualToString:@"ShowMenu"]) {
         [[segue destinationViewController] setDispensary:self.dispensary];
     }
+}
+
+- (IBAction)favoriteButton:(id)sender {
+    NSString *key = FAVORITES_KEY;
+    
+    NSData *onDisk = [[NSUserDefaults standardUserDefaults] objectForKey:key];
+    NSMutableArray *favoritesOnDisk = [NSKeyedUnarchiver unarchiveObjectWithData:onDisk];
+    
+    if (favoritesOnDisk.count == 0) {
+        NSMutableArray *array = [[NSMutableArray alloc] initWithObjects:self.dispensary, nil];
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:array];
+        [[NSUserDefaults standardUserDefaults] setObject:data forKey:key];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }else{
+        
+        // add fave, update heart
+        if (![favoritesOnDisk containsObject:self.dispensary]){
+            [favoritesOnDisk addObject:self.dispensary];
+            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:favoritesOnDisk];
+            [[NSUserDefaults standardUserDefaults] setObject:data forKey:key];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"liked-75"] style:UIBarButtonItemStylePlain target:self action:@selector(favoriteButton:)];
+        }
+        
+        // remove fave, update heart
+        else{
+            [favoritesOnDisk removeObject:self.dispensary];
+            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:favoritesOnDisk];
+            [[NSUserDefaults standardUserDefaults] setObject:data forKey:key];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"like-75"] style:UIBarButtonItemStylePlain target:self action:@selector(favoriteButton:)];
+        }
+    }
+    
+    // read back
+    NSData *data2 = [[NSUserDefaults standardUserDefaults] objectForKey:key];
+    NSArray *favorites = [NSKeyedUnarchiver unarchiveObjectWithData:data2];
+    
+    NSLog(@"%@", favorites);
 }
 
 @end

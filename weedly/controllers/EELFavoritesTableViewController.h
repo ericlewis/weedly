@@ -10,4 +10,6 @@
 
 @interface EELFavoritesTableViewController : UITableViewController
 
+@property (strong, nonatomic) EELDispensary *selectedDispensary;
+
 @end

@@ -7,3 +7,4 @@
 //
 
 #define IS_IPHONE_5 ( fabs( [ [ UIScreen mainScreen ] bounds ].size.height - 568.0f ) < FLT_EPSILON )
+#define FAVORITES_KEY @"favorites-3"

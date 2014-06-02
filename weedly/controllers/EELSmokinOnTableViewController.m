@@ -78,22 +78,26 @@
     // Configure the cell...
     EELSmokinOn *smokinItem = self.dataSource.items[indexPath.row];
     cell.textLabel.numberOfLines = 0;
-    cell.textLabel.text = [NSString stringWithFormat:@"%@\n%@", smokinItem.name, smokinItem.timeAgo.timeAgoSinceNow];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ • %@", smokinItem.name, smokinItem.timeAgo.timeAgoSinceNow];
     cell.detailTextLabel.text = [smokinItem formattedStatusString];
-    
-    [cell.imageView setImageWithURL:smokinItem.photo placeholderImage:[UIImage imageNamed:@"AppIcon"]];
     
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return UITableViewAutomaticDimension;
+}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSString *text = [[self.dataSource.items objectAtIndex:[indexPath row]] status];
-    CGSize constraint = CGSizeMake(320 - (20 * 2), 20000.0f);
-    CGSize size = [text sizeWithFont:[UIFont systemFontOfSize:12] constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
-    CGFloat height = MAX(size.height, 50.0f);
+    CGSize size = [text sizeWithAttributes:
+                   @{NSFontAttributeName:
+                         [UIFont systemFontOfSize:12.0f]}];
+    CGFloat height = MAX(size.height, 80);
     
-    return height + (40 * 2);
+    return height + (25 * 2);
 }
+
+
 
 @end

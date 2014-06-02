@@ -11,6 +11,12 @@
 #import "EELMainViewController.h"
 #import "EELSmokinOnTableViewController.h"
 
+#define ACCOUNT_TITLE @"Account"
+#define DEALS_TITLE @"Today's Deals"
+#define MAP_TITLE @"Find Dispensaries"
+#define SMOKIN_TITLE @"Smokin' On"
+#define ALARM_TITLE @"4:20 Alarm"
+
 @interface EELSidebarTableViewController ()
 
 @property (nonatomic, strong) NSArray *sidebarItems;
@@ -35,11 +41,11 @@
     self.tableView.tableFooterView = [[UIView alloc] init];
     
     self.sidebarItems = @[
-                          @{@"image": [UIImage imageNamed:@"accountIcon"],  @"title": @"Account"},
-                          @{@"image": [UIImage imageNamed:@"dealsIcon"],    @"title": @"Today's Deals"},
-                          @{@"image": [UIImage imageNamed:@"map_marker-128"], @"title": @"Find Dispensaries"},
-                          @{@"image": [UIImage imageNamed:@"smokinonIcon"], @"title": @"Smokin' On"},
-                          @{@"image": [UIImage imageNamed:@"alarmIcon"],    @"title": @"4:20 Alarm"},
+                          //@{@"image": [UIImage imageNamed:@"accountIcon"],  @"title": ACCOUNT_TITLE},
+                          @{@"image": [UIImage imageNamed:@"dealsIcon"],    @"title": DEALS_TITLE},
+                          @{@"image": [UIImage imageNamed:@"map_marker-128"], @"title": MAP_TITLE},
+                          @{@"image": [UIImage imageNamed:@"smokinonIcon"], @"title": SMOKIN_TITLE},
+                          @{@"image": [UIImage imageNamed:@"alarmIcon"],    @"title": ALARM_TITLE},
                           ];
     
     [self.revealController setMinimumWidth:270.0 maximumWidth:270.0 forViewController:self];
@@ -142,9 +148,10 @@
     }else{
         
         NSUInteger index = indexPath.row;
+        NSString *title = [[self.sidebarItems objectAtIndex:index] valueForKey:@"title"];
         
         // account
-        if (index == 0){
+        if ([title isEqualToString:ACCOUNT_TITLE]){
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
             
             if ([[EELWMClient sharedClient] isAccountLoggedIn]) {
@@ -157,11 +164,12 @@
         }
         
         // Today's Deals
-        else if (index == 1){
+        else if ([title isEqualToString:DEALS_TITLE]){
             [self performSegueWithIdentifier:@"ShowTodaysDeals" sender:self];
         }
         
-        else if (index == 2){
+        // map
+        else if ([title isEqualToString:MAP_TITLE]){
             UINavigationController *nav = (UINavigationController*)self.revealController.frontViewController;
             if (![nav.topViewController isKindOfClass:[EELMainViewController class]]) {
                 UINavigationController *front = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"FrontViewController"];
@@ -172,7 +180,7 @@
         }
         
         // Smokin' On
-        else if (index == 3){
+        else if ([title isEqualToString:SMOKIN_TITLE]){
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
             // needs to push to nav controller
             //[self performSegueWithIdentifier:@"ShowSmokinOn" sender:self];

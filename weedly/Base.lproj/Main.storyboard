@@ -176,16 +176,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="LAU-cq-ySf">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TestCell" textLabel="FWi-14-UWi" detailTextLabel="KOu-2Q-LCB" style="IBUITableViewCellStyleSubtitle" id="LAU-cq-ySf">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LAU-cq-ySf" id="fl8-HH-cwe">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FWi-14-UWi">
+                                            <rect key="frame" x="15" y="3" width="34" height="22"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KOu-2Q-LCB">
+                                            <rect key="frame" x="15" y="25" width="43" height="15"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="a1a-iQ-MlQ" kind="modal" id="XSa-6o-UOw"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -200,6 +213,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="E4k-M5-Cyr" kind="push" identifier="ShowItemDetail" id="bnQ-m8-hZS"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B5x-v8-FKy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -533,7 +549,6 @@
                                 <action selector="showSidebar:" destination="BAJ-Va-k2y" id="9WG-78-ruN"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="ffv-Gb-i3g"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -619,7 +634,11 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Grassroots Collective" id="5ke-U3-VuL">
                         <barButtonItem key="backBarButtonItem" title=" " id="9PB-5K-LZm"/>
-                        <barButtonItem key="rightBarButtonItem" image="like-75" id="ypC-9M-UwC"/>
+                        <barButtonItem key="rightBarButtonItem" image="like-75" id="ypC-9M-UwC">
+                            <connections>
+                                <action selector="favoriteButton:" destination="E4k-M5-Cyr" id="Rhz-77-83S"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <size key="freeformSize" width="0.0" height="0.0"/>
                     <connections>
@@ -799,9 +818,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="O3G-vj-1H4"/>
         <segue reference="h40-Gj-yKh"/>
-        <segue reference="RYR-2U-jS3"/>
-        <segue reference="hnI-g6-UyI"/>
-        <segue reference="uao-lf-yRi"/>
+        <segue reference="bnQ-m8-hZS"/>
     </inferredMetricsTieBreakers>
 </document>

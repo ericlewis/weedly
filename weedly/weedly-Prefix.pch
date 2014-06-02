@@ -47,5 +47,6 @@
 
     // api client
     #import "EELWMClient.h"
+    #import "EELUsefulConstants.h"
 
 #endif

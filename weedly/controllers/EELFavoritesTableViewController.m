@@ -7,8 +7,13 @@
 //
 
 #import "EELFavoritesTableViewController.h"
+#import "EELDetailTableViewController.h"
+#import "EELArrayDataSource.h"
+#import "EELItemHeaderViewCell.h"
 
 @interface EELFavoritesTableViewController ()
+
+@property (strong, nonatomic) EELArrayDataSource *favoritesDataSource;
 
 @end
 
@@ -26,6 +31,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"EELItemHeaderViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"ItemHeaderCell"];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:FAVORITES_KEY];
+    self.favoritesDataSource = [EELArrayDataSource dataSourceWithItems:[NSKeyedUnarchiver unarchiveObjectWithData:data]];
+    [self.tableView reloadData];
 }
 
 - (IBAction)dismissView:(id)sender {
@@ -42,76 +55,83 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return self.favoritesDataSource.items.count;
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    EELItemHeaderViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ItemHeaderCell" forIndexPath:indexPath];
+    EELDispensary *dispensary = [self.favoritesDataSource.items objectAtIndex:indexPath.row];
     
-    // Configure the cell...
+    // Configure the header cell
+    cell.nameLabel.text = [dispensary formattedNameString];
+    cell.typeLabel.text = [dispensary formattedTypeString];
+    
+    if (dispensary.opensAt.length > 0 && dispensary.closesAt.length > 0) {
+        cell.hoursLabel.text = [NSString stringWithFormat:@"Hours: %@ - %@", dispensary.opensAt, dispensary.closesAt];
+    }else{
+        cell.hoursLabel.text = @"Hours unavailable";
+    }
+    
+    // switch the text and color if we are closed
+    if (dispensary.isOpen.boolValue) {
+        cell.isOpenLabel.text = @"Currently Open";
+    }else{
+        cell.isOpenLabel.text = @"Currently Closed";
+    }
+    
+    // hide reviews if we don't have a count
+    if (dispensary.ratingCount == 0) {
+        [cell.reviewsView setHidden:YES];
+    }else{
+        [cell.reviewsView setHidden:NO];
+        
+        cell.reviewsLabel.text = [NSString stringWithFormat:@"%.1f • %i reviews", dispensary.rating, dispensary.ratingCount];
+        [cell.reviewsLabel sizeToFit];
+        
+        CGFloat reviewStarsWidth = cell.reviewsStarsImage.frame.size.width;
+        reviewStarsWidth = (reviewStarsWidth*2) * (dispensary.rating * 0.1);
+        
+        CALayer *maskLayer = [CALayer layer];
+        maskLayer.backgroundColor = [UIColor blackColor].CGColor;
+        maskLayer.frame = CGRectMake(0.0, 0.0, reviewStarsWidth, reviewStarsWidth);
+        
+        cell.reviewsStarsImage.layer.mask = maskLayer;
+    }
+    
+    cell.addressLabel.text = [dispensary formattedAddressString];
     
     return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 122;
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+- (NSIndexPath*)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    self.selectedDispensary = [self.favoritesDataSource.items objectAtIndex:indexPath.row];
+    
+    return indexPath;
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self performSegueWithIdentifier:@"ShowItemDetail" sender:self];
 }
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:@"ShowItemDetail"]) {
+        [(id)[segue destinationViewController] setDispensary:self.selectedDispensary];
+    }
 }
-*/
 
 @end
