@@ -81,7 +81,7 @@
 		4D9DDE1419172142006E5B03 /* EELMapHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELMapHeaderTableViewCell.h; path = views/EELMapHeaderTableViewCell.h; sourceTree = "<group>"; };
 		4D9DDE1519172142006E5B03 /* EELMapHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELMapHeaderTableViewCell.m; path = views/EELMapHeaderTableViewCell.m; sourceTree = "<group>"; };
 		4D9DDE1619172142006E5B03 /* EELMapHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EELMapHeaderTableViewCell.xib; path = views/EELMapHeaderTableViewCell.xib; sourceTree = "<group>"; };
-		4DC1A10E1912F9A200228F5A /* weedly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weedly.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DC1A10E1912F9A200228F5A /* Weedly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weedly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DC1A1111912F9A200228F5A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4DC1A1131912F9A200228F5A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		4DC1A1151912F9A200228F5A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -250,7 +250,7 @@
 		4DC1A10F1912F9A200228F5A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4DC1A10E1912F9A200228F5A /* weedly.app */,
+				4DC1A10E1912F9A200228F5A /* Weedly.app */,
 				4DC1A12F1912F9A200228F5A /* weedlyTests.xctest */,
 			);
 			name = Products;
@@ -316,9 +316,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4DC1A10D1912F9A200228F5A /* weedly */ = {
+		4DC1A10D1912F9A200228F5A /* Weedly */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4DC1A1401912F9A200228F5A /* Build configuration list for PBXNativeTarget "weedly" */;
+			buildConfigurationList = 4DC1A1401912F9A200228F5A /* Build configuration list for PBXNativeTarget "Weedly" */;
 			buildPhases = (
 				51D61E9C47EA452FB66F9A28 /* Check Pods Manifest.lock */,
 				4DC1A10A1912F9A200228F5A /* Sources */,
@@ -330,9 +330,9 @@
 			);
 			dependencies = (
 			);
-			name = weedly;
+			name = Weedly;
 			productName = weedly;
-			productReference = 4DC1A10E1912F9A200228F5A /* weedly.app */;
+			productReference = 4DC1A10E1912F9A200228F5A /* Weedly.app */;
 			productType = "com.apple.product-type.application";
 		};
 		4DC1A12E1912F9A200228F5A /* weedlyTests */ = {
@@ -363,6 +363,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Eric Lewis";
 				TargetAttributes = {
+					4DC1A10D1912F9A200228F5A = {
+						DevelopmentTeam = 6495B95VRX;
+					};
 					4DC1A12E1912F9A200228F5A = {
 						TestTargetID = 4DC1A10D1912F9A200228F5A;
 					};
@@ -381,7 +384,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4DC1A10D1912F9A200228F5A /* weedly */,
+				4DC1A10D1912F9A200228F5A /* Weedly */,
 				4DC1A12E1912F9A200228F5A /* weedlyTests */,
 			);
 		};
@@ -486,7 +489,7 @@
 /* Begin PBXTargetDependency section */
 		4DC1A1351912F9A200228F5A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4DC1A10D1912F9A200228F5A /* weedly */;
+			target = 4DC1A10D1912F9A200228F5A /* Weedly */;
 			targetProxy = 4DC1A1341912F9A200228F5A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -595,6 +598,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "weedly/weedly-Prefix.pch";
 				INFOPLIST_FILE = "weedly/weedly-Info.plist";
@@ -610,6 +614,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "weedly/weedly-Prefix.pch";
 				INFOPLIST_FILE = "weedly/weedly-Info.plist";
@@ -671,7 +676,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4DC1A1401912F9A200228F5A /* Build configuration list for PBXNativeTarget "weedly" */ = {
+		4DC1A1401912F9A200228F5A /* Build configuration list for PBXNativeTarget "Weedly" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4DC1A1411912F9A200228F5A /* Debug */,
