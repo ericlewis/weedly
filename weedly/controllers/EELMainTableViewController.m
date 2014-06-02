@@ -51,6 +51,8 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"EELItemHeaderViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"ItemHeaderCell"];
     [self.tableView setAllowsSelection:YES];
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
+    
+    self.navigationController.navigationBar.translucent = NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -67,6 +69,10 @@
 - (void)viewWillDisappear:(BOOL)animated{
     [self.searchBar resignFirstResponder];
     [self hideSearchBar];
+    
+    if (self.filterMenu.isOpen) {
+        [self.filterMenu close];
+    }
 }
 
 - (void)showSearchBar{

@@ -60,6 +60,8 @@
     UIPanGestureRecognizer* panRec = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didDragMap:)];
     [panRec setDelegate:self];
     [self.mapView addGestureRecognizer:panRec];
+    
+    self.navigationController.navigationBar.translucent = NO;
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
@@ -94,6 +96,10 @@
 - (void)viewWillDisappear:(BOOL)animated{
     [self hideBottomButtons];
     [self.searchBar resignFirstResponder];
+    
+    if (self.filterMenu.isOpen) {
+        [self.filterMenu close];
+    }
 }
 
 - (void)viewDidDisappear:(BOOL)animated{

@@ -42,6 +42,14 @@
     
     [self getMenuInfo];
     [self getMenuItems];
+    
+    self.navigationController.navigationBar.translucent = NO;
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    if (self.filterMenu.isOpen) {
+        [self.filterMenu close];
+    }
 }
 
 - (IBAction)showFilterDropdown:(id)sender {
