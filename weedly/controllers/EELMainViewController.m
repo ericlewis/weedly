@@ -441,7 +441,8 @@
 #pragma mark -
 #pragma mark - UISearchDelegate
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
-    [self performSearch:searchBar.text];
+    [self performSearch:self.searchBar.text];
+    [self performSegueWithIdentifier:@"ShowList" sender:self];
     [searchBar resignFirstResponder];
 }
 
