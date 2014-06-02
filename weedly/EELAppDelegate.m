@@ -7,13 +7,15 @@
 //
 
 #import "EELAppDelegate.h"
+#import "AFNetworkActivityIndicatorManager.h"
 
 @implementation EELAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    
+    [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
+
     // color is the MAIN one used, should set constant
     UIColor *color = [UIColor colorWithRed:36/255.0f green:223/255.0f blue:177/255.0f alpha:1.0f];
     [[UINavigationBar appearance] setBarTintColor:color];
