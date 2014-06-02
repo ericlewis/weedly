@@ -284,8 +284,9 @@
     // call location
     else if(indexPath.row == 1){
         [tableView deselectRowAtIndexPath:indexPath animated:NO];
-
-        NSString *phoneNumber = [@"telprompt://" stringByAppendingString:self.dispensary.phone];
+        NSString *phoneNumber = [@"telprompt://" stringByAppendingString:[[self.dispensary.phone componentsSeparatedByCharactersInSet:
+                                                                           [[NSCharacterSet decimalDigitCharacterSet] invertedSet]]
+                                                                          componentsJoinedByString:@""]];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
     }
     
