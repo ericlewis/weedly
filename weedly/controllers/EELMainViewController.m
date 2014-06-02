@@ -87,7 +87,11 @@
     
     // landscape fix search
     if (UIDeviceOrientationIsLandscape(self.interfaceOrientation)) {
-        self.searchBar.frame = CGRectMake(90, -6.5f, 400, 40);
+        if (IS_IPHONE_5) {
+            self.searchBar.frame = CGRectMake(90, -6.5f, 400, 40);
+        }else{
+            self.searchBar.frame = CGRectMake(40, -6.5f, 400, 40);
+        }
     }else{
         self.searchBar.frame = CGRectMake(45, 0, 230, 44);
     }
@@ -469,7 +473,11 @@
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
     
     if (toInterfaceOrientation==UIInterfaceOrientationLandscapeRight || toInterfaceOrientation==UIInterfaceOrientationLandscapeLeft) {
-        self.searchBar.frame = CGRectMake(90, -6.5f, 400, 40);
+        if (IS_IPHONE_5) {
+            self.searchBar.frame = CGRectMake(90, -6.5f, 400, 40);
+        }else{
+            self.searchBar.frame = CGRectMake(40, -6.5f, 400, 40);
+        }
     }else{
         self.searchBar.frame = CGRectMake(45, 0, 230, 44);
     }
