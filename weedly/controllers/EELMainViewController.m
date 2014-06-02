@@ -266,6 +266,7 @@
 }
 
 - (IBAction)showSidebar:(id)sender {
+    [self.searchBar resignFirstResponder];
     [self.revealController showViewController:self.revealController.leftViewController];
 }
 
