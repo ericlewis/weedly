@@ -219,13 +219,13 @@
     NSDateComponents *weekdayComponents =
     [gregorian components:(NSDayCalendarUnit | NSWeekdayCalendarUnit) fromDate:today];
     [weekdayComponents setHour:16];
-    [weekdayComponents setMinute:20];
+    [weekdayComponents setMinute:19];
     NSDate *referenceTime = [gregorian dateFromComponents:weekdayComponents];
     
     notif.fireDate = referenceTime;
     notif.timeZone = [NSTimeZone defaultTimeZone];
     
-    notif.alertBody = @"It's 4:20! Toke up!";
+    notif.alertBody = @"It's almost 4:20! Toke up!";
     notif.hasAction = NO;
     notif.soundName = UILocalNotificationDefaultSoundName;
     notif.repeatInterval = NSDayCalendarUnit;
