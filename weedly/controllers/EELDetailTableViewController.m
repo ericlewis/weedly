@@ -316,6 +316,8 @@
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:array];
         [[NSUserDefaults standardUserDefaults] setObject:data forKey:key];
         [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"liked-75"] style:UIBarButtonItemStylePlain target:self action:@selector(favoriteButton:)];
     }else{
         
         // add fave, update heart
