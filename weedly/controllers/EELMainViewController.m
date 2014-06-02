@@ -288,7 +288,7 @@
                                                           }];
         
         self.filterMenu = [[REMenu alloc] initWithItems:@[dispensaryItem, doctorItem]];
-        self.filterMenu.backgroundColor = [UIColor colorWithRed:36/255.0f green:223/255.0f blue:177/255.0f alpha:1.0f];
+        self.filterMenu.backgroundColor = MAIN_COLOR;
         self.filterMenu.borderColor = [UIColor grayColor];
         self.filterMenu.borderWidth = 0.5f;
         self.filterMenu.separatorColor = [UIColor clearColor];

@@ -87,6 +87,8 @@
         cell.isOpenLabel.text = @"Currently Closed";
     }
     
+    cell.isOpenLabel.textColor = MAIN_COLOR;
+    
     // hide reviews if we don't have a count
     if (dispensary.ratingCount == 0) {
         [cell.reviewsView setHidden:YES];

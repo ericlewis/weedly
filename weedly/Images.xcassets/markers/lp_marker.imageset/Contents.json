@@ -2,12 +2,13 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "ip_marker.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "lp_marker@2x.png"
+      "filename" : "ip_marker@2x.png"
     }
   ],
   "info" : {

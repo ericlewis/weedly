@@ -2,12 +2,13 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "dr_marker.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "doctor_marker@2x.png"
+      "filename" : "dr_marker@2x.png"
     }
   ],
   "info" : {

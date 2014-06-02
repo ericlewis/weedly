@@ -105,6 +105,8 @@
         }
     }
     
+    alarmSwitch.onTintColor = MAIN_COLOR;
+    
     if ([[[UIApplication sharedApplication] scheduledLocalNotifications] count] > 0) {
         [alarmSwitch setOn:YES];
     }else{

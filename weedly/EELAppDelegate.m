@@ -17,8 +17,7 @@
     [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
 
     // color is the MAIN one used, should set constant
-    UIColor *color = [UIColor colorWithRed:36/255.0f green:223/255.0f blue:177/255.0f alpha:1.0f];
-    [[UINavigationBar appearance] setBarTintColor:color];
+    [[UINavigationBar appearance] setBarTintColor:MAIN_COLOR];
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 

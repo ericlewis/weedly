@@ -143,14 +143,15 @@
                                                             }];
         
         self.filterMenu = [[REMenu alloc] initWithItems:@[dispensaryItem, doctorItem]];
-        self.filterMenu.backgroundColor = [UIColor whiteColor];
-        self.filterMenu.borderColor = [UIColor clearColor];
+        self.filterMenu.backgroundColor = MAIN_COLOR;
+        self.filterMenu.borderColor = [UIColor grayColor];
+        self.filterMenu.borderWidth = 0.5f;
         self.filterMenu.separatorColor = [UIColor clearColor];
-        self.filterMenu.textColor = [UIColor grayColor];
+        self.filterMenu.textColor = [UIColor whiteColor];
         self.filterMenu.textAlignment = NSTextAlignmentLeft;
         self.filterMenu.textOffset = CGSizeMake(50, 0);
         
-        self.filterMenu.liveBlur = YES;
+        self.filterMenu.liveBlur = NO;
         
         [self.filterMenu showFromNavigationController:self.navigationController];
     }
@@ -201,6 +202,8 @@
     }else{
         cell.isOpenLabel.text = @"Currently Closed";
     }
+    
+    cell.isOpenLabel.textColor = MAIN_COLOR;
     
     // hide reviews if we don't have a count
     if (dispensary.ratingCount == 0) {
