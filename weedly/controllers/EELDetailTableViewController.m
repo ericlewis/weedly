@@ -131,7 +131,7 @@
             
             // handle if phone is enabled
             if (self.dispensary.phone.length > 0) {
-                if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"tel://"]]) {
+                if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"telprompt://"]]) {
                     cell.userInteractionEnabled = YES;
                     cell.textLabel.enabled = YES;
                 }else{
@@ -283,7 +283,7 @@
     else if(indexPath.row == 1){
         [tableView deselectRowAtIndexPath:indexPath animated:NO];
 
-        NSString *phoneNumber = [@"tel://" stringByAppendingString:self.dispensary.phone];
+        NSString *phoneNumber = [@"telprompt://" stringByAppendingString:self.dispensary.phone];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
     }
     
