@@ -11,7 +11,9 @@
 @property (copy, nonatomic, readonly) NSNumber *id;
 @property (copy, nonatomic, readonly) NSString *status;
 @property (copy, nonatomic, readonly) NSString *name;
-@property (copy, nonatomic, readonly) NSString *timeAgo;
+@property (copy, nonatomic, readonly) NSDate *timeAgo;
 @property (copy, nonatomic, readonly) NSURL    *photo;
+
+- (NSString*)formattedStatusString;
 
 @end

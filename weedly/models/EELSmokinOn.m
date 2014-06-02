@@ -8,6 +8,8 @@
 
 #import "EELSmokinOn.h"
 
+#define kAPIDateFormat @"yyyy-MM-dd'T'HH:mm:ssz"
+
 @implementation EELSmokinOn
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
@@ -20,8 +22,26 @@
              };
 }
 
++ (NSValueTransformer *)timeAgoJSONTransformer{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:kAPIDateFormat];
+    
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSString *str) {
+        return [dateFormatter dateFromString:str];
+    } reverseBlock:^(NSDate *date) {
+        return [dateFormatter stringFromDate:date];
+    }];
+}
+
 + (NSValueTransformer *)photoURLJSONTransformer {
     return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
+}
+
+- (NSString*)formattedStatusString{
+    NSAttributedString *formattedName = [[NSAttributedString alloc] initWithData:[self.status dataUsingEncoding:NSUTF8StringEncoding]
+                                                                         options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: [NSNumber numberWithInt:NSUTF8StringEncoding]} documentAttributes:nil error:nil];
+    
+    return formattedName.string;
 }
 
 #pragma mark - Managed object serialization

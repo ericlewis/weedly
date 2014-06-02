@@ -7,6 +7,7 @@
 //
 
 #import "EELSmokinOnTableViewController.h"
+#import "UIImageView+AFNetworking.h"
 
 #import "EELArrayDataSource.h"
 
@@ -76,8 +77,11 @@
     
     // Configure the cell...
     EELSmokinOn *smokinItem = self.dataSource.items[indexPath.row];
-    cell.textLabel.text = smokinItem.name;
-    cell.detailTextLabel.text = smokinItem.status;
+    cell.textLabel.numberOfLines = 0;
+    cell.textLabel.text = [NSString stringWithFormat:@"%@\n%@", smokinItem.name, smokinItem.timeAgo.timeAgoSinceNow];
+    cell.detailTextLabel.text = [smokinItem formattedStatusString];
+    
+    [cell.imageView setImageWithURL:smokinItem.photo placeholderImage:[UIImage imageNamed:@"AppIcon"]];
     
     return cell;
 }
@@ -89,7 +93,7 @@
     CGSize size = [text sizeWithFont:[UIFont systemFontOfSize:12] constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
     CGFloat height = MAX(size.height, 50.0f);
     
-    return height + (20 * 2);
+    return height + (40 * 2);
 }
 
 @end
