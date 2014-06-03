@@ -11,14 +11,14 @@
 @property (nonatomic, strong, readonly) NSNumber* id;
 @property (nonatomic, strong, readonly) NSString* lat;
 @property (nonatomic, strong, readonly) NSString* lng;
-@property (nonatomic, strong, readonly) NSNumber* dispensary_id;
-@property (nonatomic, strong, readonly) NSString* dispensary_name;
-@property (nonatomic, strong, readonly) NSString* dispensary_city;
-@property (nonatomic, strong, readonly) NSNumber* dispensary_catid;
+@property (nonatomic, strong, readonly) NSNumber* dispensaryId;
+@property (nonatomic, strong, readonly) NSString* dispensaryName;
+@property (nonatomic, strong, readonly) NSString* dispensaryCity;
+@property (nonatomic, strong, readonly) NSNumber* dispensaryCatId;
 @property (nonatomic, strong, readonly) NSNumber* distance;
 @property (nonatomic, strong, readonly) NSString* text;
 @property (nonatomic, strong, readonly) NSNumber* hits;
 @property (nonatomic, strong, readonly) NSString* slug;
-@property (nonatomic, strong, readonly) NSString* cat_slug;
+@property (nonatomic, strong, readonly) NSString* catSlug;
 
 @end

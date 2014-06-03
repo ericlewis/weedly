@@ -13,15 +13,15 @@
 @property (nonatomic, strong) NSNumber* id;
 @property (nonatomic, strong) NSString* lat;
 @property (nonatomic, strong) NSString* lng;
-@property (nonatomic, strong) NSNumber* dispensary_id;
-@property (nonatomic, strong) NSString* dispensary_name;
-@property (nonatomic, strong) NSString* dispensary_city;
-@property (nonatomic, strong) NSNumber* dispensary_catid;
+@property (nonatomic, strong) NSNumber* dispensaryId;
+@property (nonatomic, strong) NSString* dispensaryName;
+@property (nonatomic, strong) NSString* dispensaryCity;
+@property (nonatomic, strong) NSNumber* dispensaryCatId;
 @property (nonatomic, strong) NSNumber* distance;
 @property (nonatomic, strong) NSString* text;
 @property (nonatomic, strong) NSNumber* hits;
 @property (nonatomic, strong) NSString* slug;
-@property (nonatomic, strong) NSString* cat_slug;
+@property (nonatomic, strong) NSString* catSlug;
 
 @end
 
@@ -35,15 +35,15 @@ static NSDictionary* _sDealsMapping;
                            @"id" : @"id",
                            @"lat" : @"lat",
                            @"lng" : @"lng",
-                           @"dispensary_id" : @"dispensary_id",
-                           @"dispensary_name" : @"dispensary_name",
-                           @"dispensary_city" : @"dispensary_city",
-                           @"dispensary_catid" : @"dispensary_catid",
+                           @"dispensaryId" : @"dispensary_id",
+                           @"dispensaryName" : @"dispensary_name",
+                           @"dispensaryCity" : @"dispensary_city",
+                           @"dispensaryCatId" : @"dispensary_catid",
                            @"distance" : @"distance",
                            @"text" : @"text",
                            @"hits" : @"hits",
                            @"slug" : @"slug",
-                           @"cat_slug" : @"cat_slug"
+                           @"catSlug" : @"cat_slug"
         };
     });
     return _sDealsMapping;
