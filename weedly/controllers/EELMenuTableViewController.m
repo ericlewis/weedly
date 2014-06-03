@@ -317,7 +317,6 @@
         self.filterMenu.textColor = [UIColor whiteColor];
         self.filterMenu.textAlignment = NSTextAlignmentLeft;
         self.filterMenu.textOffset = CGSizeMake(50, 0);
-        self.filterMenu.itemHeight = 30;
         
         self.filterMenu.liveBlur = NO;
         
