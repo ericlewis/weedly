@@ -37,6 +37,8 @@
             return;
         self.deals = results;
         //now do something with the deals
+        
+        NSLog(@"%@", self.deals);
     }];
 
     // load the deals page

@@ -10,16 +10,16 @@
 
 @interface EELDeal ()
 
-@property (nonatomic, assign) uint32_t id;
+@property (nonatomic, strong) NSNumber* id;
 @property (nonatomic, strong) NSString* lat;
 @property (nonatomic, strong) NSString* lng;
-@property (nonatomic, assign) uint32_t dispensary_id;
+@property (nonatomic, strong) NSNumber* dispensary_id;
 @property (nonatomic, strong) NSString* dispensary_name;
 @property (nonatomic, strong) NSString* dispensary_city;
-@property (nonatomic, assign) uint32_t dispensary_catid;
-@property (nonatomic, assign) double distance;
+@property (nonatomic, strong) NSNumber* dispensary_catid;
+@property (nonatomic, strong) NSNumber* distance;
 @property (nonatomic, strong) NSString* text;
-@property (nonatomic, assign) uint32_t hits;
+@property (nonatomic, strong) NSNumber* hits;
 @property (nonatomic, strong) NSString* slug;
 @property (nonatomic, strong) NSString* cat_slug;
 

@@ -43,7 +43,7 @@
 		4DD4933319159A66001A6203 /* EELDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4933219159A66001A6203 /* EELDetailTableViewController.m */; };
 		4DD4933C19159B18001A6203 /* EELLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4933B19159B18001A6203 /* EELLoginViewController.m */; };
 		4DD4933F19159B63001A6203 /* EELAccountTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4933E19159B63001A6203 /* EELAccountTableViewController.m */; };
-		A46425AF193D64B300709543 /* EELDeal.m in Sources */ = {isa = PBXBuildFile; fileRef = A46425AE193D64B300709543 /* EELDeal.m */; };
+		A46425B2193D708300709543 /* EELDeal.m in Sources */ = {isa = PBXBuildFile; fileRef = A46425B0193D708300709543 /* EELDeal.m */; };
 		BE8BDD8F4BD4453BBD4478C3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F50009311F37485CA198D2EA /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -119,8 +119,8 @@
 		4DD4933B19159B18001A6203 /* EELLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELLoginViewController.m; path = controllers/EELLoginViewController.m; sourceTree = "<group>"; };
 		4DD4933D19159B63001A6203 /* EELAccountTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELAccountTableViewController.h; path = controllers/EELAccountTableViewController.h; sourceTree = "<group>"; };
 		4DD4933E19159B63001A6203 /* EELAccountTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELAccountTableViewController.m; path = controllers/EELAccountTableViewController.m; sourceTree = "<group>"; };
-		A46425AD193D64B300709543 /* EELDeal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EELDeal.h; sourceTree = "<group>"; };
-		A46425AE193D64B300709543 /* EELDeal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EELDeal.m; sourceTree = "<group>"; };
+		A46425B0193D708300709543 /* EELDeal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELDeal.m; path = models/EELDeal.m; sourceTree = "<group>"; };
+		A46425B1193D708300709543 /* EELDeal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELDeal.h; path = models/EELDeal.h; sourceTree = "<group>"; };
 		D13BE086C5424174BDE85D1C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		F50009311F37485CA198D2EA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -176,8 +176,8 @@
 				4D9DDDF81915BA75006E5B03 /* EELAccount.m */,
 				4D9DDDF41915AFEB006E5B03 /* EELDispensary.h */,
 				4D9DDDF51915AFEB006E5B03 /* EELDispensary.m */,
-				A46425AD193D64B300709543 /* EELDeal.h */,
-				A46425AE193D64B300709543 /* EELDeal.m */,
+				A46425B1193D708300709543 /* EELDeal.h */,
+				A46425B0193D708300709543 /* EELDeal.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -456,7 +456,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A46425AF193D64B300709543 /* EELDeal.m in Sources */,
+				A46425B2193D708300709543 /* EELDeal.m in Sources */,
 				4DD4932D1915980C001A6203 /* EELSidebarTableViewController.m in Sources */,
 				4DD493261915951E001A6203 /* EELFavoritesTableViewController.m in Sources */,
 				4DD4933319159A66001A6203 /* EELDetailTableViewController.m in Sources */,
