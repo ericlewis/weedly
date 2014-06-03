@@ -32,7 +32,7 @@
 {
     [super viewDidLoad];
     
-    [[EELWMClient sharedClient] getDealsAround:[MTLocationManager sharedInstance].lastKnownLocation limit:10 completionBlock:^(NSArray* results, NSError* error) {
+    [[EELWMClient sharedClient] getDealsAround:[MTLocationManager sharedInstance].lastKnownLocation completionBlock:^(NSArray* results, NSError* error) {
         if (error) //do... something... idk
             return;
         self.deals = results;

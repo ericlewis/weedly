@@ -281,7 +281,7 @@
 
 #pragma mark - Offers API
 - (void) getDealsAround:(CLLocation*)location limit:(uint32_t)limit completionBlock:(void(^)(NSArray*, NSError*))aBlock {
-    [self GET:@"/api/v4/coupons" parameters:@{ @"lat" : @(location.coordinate.latitude), @"lng" : @(location.coordinate.longitude), @"l" : @(limit) } resultClass:[EELDeal class] resultKeyPath:nil completion:^(AFHTTPRequestOperation* operation, id responseObject, NSError* error) {
+    [self GET:@"/api/v4/coupons" parameters:@{ @"lat" : @(location.coordinate.latitude), @"lng" : @(location.coordinate.longitude) } resultClass:[EELDeal class] resultKeyPath:nil completion:^(AFHTTPRequestOperation* operation, id responseObject, NSError* error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             aBlock(responseObject, error);
         });
