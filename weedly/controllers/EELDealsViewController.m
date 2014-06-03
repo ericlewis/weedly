@@ -13,6 +13,8 @@
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *refreshToggle;
 
+@property (nonatomic, strong) NSArray* deals;
+
 @end
 
 @implementation EELDealsViewController
@@ -29,6 +31,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [[EELWMClient sharedClient] getDealsAround:[MTLocationManager sharedInstance].lastKnownLocation limit:10 completionBlock:^(NSArray* results, NSError* error) {
+        if (error) //do... something... idk
+            return;
+        self.deals = results;
+        //now do something with the deals
+    }];
 
     // load the deals page
     CLLocationCoordinate2D coords = [MTLocationManager sharedInstance].lastKnownLocation.coordinate;

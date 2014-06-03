@@ -5,34 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>1A03B9B7-A73C-4BB5-AC6A-893DDCE44A3A</string>
+	<string>5A3D82F7-8BDE-4D2C-B9E6-AD24115C8D73</string>
 	<key>IDESourceControlProjectName</key>
 	<string>weedly</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>6C63F383-312A-4C75-8ABD-F8ABF08F2CF4</key>
-		<string>https://github.com/ericlewis/weedly.git</string>
+		<key>1CFAB76C-E2A9-4CE2-B23C-4AB070098487</key>
+		<string>https://github.com/rdignard08/weedly.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>weedly.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>6C63F383-312A-4C75-8ABD-F8ABF08F2CF4</key>
+		<key>1CFAB76C-E2A9-4CE2-B23C-4AB070098487</key>
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/ericlewis/weedly.git</string>
+	<string>https://github.com/rdignard08/weedly.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>6C63F383-312A-4C75-8ABD-F8ABF08F2CF4</string>
+	<string>1CFAB76C-E2A9-4CE2-B23C-4AB070098487</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>6C63F383-312A-4C75-8ABD-F8ABF08F2CF4</string>
+			<string>1CFAB76C-E2A9-4CE2-B23C-4AB070098487</string>
 			<key>IDESourceControlWCCName</key>
 			<string>weedly</string>
 		</dict>
