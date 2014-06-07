@@ -206,7 +206,7 @@
             [self addPins];
             [self.tableView reloadData];
         }];
-    }else{
+    }else if(self.searchBar.tag == 911){
         [[EELWMClient sharedClient] searchDoctorsWithTerm:searchTerm lat:lat lng:lng completionBlock:^(NSArray *results, NSError *error) {
             if (error) {
                 NSLog(@"noooo: %@", error);
@@ -231,6 +231,15 @@
             [self addPins];
             [self.tableView reloadData];
         }];
+    }else{
+        
+        // needs to actually allow search on the objects
+        
+        NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:FAVORITES_KEY];
+        
+        self.dataSource = [EELArrayDataSource dataSourceWithItems:[NSKeyedUnarchiver unarchiveObjectWithData:data]];
+        [self addPins];
+        [self.tableView reloadData];
     }
 }
 
@@ -270,7 +279,11 @@
                                                                 NSLog(@"Item: %@", item);
                                                                 self.searchBar.placeholder = @"Search Favorites";
                                                                 self.searchBar.tag = 421;
-                                                                [self performSearch:self.searchBar.text];
+                                                                
+                                                                NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:FAVORITES_KEY];
+                                                                self.dataSource = [EELArrayDataSource dataSourceWithItems:[NSKeyedUnarchiver unarchiveObjectWithData:data]];
+                                                                [self addPins];
+                                                                [self.tableView reloadData];
                                                             }];
         
         self.filterMenu = [[REMenu alloc] initWithItems:@[dispensaryItem, doctorItem, favoriteItem]];
