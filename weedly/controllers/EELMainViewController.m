@@ -237,9 +237,23 @@
         
         NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:FAVORITES_KEY];
         
-        self.dataSource = [EELArrayDataSource dataSourceWithItems:[NSKeyedUnarchiver unarchiveObjectWithData:data]];
-        [self addPins];
+        NSMutableArray *sortedArray = [[NSKeyedUnarchiver unarchiveObjectWithData:data] mutableCopy]; // your mutable copy of the fetched objects
+        
+        for (EELDispensary *project in sortedArray) {
+            CLLocationDegrees lat = project.lat;
+            CLLocationDegrees lng = project.lng;
+            CLLocation *dispensaryLocation = [[CLLocation alloc] initWithLatitude:lat longitude:lng];
+            CLLocationDistance meters = [dispensaryLocation distanceFromLocation:[[CLLocation alloc] initWithLatitude:self.mapView.centerCoordinate.latitude longitude:self.mapView.centerCoordinate.longitude]];
+            project.currentDistance = @(meters);
+        }
+        
+        NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"currentDistance" ascending:YES];
+        [sortedArray sortUsingDescriptors:@[sort]];
+        
+        self.dataSource = [EELArrayDataSource dataSourceWithItems:sortedArray];
         [self.tableView reloadData];
+
+        [self addPins];
     }
 }
 
