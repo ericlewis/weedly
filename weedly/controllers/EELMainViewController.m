@@ -16,6 +16,8 @@
 
 #import "EELArrayDataSource.h"
 
+#define LATITUDE_OFFSET -0.02f
+
 @interface EELMainViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -177,7 +179,7 @@
 #pragma mark -
 #pragma mark - Actions
 - (void)performSearch:(NSString*)searchTerm{
-    NSString *latVal = [NSString stringWithFormat:@"%.1f", self.mapView.centerCoordinate.latitude];
+    NSString *latVal = [NSString stringWithFormat:@"%.1f", self.mapView.centerCoordinate.latitude - LATITUDE_OFFSET];
     NSString *lngVal = [NSString stringWithFormat:@"%.1f", self.mapView.centerCoordinate.longitude];
 
     [self performSearch:searchTerm lat:(CGFloat)latVal.floatValue lng:(CGFloat)lngVal.floatValue];
@@ -197,7 +199,7 @@
                 CLLocationDegrees lat = project.lat;
                 CLLocationDegrees lng = project.lng;
                 CLLocation *dispensaryLocation = [[CLLocation alloc] initWithLatitude:lat longitude:lng];
-                CLLocationDistance meters = [dispensaryLocation distanceFromLocation:[[CLLocation alloc] initWithLatitude:self.mapView.centerCoordinate.latitude longitude:self.mapView.centerCoordinate.longitude]];
+                CLLocationDistance meters = [dispensaryLocation distanceFromLocation:[[CLLocation alloc] initWithLatitude:self.mapView.centerCoordinate.latitude - LATITUDE_OFFSET longitude:self.mapView.centerCoordinate.longitude]];
                 project.currentDistance = @(meters);
             }
             
@@ -222,7 +224,7 @@
                 CLLocationDegrees lat = project.lat;
                 CLLocationDegrees lng = project.lng;
                 CLLocation *dispensaryLocation = [[CLLocation alloc] initWithLatitude:lat longitude:lng];
-                CLLocationDistance meters = [dispensaryLocation distanceFromLocation:[[CLLocation alloc] initWithLatitude:self.mapView.centerCoordinate.latitude longitude:self.mapView.centerCoordinate.longitude]];
+                CLLocationDistance meters = [dispensaryLocation distanceFromLocation:[[CLLocation alloc] initWithLatitude:self.mapView.centerCoordinate.latitude - LATITUDE_OFFSET longitude:self.mapView.centerCoordinate.longitude]];
                 project.currentDistance = @(meters);
             }
             
