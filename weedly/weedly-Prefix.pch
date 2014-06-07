@@ -36,7 +36,6 @@
     #import "CWStatusBarNotification.h"
     #import "NSString+USStateMap.h"
     #import "NSDate+DateTools.h"
-    #import "SLParallaxController.h"
 
     // models
     #import "EELAccount.h"

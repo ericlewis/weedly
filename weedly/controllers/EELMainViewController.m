@@ -18,6 +18,8 @@
 
 @interface EELMainViewController ()
 
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet MKMapView   *mapView;
 @property (weak, nonatomic) IBOutlet MTLocateMeButton *findMeButton;
 @property (weak, nonatomic) IBOutlet UIButton *dealsButton;
 @property (weak, nonatomic) IBOutlet UIButton *listButton;
@@ -59,9 +61,10 @@
     self.navigationController.navigationBar.translucent = NO;
     
     [self.tableView registerNib:[UINib nibWithNibName:@"EELItemHeaderViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"ItemHeaderCell"];
-    self.Y_tableViewOnBottom = self.view.frame.size.height - 122;
     self.mapView.delegate = self;
-    self.delegate = self;
+    
+    self.tableView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.tableView.layer.borderWidth = 1.0;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -331,8 +334,8 @@
         MKCoordinateSpan span;
         
         if (self.mapView.region.span.latitudeDelta > 1) {
-            span.latitudeDelta  = 0.15; // Change these values to change the zoom
-            span.longitudeDelta = 0.15;
+            span.latitudeDelta  = 0.12; // Change these values to change the zoom
+            span.longitudeDelta = 0.12;
             region.span = span;
         }else{
             region.span = self.mapView.region.span;
@@ -341,11 +344,11 @@
         [self.mapView setRegion:region animated:animated];
     }else{
         MKCoordinateRegion region;
-        region.center = CLLocationCoordinate2DMake(37.773972, -122.431297);
+        region.center = CLLocationCoordinate2DMake(37.733972, -122.431297);
         
         MKCoordinateSpan span;
-        span.latitudeDelta  = 0.15; // Change these values to change the zoom
-        span.longitudeDelta = 0.15;
+        span.latitudeDelta  = 0.12; // Change these values to change the zoom
+        span.longitudeDelta = 0.12;
         region.span = span;
         
         [self.mapView setRegion:region animated:animated];
@@ -531,6 +534,34 @@
 }
 
 #pragma mark -
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    //NSLog(@"%f - %f", scrollView.frame.origin.y, scrollView.contentOffset.y);
+    
+    // in its normal state
+    if (scrollView.frame.origin.y == 204) {
+        
+        // scrolling DOWN
+        if (scrollView.contentOffset.y < 0) {
+            NSLog(@"down");
+        }
+        
+        // scrolling up
+        else{
+            NSLog(@"up");
+        }
+    }
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+
+}
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{
+
+}
+
+#pragma mark -
 #pragma mark - UISearchDelegate
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     [self performSearch:self.searchBar.text];
@@ -548,14 +579,6 @@
     }
     
     return YES;
-}
-
--(void)didTapOnMapView{
-    [self.searchBar resignFirstResponder];
-}
-
--(void)didTapOnTableView{
-    [self.searchBar resignFirstResponder];
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {

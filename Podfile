@@ -14,4 +14,3 @@ pod 'USStateAbbreviations', :git => 'https://github.com/djibouti33/US-State-Abbr
 pod 'DateTools'
 pod 'BFNavigationBarDrawer', '~> 1.0.2'
 pod 'MKToggleButton'
-pod 'SLParallaxController'
