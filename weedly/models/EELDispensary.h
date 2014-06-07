@@ -22,6 +22,7 @@
 @property (copy, nonatomic, readonly) NSString *closesAt;
 @property (copy, nonatomic, readonly) NSString *opensAt;
 @property (copy, nonatomic, readonly) NSString *dayOTW;
+@property (copy, nonatomic) NSNumber *currentDistance;
 
 @property (nonatomic, readonly) double lng;
 @property (nonatomic, readonly) double lat;

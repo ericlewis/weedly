@@ -12,12 +12,12 @@
 #import "EELFavoritesTableViewController.h"
 #import "EELMainTableViewController.h"
 #import "EELDetailTableViewController.h"
+#import "EELItemHeaderViewCell.h"
 
 #import "EELArrayDataSource.h"
 
 @interface EELMainViewController ()
 
-@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet MTLocateMeButton *findMeButton;
 @property (weak, nonatomic) IBOutlet UIButton *dealsButton;
 @property (weak, nonatomic) IBOutlet UIButton *listButton;
@@ -25,7 +25,6 @@
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *filterButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sideBarButton;
-
 
 @property (strong, nonatomic) REMenu *filterMenu;
 @property (strong, nonatomic) UISearchBar *searchBar;
@@ -57,32 +56,15 @@
     
     [self performSelector:@selector(zoomToUserNotAnimated) withObject:self afterDelay:0.2];
     
-    UIPanGestureRecognizer* panRec = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didDragMap:)];
-    [panRec setDelegate:self];
-    [self.mapView addGestureRecognizer:panRec];
-    
     self.navigationController.navigationBar.translucent = NO;
-}
-
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-    return YES;
-}
-
-- (void)didDragMap:(UIGestureRecognizer*)gestureRecognizer {
-    if (gestureRecognizer.state == UIGestureRecognizerStateEnded){
-        [self showBottomButtons];
-        [self performSearch:self.searchBar.text];
-    } else if(gestureRecognizer.state == UIGestureRecognizerStateBegan){
-        [self hideBottomButtons];
-        [self.searchBar resignFirstResponder];
-
-    }
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"EELItemHeaderViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"ItemHeaderCell"];
+    self.Y_tableViewOnBottom = self.view.frame.size.height - 122;
+    self.mapView.delegate = self;
+    self.delegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    self.mapView.showsUserLocation = YES;
-    [self setupBottomButtons];
-    
     [self performSelector:@selector(showSearchBar) withObject:self afterDelay:0.15];
     
     // landscape fix search
@@ -98,7 +80,6 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
-    [self hideBottomButtons];
     [self.searchBar resignFirstResponder];
     
     if (self.filterMenu.isOpen) {
@@ -174,50 +155,6 @@
     }];
 }
 
-- (void)setupBottomButtons{
-    // do animation stuff
-    [self showBottomButtons];
-
-    // find me button
-    [self.findMeButton addTarget:self action:@selector(zoomToUser) forControlEvents:UIControlEventTouchUpInside];
-}
-
-- (void)showBottomButtons{
-    POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerBounds];
-    anim.toValue = [NSValue valueWithCGRect:CGRectMake(0, 0, 57, 57)];
-    [self.findMeButton pop_addAnimation:anim forKey:@"bottomBar"];
-    
-    POPSpringAnimation *anim2 = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerBounds];
-    anim2.toValue = [NSValue valueWithCGRect:CGRectMake(0, 0, 57, 57)];
-    [self.dealsButton pop_addAnimation:anim2 forKey:@"bottomBar"];
-    
-    POPSpringAnimation *anim3 = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerBounds];
-    anim3.toValue = [NSValue valueWithCGRect:CGRectMake(0, 0, 57, 57)];
-    [self.listButton pop_addAnimation:anim3 forKey:@"bottomBar"];
-    
-    POPSpringAnimation *anim4 = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerBounds];
-    anim4.toValue = [NSValue valueWithCGRect:CGRectMake(0, 0, 57, 57)];
-    [self.favoritesButton pop_addAnimation:anim4 forKey:@"bottomBar"];
-}
-
-- (void)hideBottomButtons{
-    POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerBounds];
-    anim.toValue = [NSValue valueWithCGRect:CGRectMake(0, 0, 1, 1)];
-    [self.findMeButton pop_addAnimation:anim forKey:@"bottomBar"];
-    
-    POPSpringAnimation *anim2 = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerBounds];
-    anim2.toValue = [NSValue valueWithCGRect:CGRectMake(0, 0, 1, 1)];
-    [self.dealsButton pop_addAnimation:anim2 forKey:@"bottomBar"];
-    
-    POPSpringAnimation *anim3 = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerBounds];
-    anim3.toValue = [NSValue valueWithCGRect:CGRectMake(0, 0, 1, 1)];
-    [self.listButton pop_addAnimation:anim3 forKey:@"bottomBar"];
-    
-    POPSpringAnimation *anim4 = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerBounds];
-    anim4.toValue = [NSValue valueWithCGRect:CGRectMake(0, 0, 1, 1)];
-    [self.favoritesButton pop_addAnimation:anim4 forKey:@"bottomBar"];
-}
-
 - (void)setupSearchBar{
     self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 230, 44)];
     self.searchBar.center = CGPointMake(self.navigationController.navigationBar.center.x, self.navigationController.navigationBar.center.y / 2);
@@ -251,9 +188,23 @@
                 return;
             }
             
-            self.dataSource = [EELArrayDataSource dataSourceWithItems:results];
+            NSMutableArray *sortedArray = [results mutableCopy]; // your mutable copy of the fetched objects
+            
+            for (EELDispensary *project in sortedArray) {
+                CLLocationDegrees lat = project.lat;
+                CLLocationDegrees lng = project.lng;
+                CLLocation *dispensaryLocation = [[CLLocation alloc] initWithLatitude:lat longitude:lng];
+                CLLocationDistance meters = [dispensaryLocation distanceFromLocation:[[CLLocation alloc] initWithLatitude:self.mapView.centerCoordinate.latitude longitude:self.mapView.centerCoordinate.longitude]];
+                project.currentDistance = @(meters);
+            }
+            
+            NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"currentDistance" ascending:YES];
+            [sortedArray sortUsingDescriptors:@[sort]];
+            
+            self.dataSource = [EELArrayDataSource dataSourceWithItems:sortedArray];
             
             [self addPins];
+            [self.tableView reloadData];
         }];
     }else{
         [[EELWMClient sharedClient] searchDoctorsWithTerm:searchTerm lat:lat lng:lng completionBlock:^(NSArray *results, NSError *error) {
@@ -262,9 +213,23 @@
                 return;
             }
             
-            self.dataSource = [EELArrayDataSource dataSourceWithItems:results];
+            NSMutableArray *sortedArray = [results mutableCopy]; // your mutable copy of the fetched objects
+            
+            for (EELDispensary *project in sortedArray) {
+                CLLocationDegrees lat = project.lat;
+                CLLocationDegrees lng = project.lng;
+                CLLocation *dispensaryLocation = [[CLLocation alloc] initWithLatitude:lat longitude:lng];
+                CLLocationDistance meters = [dispensaryLocation distanceFromLocation:[[CLLocation alloc] initWithLatitude:self.mapView.centerCoordinate.latitude longitude:self.mapView.centerCoordinate.longitude]];
+                project.currentDistance = @(meters);
+            }
+            
+            NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"currentDistance" ascending:YES];
+            [sortedArray sortUsingDescriptors:@[sort]];
+            
+            self.dataSource = [EELArrayDataSource dataSourceWithItems:sortedArray];
             
             [self addPins];
+            [self.tableView reloadData];
         }];
     }
 }
@@ -298,7 +263,17 @@
                                                               [self performSearch:self.searchBar.text];
                                                           }];
         
-        self.filterMenu = [[REMenu alloc] initWithItems:@[dispensaryItem, doctorItem]];
+        REMenuItem *favoriteItem = [[REMenuItem alloc] initWithTitle:@"Favorites"
+                                                             image:nil
+                                                  highlightedImage:nil
+                                                            action:^(REMenuItem *item) {
+                                                                NSLog(@"Item: %@", item);
+                                                                self.searchBar.placeholder = @"Search Favorites";
+                                                                self.searchBar.tag = 421;
+                                                                [self performSearch:self.searchBar.text];
+                                                            }];
+        
+        self.filterMenu = [[REMenu alloc] initWithItems:@[dispensaryItem, doctorItem, favoriteItem]];
         self.filterMenu.backgroundColor = MAIN_COLOR;
         self.filterMenu.borderColor = [UIColor grayColor];
         self.filterMenu.borderWidth = 0.5f;
@@ -427,8 +402,10 @@
         }
     }
     
-    if (self.dataSource.items.count == 0) {
-        [self performSearch:self.searchBar.text];
+    [self performSearch:self.searchBar.text];
+    
+    if (self.searchBar.isFirstResponder) {
+        [self.searchBar resignFirstResponder];
     }
 }
 
@@ -450,10 +427,86 @@
 }
 
 #pragma mark -
+#pragma mark - Table view data source
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // Return the number of rows in the section.
+    return self.dataSource.items.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    EELItemHeaderViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ItemHeaderCell" forIndexPath:indexPath];
+    EELDispensary *dispensary = [self.dataSource.items objectAtIndex:indexPath.row];
+    
+    // Configure the header cell
+    cell.nameLabel.text = [dispensary formattedNameString];
+    cell.typeLabel.text = [dispensary formattedTypeString];
+    
+    if (dispensary.opensAt.length > 0 && dispensary.closesAt.length > 0) {
+        cell.hoursLabel.text = [NSString stringWithFormat:@"Hours: %@ - %@", dispensary.opensAt, dispensary.closesAt];
+    }else{
+        cell.hoursLabel.text = @"Hours unavailable";
+    }
+    
+    // switch the text and color if we are closed
+    if (dispensary.isOpen.boolValue) {
+        cell.isOpenLabel.text = @"Currently Open";
+    }else{
+        cell.isOpenLabel.text = @"Currently Closed";
+    }
+    
+    cell.isOpenLabel.textColor = MAIN_COLOR;
+    
+    // hide reviews if we don't have a count
+    if (dispensary.ratingCount == 0) {
+        [cell.reviewsView setHidden:YES];
+    }else{
+        [cell.reviewsView setHidden:NO];
+        
+        cell.reviewsLabel.text = [NSString stringWithFormat:@"%.1f • %i reviews", dispensary.rating, dispensary.ratingCount];
+        [cell.reviewsLabel sizeToFit];
+        
+        CGFloat reviewStarsWidth = cell.reviewsStarsImage.frame.size.width;
+        reviewStarsWidth = (reviewStarsWidth*2) * (dispensary.rating * 0.1);
+        
+        CALayer *maskLayer = [CALayer layer];
+        maskLayer.backgroundColor = [UIColor blackColor].CGColor;
+        maskLayer.frame = CGRectMake(0.0, 0.0, reviewStarsWidth, reviewStarsWidth);
+        
+        cell.reviewsStarsImage.layer.mask = maskLayer;
+    }
+    
+    cell.addressLabel.text = [dispensary formattedAddressString];
+    
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 122;
+}
+
+- (NSIndexPath*)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    self.selectedDispensary = [self.dataSource.items objectAtIndex:indexPath.row];
+    
+    return indexPath;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self performSegueWithIdentifier:@"ShowItemDetail" sender:self];
+}
+
+#pragma mark -
 #pragma mark - UISearchDelegate
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     [self performSearch:self.searchBar.text];
-    [self performSegueWithIdentifier:@"ShowList" sender:self];
     [searchBar resignFirstResponder];
 }
 
@@ -470,6 +523,14 @@
     return YES;
 }
 
+-(void)didTapOnMapView{
+    [self.searchBar resignFirstResponder];
+}
+
+-(void)didTapOnTableView{
+    [self.searchBar resignFirstResponder];
+}
+
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
     
     if (toInterfaceOrientation==UIInterfaceOrientationLandscapeRight || toInterfaceOrientation==UIInterfaceOrientationLandscapeLeft) {
@@ -478,13 +539,15 @@
         }else{
             self.searchBar.frame = CGRectMake(40, -6.5f, 400, 40);
         }
+        
+        self.tableView.frame = CGRectMake(0, 0, 568, 320);
+        self.mapView.frame = CGRectMake(0, 0, 568, self.mapView.frame.size.height);
     }else{
         self.searchBar.frame = CGRectMake(45, 0, 230, 44);
+        
+        self.tableView.frame = CGRectMake(0, 0, 320, 568);
+        self.mapView.frame = CGRectMake(0, 0, 320, self.mapView.frame.size.height);
     }
-}
-
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
-    [self showBottomButtons];
 }
 
 @end
