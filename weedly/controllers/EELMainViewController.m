@@ -16,7 +16,7 @@
 
 #import "EELArrayDataSource.h"
 
-#define LATITUDE_OFFSET -0.02f
+#define LATITUDE_OFFSET -0.01f
 
 @interface EELMainViewController ()
 
@@ -331,13 +331,12 @@
 - (void)zoomToUser:(BOOL)animated{
     if (self.mapView.userLocationVisible) {
         MKCoordinateRegion region;
-        region.center = self.mapView.userLocation.coordinate;
-        
+        region.center = CLLocationCoordinate2DMake(self.mapView.userLocation.coordinate.latitude + LATITUDE_OFFSET, self.mapView.userLocation.coordinate.longitude);
         MKCoordinateSpan span;
         
         if (self.mapView.region.span.latitudeDelta > 1) {
-            span.latitudeDelta  = 0.12; // Change these values to change the zoom
-            span.longitudeDelta = 0.12;
+            span.latitudeDelta  = 0.17; // Change these values to change the zoom
+            span.longitudeDelta = 0.17;
             region.span = span;
         }else{
             region.span = self.mapView.region.span;
@@ -349,8 +348,8 @@
         region.center = CLLocationCoordinate2DMake(37.733972, -122.431297);
         
         MKCoordinateSpan span;
-        span.latitudeDelta  = 0.12; // Change these values to change the zoom
-        span.longitudeDelta = 0.12;
+        span.latitudeDelta  = 0.17; // Change these values to change the zoom
+        span.longitudeDelta = 0.17;
         region.span = span;
         
         [self.mapView setRegion:region animated:animated];
@@ -538,22 +537,18 @@
 #pragma mark -
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    //NSLog(@"%f - %f", scrollView.frame.origin.y, scrollView.contentOffset.y);
+    NSLog(@"%f - %f", scrollView.frame.origin.y, scrollView.contentOffset.y);
     
-    // in its normal state
-    if (scrollView.frame.origin.y == 204) {
+    /*if(scrollView.frame.origin.y > 0){
+        CGRect frame = scrollView.frame;
+        frame.origin.y = scrollView.frame.origin.y-scrollView.contentOffset.y;
+        frame.size.height = scrollView.frame.size.height+scrollView.contentOffset.y;
+        scrollView.frame = frame;
         
-        // scrolling DOWN
-        if (scrollView.contentOffset.y < 0) {
-            NSLog(@"down");
-        }
-        
-        // scrolling up
-        else{
-            NSLog(@"up");
-        }
-    }
+        scrollView.contentOffset = CGPointMake(0, 0);
+    }*/
 }
+
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
 
@@ -591,14 +586,8 @@
         }else{
             self.searchBar.frame = CGRectMake(40, -6.5f, 400, 40);
         }
-        
-        self.tableView.frame = CGRectMake(0, 0, 568, 320);
-        self.mapView.frame = CGRectMake(0, 0, 568, self.mapView.frame.size.height);
     }else{
         self.searchBar.frame = CGRectMake(45, 0, 230, 44);
-        
-        self.tableView.frame = CGRectMake(0, 0, 320, 568);
-        self.mapView.frame = CGRectMake(0, 0, 320, self.mapView.frame.size.height);
     }
 }
 
