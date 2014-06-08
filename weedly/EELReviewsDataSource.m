@@ -11,13 +11,12 @@
 #import "EELReviewsDataSource.h"
 #import "EELWMClient.h"
 
-#import "AAPLDispensaryReviewCell.h"
+#import "EELDispensaryReviewCell.h"
 
 #import "UICollectionView+Helpers.h"
 
 @interface EELReviewsDataSource ()
 @property (nonatomic, strong) EELDispensary *dispensary;
-@property (nonatomic, strong) NSDateFormatter *dateFormatter;
 @end
 
 @implementation EELReviewsDataSource
@@ -34,9 +33,7 @@
         return nil;
 
     _dispensary = dispensary;
-    _dateFormatter = [[NSDateFormatter alloc] init];
-    _dateFormatter.dateStyle = NSDateFormatterShortStyle;
-    _dateFormatter.timeStyle = NSDateFormatterShortStyle;
+    
     return self;
 }
 
@@ -64,12 +61,12 @@
 - (void)registerReusableViewsWithCollectionView:(UICollectionView *)collectionView
 {
     [super registerReusableViewsWithCollectionView:collectionView];
-    [collectionView registerClass:[AAPLDispensaryReviewCell class] forCellWithReuseIdentifier:NSStringFromClass([AAPLDispensaryReviewCell class])];
+    [collectionView registerClass:[EELDispensaryReviewCell class] forCellWithReuseIdentifier:NSStringFromClass([EELDispensaryReviewCell class])];
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView sizeFittingSize:(CGSize)size forItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    AAPLDispensaryReviewCell *cell = (AAPLDispensaryReviewCell *)[self collectionView:collectionView cellForItemAtIndexPath:indexPath];
+    EELDispensaryReviewCell *cell = (EELDispensaryReviewCell *)[self collectionView:collectionView cellForItemAtIndexPath:indexPath];
     CGSize fittingSize = [cell aapl_preferredLayoutSizeFittingSize:size];
     [cell removeFromSuperview];
     return fittingSize;
@@ -77,7 +74,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    AAPLDispensaryReviewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([AAPLDispensaryReviewCell class]) forIndexPath:indexPath];
+    EELDispensaryReviewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([EELDispensaryReviewCell class]) forIndexPath:indexPath];
     EELReview *review = [self itemAtIndexPath:indexPath];
     
     [cell configureWithReview:review];

@@ -39,7 +39,7 @@
 
     AAPLLayoutSupplementaryMetrics *globalHeader = [self.dataSource newHeaderForKey:@"globalHeader"];
     globalHeader.visibleWhileShowingPlaceholder = YES;
-    globalHeader.height = 100;
+    globalHeader.height = 110;
     globalHeader.supplementaryViewClass = [EELDispensaryDetailHeader class];
     globalHeader.configureView = ^(UICollectionReusableView *view, AAPLDataSource *dataSource, NSIndexPath *indexPath) {
         EELDispensaryDetailHeader *headerView = (EELDispensaryDetailHeader *)view;

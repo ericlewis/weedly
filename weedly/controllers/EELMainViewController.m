@@ -16,7 +16,7 @@
 
 #import "EELArrayDataSource.h"
 
-#define LATITUDE_OFFSET -0.01f
+#define LATITUDE_OFFSET 0.035f
 
 @interface EELMainViewController ()
 
@@ -149,11 +149,13 @@
     
     [[MTLocationManager sharedInstance] whenLocationChanged:^(CLLocation *location) {
         MKCoordinateRegion region;
-        region.center = location.coordinate;
+        CLLocationCoordinate2D coords = location.coordinate;
+        coords.latitude = coords.latitude - LATITUDE_OFFSET;
+        region.center = coords;
         
         MKCoordinateSpan span;
-        span.latitudeDelta  = 0.15; // Change these values to change the zoom
-        span.longitudeDelta = 0.15;
+        span.latitudeDelta  = 0.12; // Change these values to change the zoom
+        span.longitudeDelta = 0.12;
         region.span = span;
         
         [self.mapView setRegion:region animated:YES];
@@ -179,7 +181,7 @@
 #pragma mark -
 #pragma mark - Actions
 - (void)performSearch:(NSString*)searchTerm{
-    NSString *latVal = [NSString stringWithFormat:@"%.1f", self.mapView.centerCoordinate.latitude - LATITUDE_OFFSET];
+    NSString *latVal = [NSString stringWithFormat:@"%.1f", self.mapView.centerCoordinate.latitude];
     NSString *lngVal = [NSString stringWithFormat:@"%.1f", self.mapView.centerCoordinate.longitude];
 
     [self performSearch:searchTerm lat:(CGFloat)latVal.floatValue lng:(CGFloat)lngVal.floatValue];
@@ -199,7 +201,7 @@
                 CLLocationDegrees lat = project.lat;
                 CLLocationDegrees lng = project.lng;
                 CLLocation *dispensaryLocation = [[CLLocation alloc] initWithLatitude:lat longitude:lng];
-                CLLocationDistance meters = [dispensaryLocation distanceFromLocation:[[CLLocation alloc] initWithLatitude:self.mapView.centerCoordinate.latitude - LATITUDE_OFFSET longitude:self.mapView.centerCoordinate.longitude]];
+                CLLocationDistance meters = [dispensaryLocation distanceFromLocation:[[CLLocation alloc] initWithLatitude:self.mapView.centerCoordinate.latitude longitude:self.mapView.centerCoordinate.longitude]];
                 project.currentDistance = @(meters);
             }
             
@@ -433,7 +435,9 @@
         }
     }
     
-    [self performSearch:self.searchBar.text];
+    if (self.dataSource.items.count != self.mapView.annotations.count) {
+        [self performSearch:self.searchBar.text];
+    }
     
     if (self.searchBar.isFirstResponder) {
         [self.searchBar resignFirstResponder];

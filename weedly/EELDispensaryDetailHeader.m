@@ -73,8 +73,8 @@
     NSMutableArray *constraints = [NSMutableArray array];
     [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_nameLabel]-[_favoriteButton]-|" options:0 metrics:nil views:views]];
     [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_hoursLabel]-[_favoriteButton]-|" options:0 metrics:nil views:views]];
-    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"[_ratingLabel]-[_favoriteButton]-|" options:0 metrics:nil views:views]];
-    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_isOpenLabel]-3-[_ratingLabel]" options:NSLayoutFormatAlignAllBaseline metrics:nil views:views]];
+    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_isOpenLabel]-[_ratingLabel]-|" options:NSLayoutFormatAlignAllBaseline metrics:nil views:views]];
+    
     [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[_nameLabel][_hoursLabel]-3-[_ratingLabel]" options:0 metrics:nil views:views]];
     [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[_favoriteButton]" options:0 metrics:nil views:views]];
     
@@ -100,7 +100,7 @@
 
 - (void)configureWithDispensary:(EELDispensary *)dispensary
 {
-    self.nameLabel.text = [dispensary formattedNameString];
+    self.nameLabel.text = dispensary.name;
     
     if (dispensary.isOpen.boolValue) {
         self.isOpenLabel.text = @"Currently Open";
@@ -109,13 +109,12 @@
     }
     
     if (dispensary.ratingCount > 0) {
-        self.ratingLabel.text = [@"" stringByPaddingToLength:dispensary.rating withString:@"★" startingAtIndex:0];
+        self.ratingLabel.text = [NSString stringWithFormat:@"%@ • %d Reviews", [@"" stringByPaddingToLength:dispensary.rating withString:@"★" startingAtIndex:0], dispensary.ratingCount];
     }else{
         self.ratingLabel.text = @"No ratings";
     }
     
-    self.hoursLabel.text = [NSString stringWithFormat:@"%@\nHours: %@ - %@", [dispensary formattedTypeString], [dispensary.opensAt stringByReplacingOccurrencesOfString:@" " withString:@""], [dispensary.closesAt stringByReplacingOccurrencesOfString:@" " withString:@""]];
-;
+    self.hoursLabel.text = [NSString stringWithFormat:@"%@\nOpen %@ to %@", [dispensary formattedTypeString], [dispensary.opensAt stringByReplacingOccurrencesOfString:@" " withString:@""].uppercaseString, [dispensary.closesAt stringByReplacingOccurrencesOfString:@" " withString:@""].uppercaseString];
 }
 
 - (void)favoriteTapped:(id)sender

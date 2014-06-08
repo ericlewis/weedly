@@ -12,7 +12,7 @@
 
 @class EELReview;
 
-@interface AAPLDispensaryReviewCell : AAPLCollectionViewCell
+@interface EELDispensaryReviewCell : AAPLCollectionViewCell
 
 - (void)configureWithReview:(EELReview *)review;
 
