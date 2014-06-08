@@ -76,12 +76,25 @@
     // landscape fix search
     if (UIDeviceOrientationIsLandscape(self.interfaceOrientation)) {
         if (IS_IPHONE_5) {
-            self.searchBar.frame = CGRectMake(90, -6.5f, 400, 40);
+            if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
+                self.searchBar.frame = CGRectMake(90, -4.f, 400, 40);
+            }else{
+                self.searchBar.frame = CGRectMake(90, -6.5f, 400, 40);
+            }
         }else{
-            self.searchBar.frame = CGRectMake(40, -6.5f, 400, 40);
+            if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
+                self.searchBar.frame = CGRectMake(40, -4.f, 400, 40);
+            }else{
+                self.searchBar.frame = CGRectMake(40, -6.5f, 400, 40);
+            }
         }
     }else{
-        self.searchBar.frame = CGRectMake(0, 0, 275, 44);
+        
+        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
+            self.searchBar.frame = CGRectMake(10, 0, 260, 44);
+        }else{
+            self.searchBar.frame = CGRectMake(0, 0, 275, 44);
+        }
     }
 }
 
@@ -602,12 +615,24 @@
     
     if (toInterfaceOrientation==UIInterfaceOrientationLandscapeRight || toInterfaceOrientation==UIInterfaceOrientationLandscapeLeft) {
         if (IS_IPHONE_5) {
-            self.searchBar.frame = CGRectMake(90, -6.5f, 400, 40);
+            if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
+                self.searchBar.frame = CGRectMake(90, -4.f, 400, 40);
+            }else{
+                self.searchBar.frame = CGRectMake(90, -6.5f, 400, 40);
+            }
         }else{
-            self.searchBar.frame = CGRectMake(40, -6.5f, 400, 40);
+            if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
+                self.searchBar.frame = CGRectMake(40, -4.f, 400, 40);
+            }else{
+                self.searchBar.frame = CGRectMake(40, -6.5f, 400, 40);
+            }
         }
     }else{
-        self.searchBar.frame = CGRectMake(0, 0, 275, 44);
+        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
+            self.searchBar.frame = CGRectMake(10, 0, 260, 44);
+        }else{
+            self.searchBar.frame = CGRectMake(0, 0, 275, 44);
+        }
     }
 }
 
