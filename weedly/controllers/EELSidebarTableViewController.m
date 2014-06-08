@@ -44,7 +44,6 @@
                           //@{@"image": [UIImage imageNamed:@"accountIcon"],  @"title": ACCOUNT_TITLE},
                           @{@"image": [UIImage imageNamed:@"dealsIcon"],    @"title": DEALS_TITLE},
                           @{@"image": [UIImage imageNamed:@"map_marker-128"], @"title": MAP_TITLE},
-                          @{@"image": [UIImage imageNamed:@"smokinonIcon"], @"title": SMOKIN_TITLE},
                           @{@"image": [UIImage imageNamed:@"alarmIcon"],    @"title": ALARM_TITLE},
                           ];
     
