@@ -62,12 +62,12 @@
     
     self.navigationController.navigationBar.translucent = NO;
     
+    [self.tableView registerNib:[UINib nibWithNibName:@"EELItemHeaderViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"ItemHeaderFirstCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"EELItemHeaderViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"ItemHeaderCell"];
     self.mapView.delegate = self;
     
-    self.tableView.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    self.tableView.layer.borderWidth = 1.0;
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
+    self.tableView.backgroundColor = [UIColor clearColor];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -471,8 +471,21 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    EELItemHeaderViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ItemHeaderCell" forIndexPath:indexPath];
+    EELItemHeaderViewCell *cell;
     EELDispensary *dispensary = [self.dataSource.items objectAtIndex:indexPath.row];
+    
+    if (indexPath.row == 0) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"ItemHeaderFirstCell" forIndexPath:indexPath];
+        cell.clipsToBounds = YES;
+        CALayer *rightBorder = [CALayer layer];
+        rightBorder.borderColor = [UIColor lightGrayColor].CGColor;
+        rightBorder.borderWidth = 1;
+        rightBorder.frame = CGRectMake(0, 0, CGRectGetWidth(cell.frame), 1);
+        [cell.layer addSublayer:rightBorder];
+        
+    }else{
+        cell = [tableView dequeueReusableCellWithIdentifier:@"ItemHeaderCell" forIndexPath:indexPath];
+    }
     
     // Configure the header cell
     cell.nameLabel.text = [dispensary formattedNameString];
@@ -537,14 +550,13 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     NSLog(@"%f - %f", scrollView.frame.origin.y, scrollView.contentOffset.y);
     
-    /*if(scrollView.frame.origin.y > 0){
-        CGRect frame = scrollView.frame;
-        frame.origin.y = scrollView.frame.origin.y-scrollView.contentOffset.y;
-        frame.size.height = scrollView.frame.size.height+scrollView.contentOffset.y;
-        scrollView.frame = frame;
+    if (scrollView.contentOffset.y < -40) {
+        CGRect frame = self.tableView.frame;
+        frame.origin.y = 204;
+        frame.size.height = 300;
         
-        scrollView.contentOffset = CGPointMake(0, 0);
-    }*/
+        self.tableView.frame = frame;
+    }
 }
 
 
@@ -564,6 +576,16 @@
 }
 
 - (BOOL)searchBar:(UISearchBar *)searchBar shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    return YES;
+}
+
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
+    CGRect frame = self.tableView.frame;
+    frame.origin.y = 0;
+    frame.size.height = self.view.frame.size.height;
+    
+    self.tableView.frame = frame;
+    
     return YES;
 }
 
