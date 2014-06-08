@@ -22,13 +22,7 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 
     UINavigationController *front = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"FrontViewController"];
-    UINavigationController *left = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SideViewController"];
-    
-    PKRevealController *revealController = [PKRevealController revealControllerWithFrontViewController:front leftViewController:left];
-    revealController.animationDuration = 0.19f;
-    revealController.delegate = self;
-    
-    self.window.rootViewController = revealController;
+    self.window.rootViewController = front;
     
     return YES;
 }

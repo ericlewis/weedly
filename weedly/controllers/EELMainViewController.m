@@ -81,7 +81,7 @@
             self.searchBar.frame = CGRectMake(40, -6.5f, 400, 40);
         }
     }else{
-        self.searchBar.frame = CGRectMake(45, 0, 230, 44);
+        self.searchBar.frame = CGRectMake(0, 0, 275, 44);
     }
 }
 
@@ -265,11 +265,6 @@
     }
 }
 
-- (IBAction)showSidebar:(id)sender {
-    [self.searchBar resignFirstResponder];
-    [self.revealController showViewController:self.revealController.leftViewController];
-}
-
 - (IBAction)showFilterDropdown:(id)sender {
     if (self.filterMenu.isOpen) {
         [self.filterMenu close];
@@ -435,7 +430,7 @@
             [[view superview] bringSubviewToFront:view];
         }
     }
-    
+
     [self performSearch:self.searchBar.text];
     
     if (self.searchBar.isFirstResponder) {
@@ -590,7 +585,7 @@
             self.searchBar.frame = CGRectMake(40, -6.5f, 400, 40);
         }
     }else{
-        self.searchBar.frame = CGRectMake(45, 0, 230, 44);
+        self.searchBar.frame = CGRectMake(0, 0, 275, 44);
     }
 }
 
