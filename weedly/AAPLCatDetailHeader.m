@@ -9,7 +9,6 @@
  */
 
 #import "AAPLCatDetailHeader.h"
-//#import "AAPLCat.h"
 
 #import "UIView+Helpers.h"
 
@@ -19,9 +18,9 @@
 
 @interface AAPLCatDetailHeader ()
 @property (nonatomic, strong) UILabel *nameLabel;
-@property (nonatomic, strong) UILabel *shortDescription;
-@property (nonatomic, strong) UILabel *conservationStatusValue;
-@property (nonatomic, strong) UILabel *conservationStatusLabel;
+@property (nonatomic, strong) UILabel *hoursLabel;
+@property (nonatomic, strong) UILabel *ratingLabel;
+@property (nonatomic, strong) UILabel *isOpenLabel;
 @property (nonatomic, strong) UIButton *favoriteButton;
 @property (nonatomic, getter=isFavorite) BOOL favorite;
 @end
@@ -36,47 +35,47 @@
     
     _nameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     _nameLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    _nameLabel.font = [UIFont systemFontOfSize:24];
+    _nameLabel.font = [UIFont systemFontOfSize:18];
     _nameLabel.numberOfLines = 1;
     [self addSubview:_nameLabel];
     
-    _shortDescription = [[UILabel alloc] initWithFrame:CGRectZero];
-    _shortDescription.translatesAutoresizingMaskIntoConstraints = NO;
-    _shortDescription.font = [UIFont systemFontOfSize:14];
-    _shortDescription.numberOfLines = 2;
-    _shortDescription.textColor = [UIColor colorWithWhite:0.4 alpha:1];
-    [self addSubview:_shortDescription];
+    _hoursLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    _hoursLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    _hoursLabel.font = [UIFont systemFontOfSize:14];
+    _hoursLabel.numberOfLines = 2;
+    _hoursLabel.textColor = [UIColor colorWithWhite:0.6 alpha:1];
+    [self addSubview:_hoursLabel];
     
-    _conservationStatusLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    _conservationStatusLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    _conservationStatusLabel.font = [UIFont systemFontOfSize:12];
-    _conservationStatusLabel.numberOfLines = 1;
-    _conservationStatusLabel.textColor = [UIColor colorWithWhite:0.6 alpha:1];
-    [self addSubview:_conservationStatusLabel];
+    _isOpenLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    _isOpenLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    _isOpenLabel.font = [UIFont systemFontOfSize:12];
+    _isOpenLabel.numberOfLines = 1;
+    _isOpenLabel.textColor = [UIColor colorWithWhite:0.6 alpha:1];
+    [self addSubview:_isOpenLabel];
     
-    _conservationStatusValue = [[UILabel alloc] initWithFrame:CGRectZero];
-    _conservationStatusValue.translatesAutoresizingMaskIntoConstraints = NO;
-    _conservationStatusValue.font = [UIFont systemFontOfSize:12];
-    _conservationStatusValue.numberOfLines = 1;
-    _conservationStatusLabel.textColor = [UIColor colorWithWhite:0.4 alpha:1];
-    [self addSubview:_conservationStatusValue];
+    _ratingLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    _ratingLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    _ratingLabel.font = [UIFont systemFontOfSize:12];
+    _ratingLabel.numberOfLines = 1;
+    _ratingLabel.textColor = [UIColor orangeColor];
+    [self addSubview:_ratingLabel];
     
     _favoriteButton = [UIButton buttonWithType:UIButtonTypeSystem];
     _favoriteButton.translatesAutoresizingMaskIntoConstraints = NO;
     [_favoriteButton setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
-    [_favoriteButton setImage:[UIImage imageNamed:@"NotFavorite"] forState:UIControlStateNormal];
+    [_favoriteButton setImage:[UIImage imageNamed:@"like-75"] forState:UIControlStateNormal];
     [_favoriteButton addTarget:self action:@selector(favoriteTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [_favoriteButton setTintColor:[UIColor blackColor]];
     
     [self addSubview:_favoriteButton];
     
-    NSDictionary *views = NSDictionaryOfVariableBindings(_nameLabel, _conservationStatusLabel, _conservationStatusValue, _favoriteButton, _shortDescription);
+    NSDictionary *views = NSDictionaryOfVariableBindings(_nameLabel, _isOpenLabel, _ratingLabel, _favoriteButton, _hoursLabel);
     NSMutableArray *constraints = [NSMutableArray array];
     [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_nameLabel]-[_favoriteButton]-|" options:0 metrics:nil views:views]];
-    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_shortDescription]-[_favoriteButton]-|" options:0 metrics:nil views:views]];
-    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"[_conservationStatusValue]-[_favoriteButton]-|" options:0 metrics:nil views:views]];
-    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_conservationStatusLabel]-3-[_conservationStatusValue]" options:NSLayoutFormatAlignAllBaseline metrics:nil views:views]];
-    
-    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[_nameLabel][_shortDescription]-3-[_conservationStatusValue]" options:0 metrics:nil views:views]];
+    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_hoursLabel]-[_favoriteButton]-|" options:0 metrics:nil views:views]];
+    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"[_ratingLabel]-[_favoriteButton]-|" options:0 metrics:nil views:views]];
+    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_isOpenLabel]-3-[_ratingLabel]" options:NSLayoutFormatAlignAllBaseline metrics:nil views:views]];
+    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[_nameLabel][_hoursLabel]-3-[_ratingLabel]" options:0 metrics:nil views:views]];
     [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[_favoriteButton]" options:0 metrics:nil views:views]];
     
     [self addConstraints:constraints];
@@ -92,23 +91,31 @@
     
     UIImage *image;
     if (favorite)
-        image = [UIImage imageNamed:@"Favorite"];
+        image = [UIImage imageNamed:@"liked-75"];
     else
-        image = [UIImage imageNamed:@"NotFavorite"];
+        image = [UIImage imageNamed:@"like-75"];
     
     [_favoriteButton setImage:image forState:UIControlStateNormal];
 }
 
 - (void)configureWithDispensary:(EELDispensary *)dispensary
 {
-    self.nameLabel.text = dispensary.name;
-    /*self.nameLabel.text = cat.name;
-    self.conservationStatusValue.text = cat.conservationStatus;
-    self.shortDescription.text = cat.shortDescription;
-    if (cat.conservationStatus)
-        self.conservationStatusLabel.text = NSLocalizedString(@"Conservation Status:", @"Conservation Status Label");
+    self.nameLabel.text = [dispensary formattedNameString];
     
-    self.favorite = cat.favorite;*/
+    if (dispensary.isOpen.boolValue) {
+        self.isOpenLabel.text = @"Currently Open";
+    }else{
+        self.isOpenLabel.text = @"Currently Closed";
+    }
+    
+    if (dispensary.ratingCount > 0) {
+        self.ratingLabel.text = [@"" stringByPaddingToLength:dispensary.rating withString:@"★" startingAtIndex:0];
+    }else{
+        self.ratingLabel.text = @"No ratings";
+    }
+    
+    self.hoursLabel.text = [NSString stringWithFormat:@"%@\nHours: %@ - %@", [dispensary formattedTypeString], [dispensary.opensAt stringByReplacingOccurrencesOfString:@" " withString:@""], [dispensary.closesAt stringByReplacingOccurrencesOfString:@" " withString:@""]];
+;
 }
 
 - (void)favoriteTapped:(id)sender

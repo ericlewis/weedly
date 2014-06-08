@@ -26,6 +26,8 @@
 {
     [super viewDidLoad];
     
+    self.title = self.dispensary.name;
+    
     self.dataSource = [[AAPLSegmentedDataSource alloc] init];
     self.detailDataSource = [self newDetailDataSource];
     self.reviewsDataSource = [self newReviewsDataSource];
