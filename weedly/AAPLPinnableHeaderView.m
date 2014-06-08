@@ -42,7 +42,7 @@
     [constraints addObject:[NSLayoutConstraint constraintWithItem:_borderView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0]];
 
     [self addConstraints:constraints];
-
+    
     return self;
 }
 

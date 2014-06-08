@@ -11,12 +11,12 @@
 #import "EELDispensaryDetailDataSource.h"
 #import "EELReviewsDataSource.h"
 
-//#import "AAPLCatDetailHeader.h"
+#import "AAPLCatDetailHeader.h"
 
 @interface EELDispensaryDetailViewController ()
 @property (nonatomic, strong) AAPLSegmentedDataSource *dataSource;
 @property (nonatomic, strong) EELDispensaryDetailDataSource *detailDataSource;
-@property (nonatomic, strong) EELReviewsDataSource *sightingsDataSource;
+@property (nonatomic, strong) EELReviewsDataSource *reviewsDataSource;
 @property (nonatomic, strong) id selectedDataSourceObserver;
 @end
 
@@ -28,10 +28,22 @@
     
     self.dataSource = [[AAPLSegmentedDataSource alloc] init];
     self.detailDataSource = [self newDetailDataSource];
-    self.sightingsDataSource = [self newReviewsDataSource];
+    self.reviewsDataSource = [self newReviewsDataSource];
     
     [self.dataSource addDataSource:self.detailDataSource];
-    [self.dataSource addDataSource:self.sightingsDataSource];
+    [self.dataSource addDataSource:self.reviewsDataSource];
+
+    __weak typeof(&*self) weakself = self;
+
+    AAPLLayoutSupplementaryMetrics *globalHeader = [self.dataSource newHeaderForKey:@"globalHeader"];
+    globalHeader.visibleWhileShowingPlaceholder = YES;
+    globalHeader.height = 100;
+    globalHeader.supplementaryViewClass = [AAPLCatDetailHeader class];
+    globalHeader.configureView = ^(UICollectionReusableView *view, AAPLDataSource *dataSource, NSIndexPath *indexPath) {
+        AAPLCatDetailHeader *headerView = (AAPLCatDetailHeader *)view;
+        headerView.bottomBorderColor = nil;
+        [headerView configureWithDispensary:weakself.dispensary];
+    };
         
     self.collectionView.dataSource = self.dataSource;
 }
@@ -39,12 +51,12 @@
 - (EELDispensaryDetailDataSource *)newDetailDataSource
 {
     EELDispensaryDetailDataSource *dataSource = [[EELDispensaryDetailDataSource alloc] initWithDispensary:self.dispensary];
-    dataSource.title = NSLocalizedString(@"Info", @"Title of cat details section");
+    dataSource.title = NSLocalizedString(@"Info", @"Title of dispensary details section");
     
-    dataSource.noContentTitle = NSLocalizedString(@"No Cat", @"The title of the placeholder to show if the cat has no data");
-    dataSource.noContentMessage = NSLocalizedString(@"This cat has no information.", @"The message to show when the cat has no information");
+    dataSource.noContentTitle = NSLocalizedString(@"No Dispensary", @"The title of the placeholder to show if the dispensary has no data");
+    dataSource.noContentMessage = NSLocalizedString(@"This dispensary has no information.", @"The message to show when the dispensary has no information");
     
-    dataSource.errorTitle = NSLocalizedString(@"Unable to Load", @"Error message title to show when unable to load cat details");
+    dataSource.errorTitle = NSLocalizedString(@"Unable to Load", @"Error message title to show when unable to load dispensary details");
     
     NSString *errorMessage = NSLocalizedString(@"A network problem occurred loading details for “%@”.", @"Error message to show when unable to load cat details.");
     dataSource.errorMessage = [NSString localizedStringWithFormat:errorMessage, self.dispensary.name];
@@ -55,9 +67,9 @@
 - (EELReviewsDataSource *)newReviewsDataSource
 {
     EELReviewsDataSource *dataSource = [[EELReviewsDataSource alloc] initWithDispensary:self.dispensary];
-    dataSource.title = NSLocalizedString(@"Reviews", @"Title of cat sightings section");
-    dataSource.noContentTitle = NSLocalizedString(@"No Sightings", @"Title of the no sightings placeholder message");
-    dataSource.noContentMessage = NSLocalizedString(@"This cat has not been sighted recently.", @"The message to show when the cat has not been sighted recently");
+    dataSource.title = NSLocalizedString(@"Reviews", @"Title of reviews section");
+    dataSource.noContentTitle = NSLocalizedString(@"No Reviews", @"Title of the no reviews placeholder message");
+    dataSource.noContentMessage = NSLocalizedString(@"No reviews are currently available.", @"The message to show when the reviews are empty");
     
     dataSource.defaultMetrics.separatorColor = [UIColor colorWithWhite:224/255.0 alpha:1];
     dataSource.defaultMetrics.separatorInsets = UIEdgeInsetsMake(0, 15, 0, 0);

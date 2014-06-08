@@ -24,6 +24,7 @@
         return nil;
 
     _segmentedControl = [[UISegmentedControl alloc] initWithFrame:CGRectZero];
+    _segmentedControl.tintColor = MAIN_COLOR;
     _segmentedControl.translatesAutoresizingMaskIntoConstraints = NO;
     [_segmentedControl setContentHuggingPriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisVertical];
     [self addSubview:_segmentedControl];

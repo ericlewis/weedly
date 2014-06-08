@@ -59,4 +59,28 @@
     }];
 }
 
+- (void)registerReusableViewsWithCollectionView:(UICollectionView *)collectionView
+{
+    [super registerReusableViewsWithCollectionView:collectionView];
+    [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:NSStringFromClass([UICollectionViewCell class])];
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView sizeFittingSize:(CGSize)size forItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewCell *cell = (UICollectionViewCell *)[self collectionView:collectionView cellForItemAtIndexPath:indexPath];
+    CGSize fittingSize = [cell aapl_preferredLayoutSizeFittingSize:size];
+    [cell removeFromSuperview];
+    return fittingSize;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([UICollectionViewCell class]) forIndexPath:indexPath];
+    EELReview *review = [self itemAtIndexPath:indexPath];
+    
+    // setup the cell
+    
+    return cell;
+}
+
 @end
