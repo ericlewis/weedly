@@ -33,7 +33,8 @@
         return nil;
 
     _dispensary = dispensary;
-    
+    self.defaultMetrics.rowHeight = AAPLRowHeightVariable;
+
     return self;
 }
 

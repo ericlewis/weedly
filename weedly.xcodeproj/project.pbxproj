@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4D06F69719186AF1005597F9 /* EELMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D06F69619186AF1005597F9 /* EELMenu.m */; };
 		4D544BA219441518000718D7 /* EELDispensaryReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D544BA119441518000718D7 /* EELDispensaryReviewCell.m */; };
+		4D544BA61944F1E9000718D7 /* EELDispensaryInfoListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D544BA51944F1E9000718D7 /* EELDispensaryInfoListDataSource.m */; };
 		4D75E0991943F42200A25AB6 /* AAPLAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E06E1943F42200A25AB6 /* AAPLAction.m */; };
 		4D75E09A1943F42200A25AB6 /* AAPLContentLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0701943F42200A25AB6 /* AAPLContentLoading.m */; };
 		4D75E09B1943F42200A25AB6 /* AAPLStateMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0721943F42200A25AB6 /* AAPLStateMachine.m */; };
@@ -94,6 +95,8 @@
 		4D06F69619186AF1005597F9 /* EELMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELMenu.m; path = models/EELMenu.m; sourceTree = "<group>"; };
 		4D544BA019441518000718D7 /* EELDispensaryReviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EELDispensaryReviewCell.h; sourceTree = "<group>"; };
 		4D544BA119441518000718D7 /* EELDispensaryReviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EELDispensaryReviewCell.m; sourceTree = "<group>"; };
+		4D544BA41944F1E9000718D7 /* EELDispensaryInfoListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EELDispensaryInfoListDataSource.h; sourceTree = "<group>"; };
+		4D544BA51944F1E9000718D7 /* EELDispensaryInfoListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EELDispensaryInfoListDataSource.m; sourceTree = "<group>"; };
 		4D75E06D1943F42200A25AB6 /* AAPLAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AAPLAction.h; path = ../../../Downloads/AdvancedUserInterfacesUsingCollectionView/AdvancedCollectionView/AAPLAction.h; sourceTree = "<group>"; };
 		4D75E06E1943F42200A25AB6 /* AAPLAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AAPLAction.m; path = ../../../Downloads/AdvancedUserInterfacesUsingCollectionView/AdvancedCollectionView/AAPLAction.m; sourceTree = "<group>"; };
 		4D75E06F1943F42200A25AB6 /* AAPLContentLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AAPLContentLoading.h; path = ../../../Downloads/AdvancedUserInterfacesUsingCollectionView/AdvancedCollectionView/AAPLContentLoading.h; sourceTree = "<group>"; };
@@ -360,6 +363,8 @@
 		4D75E0C21943F71C00A25AB6 /* DataSources */ = {
 			isa = PBXGroup;
 			children = (
+				4D544BA41944F1E9000718D7 /* EELDispensaryInfoListDataSource.h */,
+				4D544BA51944F1E9000718D7 /* EELDispensaryInfoListDataSource.m */,
 				4D75E0C31943F73A00A25AB6 /* EELDispensaryDetailDataSource.h */,
 				4D75E0C41943F73A00A25AB6 /* EELDispensaryDetailDataSource.m */,
 				4D75E0CC1943F96C00A25AB6 /* EELReviewsDataSource.h */,
@@ -704,6 +709,7 @@
 				4D75E09B1943F42200A25AB6 /* AAPLStateMachine.m in Sources */,
 				4D75E09E1943F42200A25AB6 /* UICollectionView+Helpers.m in Sources */,
 				4D75E0AA1943F42200A25AB6 /* AAPLSwipeToEditStateMachine.m in Sources */,
+				4D544BA61944F1E9000718D7 /* EELDispensaryInfoListDataSource.m in Sources */,
 				4D75E09D1943F42200A25AB6 /* NSObject+KVOBlock.m in Sources */,
 				4D9DDE1719172142006E5B03 /* EELMapHeaderTableViewCell.m in Sources */,
 				4D75E0CB1943F79400A25AB6 /* AAPLTextValueDataSource.m in Sources */,

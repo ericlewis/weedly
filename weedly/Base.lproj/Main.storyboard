@@ -343,7 +343,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MenuItem" textLabel="tF8-Dq-VQf" detailTextLabel="eqM-Yw-hUf" style="IBUITableViewCellStyleSubtitle" id="U0n-qJ-VpN">
-                                <rect key="frame" x="0.0" y="22" width="320" height="50"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U0n-qJ-VpN" id="SJH-l3-b9l">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -402,6 +402,9 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="HzU-dp-llG"/>
+                    <connections>
+                        <segue destination="ThX-tb-Utd" kind="push" identifier="ShowMenu" id="geA-yh-M22"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Avj-Sd-BUH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

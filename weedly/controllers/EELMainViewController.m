@@ -435,9 +435,7 @@
         }
     }
     
-    if (self.dataSource.items.count != self.mapView.annotations.count) {
-        [self performSearch:self.searchBar.text];
-    }
+    [self performSearch:self.searchBar.text];
     
     if (self.searchBar.isFirstResponder) {
         [self.searchBar resignFirstResponder];

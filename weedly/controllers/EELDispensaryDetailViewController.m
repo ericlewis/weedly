@@ -7,6 +7,7 @@
 //
 
 #import "EELDispensaryDetailViewController.h"
+#import "EELMenuTableViewController.h"
 #import "AAPLSegmentedDataSource.h"
 #import "EELDispensaryDetailDataSource.h"
 #import "EELReviewsDataSource.h"
@@ -32,8 +33,14 @@
     self.detailDataSource = [self newDetailDataSource];
     self.reviewsDataSource = [self newReviewsDataSource];
     
-    [self.dataSource addDataSource:self.detailDataSource];
-    [self.dataSource addDataSource:self.reviewsDataSource];
+    // HACK FOR IOS8 !!!!!!!! CRASHES OTHERWISE!!!!
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
+        [self.dataSource addDataSource:self.reviewsDataSource];
+        [self.dataSource addDataSource:self.detailDataSource];
+    }else{
+        [self.dataSource addDataSource:self.detailDataSource];
+        [self.dataSource addDataSource:self.reviewsDataSource];
+    }
 
     __weak typeof(&*self) weakself = self;
 
@@ -63,6 +70,9 @@
     NSString *errorMessage = NSLocalizedString(@"A network problem occurred loading details for “%@”.", @"Error message to show when unable to load cat details.");
     dataSource.errorMessage = [NSString localizedStringWithFormat:errorMessage, self.dispensary.name];
     
+    dataSource.defaultMetrics.separatorColor = [UIColor colorWithWhite:224/255.0 alpha:1];
+    dataSource.defaultMetrics.separatorInsets = UIEdgeInsetsMake(0, 15, 0, 0);
+    
     return dataSource;
 }
 
@@ -78,6 +88,52 @@
     dataSource.defaultMetrics.rowHeight = AAPLRowHeightVariable;
     
     return dataSource;
+}
+
+#pragma mark - Segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"ShowMenu"]) {
+        EELMenuTableViewController *controller = segue.destinationViewController;
+        controller.dispensary = self.dispensary;
+    }
+}
+
+#pragma mark - UICollectionViewDelegate
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    // selected the info tab
+    if ([self.dataSource.selectedDataSource isKindOfClass:[EELDispensaryDetailDataSource class]]) {
+        NSDictionary *menuItem = [self.dataSource.selectedDataSource itemAtIndexPath:indexPath];
+        
+        if ([menuItem[@"segue"] isEqualToString:@"ShowMenu"]) {
+            [self performSegueWithIdentifier:menuItem[@"segue"] sender:self];
+
+        }else if([menuItem[@"segue"] isEqualToString:@"ShowDirections"]){
+            CLLocationCoordinate2D coords = CLLocationCoordinate2DMake(self.dispensary.lat, self.dispensary.lng);
+            
+            MKPlacemark *place = [[MKPlacemark alloc] initWithCoordinate:coords addressDictionary: nil];
+            MKMapItem *destination = [[MKMapItem alloc] initWithPlacemark: place];
+            destination.name = [self.dispensary formattedNameString];
+            NSArray *items = [[NSArray alloc] initWithObjects:destination, nil];
+            NSDictionary *options = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                     MKLaunchOptionsDirectionsModeDriving,
+                                     MKLaunchOptionsDirectionsModeKey, nil];
+            [MKMapItem openMapsWithItems:items launchOptions:options];
+            
+        }else if([menuItem[@"segue"] isEqualToString:@"ShowPhonePrompt"]){
+            if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"telprompt://"]]) {
+                NSString *phoneNumber = [@"telprompt://" stringByAppendingString:[[self.dispensary.phone componentsSeparatedByCharactersInSet:
+                                                                                   [[NSCharacterSet decimalDigitCharacterSet] invertedSet]]
+                                                                                  componentsJoinedByString:@""]];
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
+            }else{
+                // can't open phones
+            }
+
+        }
+    }
 }
 
 @end

@@ -11,14 +11,14 @@
 #import "EELDispensaryDetailDataSource.h"
 #import "AAPLKeyValueDataSource.h"
 #import "AAPLTextValueDataSource.h"
+#import "EELDispensaryInfoListDataSource.h"
 #import "AAPLDataSource+Headers.h"
 
 #import "EELWMClient.h"
 
 @interface EELDispensaryDetailDataSource ()
 @property (nonatomic, strong) EELDispensary *dispensary;
-@property (nonatomic, strong) AAPLKeyValueDataSource *classificationDataSource;
-@property (nonatomic, strong) AAPLTextValueDataSource *descriptionDataSource;
+@property (nonatomic, strong) EELDispensaryInfoListDataSource *listDataSource;
 @end
 
 @implementation EELDispensaryDetailDataSource
@@ -35,13 +35,11 @@
         return nil;
 
     _dispensary = dispensary;
+    _listDataSource = [[EELDispensaryInfoListDataSource alloc] initWithDispensary:dispensary];
+    
+    [self addDataSource:_listDataSource];
 
     return self;
-}
-
-- (void)updateChildDataSources
-{
-    
 }
 
 - (void)loadContent
@@ -60,7 +58,7 @@
             
             // There's always content, because this is a composed data source
             [loading updateWithContent:^(EELDispensaryDetailDataSource *me) {
-                [me updateChildDataSources];
+                
             }];
         }];
     }];
