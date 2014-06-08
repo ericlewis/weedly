@@ -11,7 +11,7 @@
 #import "EELReviewsDataSource.h"
 #import "EELWMClient.h"
 
-#import "AAPLCatSightingCell.h"
+#import "AAPLDispensaryReviewCell.h"
 
 #import "UICollectionView+Helpers.h"
 
@@ -64,12 +64,12 @@
 - (void)registerReusableViewsWithCollectionView:(UICollectionView *)collectionView
 {
     [super registerReusableViewsWithCollectionView:collectionView];
-    [collectionView registerClass:[AAPLCatSightingCell class] forCellWithReuseIdentifier:NSStringFromClass([AAPLCatSightingCell class])];
+    [collectionView registerClass:[AAPLDispensaryReviewCell class] forCellWithReuseIdentifier:NSStringFromClass([AAPLDispensaryReviewCell class])];
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView sizeFittingSize:(CGSize)size forItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    AAPLCatSightingCell *cell = (AAPLCatSightingCell *)[self collectionView:collectionView cellForItemAtIndexPath:indexPath];
+    AAPLDispensaryReviewCell *cell = (AAPLDispensaryReviewCell *)[self collectionView:collectionView cellForItemAtIndexPath:indexPath];
     CGSize fittingSize = [cell aapl_preferredLayoutSizeFittingSize:size];
     [cell removeFromSuperview];
     return fittingSize;
@@ -77,7 +77,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    AAPLCatSightingCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([AAPLCatSightingCell class]) forIndexPath:indexPath];
+    AAPLDispensaryReviewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([AAPLDispensaryReviewCell class]) forIndexPath:indexPath];
     EELReview *review = [self itemAtIndexPath:indexPath];
     
     [cell configureWithReview:review];

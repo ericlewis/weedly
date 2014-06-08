@@ -84,7 +84,7 @@
                         <outlet property="sideBarButton" destination="HlO-OD-JRn" id="lKS-5Z-Upx"/>
                         <outlet property="tableView" destination="0tD-fQ-Jtb" id="z6b-gf-3PN"/>
                         <segue destination="fCw-8P-d85" kind="modal" id="hnI-g6-UyI"/>
-                        <segue destination="a1a-iQ-MlQ" kind="modal" identifier="ShowItemDetail" id="RYR-2U-jS3"/>
+                        <segue destination="6kR-vV-WQ2" kind="push" identifier="ShowItemDetail" id="ZBD-bs-fad"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -152,9 +152,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <segue destination="E4k-M5-Cyr" kind="push" identifier="ShowItemDetail" id="bnQ-m8-hZS"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B5x-v8-FKy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -505,101 +502,6 @@
             </objects>
             <point key="canvasLocation" x="-848" y="-258"/>
         </scene>
-        <!--Detail Table View Controller - Grassroots Collective-->
-        <scene sceneID="1ny-dC-lD9">
-            <objects>
-                <tableViewController storyboardIdentifier="DetailTableView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="E4k-M5-Cyr" customClass="EELDetailTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="57" sectionHeaderHeight="22" sectionFooterHeight="22" id="DQE-Cj-Xbo">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="5" reuseIdentifier="ItemActionCell" textLabel="mkG-TH-aDe" rowHeight="45" style="IBUITableViewCellStyleDefault" id="IHq-AX-I4D">
-                                <rect key="frame" x="0.0" y="86" width="320" height="45"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IHq-AX-I4D" id="zD2-R5-Gxt">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="44"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mkG-TH-aDe">
-                                            <rect key="frame" x="55" y="0.0" width="230" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                            <color key="textColor" red="0.47450983520000001" green="0.47450983520000001" blue="0.47450983520000001" alpha="1" colorSpace="deviceRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <inset key="separatorInset" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            </tableViewCell>
-                            <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="5" reuseIdentifier="ReviewCell" textLabel="dEp-U2-2ZV" detailTextLabel="rSH-NF-kFi" rowHeight="45" style="IBUITableViewCellStyleSubtitle" id="a9P-Pb-eTz">
-                                <rect key="frame" x="0.0" y="131" width="320" height="45"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="a9P-Pb-eTz" id="oNE-48-mRw">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dEp-U2-2ZV">
-                                            <rect key="frame" x="15" y="4" width="34" height="22"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                            <color key="textColor" red="0.47450983520000001" green="0.47450983520000001" blue="0.47450983520000001" alpha="1" colorSpace="deviceRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="43" id="rSH-NF-kFi">
-                                            <rect key="frame" x="15" y="26" width="43" height="15"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" red="0.47450983520000001" green="0.47450983520000001" blue="0.47450983520000001" alpha="1" colorSpace="deviceRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="E4k-M5-Cyr" id="9nM-ci-k8V"/>
-                            <outlet property="delegate" destination="E4k-M5-Cyr" id="FcT-2Q-rRw"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Grassroots Collective" id="5ke-U3-VuL">
-                        <barButtonItem key="backBarButtonItem" title=" " id="9PB-5K-LZm"/>
-                        <barButtonItem key="rightBarButtonItem" image="like-75" id="ypC-9M-UwC">
-                            <connections>
-                                <action selector="favoriteButton:" destination="E4k-M5-Cyr" id="Rhz-77-83S"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <size key="freeformSize" width="0.0" height="0.0"/>
-                    <connections>
-                        <segue destination="fCw-8P-d85" kind="modal" id="ugs-9Z-yWN"/>
-                        <segue destination="ThX-tb-Utd" kind="push" identifier="ShowMenu" id="uYF-Nx-gus"/>
-                        <segue destination="6kR-vV-WQ2" kind="push" identifier="TestCollection" id="Pfx-Uf-yVU"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KCy-jX-c8L" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-776" y="694"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="B9d-JY-bzt">
-            <objects>
-                <navigationController definesPresentationContext="YES" id="a1a-iQ-MlQ" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="siw-kJ-vYU">
-                        <barButtonItem key="backBarButtonItem" title=" " id="fBS-Uy-hZw"/>
-                    </navigationItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gb8-wl-AGv">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="E4k-M5-Cyr" kind="relationship" relationship="rootViewController" id="uao-lf-yRi"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2Lv-E4-UWc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1197" y="694"/>
-        </scene>
         <!--Menu Table View Controller - Menu-->
         <scene sceneID="adN-eC-AZB">
             <objects>
@@ -652,7 +554,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xul-PZ-zI2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-299" y="694"/>
+            <point key="canvasLocation" x="-23" y="561"/>
         </scene>
         <!--Dispensary Detail View Controller-->
         <scene sceneID="FoX-kt-Bj3">
@@ -670,10 +572,13 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="htU-Fg-l2u"/>
+                    <connections>
+                        <segue destination="ThX-tb-Utd" kind="push" id="Wp0-zs-msa"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ec9-6W-yrY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-330" y="755"/>
+            <point key="canvasLocation" x="-425" y="561"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6cT-d6-inL">
@@ -744,9 +649,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <segue destination="E4k-M5-Cyr" kind="push" identifier="ShowItemDetail" id="0Wm-O6-hq7"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I33-Y1-q6J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -756,7 +658,6 @@
     <resources>
         <image name="filter" width="20" height="20"/>
         <image name="hamburger" width="21" height="15"/>
-        <image name="like-75" width="23" height="21"/>
         <image name="logo" width="237" height="59"/>
         <image name="weedlyLogo" width="100" height="29"/>
     </resources>
@@ -767,7 +668,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="bnQ-m8-hZS"/>
-        <segue reference="ugs-9Z-yWN"/>
+        <segue reference="hnI-g6-UyI"/>
     </inferredMetricsTieBreakers>
 </document>

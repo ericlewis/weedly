@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4D06F69719186AF1005597F9 /* EELMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D06F69619186AF1005597F9 /* EELMenu.m */; };
-		4D544BA219441518000718D7 /* AAPLCatSightingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D544BA119441518000718D7 /* AAPLCatSightingCell.m */; };
+		4D544BA219441518000718D7 /* AAPLDispensaryReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D544BA119441518000718D7 /* AAPLDispensaryReviewCell.m */; };
 		4D75E0991943F42200A25AB6 /* AAPLAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E06E1943F42200A25AB6 /* AAPLAction.m */; };
 		4D75E09A1943F42200A25AB6 /* AAPLContentLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0701943F42200A25AB6 /* AAPLContentLoading.m */; };
 		4D75E09B1943F42200A25AB6 /* AAPLStateMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0721943F42200A25AB6 /* AAPLStateMachine.m */; };
@@ -39,7 +39,7 @@
 		4D75E0CB1943F79400A25AB6 /* AAPLTextValueDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0C91943F79400A25AB6 /* AAPLTextValueDataSource.m */; };
 		4D75E0CE1943F96C00A25AB6 /* EELReviewsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0CD1943F96C00A25AB6 /* EELReviewsDataSource.m */; };
 		4D75E0D11943FBE200A25AB6 /* EELDispensaryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0D01943FBE200A25AB6 /* EELDispensaryDetailViewController.m */; };
-		4D75E0D41944022800A25AB6 /* AAPLCatDetailHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0D31944022800A25AB6 /* AAPLCatDetailHeader.m */; };
+		4D75E0D41944022800A25AB6 /* EELDispensaryDetailHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0D31944022800A25AB6 /* EELDispensaryDetailHeader.m */; };
 		4D75E0D61944079600A25AB6 /* EELDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D75E0D51944079600A25AB6 /* EELDetailHeaderView.xib */; };
 		4D9DDDF01915AC89006E5B03 /* EELWMClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9DDDEF1915AC89006E5B03 /* EELWMClient.m */; };
 		4D9DDDF61915AFEB006E5B03 /* EELDispensary.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9DDDF51915AFEB006E5B03 /* EELDispensary.m */; };
@@ -92,8 +92,8 @@
 /* Begin PBXFileReference section */
 		4D06F69519186AF1005597F9 /* EELMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELMenu.h; path = models/EELMenu.h; sourceTree = "<group>"; };
 		4D06F69619186AF1005597F9 /* EELMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELMenu.m; path = models/EELMenu.m; sourceTree = "<group>"; };
-		4D544BA019441518000718D7 /* AAPLCatSightingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLCatSightingCell.h; sourceTree = "<group>"; };
-		4D544BA119441518000718D7 /* AAPLCatSightingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLCatSightingCell.m; sourceTree = "<group>"; };
+		4D544BA019441518000718D7 /* AAPLDispensaryReviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLDispensaryReviewCell.h; sourceTree = "<group>"; };
+		4D544BA119441518000718D7 /* AAPLDispensaryReviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLDispensaryReviewCell.m; sourceTree = "<group>"; };
 		4D75E06D1943F42200A25AB6 /* AAPLAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AAPLAction.h; path = ../../../Downloads/AdvancedUserInterfacesUsingCollectionView/AdvancedCollectionView/AAPLAction.h; sourceTree = "<group>"; };
 		4D75E06E1943F42200A25AB6 /* AAPLAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AAPLAction.m; path = ../../../Downloads/AdvancedUserInterfacesUsingCollectionView/AdvancedCollectionView/AAPLAction.m; sourceTree = "<group>"; };
 		4D75E06F1943F42200A25AB6 /* AAPLContentLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AAPLContentLoading.h; path = ../../../Downloads/AdvancedUserInterfacesUsingCollectionView/AdvancedCollectionView/AAPLContentLoading.h; sourceTree = "<group>"; };
@@ -159,8 +159,8 @@
 		4D75E0CD1943F96C00A25AB6 /* EELReviewsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EELReviewsDataSource.m; sourceTree = "<group>"; };
 		4D75E0CF1943FBE200A25AB6 /* EELDispensaryDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELDispensaryDetailViewController.h; path = controllers/EELDispensaryDetailViewController.h; sourceTree = "<group>"; };
 		4D75E0D01943FBE200A25AB6 /* EELDispensaryDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELDispensaryDetailViewController.m; path = controllers/EELDispensaryDetailViewController.m; sourceTree = "<group>"; };
-		4D75E0D21944022800A25AB6 /* AAPLCatDetailHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLCatDetailHeader.h; sourceTree = "<group>"; };
-		4D75E0D31944022800A25AB6 /* AAPLCatDetailHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLCatDetailHeader.m; sourceTree = "<group>"; };
+		4D75E0D21944022800A25AB6 /* EELDispensaryDetailHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EELDispensaryDetailHeader.h; sourceTree = "<group>"; };
+		4D75E0D31944022800A25AB6 /* EELDispensaryDetailHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EELDispensaryDetailHeader.m; sourceTree = "<group>"; };
 		4D75E0D51944079600A25AB6 /* EELDetailHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EELDetailHeaderView.xib; path = views/EELDetailHeaderView.xib; sourceTree = "<group>"; };
 		4D9DDDEE1915AC89006E5B03 /* EELWMClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELWMClient.h; path = models/EELWMClient.h; sourceTree = "<group>"; };
 		4D9DDDEF1915AC89006E5B03 /* EELWMClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELWMClient.m; path = models/EELWMClient.m; sourceTree = "<group>"; };
@@ -376,10 +376,6 @@
 			isa = PBXGroup;
 			children = (
 				4DC1A1231912F9A200228F5A /* Main.storyboard */,
-				4D75E0D21944022800A25AB6 /* AAPLCatDetailHeader.h */,
-				4D75E0D31944022800A25AB6 /* AAPLCatDetailHeader.m */,
-				4D544BA019441518000718D7 /* AAPLCatSightingCell.h */,
-				4D544BA119441518000718D7 /* AAPLCatSightingCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -421,6 +417,10 @@
 				4D9DDE1619172142006E5B03 /* EELMapHeaderTableViewCell.xib */,
 				4D75E0CF1943FBE200A25AB6 /* EELDispensaryDetailViewController.h */,
 				4D75E0D01943FBE200A25AB6 /* EELDispensaryDetailViewController.m */,
+				4D75E0D21944022800A25AB6 /* EELDispensaryDetailHeader.h */,
+				4D75E0D31944022800A25AB6 /* EELDispensaryDetailHeader.m */,
+				4D544BA019441518000718D7 /* AAPLDispensaryReviewCell.h */,
+				4D544BA119441518000718D7 /* AAPLDispensaryReviewCell.m */,
 			);
 			name = "detail controllers";
 			sourceTree = "<group>";
@@ -690,13 +690,13 @@
 				4DD493261915951E001A6203 /* EELFavoritesTableViewController.m in Sources */,
 				4DD4933319159A66001A6203 /* EELDetailTableViewController.m in Sources */,
 				4DC1A11E1912F9A200228F5A /* main.m in Sources */,
-				4D544BA219441518000718D7 /* AAPLCatSightingCell.m in Sources */,
+				4D544BA219441518000718D7 /* AAPLDispensaryReviewCell.m in Sources */,
 				4D75E0CA1943F79400A25AB6 /* AAPLKeyValueDataSource.m in Sources */,
 				4D9DDDFC1915BA81006E5B03 /* EELReview.m in Sources */,
 				4DD4933F19159B63001A6203 /* EELAccountTableViewController.m in Sources */,
 				4D75E09F1943F42200A25AB6 /* UIView+Helpers.m in Sources */,
 				4D75E0A41943F42200A25AB6 /* AAPLSegmentedDataSource.m in Sources */,
-				4D75E0D41944022800A25AB6 /* AAPLCatDetailHeader.m in Sources */,
+				4D75E0D41944022800A25AB6 /* EELDispensaryDetailHeader.m in Sources */,
 				4D75E0A91943F42200A25AB6 /* AAPLCollectionViewController.m in Sources */,
 				4D75E0BF1943F44800A25AB6 /* AAPLPlaceholderView.m in Sources */,
 				4D75E0A71943F42200A25AB6 /* AAPLCollectionViewGridLayoutAttributes.m in Sources */,

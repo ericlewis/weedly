@@ -8,7 +8,7 @@
  
  */
 
-#import "AAPLCatDetailHeader.h"
+#import "EELDispensaryDetailHeader.h"
 
 #import "UIView+Helpers.h"
 
@@ -16,7 +16,7 @@
 - (void)toggleFavorite:(id)sender;
 @end
 
-@interface AAPLCatDetailHeader ()
+@interface EELDispensaryDetailHeader ()
 @property (nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) UILabel *hoursLabel;
 @property (nonatomic, strong) UILabel *ratingLabel;
@@ -25,7 +25,7 @@
 @property (nonatomic, getter=isFavorite) BOOL favorite;
 @end
 
-@implementation AAPLCatDetailHeader
+@implementation EELDispensaryDetailHeader
 
 - (instancetype)initWithFrame:(CGRect)frame
 {

@@ -11,7 +11,7 @@
 #import "EELDispensaryDetailDataSource.h"
 #import "EELReviewsDataSource.h"
 
-#import "AAPLCatDetailHeader.h"
+#import "EELDispensaryDetailHeader.h"
 
 @interface EELDispensaryDetailViewController ()
 @property (nonatomic, strong) AAPLSegmentedDataSource *dataSource;
@@ -26,7 +26,7 @@
 {
     [super viewDidLoad];
     
-    self.title = self.dispensary.name;
+    self.title = [self.dispensary formattedNameString];
     
     self.dataSource = [[AAPLSegmentedDataSource alloc] init];
     self.detailDataSource = [self newDetailDataSource];
@@ -40,9 +40,9 @@
     AAPLLayoutSupplementaryMetrics *globalHeader = [self.dataSource newHeaderForKey:@"globalHeader"];
     globalHeader.visibleWhileShowingPlaceholder = YES;
     globalHeader.height = 100;
-    globalHeader.supplementaryViewClass = [AAPLCatDetailHeader class];
+    globalHeader.supplementaryViewClass = [EELDispensaryDetailHeader class];
     globalHeader.configureView = ^(UICollectionReusableView *view, AAPLDataSource *dataSource, NSIndexPath *indexPath) {
-        AAPLCatDetailHeader *headerView = (AAPLCatDetailHeader *)view;
+        EELDispensaryDetailHeader *headerView = (EELDispensaryDetailHeader *)view;
         headerView.bottomBorderColor = nil;
         [headerView configureWithDispensary:weakself.dispensary];
     };

@@ -449,7 +449,7 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     if ([[segue identifier] isEqualToString:@"ShowItemDetail"]) {
-        [(id)[[segue destinationViewController] topViewController] setDispensary:self.selectedDispensary];
+        [(id)[segue destinationViewController] setDispensary:self.selectedDispensary];
         [self hideSearchBar];
     }else if([[segue identifier] isEqualToString:@"ShowList"]){
         [(id)[[segue destinationViewController] topViewController] setSearchTerm:self.searchBar.text];

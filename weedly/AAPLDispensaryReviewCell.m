@@ -8,16 +8,16 @@
   
  */
 
-#import "AAPLCatSightingCell.h"
+#import "AAPLDispensaryReviewCell.h"
 
-@interface AAPLCatSightingCell ()
+@interface AAPLDispensaryReviewCell ()
 @property (nonatomic, strong) UILabel *dateLabel;
 @property (nonatomic, strong) UILabel *textLabel;
 @property (nonatomic, strong) UILabel *ratingLabel;
 @property (nonatomic, strong) UILabel *shortDescriptionLabel;
 @end
 
-@implementation AAPLCatSightingCell
+@implementation AAPLDispensaryReviewCell
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
