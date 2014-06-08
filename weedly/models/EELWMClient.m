@@ -45,12 +45,17 @@
 
 #pragma mark -
 #pragma mark Merchant Actions
-- (void)getDispensaryWithID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
+- (void)getDispensaryWithID:(NSString*)ID completionBlock:(void (^)(EELDispensary *dispensary, NSError *error))block{
     NSParameterAssert(ID);
 
-    [self GET:[NSString stringWithFormat:@"api/v4/listing/dispensary/%@", ID] parameters:nil resultClass:[EELDispensary class] resultKeyPath:@"docs" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+    [self GET:[NSString stringWithFormat:@"api/v4/listing/dispensary/%@", ID] parameters:nil resultClass:[EELDispensary class] resultKeyPath:@"docs" completion:^(AFHTTPRequestOperation *operation, NSArray *responseObject, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^(void){
-            block(responseObject, error);
+            if (responseObject.count > 0) {
+                block([responseObject objectAtIndex:0], error);
+            }else{
+                block(nil, error);
+            }
+            
         });
     }];
 }

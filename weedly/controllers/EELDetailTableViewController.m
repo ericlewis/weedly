@@ -292,7 +292,7 @@
     
     // show menu!
     else if (indexPath.row == 2) {
-        [self performSegueWithIdentifier:@"ShowMenu" sender:self];
+        [self performSegueWithIdentifier:@"TestCollection" sender:self];
     }
 }
 
@@ -304,6 +304,8 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     if ([[segue identifier] isEqualToString:@"ShowMenu"]) {
+        [[segue destinationViewController] setDispensary:self.dispensary];
+    }else{
         [[segue destinationViewController] setDispensary:self.dispensary];
     }
 }

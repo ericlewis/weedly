@@ -575,7 +575,7 @@
                     <connections>
                         <segue destination="fCw-8P-d85" kind="modal" id="ugs-9Z-yWN"/>
                         <segue destination="ThX-tb-Utd" kind="push" identifier="ShowMenu" id="uYF-Nx-gus"/>
-                        <segue destination="6kR-vV-WQ2" kind="push" id="Pfx-Uf-yVU"/>
+                        <segue destination="6kR-vV-WQ2" kind="push" identifier="TestCollection" id="Pfx-Uf-yVU"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KCy-jX-c8L" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -654,10 +654,10 @@
             </objects>
             <point key="canvasLocation" x="-299" y="694"/>
         </scene>
-        <!--Collection View Controller-->
+        <!--Dispensary Detail View Controller-->
         <scene sceneID="FoX-kt-Bj3">
             <objects>
-                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="6kR-vV-WQ2" sceneMemberID="viewController">
+                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="6kR-vV-WQ2" customClass="EELDispensaryDetailViewController" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="pdu-Ap-jMK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -673,7 +673,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ec9-6W-yrY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-425" y="694"/>
+            <point key="canvasLocation" x="-330" y="755"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6cT-d6-inL">
