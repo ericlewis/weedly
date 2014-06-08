@@ -67,6 +67,7 @@
     
     self.tableView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.tableView.layer.borderWidth = 1.0;
+    self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
