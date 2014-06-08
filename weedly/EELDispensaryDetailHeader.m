@@ -114,7 +114,11 @@
         self.ratingLabel.text = @"No ratings";
     }
     
-    self.hoursLabel.text = [NSString stringWithFormat:@"%@\nOpen %@ to %@", [dispensary formattedTypeString], [dispensary.opensAt stringByReplacingOccurrencesOfString:@" " withString:@""].uppercaseString, [dispensary.closesAt stringByReplacingOccurrencesOfString:@" " withString:@""].uppercaseString];
+    if (dispensary.opensAt.length > 0 && dispensary.closesAt.length > 0) {
+        self.hoursLabel.text = [NSString stringWithFormat:@"%@\nOpen %@ to %@", [dispensary formattedTypeString], [dispensary.opensAt stringByReplacingOccurrencesOfString:@" " withString:@""].uppercaseString, [dispensary.closesAt stringByReplacingOccurrencesOfString:@" " withString:@""].uppercaseString];
+    }else{
+        self.hoursLabel.text = [NSString stringWithFormat:@"%@\nHours unavailable", [dispensary formattedTypeString]];
+    }
 }
 
 - (void)favoriteTapped:(id)sender
