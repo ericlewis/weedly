@@ -239,7 +239,7 @@
             self.dataSource = [EELArrayDataSource dataSourceWithItems:sortedArray];
             
             [self addPins];
-            [self.tableView reloadData];
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
         }];
     }else if(self.searchBar.tag == 911){
         [[EELWMClient sharedClient] searchDoctorsWithTerm:searchTerm lat:lat lng:lng completionBlock:^(NSArray *results, NSError *error) {
