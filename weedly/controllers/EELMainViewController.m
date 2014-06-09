@@ -69,6 +69,20 @@
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
+    UIPanGestureRecognizer* panRec = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didDragMap:)];
+    [panRec setDelegate:self];
+    [self.mapView addGestureRecognizer:panRec];
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return YES;
+}
+
+- (void)didDragMap:(UIGestureRecognizer*)gestureRecognizer {
+    if (gestureRecognizer.state == UIGestureRecognizerStateEnded){
+        [self performSearch:self.searchBar.text];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -128,7 +142,6 @@
 #pragma mark -
 #pragma mark setup
 - (void)getInitialListings{
-    [self performSearch:self.searchBar.text];
 }
 
 - (void)addPins{
@@ -355,7 +368,7 @@
         }
         
         [self.mapView setRegion:region animated:animated];
-        [self performSearch:self.searchBar.text lat:37.733972 lng:-122.431297];
+        [self performSearch:self.searchBar.text];
     }else{
         MKCoordinateRegion region;
         region.center = CLLocationCoordinate2DMake(37.733972, -122.431297);
@@ -365,7 +378,7 @@
         region.span = span;
         
         [self.mapView setRegion:region animated:animated];
-        [self performSearch:self.searchBar.text lat:37.733972 lng:-122.431297];
+        [self performSearch:self.searchBar.text];
     }
 }
 
@@ -446,8 +459,6 @@
         }
     }
 
-    [self performSearch:self.searchBar.text];
-    
     if (self.searchBar.isFirstResponder) {
         [self.searchBar resignFirstResponder];
     }

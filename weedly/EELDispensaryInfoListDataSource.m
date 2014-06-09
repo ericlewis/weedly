@@ -30,11 +30,20 @@
         return nil;
     
     _dispensary = dispensary;
-    self.items = @[
-                   @{@"name": @"Menu", @"subtitle": @"Check out menu options", @"segue": @"ShowMenu"},
-                   @{@"name": @"Directions", @"subtitle": @"Get directions from current location", @"segue": @"ShowDirections"},
-                   @{@"name": @"Phone", @"subtitle": self.dispensary.phone, @"segue": @"ShowPhonePrompt"},
-                   ];
+    
+    if ([[self.dispensary formattedTypeString] isEqualToString:@"Delivery"]) {
+        self.items = @[
+                       @{@"name": @"Menu", @"subtitle": @"Check out menu options", @"segue": @"ShowMenu"},
+                       @{@"name": @"Phone", @"subtitle": self.dispensary.phone, @"segue": @"ShowPhonePrompt"},
+                       ];
+    }else{
+        self.items = @[
+                       @{@"name": @"Menu", @"subtitle": @"Check out menu options", @"segue": @"ShowMenu"},
+                       @{@"name": @"Directions", @"subtitle": @"Get directions from current location", @"segue": @"ShowDirections"},
+                       @{@"name": @"Phone", @"subtitle": self.dispensary.phone, @"segue": @"ShowPhonePrompt"},
+                       ];
+    }
+    
     
     return self;
 }
