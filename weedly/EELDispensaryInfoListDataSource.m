@@ -36,6 +36,11 @@
                        @{@"name": @"Menu", @"subtitle": @"Check out menu options", @"segue": @"ShowMenu"},
                        @{@"name": @"Phone", @"subtitle": self.dispensary.phone, @"segue": @"ShowPhonePrompt"},
                        ];
+    }else if([[self.dispensary formattedTypeString] isEqualToString:@"Doctor"]){
+        self.items = @[
+                       @{@"name": @"Directions", @"subtitle": @"Get directions from current location", @"segue": @"ShowDirections"},
+                       @{@"name": @"Phone", @"subtitle": [self.dispensary formattedPhoneString], @"segue": @"ShowPhonePrompt"},
+                       ];
     }else{
         self.items = @[
                        @{@"name": @"Menu", @"subtitle": @"Check out menu options", @"segue": @"ShowMenu"},
