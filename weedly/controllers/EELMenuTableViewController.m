@@ -7,18 +7,18 @@
 //
 
 #import "EELMenuTableViewController.h"
-#import "BFNavigationBarDrawer.h"
 #import "EELArrayDataSource.h"
 
-@interface EELMenuTableViewController ()
+#import "DKScrollingTabController.h"
+
+@interface EELMenuTableViewController () <DKScrollingTabControllerDelegate>
 
 @property (strong, nonatomic) EELArrayDataSource *dataSource;
 @property (strong, nonatomic) EELArrayDataSource *dataSourceUnfiltered;
 @property (strong, nonatomic) NSArray *categories;
+@property (strong, nonatomic) NSString *selectedTabName;
 @property (strong, nonatomic) EELMenu *menuInfo;
-@property (strong, nonatomic) BFNavigationBarDrawer *drawer;
-@property (strong, nonatomic) REMenu *filterMenu;
-@property (strong, nonatomic) NSString *filterMenuSelected;
+@property (strong, nonatomic) DKScrollingTabController *tabController;
 
 
 @end
@@ -38,290 +38,35 @@
 {
     [super viewDidLoad];
     
-    [self setupTitle];
+    self.title = [self.dispensary formattedNameString];
     
     [self getMenuInfo];
     [self getMenuItems];
     
     self.navigationController.navigationBar.translucent = NO;
-}
-
-- (void)viewWillDisappear:(BOOL)animated{
-    if (self.filterMenu.isOpen) {
-        [self.filterMenu close];
-    }
-}
-
-- (IBAction)showFilterDropdown:(id)sender {
-    if (self.filterMenu.isOpen) {
-        [self.filterMenu close];
-    }else{
-        REMenuItem *allItem = [[REMenuItem alloc] initWithTitle:@"All"
-                                                                 image:nil
-                                                      highlightedImage:nil
-                                                                action:^(REMenuItem *item) {
-                                                                    self.filterMenuSelected = item.title;
-                                                                    [self setupTitle];
-
-                                                                    self.dataSource = self.dataSourceUnfiltered;
-                                                                    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
-                                                                }];
-        
-        REMenuItem *indicaItem = [[REMenuItem alloc] initWithTitle:@"Indica"
-                                                             image:nil
-                                                  highlightedImage:nil
-                                                            action:^(REMenuItem *item) {
-                                                                self.filterMenuSelected = item.title;
-                                                                [self setupTitle];
-
-                                                                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"catID = 1"];
-                                                                NSArray *beginWithB = [self.dataSourceUnfiltered.items filteredArrayUsingPredicate:predicate];
-                                                                
-                                                                self.dataSource = [EELArrayDataSource dataSourceWithItems:beginWithB];
-                                                                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
-                                                            }];
-        
-        REMenuItem *sativaItem = [[REMenuItem alloc] initWithTitle:@"Sativa"
-                                                             image:nil
-                                                  highlightedImage:nil
-                                                            action:^(REMenuItem *item) {
-                                                                self.filterMenuSelected = item.title;
-                                                                [self setupTitle];
-
-                                                                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"catID = 2"];
-                                                                NSArray *beginWithB = [self.dataSourceUnfiltered.items filteredArrayUsingPredicate:predicate];
-                                                                
-                                                                self.dataSource = [EELArrayDataSource dataSourceWithItems:beginWithB];
-                                                                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
-                                                            }];
-        
-        REMenuItem *hybridItem = [[REMenuItem alloc] initWithTitle:@"Hybrid"
-                                                             image:nil
-                                                  highlightedImage:nil
-                                                            action:^(REMenuItem *item) {
-                                                                self.filterMenuSelected = item.title;
-                                                                [self setupTitle];
-
-                                                                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"catID = 3"];
-                                                                NSArray *beginWithB = [self.dataSourceUnfiltered.items filteredArrayUsingPredicate:predicate];
-                                                                
-                                                                self.dataSource = [EELArrayDataSource dataSourceWithItems:beginWithB];
-                                                                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
-                                                            }];
-        
-        REMenuItem *edibleItem = [[REMenuItem alloc] initWithTitle:@"Edibles"
-                                                             image:nil
-                                                  highlightedImage:nil
-                                                            action:^(REMenuItem *item) {
-                                                                self.filterMenuSelected = item.title;
-                                                                [self setupTitle];
-
-                                                                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"catID = 4"];
-                                                                NSArray *beginWithB = [self.dataSourceUnfiltered.items filteredArrayUsingPredicate:predicate];
-                                                                
-                                                                self.dataSource = [EELArrayDataSource dataSourceWithItems:beginWithB];
-                                                                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
-                                                            }];
-        
-        REMenuItem *concentrateItem = [[REMenuItem alloc] initWithTitle:@"Concentrates"
-                                                             image:nil
-                                                  highlightedImage:nil
-                                                            action:^(REMenuItem *item) {
-                                                                self.filterMenuSelected = item.title;
-                                                                [self setupTitle];
-
-                                                                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"catID = 5"];
-                                                                NSArray *beginWithB = [self.dataSourceUnfiltered.items filteredArrayUsingPredicate:predicate];
-                                                                
-                                                                self.dataSource = [EELArrayDataSource dataSourceWithItems:beginWithB];
-                                                                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
-                                                            }];
-        
-        REMenuItem *drinkItem = [[REMenuItem alloc] initWithTitle:@"Drinks"
-                                                                  image:nil
-                                                       highlightedImage:nil
-                                                                 action:^(REMenuItem *item) {
-                                                                     self.filterMenuSelected = item.title;
-                                                                     [self setupTitle];
-                                                                     
-                                                                     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"catID = 6"];
-                                                                     NSArray *beginWithB = [self.dataSourceUnfiltered.items filteredArrayUsingPredicate:predicate];
-                                                                     
-                                                                     self.dataSource = [EELArrayDataSource dataSourceWithItems:beginWithB];
-                                                                     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
-                                                                 }];
-        
-        REMenuItem *cloneItem = [[REMenuItem alloc] initWithTitle:@"Clones"
-                                                                  image:nil
-                                                       highlightedImage:nil
-                                                                 action:^(REMenuItem *item) {
-                                                                     self.filterMenuSelected = item.title;
-                                                                     [self setupTitle];
-                                                                     
-                                                                     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"catID = 7"];
-                                                                     NSArray *beginWithB = [self.dataSourceUnfiltered.items filteredArrayUsingPredicate:predicate];
-                                                                     
-                                                                     self.dataSource = [EELArrayDataSource dataSourceWithItems:beginWithB];
-                                                                     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
-                                                                 }];
-        
-        REMenuItem *seedItem = [[REMenuItem alloc] initWithTitle:@"Seeds"
-                                                                  image:nil
-                                                       highlightedImage:nil
-                                                                 action:^(REMenuItem *item) {
-                                                                     self.filterMenuSelected = item.title;
-                                                                     [self setupTitle];
-                                                                     
-                                                                     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"catID = 8"];
-                                                                     NSArray *beginWithB = [self.dataSourceUnfiltered.items filteredArrayUsingPredicate:predicate];
-                                                                     
-                                                                     self.dataSource = [EELArrayDataSource dataSourceWithItems:beginWithB];
-                                                                     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
-                                                                 }];
-        
-        REMenuItem *tinctureItem = [[REMenuItem alloc] initWithTitle:@"Tinctures"
-                                                                  image:nil
-                                                       highlightedImage:nil
-                                                                 action:^(REMenuItem *item) {
-                                                                     self.filterMenuSelected = item.title;
-                                                                     [self setupTitle];
-                                                                     
-                                                                     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"catID = 9"];
-                                                                     NSArray *beginWithB = [self.dataSourceUnfiltered.items filteredArrayUsingPredicate:predicate];
-                                                                     
-                                                                     self.dataSource = [EELArrayDataSource dataSourceWithItems:beginWithB];
-                                                                     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
-                                                                 }];
-        
-        REMenuItem *gearItem = [[REMenuItem alloc] initWithTitle:@"Gear"
-                                                                  image:nil
-                                                       highlightedImage:nil
-                                                                 action:^(REMenuItem *item) {
-                                                                     self.filterMenuSelected = item.title;
-                                                                     [self setupTitle];
-
-                                                                     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"catID = 10"];
-                                                                     NSArray *beginWithB = [self.dataSourceUnfiltered.items filteredArrayUsingPredicate:predicate];
-                                                                     
-                                                                     self.dataSource = [EELArrayDataSource dataSourceWithItems:beginWithB];
-                                                                     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
-                                                                 }];
-        
-        REMenuItem *topicalItem = [[REMenuItem alloc] initWithTitle:@"Topicals"
-                                                                  image:nil
-                                                       highlightedImage:nil
-                                                                 action:^(REMenuItem *item) {
-                                                                     self.filterMenuSelected = item.title;
-                                                                     [self setupTitle];
-                                                                     
-                                                                     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"catID = 11"];
-                                                                     NSArray *beginWithB = [self.dataSourceUnfiltered.items filteredArrayUsingPredicate:predicate];
-                                                                     
-                                                                     self.dataSource = [EELArrayDataSource dataSourceWithItems:beginWithB];
-                                                                     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
-                                                                 }];
-        
-        REMenuItem *prerollItem = [[REMenuItem alloc] initWithTitle:@"Preroll"
-                                                                  image:nil
-                                                       highlightedImage:nil
-                                                                 action:^(REMenuItem *item) {
-                                                                     self.filterMenuSelected = item.title;
-                                                                     [self setupTitle];
-                                                                     
-                                                                     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"catID = 12"];
-                                                                     NSArray *beginWithB = [self.dataSourceUnfiltered.items filteredArrayUsingPredicate:predicate];
-                                                                     
-                                                                     self.dataSource = [EELArrayDataSource dataSourceWithItems:beginWithB];
-                                                                     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
-                                                                 }];
-        
-        REMenuItem *waxItem = [[REMenuItem alloc] initWithTitle:@"Wax"
-                                                           image:nil
-                                                highlightedImage:nil
-                                                          action:^(REMenuItem *item) {
-                                                              self.filterMenuSelected = item.title;
-                                                              [self setupTitle];
-
-                                                              NSPredicate *predicate = [NSPredicate predicateWithFormat:@"catID = 13"];
-                                                              NSArray *beginWithB = [self.dataSourceUnfiltered.items filteredArrayUsingPredicate:predicate];
-                                                              
-                                                              self.dataSource = [EELArrayDataSource dataSourceWithItems:beginWithB];
-                                                              [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
-                                                          }];
-        
-        
-        NSMutableArray *items = [[NSMutableArray alloc] init];
-        
-        [items addObject:allItem];
-        
-        for (NSString *catID in self.categories) {
-            if ([catID isEqualToString:@"1"]) {
-                [items addObject:indicaItem];
-            }
-            
-            else if ([catID isEqualToString:@"2"]) {
-                [items addObject:sativaItem];
-            }
-            
-            else if ([catID isEqualToString:@"3"]) {
-                [items addObject:hybridItem];
-            }
-            
-            else if ([catID isEqualToString:@"4"]) {
-                [items addObject:edibleItem];
-            }
-            
-            else if ([catID isEqualToString:@"5"]) {
-                [items addObject:concentrateItem];
-            }
-            
-            else if ([catID isEqualToString:@"6"]) {
-                [items addObject:drinkItem];
-            }
-            
-            else if ([catID isEqualToString:@"7"]) {
-                [items addObject:cloneItem];
-            }
-            
-            else if ([catID isEqualToString:@"8"]) {
-                [items addObject:seedItem];
-            }
-            
-            else if ([catID isEqualToString:@"9"]) {
-                [items addObject:tinctureItem];
-            }
-            
-            else if ([catID isEqualToString:@"10"]) {
-                [items addObject:gearItem];
-            }
-            
-            else if ([catID isEqualToString:@"11"]) {
-                [items addObject:topicalItem];
-            }
-            
-            else if ([catID isEqualToString:@"12"]) {
-                [items addObject:prerollItem];
-            }
-            
-            else if ([catID isEqualToString:@"13"]) {
-                [items addObject:waxItem];
-            }
-        }
-        
-        
-        self.filterMenu = [[REMenu alloc] initWithItems:items];
-        self.filterMenu.backgroundColor = MAIN_COLOR;
-        self.filterMenu.borderColor = [UIColor grayColor];
-        self.filterMenu.borderWidth = 0.5f;
-        self.filterMenu.separatorColor = [UIColor clearColor];
-        self.filterMenu.textColor = [UIColor whiteColor];
-        self.filterMenu.textAlignment = NSTextAlignmentLeft;
-        self.filterMenu.textOffset = CGSizeMake(50, 0);
-        
-        self.filterMenu.liveBlur = NO;
-        
-        [self.filterMenu showFromNavigationController:self.navigationController];
-    }
+    
+    _tabController = [[DKScrollingTabController alloc] init];
+    _tabController.delegate = self;
+    [self addChildViewController:_tabController];
+    [_tabController didMoveToParentViewController:self];
+    [self.view addSubview:_tabController.view];
+    _tabController.view.frame = CGRectMake(0, -40, self.view.bounds.size.width, 40);
+    _tabController.view.clipsToBounds = YES;
+    _tabController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    _tabController.view.backgroundColor = MAIN_COLOR;
+    _tabController.buttonsScrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    _tabController.buttonPadding = 15;
+    _tabController.selectedBackgroundColor = [UIColor clearColor];
+    _tabController.selectedTextColor = [UIColor whiteColor];
+    _tabController.unselectedBackgroundColor = [UIColor clearColor];
+    _tabController.unselectedTextColor = [UIColor whiteColor];
+    _tabController.underlineIndicator = YES;
+    _tabController.selection = @[@"All"];
+    
+    UIEdgeInsets insets = self.tableView.contentInset;
+    insets.top = 40;
+    self.tableView.contentInset = insets;
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:self.navigationItem.backBarButtonItem.style target:nil action:nil];
 }
 
 - (void)getMenuInfo{
@@ -370,20 +115,68 @@
         self.dataSource = [EELArrayDataSource dataSourceWithItems:results];
         self.dataSourceUnfiltered = self.dataSource;
         
+        NSMutableArray *items = [[NSMutableArray alloc] init];
+        
+        [items addObject:@"All"];
+        
+        for (NSString *catID in self.categories) {
+            if ([catID isEqualToString:@"1"]) {
+                [items addObject:@"Indica"];
+            }
+            
+            else if ([catID isEqualToString:@"2"]) {
+                [items addObject:@"Sativa"];
+            }
+            
+            else if ([catID isEqualToString:@"3"]) {
+                [items addObject:@"Hybrid"];
+            }
+            
+            else if ([catID isEqualToString:@"4"]) {
+                [items addObject:@"Edibles"];
+            }
+            
+            else if ([catID isEqualToString:@"5"]) {
+                [items addObject:@"Concentrates"];
+            }
+            
+            else if ([catID isEqualToString:@"6"]) {
+                [items addObject:@"Drinks"];
+            }
+            
+            else if ([catID isEqualToString:@"7"]) {
+                [items addObject:@"Clones"];
+            }
+            
+            else if ([catID isEqualToString:@"8"]) {
+                [items addObject:@"Seeds"];
+            }
+            
+            else if ([catID isEqualToString:@"9"]) {
+                [items addObject:@"Tinctures"];
+            }
+            
+            else if ([catID isEqualToString:@"10"]) {
+                [items addObject:@"Gear"];
+            }
+            
+            else if ([catID isEqualToString:@"11"]) {
+                [items addObject:@"Topicals"];
+            }
+            
+            else if ([catID isEqualToString:@"12"]) {
+                [items addObject:@"Prerolls"];
+            }
+            
+            else if ([catID isEqualToString:@"13"]) {
+                [items addObject:@"Wax"];
+            }
+        }
+        
+        self.tabController.selection = items;
+        
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
     }];
-}
-
-- (void)setupTitle{
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 480, 44)];
-    label.backgroundColor = [UIColor clearColor];
-    label.numberOfLines = 2;
-    label.font = [UIFont systemFontOfSize: 14.0f];
-    label.textAlignment = NSTextAlignmentCenter;
-    label.textColor = [UIColor whiteColor];
-    label.text = [NSString stringWithFormat:@"Menu: %@\n%@", self.filterMenuSelected ?: @"All", [self.dispensary formattedNameString]];
-    
-    self.navigationItem.titleView = label;
 }
 
 - (IBAction)dismissView:(id)sender {
@@ -479,6 +272,24 @@
     }
     
     return 50;
+}
+
+#pragma mark - TabControllerDelegate
+
+- (void)DKScrollingTabController:(DKScrollingTabController *)controller selection:(NSUInteger)selection {
+    // ALL tab is always 0
+    if (selection == 0) {
+        self.dataSource = self.dataSourceUnfiltered;
+    }else{
+        NSString *catID = self.categories[selection-1];
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"catID = %@", catID]];
+        NSArray *filteredArray = [self.dataSourceUnfiltered.items filteredArrayUsingPredicate:predicate];
+        
+        self.dataSource = [EELArrayDataSource dataSourceWithItems:filteredArray];
+    }
+
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 @end

@@ -8,10 +8,9 @@
 
 #import "EELMainViewController.h"
 
-#import "EELDealsViewController.h"
+#import "EELDispensaryDetailViewController.h"
 #import "EELFavoritesTableViewController.h"
-#import "EELMainTableViewController.h"
-#import "EELDetailTableViewController.h"
+
 #import "EELItemHeaderViewCell.h"
 
 #import "EELArrayDataSource.h"
@@ -52,7 +51,6 @@
 {
     [super viewDidLoad];
     
-    [self setupKVO];
     [self setupLocationManager];
     [self setupSearchBar];
     
@@ -73,6 +71,9 @@
     UIPanGestureRecognizer* panRec = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didDragMap:)];
     [panRec setDelegate:self];
     [self.mapView addGestureRecognizer:panRec];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:self.navigationItem.backBarButtonItem.style target:nil action:nil];
+    
+    self.tableView.contentInset = UIEdgeInsetsMake(self.mapView.frame.size.height-40, 0, 0, 0);
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
@@ -161,11 +162,6 @@
     [self.mapView removeAnnotations:oldAnnotations];
 }
 
-- (void)setupKVO{
-    // create KVO controller with observer
-    FBKVOController *KVOController = [FBKVOController controllerWithObserver:self];
-}
-
 - (void)setupLocationManager{
     // Configure Location Manager
     [MTLocationManager sharedInstance].locationManager.desiredAccuracy = kCLLocationAccuracyBest;
@@ -209,7 +205,7 @@
 #pragma mark -
 #pragma mark - Actions
 - (void)performSearch:(NSString*)searchTerm{
-    NSString *latVal = [NSString stringWithFormat:@"%.1f", self.mapView.centerCoordinate.latitude+0.0234f];
+    NSString *latVal = [NSString stringWithFormat:@"%.1f", self.mapView.centerCoordinate.latitude];
     NSString *lngVal = [NSString stringWithFormat:@"%.1f", self.mapView.centerCoordinate.longitude];
 
     [self performSearch:searchTerm lat:(CGFloat)latVal.floatValue lng:(CGFloat)lngVal.floatValue];
@@ -229,7 +225,7 @@
                 CLLocationDegrees lat = project.lat;
                 CLLocationDegrees lng = project.lng;
                 CLLocation *dispensaryLocation = [[CLLocation alloc] initWithLatitude:lat longitude:lng];
-                CLLocationDistance meters = [dispensaryLocation distanceFromLocation:[[CLLocation alloc] initWithLatitude:self.mapView.centerCoordinate.latitude+0.0234f longitude:self.mapView.centerCoordinate.longitude]];
+                CLLocationDistance meters = [dispensaryLocation distanceFromLocation:[[CLLocation alloc] initWithLatitude:self.mapView.centerCoordinate.latitude longitude:self.mapView.centerCoordinate.longitude]];
                 project.currentDistance = @(meters);
             }
             
@@ -254,7 +250,7 @@
                 CLLocationDegrees lat = project.lat;
                 CLLocationDegrees lng = project.lng;
                 CLLocation *dispensaryLocation = [[CLLocation alloc] initWithLatitude:lat longitude:lng];
-                CLLocationDistance meters = [dispensaryLocation distanceFromLocation:[[CLLocation alloc] initWithLatitude:self.mapView.centerCoordinate.latitude+0.0234f longitude:self.mapView.centerCoordinate.longitude]];
+                CLLocationDistance meters = [dispensaryLocation distanceFromLocation:[[CLLocation alloc] initWithLatitude:self.mapView.centerCoordinate.latitude longitude:self.mapView.centerCoordinate.longitude]];
                 project.currentDistance = @(meters);
             }
             
@@ -356,7 +352,7 @@
 - (void)zoomToUser:(BOOL)animated{
     if (self.mapView.userLocationVisible) {
         MKCoordinateRegion region;
-        region.center = CLLocationCoordinate2DMake(self.mapView.userLocation.coordinate.latitude + LATITUDE_OFFSET, self.mapView.userLocation.coordinate.longitude);
+        region.center = CLLocationCoordinate2DMake(self.mapView.userLocation.coordinate.latitude, self.mapView.userLocation.coordinate.longitude);
         MKCoordinateSpan span;
         
         if (self.mapView.region.span.latitudeDelta > 1) {
@@ -475,9 +471,6 @@
     if ([[segue identifier] isEqualToString:@"ShowItemDetail"]) {
         [(id)[segue destinationViewController] setDispensary:self.selectedDispensary];
         [self hideSearchBar];
-    }else if([[segue identifier] isEqualToString:@"ShowList"]){
-        [(id)[[segue destinationViewController] topViewController] setSearchTerm:self.searchBar.text];
-        [(id)[[segue destinationViewController] topViewController] setSearchType:self.searchBar.tag];
     }
 }
 
@@ -506,7 +499,7 @@
         CALayer *rightBorder = [CALayer layer];
         rightBorder.borderColor = [UIColor lightGrayColor].CGColor;
         rightBorder.borderWidth = 1;
-        rightBorder.frame = CGRectMake(0, 0, CGRectGetWidth(cell.frame), 1);
+        rightBorder.frame = CGRectMake(0, 0, 1000, 1);
         [cell.layer addSublayer:rightBorder];
         
     }else{
@@ -573,38 +566,11 @@
 
 #pragma mark -
 #pragma mark - UIScrollViewDelegate
-bool isDragging = NO;
-
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    NSLog(@"%f - %f", scrollView.frame.origin.y, scrollView.contentOffset.y);
-    
-    CGFloat contentOffsetY = scrollView.contentOffset.y;
-    
-    CGFloat upperHeight = 204;
-    CGFloat fullTableHeight = self.view.frame.size.height;
-    
-    CGFloat offsetY = (contentOffsetY < upperHeight)? -scrollView.contentOffset.y : -upperHeight;
-    
-    if (contentOffsetY > 0) {
-        scrollView.frame = CGRectMake(0, upperHeight+offsetY, self.view.frame.size.width, fullTableHeight-(upperHeight+offsetY));
+    if (scrollView.contentOffset.y < self.mapView.frame.size.height*-1 ) {
+        [scrollView setContentOffset:CGPointMake(scrollView.contentOffset.x, self.mapView.frame.size.height*-1)];
     }
 }
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-    if (scrollView.contentOffset.y < -40) {
-        [UIView animateWithDuration:0.245f animations:^{
-            CGRect frame = self.tableView.frame;
-            frame.origin.y = 204;
-            
-            self.tableView.frame = frame;
-        } completion:^(BOOL finished) {
-            CGRect frame = self.tableView.frame;
-            frame.size.height = 300;
-            self.tableView.frame = frame;
-        }];
-    }
-}
-
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
 }
@@ -619,29 +585,15 @@ bool isDragging = NO;
     [searchBar resignFirstResponder];
 }
 
-- (BOOL)searchBar:(UISearchBar *)searchBar shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
-    return YES;
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
+    [self.tableView setContentOffset:CGPointMake(0, 0) animated:YES];
 }
 
-- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
-    
-    [UIView animateWithDuration:0.245f animations:^{
-        CGRect frame = self.tableView.frame;
-        frame.origin.y = 0;
-        frame.size.height = self.view.frame.size.height;
-        self.tableView.frame = frame;
-    }];
-    
-    return YES;
-}
-
-- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar{
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar{
     // non optimal hack for getting results back
     if (searchBar.text.length == 0) {
         [self performSearch:self.searchBar.text];
     }
-    
-    return YES;
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {

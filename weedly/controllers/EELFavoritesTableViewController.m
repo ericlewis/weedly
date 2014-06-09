@@ -7,7 +7,6 @@
 //
 
 #import "EELFavoritesTableViewController.h"
-#import "EELDetailTableViewController.h"
 #import "EELArrayDataSource.h"
 #import "EELItemHeaderViewCell.h"
 
@@ -132,7 +131,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"ShowItemDetail"]) {
-        [(id)[segue destinationViewController] setDispensary:self.selectedDispensary];
+        //[(id)[segue destinationViewController] setDispensary:self.selectedDispensary];
     }
 }
 
