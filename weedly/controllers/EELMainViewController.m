@@ -216,7 +216,7 @@
                 CLLocationDegrees lat = project.lat;
                 CLLocationDegrees lng = project.lng;
                 CLLocation *dispensaryLocation = [[CLLocation alloc] initWithLatitude:lat longitude:lng];
-                CLLocationDistance meters = [dispensaryLocation distanceFromLocation:[[CLLocation alloc] initWithLatitude:self.mapView.centerCoordinate.latitude+0.06f longitude:self.mapView.centerCoordinate.longitude]];
+                CLLocationDistance meters = [dispensaryLocation distanceFromLocation:[[CLLocation alloc] initWithLatitude:self.mapView.centerCoordinate.latitude+0.0234f longitude:self.mapView.centerCoordinate.longitude]];
                 project.currentDistance = @(meters);
             }
             
@@ -241,7 +241,7 @@
                 CLLocationDegrees lat = project.lat;
                 CLLocationDegrees lng = project.lng;
                 CLLocation *dispensaryLocation = [[CLLocation alloc] initWithLatitude:lat longitude:lng];
-                CLLocationDistance meters = [dispensaryLocation distanceFromLocation:[[CLLocation alloc] initWithLatitude:self.mapView.centerCoordinate.latitude+0.06f longitude:self.mapView.centerCoordinate.longitude]];
+                CLLocationDistance meters = [dispensaryLocation distanceFromLocation:[[CLLocation alloc] initWithLatitude:self.mapView.centerCoordinate.latitude+0.0234f longitude:self.mapView.centerCoordinate.longitude]];
                 project.currentDistance = @(meters);
             }
             
@@ -355,16 +355,17 @@
         }
         
         [self.mapView setRegion:region animated:animated];
+        [self performSearch:self.searchBar.text lat:37.733972 lng:-122.431297];
     }else{
         MKCoordinateRegion region;
         region.center = CLLocationCoordinate2DMake(37.733972, -122.431297);
-        
         MKCoordinateSpan span;
         span.latitudeDelta  = 0.17; // Change these values to change the zoom
         span.longitudeDelta = 0.17;
         region.span = span;
         
         [self.mapView setRegion:region animated:animated];
+        [self performSearch:self.searchBar.text lat:37.733972 lng:-122.431297];
     }
 }
 
