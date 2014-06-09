@@ -68,6 +68,7 @@
     
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     self.tableView.backgroundColor = [UIColor clearColor];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -215,7 +216,7 @@
                 CLLocationDegrees lat = project.lat;
                 CLLocationDegrees lng = project.lng;
                 CLLocation *dispensaryLocation = [[CLLocation alloc] initWithLatitude:lat longitude:lng];
-                CLLocationDistance meters = [dispensaryLocation distanceFromLocation:[[CLLocation alloc] initWithLatitude:self.mapView.centerCoordinate.latitude longitude:self.mapView.centerCoordinate.longitude]];
+                CLLocationDistance meters = [dispensaryLocation distanceFromLocation:[[CLLocation alloc] initWithLatitude:self.mapView.centerCoordinate.latitude+0.06f longitude:self.mapView.centerCoordinate.longitude]];
                 project.currentDistance = @(meters);
             }
             
@@ -240,7 +241,7 @@
                 CLLocationDegrees lat = project.lat;
                 CLLocationDegrees lng = project.lng;
                 CLLocation *dispensaryLocation = [[CLLocation alloc] initWithLatitude:lat longitude:lng];
-                CLLocationDistance meters = [dispensaryLocation distanceFromLocation:[[CLLocation alloc] initWithLatitude:self.mapView.centerCoordinate.latitude - LATITUDE_OFFSET longitude:self.mapView.centerCoordinate.longitude]];
+                CLLocationDistance meters = [dispensaryLocation distanceFromLocation:[[CLLocation alloc] initWithLatitude:self.mapView.centerCoordinate.latitude+0.06f longitude:self.mapView.centerCoordinate.longitude]];
                 project.currentDistance = @(meters);
             }
             
@@ -560,25 +561,43 @@
 
 #pragma mark -
 #pragma mark - UIScrollViewDelegate
+bool isDragging = NO;
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     NSLog(@"%f - %f", scrollView.frame.origin.y, scrollView.contentOffset.y);
     
+    CGFloat contentOffsetY = scrollView.contentOffset.y;
+    
+    CGFloat upperHeight = 204;
+    CGFloat fullTableHeight = self.view.frame.size.height;
+    
+    CGFloat offsetY = (contentOffsetY < upperHeight)? -scrollView.contentOffset.y : -upperHeight;
+    
+    if (contentOffsetY > 0) {
+        scrollView.frame = CGRectMake(0, upperHeight+offsetY, self.view.frame.size.width, fullTableHeight-(upperHeight+offsetY));
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
     if (scrollView.contentOffset.y < -40) {
-        CGRect frame = self.tableView.frame;
-        frame.origin.y = 204;
-        frame.size.height = 300;
-        
-        self.tableView.frame = frame;
+        [UIView animateWithDuration:0.245f animations:^{
+            CGRect frame = self.tableView.frame;
+            frame.origin.y = 204;
+            
+            self.tableView.frame = frame;
+        } completion:^(BOOL finished) {
+            CGRect frame = self.tableView.frame;
+            frame.size.height = 300;
+            self.tableView.frame = frame;
+        }];
     }
 }
 
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
-
 }
 
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{
-
 }
 
 #pragma mark -
@@ -593,11 +612,13 @@
 }
 
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
-    CGRect frame = self.tableView.frame;
-    frame.origin.y = 0;
-    frame.size.height = self.view.frame.size.height;
     
-    self.tableView.frame = frame;
+    [UIView animateWithDuration:0.245f animations:^{
+        CGRect frame = self.tableView.frame;
+        frame.origin.y = 0;
+        frame.size.height = self.view.frame.size.height;
+        self.tableView.frame = frame;
+    }];
     
     return YES;
 }
