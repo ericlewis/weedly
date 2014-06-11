@@ -343,7 +343,7 @@
 			isa = PBXGroup;
 			children = (
 				4DC960791948FB4800FEABB6 /* Map / list sources */,
-				4DC960781948FB3900FEABB6 /* Merchant Detail sources */,
+				4DC960781948FB3900FEABB6 /* Detail sources */,
 			);
 			name = DataSources;
 			sourceTree = "<group>";
@@ -359,6 +359,7 @@
 		4D9DDDED1915AA50006E5B03 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4D75E0C21943F71C00A25AB6 /* DataSources */,
 				4DCFE51B1948BEA500139D52 /* EELDeal.h */,
 				4DCFE51C1948BEA500139D52 /* EELDeal.m */,
 				4D9DDDEE1915AC89006E5B03 /* EELWMClient.h */,
@@ -394,9 +395,6 @@
 				4DCFE5191948BE3100139D52 /* EELDetailListCell.xib */,
 				4DCFE51E1948BF1400139D52 /* EELDetailListCell.h */,
 				4DCFE51F1948BF1400139D52 /* EELDetailListCell.m */,
-				4D37D4611949139500034769 /* EELListTableViewCell.h */,
-				4D37D4621949139500034769 /* EELListTableViewCell.m */,
-				4D37D4631949139500034769 /* EELListTableViewCell.xib */,
 			);
 			name = "detail controllers";
 			sourceTree = "<group>";
@@ -406,10 +404,11 @@
 			children = (
 				4DD4930A1915827D001A6203 /* EELMainViewController.h */,
 				4DD4930B1915827D001A6203 /* EELMainViewController.m */,
+				4D37D4611949139500034769 /* EELListTableViewCell.h */,
+				4D37D4621949139500034769 /* EELListTableViewCell.m */,
+				4D37D4631949139500034769 /* EELListTableViewCell.xib */,
 				4DD1FFF6194641650072D5B4 /* EELListTableView.h */,
 				4DD1FFF7194641650072D5B4 /* EELListTableView.m */,
-				4D9DDE091916AD74006E5B03 /* EELArrayDataSource.h */,
-				4D9DDE0A1916AD74006E5B03 /* EELArrayDataSource.m */,
 			);
 			name = "main view controllers";
 			sourceTree = "<group>";
@@ -459,7 +458,6 @@
 		4DC1A1171912F9A200228F5A /* weedly */ = {
 			isa = PBXGroup;
 			children = (
-				4D75E0C21943F71C00A25AB6 /* DataSources */,
 				4D75E06C1943F3D700A25AB6 /* Framework */,
 				4D9DDDED1915AA50006E5B03 /* Models */,
 				4D9DDDEC1915AA2E006E5B03 /* Views */,
@@ -503,7 +501,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		4DC960781948FB3900FEABB6 /* Merchant Detail sources */ = {
+		4DC960781948FB3900FEABB6 /* Detail sources */ = {
 			isa = PBXGroup;
 			children = (
 				4D75E0C31943F73A00A25AB6 /* EELDispensaryDetailDataSource.h */,
@@ -513,12 +511,14 @@
 				4D75E0CC1943F96C00A25AB6 /* EELReviewsDataSource.h */,
 				4D75E0CD1943F96C00A25AB6 /* EELReviewsDataSource.m */,
 			);
-			name = "Merchant Detail sources";
+			name = "Detail sources";
 			sourceTree = "<group>";
 		};
 		4DC960791948FB4800FEABB6 /* Map / list sources */ = {
 			isa = PBXGroup;
 			children = (
+				4D9DDE091916AD74006E5B03 /* EELArrayDataSource.h */,
+				4D9DDE0A1916AD74006E5B03 /* EELArrayDataSource.m */,
 			);
 			name = "Map / list sources";
 			sourceTree = "<group>";
