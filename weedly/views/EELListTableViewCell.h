@@ -1,5 +1,5 @@
 //
-//  EELCollectionView.h
+//  EELListTableViewCell.h
 //  weedly
 //
 //  Created by 1debit on 6/11/14.
@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EELCollectionView : UICollectionView
+@interface EELListTableViewCell : UITableViewCell
+
+- (void)configureWithDispensary:(EELDispensary *)dispensary;
 
 @end

@@ -10,12 +10,12 @@
 #import "EELDetailViewController.h"
 
 #import "EELArrayDataSource.h"
-#import "EELDetailHeader.h"
+#import "EELListTableViewCell.h"
 
 @interface EELMainViewController ()
 
 @property (weak, nonatomic) IBOutlet MKMapView   *mapView;
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *filterButton;
 
 @property (strong, nonatomic) REMenu *filterMenu;
@@ -44,12 +44,11 @@
     
     [self getInitialListings];
     
-    
-    
-    self.collectionView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
-    self.collectionView.contentInset = UIEdgeInsetsMake(self.mapView.frame.size.height-40, 0, 0, 0);
-    [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([EELDetailHeader class]) bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:NSStringFromClass([EELDetailHeader class])];
-    
+    self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
+    self.tableView.contentInset = UIEdgeInsetsMake(self.mapView.frame.size.height-40, 0, 0, 0);
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([EELListTableViewCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"ItemHeaderFirstCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([EELListTableViewCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"ItemHeaderCell"];
+
     UIPanGestureRecognizer* panRec = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didDragMap:)];
     [panRec setDelegate:self];
     [self.mapView addGestureRecognizer:panRec];
@@ -206,7 +205,7 @@
             self.dataSource = [EELArrayDataSource dataSourceWithItems:sortedArray];
             
             [self addPins];
-            [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
         }];
     }else if(self.searchBar.tag == 911){
         [[EELWMClient sharedClient] searchDoctorsWithTerm:searchTerm lat:lat lng:lng completionBlock:^(NSArray *results, NSError *error) {
@@ -231,7 +230,7 @@
             self.dataSource = [EELArrayDataSource dataSourceWithItems:sortedArray];
             
             [self addPins];
-            [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
         }];
     }else{
         
@@ -253,7 +252,7 @@
         [sortedArray sortUsingDescriptors:@[sort]];
         
         self.dataSource = [EELArrayDataSource dataSourceWithItems:sortedArray];
-        [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
 
         [self addPins];
     }
@@ -294,7 +293,7 @@
                                                                 NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:FAVORITES_KEY];
                                                                 self.dataSource = [EELArrayDataSource dataSourceWithItems:[NSKeyedUnarchiver unarchiveObjectWithData:data]];
                                                                 [self addPins];
-                                                                [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+                                                                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
                                                             }];
         
         self.filterMenu = [[REMenu alloc] initWithItems:@[dispensaryItem, doctorItem, favoriteItem]];
@@ -431,43 +430,68 @@
     }
 }
 
-#pragma mark -
-#pragma mark - Navigation
+#pragma mark - Segue
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{    
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    if ([[segue identifier] isEqualToString:@"ShowItemDetail"]) {
-        [(id)[segue destinationViewController] setDispensary:self.selectedDispensary];
+{
+    if ([segue.identifier isEqualToString:@"ShowItemDetail"]) {
         [self hideSearchBar];
+        EELDetailViewController *controller = segue.destinationViewController;
+        controller.dispensary = self.selectedDispensary;
     }
 }
 
 #pragma mark -
-#pragma mark - Collection view data source
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+#pragma mark - Table view data source
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
     return 1;
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // Return the number of rows in the section.
     return self.dataSource.items.count;
 }
 
-- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-    return UIEdgeInsetsMake(0, 0, 0, 0);
-}
-
-- (EELDetailHeader *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    EELDetailHeader *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([EELDetailHeader class]) forIndexPath:indexPath];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    EELListTableViewCell *cell;
     EELDispensary *dispensary = [self.dataSource.items objectAtIndex:indexPath.row];
     
-    cell.backgroundColor = [UIColor whiteColor];
+    if (indexPath.row == 0) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"ItemHeaderFirstCell" forIndexPath:indexPath];
+        cell.clipsToBounds = YES;
+        CALayer *rightBorder = [CALayer layer];
+        rightBorder.borderColor = [UIColor lightGrayColor].CGColor;
+        rightBorder.borderWidth = 1;
+        rightBorder.frame = CGRectMake(0, 0, 1000, 1);
+        [cell.layer addSublayer:rightBorder];
+        
+    }else{
+        cell = [tableView dequeueReusableCellWithIdentifier:@"ItemHeaderCell" forIndexPath:indexPath];
+    }
     
     [cell configureWithDispensary:dispensary];
+
     
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 122;
+}
+
+- (NSIndexPath*)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    self.selectedDispensary = [self.dataSource.items objectAtIndex:indexPath.row];
+    
+    return indexPath;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self performSegueWithIdentifier:@"ShowItemDetail" sender:self];
 }
 
 #pragma mark -
@@ -486,7 +510,7 @@
 }
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
-    [self.collectionView setContentOffset:CGPointMake(0, 0) animated:YES];
+    [self.tableView setContentOffset:CGPointMake(0, 0) animated:YES];
 }
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar{

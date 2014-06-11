@@ -47,33 +47,22 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="Ysh-r2-IrO"/>
                                 </connections>
                             </mapView>
-                            <collectionView appearanceType="aqua" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ceX-18-2jk" customClass="EELCollectionView">
+                            <tableView appearanceType="aqua" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="T0e-Ca-QFW" customClass="EELListTableView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="PiM-8I-6g5">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells/>
                                 <connections>
-                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="qgd-iU-Sjy"/>
-                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="cIe-9d-P91"/>
+                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="j57-HU-OUc"/>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="OWE-oz-hQh"/>
                                 </connections>
-                            </collectionView>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="3xA-xn-xhL" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="1NJ-PH-aQe"/>
                             <constraint firstItem="3xA-xn-xhL" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="LDG-J3-6ll"/>
                             <constraint firstItem="3xA-xn-xhL" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="QT6-V1-SEw"/>
-                            <constraint firstItem="3xA-xn-xhL" firstAttribute="leading" secondItem="ceX-18-2jk" secondAttribute="leading" id="RQT-AK-WI5"/>
                             <constraint firstAttribute="trailing" secondItem="3xA-xn-xhL" secondAttribute="trailing" id="Ta4-mo-kqb"/>
-                            <constraint firstItem="ceX-18-2jk" firstAttribute="trailing" secondItem="3xA-xn-xhL" secondAttribute="trailing" id="W4a-mR-aVf"/>
-                            <constraint firstItem="ceX-18-2jk" firstAttribute="top" secondItem="3xA-xn-xhL" secondAttribute="top" id="nMC-Db-XQf"/>
-                            <constraint firstAttribute="bottom" secondItem="ceX-18-2jk" secondAttribute="bottom" id="xKF-v4-3DT"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="68Z-QI-bP2">
@@ -84,9 +73,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="collectionView" destination="ceX-18-2jk" id="cih-x6-0JU"/>
                         <outlet property="filterButton" destination="mfD-hb-9eu" id="dyS-AP-vIf"/>
                         <outlet property="mapView" destination="3xA-xn-xhL" id="Aua-r0-Za3"/>
+                        <outlet property="tableView" destination="T0e-Ca-QFW" id="St4-tz-xjB"/>
                         <segue destination="ERD-op-I1L" kind="push" identifier="ShowItemDetail" id="DwH-X8-mWY"/>
                     </connections>
                 </viewController>

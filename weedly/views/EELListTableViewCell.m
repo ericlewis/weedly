@@ -1,46 +1,36 @@
-/*
- Copyright (C) 2014 Apple Inc. All Rights Reserved.
- See LICENSE.txt for this sample’s licensing information
- 
- Abstract:
- 
- The header view shown in the cat detail screen. This view shows the name of the cat, its conservation status, and the favorite flag.
- 
- */
+//
+//  EELListTableViewCell.m
+//  weedly
+//
+//  Created by 1debit on 6/11/14.
+//  Copyright (c) 2014 Eric Lewis. All rights reserved.
+//
 
-#import "EELDetailHeader.h"
+#import "EELListTableViewCell.h"
 
-#import "UIView+Helpers.h"
+@interface EELListTableViewCell ()
 
-@interface NSObject ()
-- (void)toggleFavorite:(id)sender;
-@end
-
-@interface EELDetailHeader ()
 @property (nonatomic, weak) IBOutlet UILabel *nameLabel;
 @property (nonatomic, weak) IBOutlet UILabel *hoursLabel;
 @property (nonatomic, weak) IBOutlet UILabel *ratingLabel;
 @property (nonatomic, weak) IBOutlet UILabel *isOpenLabel;
 @property (nonatomic, weak) IBOutlet UIButton *favoriteButton;
 @property (nonatomic, getter=isFavorite) BOOL favorite;
+
 @end
 
-@implementation EELDetailHeader
+@implementation EELListTableViewCell
 
-- (void)setFavorite:(BOOL)favorite
+- (void)awakeFromNib
 {
-    if (_favorite == favorite)
-        return;
-    
-    _favorite = favorite;
-    
-    UIImage *image;
-    if (favorite)
-        image = [UIImage imageNamed:@"liked-75"];
-    else
-        image = [UIImage imageNamed:@"like-75"];
-    
-    [_favoriteButton setImage:image forState:UIControlStateNormal];
+    // Initialization code
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
+    [super setSelected:selected animated:animated];
+
+    // Configure the view for the selected state
 }
 
 - (void)configureWithDispensary:(EELDispensary *)dispensary
@@ -67,10 +57,4 @@
     }
 }
 
-- (void)favoriteTapped:(id)sender
-{
-    self.favorite = !self.favorite;
-    
-    [self.superview aapl_sendAction:@selector(toggleFavorite:) from:self];
-}
 @end
