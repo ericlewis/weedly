@@ -9,7 +9,6 @@
  */
 
 #import "EELReviewsDataSource.h"
-#import "EELWMClient.h"
 
 #import "EELReviewCell.h"
 

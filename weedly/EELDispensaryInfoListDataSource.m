@@ -10,8 +10,6 @@
 
 #import "EELDispensaryInfoListDataSource.h"
 
-#import "AAPLBasicCell.h"
-
 #import "UICollectionView+Helpers.h"
 
 #import "AAPLAction.h"

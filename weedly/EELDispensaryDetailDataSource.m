@@ -12,8 +12,6 @@
 #import "EELDispensaryInfoListDataSource.h"
 #import "AAPLDataSource+Headers.h"
 
-#import "EELWMClient.h"
-
 @interface EELDispensaryDetailDataSource ()
 @property (nonatomic, strong) EELDispensary *dispensary;
 @property (nonatomic, strong) EELDispensaryInfoListDataSource *listDataSource;
