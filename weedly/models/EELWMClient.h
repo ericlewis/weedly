@@ -48,4 +48,7 @@
 - (void)getReviewsWithAccountID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block;
 - (void)getFavoritesWithAccountID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block;
 
+#pragma mark - Offers API
+- (void) getDealsAround:(CLLocation*)location completionBlock:(void(^)(NSArray*, NSError*))aBlock;
+
 @end

@@ -49,6 +49,7 @@
     #import "EELSmokinOn.h"
     #import "EELMenu.h"
     #import "EELMenuItem.h"
+    #import "EELDeal.h"
 
     // api client
     #import "EELWMClient.h"
