@@ -7,23 +7,45 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="3Is-73-K6T" customClass="EELDetailListCell">
-            <rect key="frame" x="0.0" y="0.0" width="276" height="50"/>
+            <rect key="frame" x="0.0" y="0.0" width="276" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="276" height="50"/>
+                <rect key="frame" x="0.0" y="0.0" width="276" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="THh-po-Ib5">
-                        <rect key="frame" x="117" y="14" width="42" height="21"/>
+                    <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="THh-po-Ib5">
+                        <rect key="frame" x="55" y="2" width="221" height="40"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView appearanceType="aqua" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dealsIcon" translatesAutoresizingMaskIntoConstraints="NO" id="bH6-ga-fnw">
+                        <rect key="frame" x="20" y="12" width="20" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="ooz-jJ-oq9"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
+            <constraints>
+                <constraint firstItem="bH6-ga-fnw" firstAttribute="centerY" secondItem="THh-po-Ib5" secondAttribute="centerY" id="2d8-Ab-rQN"/>
+                <constraint firstItem="bH6-ga-fnw" firstAttribute="centerY" secondItem="3Is-73-K6T" secondAttribute="centerY" id="80V-eL-qRG"/>
+                <constraint firstItem="bH6-ga-fnw" firstAttribute="leading" secondItem="3Is-73-K6T" secondAttribute="leading" constant="20" id="PLV-TJ-XWA"/>
+                <constraint firstAttribute="trailing" secondItem="THh-po-Ib5" secondAttribute="trailing" id="buI-1W-wRe"/>
+                <constraint firstItem="THh-po-Ib5" firstAttribute="top" secondItem="3Is-73-K6T" secondAttribute="top" constant="2" id="hBg-Qb-326"/>
+                <constraint firstItem="bH6-ga-fnw" firstAttribute="top" secondItem="3Is-73-K6T" secondAttribute="top" constant="12" id="kwd-Ew-LMS"/>
+                <constraint firstItem="THh-po-Ib5" firstAttribute="leading" secondItem="bH6-ga-fnw" secondAttribute="trailing" constant="15" id="y5Q-nT-sbW"/>
+            </constraints>
             <size key="customSize" width="276" height="50"/>
+            <connections>
+                <outlet property="nameLabel" destination="THh-po-Ib5" id="n4B-m8-PX5"/>
+            </connections>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="dealsIcon" width="21" height="21"/>
+    </resources>
 </document>

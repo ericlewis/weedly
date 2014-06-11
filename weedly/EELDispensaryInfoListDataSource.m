@@ -70,7 +70,9 @@
 {
     NSDictionary *menuItem = [self itemAtIndexPath:indexPath];
     EELDetailListCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([EELDetailListCell class]) forIndexPath:indexPath];
-
+    
+    cell.nameLabel.text = menuItem[@"name"];
+    
     return cell;
 }
 

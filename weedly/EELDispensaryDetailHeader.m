@@ -17,70 +17,15 @@
 @end
 
 @interface EELDispensaryDetailHeader ()
-@property (nonatomic, strong) UILabel *nameLabel;
-@property (nonatomic, strong) UILabel *hoursLabel;
-@property (nonatomic, strong) UILabel *ratingLabel;
-@property (nonatomic, strong) UILabel *isOpenLabel;
-@property (nonatomic, strong) UIButton *favoriteButton;
+@property (nonatomic, weak) IBOutlet UILabel *nameLabel;
+@property (nonatomic, weak) IBOutlet UILabel *hoursLabel;
+@property (nonatomic, weak) IBOutlet UILabel *ratingLabel;
+@property (nonatomic, weak) IBOutlet UILabel *isOpenLabel;
+@property (nonatomic, weak) IBOutlet UIButton *favoriteButton;
 @property (nonatomic, getter=isFavorite) BOOL favorite;
 @end
 
 @implementation EELDispensaryDetailHeader
-
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (!self)
-        return nil;
-    
-    _nameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    _nameLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    _nameLabel.font = [UIFont systemFontOfSize:18];
-    _nameLabel.numberOfLines = 1;
-    [self addSubview:_nameLabel];
-    
-    _hoursLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    _hoursLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    _hoursLabel.font = [UIFont systemFontOfSize:14];
-    _hoursLabel.numberOfLines = 2;
-    _hoursLabel.textColor = [UIColor colorWithWhite:0.6 alpha:1];
-    [self addSubview:_hoursLabel];
-    
-    _isOpenLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    _isOpenLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    _isOpenLabel.font = [UIFont systemFontOfSize:12];
-    _isOpenLabel.numberOfLines = 1;
-    _isOpenLabel.textColor = [UIColor colorWithWhite:0.6 alpha:1];
-    [self addSubview:_isOpenLabel];
-    
-    _ratingLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    _ratingLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    _ratingLabel.font = [UIFont systemFontOfSize:12];
-    _ratingLabel.numberOfLines = 1;
-    _ratingLabel.textColor = [UIColor orangeColor];
-    [self addSubview:_ratingLabel];
-    
-    _favoriteButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    _favoriteButton.translatesAutoresizingMaskIntoConstraints = NO;
-    [_favoriteButton setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
-    [_favoriteButton setImage:[UIImage imageNamed:@"like-75"] forState:UIControlStateNormal];
-    [_favoriteButton addTarget:self action:@selector(favoriteTapped:) forControlEvents:UIControlEventTouchUpInside];
-    [_favoriteButton setTintColor:[UIColor blackColor]];
-    
-    [self addSubview:_favoriteButton];
-    
-    NSDictionary *views = NSDictionaryOfVariableBindings(_nameLabel, _isOpenLabel, _ratingLabel, _favoriteButton, _hoursLabel);
-    NSMutableArray *constraints = [NSMutableArray array];
-    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_nameLabel]-[_favoriteButton]-|" options:0 metrics:nil views:views]];
-    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_hoursLabel]-[_favoriteButton]-|" options:0 metrics:nil views:views]];
-    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_isOpenLabel]-[_ratingLabel]-|" options:NSLayoutFormatAlignAllBaseline metrics:nil views:views]];
-    
-    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[_nameLabel][_hoursLabel]-3-[_ratingLabel]" options:0 metrics:nil views:views]];
-    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[_favoriteButton]" options:0 metrics:nil views:views]];
-    
-    [self addConstraints:constraints];
-    return self;
-}
 
 - (void)setFavorite:(BOOL)favorite
 {
