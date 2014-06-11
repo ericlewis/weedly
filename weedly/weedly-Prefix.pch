@@ -31,14 +31,10 @@
     #endif
 
     // pods
-    #import <KVOController/FBKVOController.h>
     #import <Overcoat/Overcoat.h>
     #import <Mantle/Mantle.h>
-    #import <POP/POP.h>
     #import "MTLocation.h"
-    #import "PKRevealController.h"
     #import "REMenu.h"
-    #import "CWStatusBarNotification.h"
     #import "NSString+USStateMap.h"
     #import "NSDate+DateTools.h"
 

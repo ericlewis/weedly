@@ -9,7 +9,6 @@
 #import "EELMainViewController.h"
 
 #import "EELDispensaryDetailViewController.h"
-#import "EELFavoritesTableViewController.h"
 
 #import "EELItemHeaderViewCell.h"
 
@@ -32,7 +31,6 @@
 @property (strong, nonatomic) REMenu *filterMenu;
 @property (strong, nonatomic) UISearchBar *searchBar;
 @property (strong, nonatomic) EELArrayDataSource *dataSource;
-@property (strong, nonatomic) CWStatusBarNotification *notification;
 
 @end
 
@@ -87,8 +85,6 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    [self performSelector:@selector(showSearchBar) withObject:self afterDelay:0.15];
-    
     // landscape fix search
     if (UIDeviceOrientationIsLandscape(self.interfaceOrientation)) {
         if (IS_IPHONE_5) {
@@ -124,20 +120,6 @@
 
 - (void)viewDidDisappear:(BOOL)animated{
     self.mapView.showsUserLocation = NO;
-}
-
-- (void)showSearchBar{
-    POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerOpacity];
-    anim.springSpeed = 15.0;
-    anim.toValue = @(1.0);
-    [self.searchBar.layer pop_addAnimation:anim forKey:@"searchBarShow"];
-}
-
-- (void)hideSearchBar{
-    POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerOpacity];
-    anim.springSpeed = 20.0;
-    anim.toValue = @(0.0);
-    [self.searchBar.layer pop_addAnimation:anim forKey:@"searchBarShow"];
 }
 
 #pragma mark -
@@ -470,7 +452,7 @@
     // Pass the selected object to the new view controller.
     if ([[segue identifier] isEqualToString:@"ShowItemDetail"]) {
         [(id)[segue destinationViewController] setDispensary:self.selectedDispensary];
-        [self hideSearchBar];
+        [self.searchBar resignFirstResponder];
     }
 }
 
