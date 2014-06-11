@@ -70,11 +70,6 @@
 {
     NSDictionary *menuItem = [self itemAtIndexPath:indexPath];
     EELDetailListCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([EELDetailListCell class]) forIndexPath:indexPath];
-    cell.style = AAPLBasicCellStyleSubtitle;
-    cell.primaryLabel.text = menuItem[@"name"];
-    cell.primaryLabel.font = [UIFont systemFontOfSize:14];
-    cell.secondaryLabel.text = menuItem[@"subtitle"];
-    cell.secondaryLabel.font = [UIFont systemFontOfSize:10];
 
     return cell;
 }

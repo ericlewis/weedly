@@ -8,6 +8,6 @@
 
 #import "AAPLBasicCell.h"
 
-@interface EELDetailListCell : AAPLBasicCell
+@interface EELDetailListCell : AAPLCollectionViewCell
 
 @end

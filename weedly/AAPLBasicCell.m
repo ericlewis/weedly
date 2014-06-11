@@ -59,58 +59,58 @@
     [self setNeedsUpdateConstraints];
 }
 
-//- (void)updateConstraints
-//{
-//    if (_constraints) {
-//        [super updateConstraints];
-//        return;
-//    }
-//
-//    CGFloat labelHeight;
-//
-//    if (AAPLBasicCellStyleDefault == _style)
-//        labelHeight = MAX(_primaryLabel.font.lineHeight, _secondaryLabel.font.lineHeight);
-//    else
-//        labelHeight = _primaryLabel.font.lineHeight + _secondaryLabel.font.lineHeight;
-//
-//    // Our content insets are based on a 44pt row height
-//    CGFloat verticalPadding = (44 - labelHeight)/2;
-//
-//    _contentInsets = UIEdgeInsetsMake(verticalPadding, 15, verticalPadding, 15);
-//    
-//    UIView *contentView = self.contentView;
-//
-//    _constraints = [NSMutableArray array];
-//
-//    NSDictionary *views = NSDictionaryOfVariableBindings(_primaryLabel, _secondaryLabel);
-//    NSDictionary *metrics = @{
-//                              @"Left" : @(_contentInsets.left),
-//                              @"Top" : @(_contentInsets.top),
-//                              @"Right" : @(_contentInsets.right),
-//                              @"Bottom" : @(_contentInsets.bottom)
-//                              };
-//
-//    if (AAPLBasicCellStyleDefault == _style) {
-//        [_constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-Left-[_primaryLabel]-(>=10)-[_secondaryLabel]-Right-|" options:NSLayoutFormatAlignAllBaseline metrics:metrics views:views]];
-//        [_constraints addObject:[NSLayoutConstraint constraintWithItem:_primaryLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:contentView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
-//        [_constraints addObject:[NSLayoutConstraint constraintWithItem:_primaryLabel attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationLessThanOrEqual toItem:contentView attribute:NSLayoutAttributeHeight multiplier:1 constant:0]];
-//    }
-//    else {
-//        [_constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-Left-[_primaryLabel]-(>=Right)-|" options:0 metrics:metrics views:views]];
-//        [_constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-Left-[_secondaryLabel]-(>=Right)-|" options:0 metrics:metrics views:views]];
-//        [_constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-Top-[_primaryLabel][_secondaryLabel]-Bottom-|" options:0 metrics:metrics views:views]];
-//    }
-//
-//    [contentView addConstraints:_constraints];
-//    [super updateConstraints];
-//}
-//
-//- (void)setNeedsUpdateConstraints
-//{
-//    if (_constraints)
-//        [self.contentView removeConstraints:_constraints];
-//    _constraints = nil;
-//    [super setNeedsUpdateConstraints];
-//}
+- (void)updateConstraints
+{
+    if (_constraints) {
+        [super updateConstraints];
+        return;
+    }
+
+    CGFloat labelHeight;
+
+    if (AAPLBasicCellStyleDefault == _style)
+        labelHeight = MAX(_primaryLabel.font.lineHeight, _secondaryLabel.font.lineHeight);
+    else
+        labelHeight = _primaryLabel.font.lineHeight + _secondaryLabel.font.lineHeight;
+
+    // Our content insets are based on a 44pt row height
+    CGFloat verticalPadding = (44 - labelHeight)/2;
+
+    _contentInsets = UIEdgeInsetsMake(verticalPadding, 15, verticalPadding, 15);
+    
+    UIView *contentView = self.contentView;
+
+    _constraints = [NSMutableArray array];
+
+    NSDictionary *views = NSDictionaryOfVariableBindings(_primaryLabel, _secondaryLabel);
+    NSDictionary *metrics = @{
+                              @"Left" : @(_contentInsets.left),
+                              @"Top" : @(_contentInsets.top),
+                              @"Right" : @(_contentInsets.right),
+                              @"Bottom" : @(_contentInsets.bottom)
+                              };
+
+    if (AAPLBasicCellStyleDefault == _style) {
+        [_constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-Left-[_primaryLabel]-(>=10)-[_secondaryLabel]-Right-|" options:NSLayoutFormatAlignAllBaseline metrics:metrics views:views]];
+        [_constraints addObject:[NSLayoutConstraint constraintWithItem:_primaryLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:contentView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
+        [_constraints addObject:[NSLayoutConstraint constraintWithItem:_primaryLabel attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationLessThanOrEqual toItem:contentView attribute:NSLayoutAttributeHeight multiplier:1 constant:0]];
+    }
+    else {
+        [_constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-Left-[_primaryLabel]-(>=Right)-|" options:0 metrics:metrics views:views]];
+        [_constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-Left-[_secondaryLabel]-(>=Right)-|" options:0 metrics:metrics views:views]];
+        [_constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-Top-[_primaryLabel][_secondaryLabel]-Bottom-|" options:0 metrics:metrics views:views]];
+    }
+
+    [contentView addConstraints:_constraints];
+    [super updateConstraints];
+}
+
+- (void)setNeedsUpdateConstraints
+{
+    if (_constraints)
+        [self.contentView removeConstraints:_constraints];
+    _constraints = nil;
+    [super setNeedsUpdateConstraints];
+}
 
 @end
