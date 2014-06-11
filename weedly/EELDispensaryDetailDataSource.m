@@ -4,13 +4,11 @@
  
  Abstract:
  
-  The cat detail data source, of course. Initialised with a cat instance, this data source will fetch the detail information about that cat.
+  The dispesary / doctor detail data source, of course. Initialised with a dispensary instance, this data source will fetch the detail information about that dispensary.
   
  */
 
 #import "EELDispensaryDetailDataSource.h"
-#import "AAPLKeyValueDataSource.h"
-#import "AAPLTextValueDataSource.h"
 #import "EELDispensaryInfoListDataSource.h"
 #import "AAPLDataSource+Headers.h"
 

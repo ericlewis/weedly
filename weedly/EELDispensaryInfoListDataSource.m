@@ -4,8 +4,8 @@
  
  Abstract:
  
-  A basic data source that either fetches the list of all available cats or the user's favorite cats. If this data source represents the favorites, it listens for a notification with the name AAPLCatFavoriteToggledNotificationName and will update itself appropriately.
-  
+ A basic data source that either fetches the list info cell options available
+ 
  */
 
 #import "EELDispensaryInfoListDataSource.h"

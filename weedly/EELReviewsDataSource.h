@@ -4,7 +4,7 @@
  
  Abstract:
  
-  A basic data source for the sightings of a particular cat. When initialised with a cat, this data source will fetch the cat sightings.
+  A basic data source for the reviews of a particular dispensary / doctor. When initialised with a dispensary / doctor, this data source will fetch the dispensary / doctor reviews.
   
  */
 
