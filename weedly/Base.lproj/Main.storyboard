@@ -139,10 +139,10 @@
             </objects>
             <point key="canvasLocation" x="803" y="-1652"/>
         </scene>
-        <!--Dispensary Detail View Controller - Cat Detail-->
+        <!--Detail View Controller - Cat Detail-->
         <scene sceneID="go3-Ot-aMd">
             <objects>
-                <collectionViewController title="Cat Detail" id="ERD-op-I1L" customClass="EELDispensaryDetailViewController" sceneMemberID="viewController">
+                <collectionViewController title="Cat Detail" id="ERD-op-I1L" customClass="EELDetailViewController" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="b2k-Rf-DoU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

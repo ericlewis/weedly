@@ -6,22 +6,22 @@
 //  Copyright (c) 2014 Eric Lewis. All rights reserved.
 //
 
-#import "EELDispensaryDetailViewController.h"
+#import "EELDetailViewController.h"
 #import "EELMenuTableViewController.h"
 #import "AAPLSegmentedDataSource.h"
 #import "EELDispensaryDetailDataSource.h"
 #import "EELReviewsDataSource.h"
 
-#import "EELDispensaryDetailHeader.h"
+#import "EELDetailHeader.h"
 
-@interface EELDispensaryDetailViewController ()
+@interface EELDetailViewController ()
 @property (nonatomic, strong) AAPLSegmentedDataSource *dataSource;
 @property (nonatomic, strong) EELDispensaryDetailDataSource *detailDataSource;
 @property (nonatomic, strong) EELReviewsDataSource *reviewsDataSource;
 @property (nonatomic, strong) id selectedDataSourceObserver;
 @end
 
-@implementation EELDispensaryDetailViewController
+@implementation EELDetailViewController
 
 - (void)viewDidLoad
 {
@@ -47,9 +47,9 @@
     AAPLLayoutSupplementaryMetrics *globalHeader = [self.dataSource newHeaderForKey:@"globalHeader"];
     globalHeader.visibleWhileShowingPlaceholder = YES;
     globalHeader.height = 110;
-    globalHeader.supplementaryViewClass = [EELDispensaryDetailHeader class];
+    globalHeader.supplementaryViewClass = [EELDetailHeader class];
     globalHeader.configureView = ^(UICollectionReusableView *view, AAPLDataSource *dataSource, NSIndexPath *indexPath) {
-        EELDispensaryDetailHeader *headerView = (EELDispensaryDetailHeader *)view;
+        EELDetailHeader *headerView = (EELDetailHeader *)view;
         headerView.bottomBorderColor = nil;
         [headerView configureWithDispensary:weakself.dispensary];
     };

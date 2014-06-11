@@ -8,7 +8,7 @@
 
 #import "EELMainViewController.h"
 
-#import "EELDispensaryDetailViewController.h"
+#import "EELDetailViewController.h"
 
 #import "EELArrayDataSource.h"
 

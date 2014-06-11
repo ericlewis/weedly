@@ -8,7 +8,7 @@
 
 #import "AAPLCollectionViewController.h"
 
-@interface EELDispensaryDetailViewController : AAPLCollectionViewController
+@interface EELDetailViewController : AAPLCollectionViewController
 @property (nonatomic, strong) EELDispensary *dispensary;
 
 @end

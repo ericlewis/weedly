@@ -8,7 +8,7 @@
  
  */
 
-#import "EELDispensaryDetailHeader.h"
+#import "EELDetailHeader.h"
 
 #import "UIView+Helpers.h"
 
@@ -16,7 +16,7 @@
 - (void)toggleFavorite:(id)sender;
 @end
 
-@interface EELDispensaryDetailHeader ()
+@interface EELDetailHeader ()
 @property (nonatomic, weak) IBOutlet UILabel *nameLabel;
 @property (nonatomic, weak) IBOutlet UILabel *hoursLabel;
 @property (nonatomic, weak) IBOutlet UILabel *ratingLabel;
@@ -25,7 +25,7 @@
 @property (nonatomic, getter=isFavorite) BOOL favorite;
 @end
 
-@implementation EELDispensaryDetailHeader
+@implementation EELDetailHeader
 
 - (void)setFavorite:(BOOL)favorite
 {

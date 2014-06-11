@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4D06F69719186AF1005597F9 /* EELMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D06F69619186AF1005597F9 /* EELMenu.m */; };
-		4D544BA219441518000718D7 /* EELDispensaryReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D544BA119441518000718D7 /* EELDispensaryReviewCell.m */; };
+		4D544BA219441518000718D7 /* EELReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D544BA119441518000718D7 /* EELReviewCell.m */; };
 		4D544BA61944F1E9000718D7 /* EELDispensaryInfoListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D544BA51944F1E9000718D7 /* EELDispensaryInfoListDataSource.m */; };
 		4D75E0991943F42200A25AB6 /* AAPLAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E06E1943F42200A25AB6 /* AAPLAction.m */; };
 		4D75E09A1943F42200A25AB6 /* AAPLContentLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0701943F42200A25AB6 /* AAPLContentLoading.m */; };
@@ -37,8 +37,8 @@
 		4D75E0C11943F44800A25AB6 /* AAPLSegmentedHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0BA1943F44800A25AB6 /* AAPLSegmentedHeaderView.m */; };
 		4D75E0C51943F73A00A25AB6 /* EELDispensaryDetailDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0C41943F73A00A25AB6 /* EELDispensaryDetailDataSource.m */; };
 		4D75E0CE1943F96C00A25AB6 /* EELReviewsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0CD1943F96C00A25AB6 /* EELReviewsDataSource.m */; };
-		4D75E0D11943FBE200A25AB6 /* EELDispensaryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0D01943FBE200A25AB6 /* EELDispensaryDetailViewController.m */; };
-		4D75E0D41944022800A25AB6 /* EELDispensaryDetailHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0D31944022800A25AB6 /* EELDispensaryDetailHeader.m */; };
+		4D75E0D11943FBE200A25AB6 /* EELDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0D01943FBE200A25AB6 /* EELDetailViewController.m */; };
+		4D75E0D41944022800A25AB6 /* EELDetailHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0D31944022800A25AB6 /* EELDetailHeader.m */; };
 		4D93557C1948F84F0007067E /* EELCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D93557B1948F84F0007067E /* EELCollectionView.m */; };
 		4D9DDDF01915AC89006E5B03 /* EELWMClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9DDDEF1915AC89006E5B03 /* EELWMClient.m */; };
 		4D9DDDF61915AFEB006E5B03 /* EELDispensary.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9DDDF51915AFEB006E5B03 /* EELDispensary.m */; };
@@ -65,7 +65,7 @@
 		4DCFE51A1948BE3100139D52 /* EELDetailListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DCFE5191948BE3100139D52 /* EELDetailListCell.xib */; };
 		4DCFE51D1948BEA500139D52 /* EELDeal.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DCFE51C1948BEA500139D52 /* EELDeal.m */; };
 		4DCFE5201948BF1400139D52 /* EELDetailListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DCFE51F1948BF1400139D52 /* EELDetailListCell.m */; };
-		4DCFE5221948C05300139D52 /* EELDispensaryDetailHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DCFE5211948C05300139D52 /* EELDispensaryDetailHeader.xib */; };
+		4DCFE5221948C05300139D52 /* EELDetailHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DCFE5211948C05300139D52 /* EELDetailHeader.xib */; };
 		4DD1FFF519461E7E0072D5B4 /* DKScrollingTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD1FFF419461E7E0072D5B4 /* DKScrollingTabController.m */; };
 		4DD1FFF8194641650072D5B4 /* EELListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD1FFF7194641650072D5B4 /* EELListTableView.m */; };
 		4DD4930C1915827D001A6203 /* EELMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4930B1915827D001A6203 /* EELMainViewController.m */; };
@@ -85,8 +85,8 @@
 /* Begin PBXFileReference section */
 		4D06F69519186AF1005597F9 /* EELMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELMenu.h; path = models/EELMenu.h; sourceTree = "<group>"; };
 		4D06F69619186AF1005597F9 /* EELMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELMenu.m; path = models/EELMenu.m; sourceTree = "<group>"; };
-		4D544BA019441518000718D7 /* EELDispensaryReviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EELDispensaryReviewCell.h; sourceTree = "<group>"; };
-		4D544BA119441518000718D7 /* EELDispensaryReviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EELDispensaryReviewCell.m; sourceTree = "<group>"; };
+		4D544BA019441518000718D7 /* EELReviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EELReviewCell.h; sourceTree = "<group>"; };
+		4D544BA119441518000718D7 /* EELReviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EELReviewCell.m; sourceTree = "<group>"; };
 		4D544BA41944F1E9000718D7 /* EELDispensaryInfoListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EELDispensaryInfoListDataSource.h; sourceTree = "<group>"; };
 		4D544BA51944F1E9000718D7 /* EELDispensaryInfoListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EELDispensaryInfoListDataSource.m; sourceTree = "<group>"; };
 		4D75E06D1943F42200A25AB6 /* AAPLAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AAPLAction.h; path = ../../../Downloads/AdvancedUserInterfacesUsingCollectionView/AdvancedCollectionView/AAPLAction.h; sourceTree = "<group>"; };
@@ -148,10 +148,10 @@
 		4D75E0C41943F73A00A25AB6 /* EELDispensaryDetailDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EELDispensaryDetailDataSource.m; sourceTree = "<group>"; };
 		4D75E0CC1943F96C00A25AB6 /* EELReviewsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EELReviewsDataSource.h; sourceTree = "<group>"; };
 		4D75E0CD1943F96C00A25AB6 /* EELReviewsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EELReviewsDataSource.m; sourceTree = "<group>"; };
-		4D75E0CF1943FBE200A25AB6 /* EELDispensaryDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELDispensaryDetailViewController.h; path = controllers/EELDispensaryDetailViewController.h; sourceTree = "<group>"; };
-		4D75E0D01943FBE200A25AB6 /* EELDispensaryDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELDispensaryDetailViewController.m; path = controllers/EELDispensaryDetailViewController.m; sourceTree = "<group>"; };
-		4D75E0D21944022800A25AB6 /* EELDispensaryDetailHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EELDispensaryDetailHeader.h; sourceTree = "<group>"; };
-		4D75E0D31944022800A25AB6 /* EELDispensaryDetailHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EELDispensaryDetailHeader.m; sourceTree = "<group>"; };
+		4D75E0CF1943FBE200A25AB6 /* EELDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELDetailViewController.h; path = controllers/EELDetailViewController.h; sourceTree = "<group>"; };
+		4D75E0D01943FBE200A25AB6 /* EELDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELDetailViewController.m; path = controllers/EELDetailViewController.m; sourceTree = "<group>"; };
+		4D75E0D21944022800A25AB6 /* EELDetailHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EELDetailHeader.h; sourceTree = "<group>"; };
+		4D75E0D31944022800A25AB6 /* EELDetailHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EELDetailHeader.m; sourceTree = "<group>"; };
 		4D93557A1948F84F0007067E /* EELCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EELCollectionView.h; sourceTree = "<group>"; };
 		4D93557B1948F84F0007067E /* EELCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EELCollectionView.m; sourceTree = "<group>"; };
 		4D9DDDEE1915AC89006E5B03 /* EELWMClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELWMClient.h; path = models/EELWMClient.h; sourceTree = "<group>"; };
@@ -194,7 +194,7 @@
 		4DCFE51C1948BEA500139D52 /* EELDeal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELDeal.m; path = models/EELDeal.m; sourceTree = "<group>"; };
 		4DCFE51E1948BF1400139D52 /* EELDetailListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELDetailListCell.h; path = views/EELDetailListCell.h; sourceTree = "<group>"; };
 		4DCFE51F1948BF1400139D52 /* EELDetailListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELDetailListCell.m; path = views/EELDetailListCell.m; sourceTree = "<group>"; };
-		4DCFE5211948C05300139D52 /* EELDispensaryDetailHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EELDispensaryDetailHeader.xib; path = views/EELDispensaryDetailHeader.xib; sourceTree = "<group>"; };
+		4DCFE5211948C05300139D52 /* EELDetailHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EELDetailHeader.xib; path = views/EELDetailHeader.xib; sourceTree = "<group>"; };
 		4DD1FFF319461E7E0072D5B4 /* DKScrollingTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKScrollingTabController.h; sourceTree = "<group>"; };
 		4DD1FFF419461E7E0072D5B4 /* DKScrollingTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKScrollingTabController.m; sourceTree = "<group>"; };
 		4DD1FFF6194641650072D5B4 /* EELListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EELListTableView.h; sourceTree = "<group>"; };
@@ -382,13 +382,13 @@
 			children = (
 				4D9DDE0519169B2E006E5B03 /* EELMenuTableViewController.h */,
 				4D9DDE0619169B2E006E5B03 /* EELMenuTableViewController.m */,
-				4D75E0CF1943FBE200A25AB6 /* EELDispensaryDetailViewController.h */,
-				4D75E0D01943FBE200A25AB6 /* EELDispensaryDetailViewController.m */,
-				4D75E0D21944022800A25AB6 /* EELDispensaryDetailHeader.h */,
-				4D75E0D31944022800A25AB6 /* EELDispensaryDetailHeader.m */,
-				4DCFE5211948C05300139D52 /* EELDispensaryDetailHeader.xib */,
-				4D544BA019441518000718D7 /* EELDispensaryReviewCell.h */,
-				4D544BA119441518000718D7 /* EELDispensaryReviewCell.m */,
+				4D75E0CF1943FBE200A25AB6 /* EELDetailViewController.h */,
+				4D75E0D01943FBE200A25AB6 /* EELDetailViewController.m */,
+				4D75E0D21944022800A25AB6 /* EELDetailHeader.h */,
+				4D75E0D31944022800A25AB6 /* EELDetailHeader.m */,
+				4DCFE5211948C05300139D52 /* EELDetailHeader.xib */,
+				4D544BA019441518000718D7 /* EELReviewCell.h */,
+				4D544BA119441518000718D7 /* EELReviewCell.m */,
 				4DCFE5191948BE3100139D52 /* EELDetailListCell.xib */,
 				4DCFE51E1948BF1400139D52 /* EELDetailListCell.h */,
 				4DCFE51F1948BF1400139D52 /* EELDetailListCell.m */,
@@ -620,7 +620,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DC1A12A1912F9A200228F5A /* Images.xcassets in Resources */,
-				4DCFE5221948C05300139D52 /* EELDispensaryDetailHeader.xib in Resources */,
+				4DCFE5221948C05300139D52 /* EELDetailHeader.xib in Resources */,
 				4DC1A11C1912F9A200228F5A /* InfoPlist.strings in Resources */,
 				4DCFE51A1948BE3100139D52 /* EELDetailListCell.xib in Resources */,
 				4DC1A1251912F9A200228F5A /* Main.storyboard in Resources */,
@@ -677,11 +677,11 @@
 			files = (
 				4D75E0BB1943F44800A25AB6 /* AAPLBasicCell.m in Sources */,
 				4DC1A11E1912F9A200228F5A /* main.m in Sources */,
-				4D544BA219441518000718D7 /* EELDispensaryReviewCell.m in Sources */,
+				4D544BA219441518000718D7 /* EELReviewCell.m in Sources */,
 				4D9DDDFC1915BA81006E5B03 /* EELReview.m in Sources */,
 				4D75E09F1943F42200A25AB6 /* UIView+Helpers.m in Sources */,
 				4D75E0A41943F42200A25AB6 /* AAPLSegmentedDataSource.m in Sources */,
-				4D75E0D41944022800A25AB6 /* EELDispensaryDetailHeader.m in Sources */,
+				4D75E0D41944022800A25AB6 /* EELDetailHeader.m in Sources */,
 				4D75E0A91943F42200A25AB6 /* AAPLCollectionViewController.m in Sources */,
 				4D75E0BF1943F44800A25AB6 /* AAPLPlaceholderView.m in Sources */,
 				4D75E0A71943F42200A25AB6 /* AAPLCollectionViewGridLayoutAttributes.m in Sources */,
@@ -718,7 +718,7 @@
 				4D75E0A31943F42200A25AB6 /* AAPLDataSource.m in Sources */,
 				4D75E0A61943F42200A25AB6 /* AAPLCollectionViewGridLayout_Internal.m in Sources */,
 				4D9DDDF01915AC89006E5B03 /* EELWMClient.m in Sources */,
-				4D75E0D11943FBE200A25AB6 /* EELDispensaryDetailViewController.m in Sources */,
+				4D75E0D11943FBE200A25AB6 /* EELDetailViewController.m in Sources */,
 				4D9DDDF61915AFEB006E5B03 /* EELDispensary.m in Sources */,
 				4D75E0BC1943F44800A25AB6 /* AAPLCollectionViewCell.m in Sources */,
 				4D9DDE0B1916AD74006E5B03 /* EELArrayDataSource.m in Sources */,

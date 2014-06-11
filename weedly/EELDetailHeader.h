@@ -12,7 +12,7 @@
 
 @class EELDispensary;
 
-@interface EELDispensaryDetailHeader : AAPLPinnableHeaderView
+@interface EELDetailHeader : AAPLPinnableHeaderView
 
 - (void)configureWithDispensary:(EELDispensary *)dispensary;
 

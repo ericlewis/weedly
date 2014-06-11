@@ -8,16 +8,16 @@
   
  */
 
-#import "EELDispensaryReviewCell.h"
+#import "EELReviewCell.h"
 
-@interface EELDispensaryReviewCell ()
+@interface EELReviewCell ()
 @property (nonatomic, strong) UILabel *dateLabel;
 @property (nonatomic, strong) UILabel *textLabel;
 @property (nonatomic, strong) UILabel *ratingLabel;
 @property (nonatomic, strong) UILabel *shortDescriptionLabel;
 @end
 
-@implementation EELDispensaryReviewCell
+@implementation EELReviewCell
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
