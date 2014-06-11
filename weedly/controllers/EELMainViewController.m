@@ -20,6 +20,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet MKMapView   *mapView;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet MTLocateMeButton *findMeButton;
 @property (weak, nonatomic) IBOutlet UIButton *dealsButton;
 @property (weak, nonatomic) IBOutlet UIButton *listButton;
@@ -57,21 +58,17 @@
     [self performSelector:@selector(zoomToUserNotAnimated) withObject:self afterDelay:0.2];
     
     self.navigationController.navigationBar.translucent = NO;
-    
-    [self.tableView registerNib:[UINib nibWithNibName:@"EELItemHeaderViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"ItemHeaderFirstCell"];
-    [self.tableView registerNib:[UINib nibWithNibName:@"EELItemHeaderViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"ItemHeaderCell"];
+
     self.mapView.delegate = self;
     
-    self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
-    self.tableView.backgroundColor = [UIColor clearColor];
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.collectionView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     
     UIPanGestureRecognizer* panRec = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didDragMap:)];
     [panRec setDelegate:self];
     [self.mapView addGestureRecognizer:panRec];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:self.navigationItem.backBarButtonItem.style target:nil action:nil];
     
-    self.tableView.contentInset = UIEdgeInsetsMake(self.mapView.frame.size.height-40, 0, 0, 0);
+    self.collectionView.contentInset = UIEdgeInsetsMake(self.mapView.frame.size.height-40, 0, 0, 0);
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
@@ -85,6 +82,8 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
+    [self performSelector:@selector(showSearchBar) withObject:self afterDelay:0.15];
+
     // landscape fix search
     if (UIDeviceOrientationIsLandscape(self.interfaceOrientation)) {
         if (IS_IPHONE_5) {
@@ -452,7 +451,7 @@
     // Pass the selected object to the new view controller.
     if ([[segue identifier] isEqualToString:@"ShowItemDetail"]) {
         [(id)[segue destinationViewController] setDispensary:self.selectedDispensary];
-        [self.searchBar resignFirstResponder];
+        [self hideSearchBar];
     }
 }
 
@@ -602,5 +601,21 @@
         }
     }
 }
+
+- (void)showSearchBar{
+    POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerOpacity];
+    anim.springSpeed = 15.0;
+    anim.toValue = @(1.0);
+    [self.searchBar.layer pop_addAnimation:anim forKey:@"searchBarShow"];
+}
+
+- (void)hideSearchBar{
+    POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerOpacity];
+    anim.springSpeed = 20.0;
+    anim.toValue = @(0.0);
+    [self.searchBar.layer pop_addAnimation:anim forKey:@"searchBarShow"];
+}
+
+
 
 @end

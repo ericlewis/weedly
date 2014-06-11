@@ -37,6 +37,7 @@
     #import "REMenu.h"
     #import "NSString+USStateMap.h"
     #import "NSDate+DateTools.h"
+    #import <POP/POP.h>
 
     // models
     #import "EELAccount.h"
