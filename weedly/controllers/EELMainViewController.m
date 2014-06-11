@@ -16,16 +16,9 @@
 
 @interface EELMainViewController ()
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet MKMapView   *mapView;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (weak, nonatomic) IBOutlet MTLocateMeButton *findMeButton;
-@property (weak, nonatomic) IBOutlet UIButton *dealsButton;
-@property (weak, nonatomic) IBOutlet UIButton *listButton;
-@property (weak, nonatomic) IBOutlet UIButton *favoritesButton;
-
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *filterButton;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *sideBarButton;
 
 @property (strong, nonatomic) REMenu *filterMenu;
 @property (strong, nonatomic) UISearchBar *searchBar;
@@ -214,7 +207,7 @@
             self.dataSource = [EELArrayDataSource dataSourceWithItems:sortedArray];
             
             [self addPins];
-            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+            //[self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
         }];
     }else if(self.searchBar.tag == 911){
         [[EELWMClient sharedClient] searchDoctorsWithTerm:searchTerm lat:lat lng:lng completionBlock:^(NSArray *results, NSError *error) {
@@ -239,7 +232,7 @@
             self.dataSource = [EELArrayDataSource dataSourceWithItems:sortedArray];
             
             [self addPins];
-            [self.tableView reloadData];
+            //[self.tableView reloadData];
         }];
     }else{
         
@@ -261,7 +254,7 @@
         [sortedArray sortUsingDescriptors:@[sort]];
         
         self.dataSource = [EELArrayDataSource dataSourceWithItems:sortedArray];
-        [self.tableView reloadData];
+        //[self.tableView reloadData];
 
         [self addPins];
     }
@@ -302,7 +295,7 @@
                                                                 NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:FAVORITES_KEY];
                                                                 self.dataSource = [EELArrayDataSource dataSourceWithItems:[NSKeyedUnarchiver unarchiveObjectWithData:data]];
                                                                 [self addPins];
-                                                                [self.tableView reloadData];
+                                                                //[self.tableView reloadData];
                                                             }];
         
         self.filterMenu = [[REMenu alloc] initWithItems:@[dispensaryItem, doctorItem, favoriteItem]];
@@ -559,7 +552,7 @@
 }
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
-    [self.tableView setContentOffset:CGPointMake(0, 0) animated:YES];
+    [self.collectionView setContentOffset:CGPointMake(0, 0) animated:YES];
 }
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar{
