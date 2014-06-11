@@ -47,7 +47,7 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="Ysh-r2-IrO"/>
                                 </connections>
                             </mapView>
-                            <tableView appearanceType="aqua" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="T0e-Ca-QFW" customClass="EELListTableView">
+                            <tableView appearanceType="aqua" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="T0e-Ca-QFW" customClass="EELListTableView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -60,9 +60,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="3xA-xn-xhL" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="1NJ-PH-aQe"/>
+                            <constraint firstAttribute="bottom" secondItem="T0e-Ca-QFW" secondAttribute="bottom" id="Abk-RZ-f19"/>
                             <constraint firstItem="3xA-xn-xhL" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="LDG-J3-6ll"/>
+                            <constraint firstItem="T0e-Ca-QFW" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="P7R-FV-CpE"/>
                             <constraint firstItem="3xA-xn-xhL" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="QT6-V1-SEw"/>
                             <constraint firstAttribute="trailing" secondItem="3xA-xn-xhL" secondAttribute="trailing" id="Ta4-mo-kqb"/>
+                            <constraint firstAttribute="trailing" secondItem="T0e-Ca-QFW" secondAttribute="trailing" id="YQB-9F-gFb"/>
+                            <constraint firstItem="T0e-Ca-QFW" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="jxc-rk-S9v"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="68Z-QI-bP2">
