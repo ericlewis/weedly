@@ -37,13 +37,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView appearanceType="aqua" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" rotateEnabled="NO" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3xA-xn-xhL">
+                            <mapView appearanceType="aqua" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" rotateEnabled="NO" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3xA-xn-xhL">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="280"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="LYG-kP-zPO"/>
+                                    <constraint firstAttribute="height" constant="280" id="TuI-X9-C7p"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="Ysh-r2-IrO"/>
                                 </connections>
                             </mapView>
-                            <collectionView appearanceType="aqua" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ceX-18-2jk" customClass="EELCollectionView">
+                            <collectionView appearanceType="aqua" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ceX-18-2jk" customClass="EELCollectionView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -58,8 +62,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="3xA-xn-xhL" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="NtC-hm-nSB"/>
-                            <constraint firstItem="3xA-xn-xhL" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="Oq0-8K-ybr"/>
+                            <constraint firstItem="3xA-xn-xhL" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="1NJ-PH-aQe"/>
+                            <constraint firstItem="3xA-xn-xhL" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="LDG-J3-6ll"/>
+                            <constraint firstItem="3xA-xn-xhL" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="QT6-V1-SEw"/>
+                            <constraint firstItem="3xA-xn-xhL" firstAttribute="leading" secondItem="ceX-18-2jk" secondAttribute="leading" id="RQT-AK-WI5"/>
+                            <constraint firstAttribute="trailing" secondItem="3xA-xn-xhL" secondAttribute="trailing" id="Ta4-mo-kqb"/>
+                            <constraint firstItem="ceX-18-2jk" firstAttribute="trailing" secondItem="3xA-xn-xhL" secondAttribute="trailing" id="W4a-mR-aVf"/>
+                            <constraint firstItem="ceX-18-2jk" firstAttribute="top" secondItem="3xA-xn-xhL" secondAttribute="top" id="nMC-Db-XQf"/>
+                            <constraint firstAttribute="bottom" secondItem="ceX-18-2jk" secondAttribute="bottom" id="xKF-v4-3DT"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="68Z-QI-bP2">

@@ -10,8 +10,6 @@
 
 #import "EELDispensaryDetailViewController.h"
 
-#import "EELItemHeaderViewCell.h"
-
 #import "EELArrayDataSource.h"
 
 #define LATITUDE_OFFSET 0.035f
@@ -321,6 +319,8 @@
         [self.filterMenu showFromNavigationController:self.navigationController];
     }
 }
+#pragma mark -
+#pragma mark - MapKitDelegate
 
 - (void)zoomToUser{
     [self zoomToUser:YES];
@@ -359,8 +359,6 @@
     }
 }
 
-#pragma mark -
-#pragma mark - MapKitDelegate
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
     if ([annotation isKindOfClass:[MKUserLocation class]]) {
@@ -457,7 +455,7 @@
 
 #pragma mark -
 #pragma mark - Table view data source
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+/*- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
     return 1;
@@ -543,7 +541,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self performSegueWithIdentifier:@"ShowItemDetail" sender:self];
-}
+}*/
 
 #pragma mark -
 #pragma mark - UIScrollViewDelegate
@@ -551,12 +549,6 @@
     if (scrollView.contentOffset.y < self.mapView.frame.size.height*-1 ) {
         [scrollView setContentOffset:CGPointMake(scrollView.contentOffset.x, self.mapView.frame.size.height*-1)];
     }
-}
-
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
-}
-
-- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{
 }
 
 #pragma mark -

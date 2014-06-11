@@ -48,8 +48,6 @@
 		4D9DDE0419169629006E5B03 /* EELMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9DDE0319169629006E5B03 /* EELMenuItem.m */; };
 		4D9DDE0719169B2E006E5B03 /* EELMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9DDE0619169B2E006E5B03 /* EELMenuTableViewController.m */; };
 		4D9DDE0B1916AD74006E5B03 /* EELArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9DDE0A1916AD74006E5B03 /* EELArrayDataSource.m */; };
-		4D9DDE0F1917152A006E5B03 /* EELItemHeaderViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9DDE0D1917152A006E5B03 /* EELItemHeaderViewCell.m */; };
-		4D9DDE101917152A006E5B03 /* EELItemHeaderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D9DDE0E1917152A006E5B03 /* EELItemHeaderViewCell.xib */; };
 		4DC1A1121912F9A200228F5A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC1A1111912F9A200228F5A /* Foundation.framework */; };
 		4DC1A1141912F9A200228F5A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC1A1131912F9A200228F5A /* CoreGraphics.framework */; };
 		4DC1A1161912F9A200228F5A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC1A1151912F9A200228F5A /* UIKit.framework */; };
@@ -172,9 +170,6 @@
 		4D9DDE0619169B2E006E5B03 /* EELMenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELMenuTableViewController.m; path = controllers/EELMenuTableViewController.m; sourceTree = "<group>"; };
 		4D9DDE091916AD74006E5B03 /* EELArrayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELArrayDataSource.h; path = "data sources/EELArrayDataSource.h"; sourceTree = "<group>"; };
 		4D9DDE0A1916AD74006E5B03 /* EELArrayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELArrayDataSource.m; path = "data sources/EELArrayDataSource.m"; sourceTree = "<group>"; };
-		4D9DDE0C1917152A006E5B03 /* EELItemHeaderViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELItemHeaderViewCell.h; path = views/EELItemHeaderViewCell.h; sourceTree = "<group>"; };
-		4D9DDE0D1917152A006E5B03 /* EELItemHeaderViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELItemHeaderViewCell.m; path = views/EELItemHeaderViewCell.m; sourceTree = "<group>"; };
-		4D9DDE0E1917152A006E5B03 /* EELItemHeaderViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EELItemHeaderViewCell.xib; path = views/EELItemHeaderViewCell.xib; sourceTree = "<group>"; };
 		4DC1A10E1912F9A200228F5A /* Weedly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weedly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DC1A1111912F9A200228F5A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4DC1A1131912F9A200228F5A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -345,12 +340,8 @@
 		4D75E0C21943F71C00A25AB6 /* DataSources */ = {
 			isa = PBXGroup;
 			children = (
-				4D75E0C31943F73A00A25AB6 /* EELDispensaryDetailDataSource.h */,
-				4D75E0C41943F73A00A25AB6 /* EELDispensaryDetailDataSource.m */,
-				4D544BA41944F1E9000718D7 /* EELDispensaryInfoListDataSource.h */,
-				4D544BA51944F1E9000718D7 /* EELDispensaryInfoListDataSource.m */,
-				4D75E0CC1943F96C00A25AB6 /* EELReviewsDataSource.h */,
-				4D75E0CD1943F96C00A25AB6 /* EELReviewsDataSource.m */,
+				4DC960791948FB4800FEABB6 /* Map / list sources */,
+				4DC960781948FB3900FEABB6 /* Merchant Detail sources */,
 			);
 			name = DataSources;
 			sourceTree = "<group>";
@@ -391,9 +382,6 @@
 			children = (
 				4D9DDE0519169B2E006E5B03 /* EELMenuTableViewController.h */,
 				4D9DDE0619169B2E006E5B03 /* EELMenuTableViewController.m */,
-				4D9DDE0C1917152A006E5B03 /* EELItemHeaderViewCell.h */,
-				4D9DDE0D1917152A006E5B03 /* EELItemHeaderViewCell.m */,
-				4D9DDE0E1917152A006E5B03 /* EELItemHeaderViewCell.xib */,
 				4D75E0CF1943FBE200A25AB6 /* EELDispensaryDetailViewController.h */,
 				4D75E0D01943FBE200A25AB6 /* EELDispensaryDetailViewController.m */,
 				4D75E0D21944022800A25AB6 /* EELDispensaryDetailHeader.h */,
@@ -512,6 +500,26 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		4DC960781948FB3900FEABB6 /* Merchant Detail sources */ = {
+			isa = PBXGroup;
+			children = (
+				4D75E0C31943F73A00A25AB6 /* EELDispensaryDetailDataSource.h */,
+				4D75E0C41943F73A00A25AB6 /* EELDispensaryDetailDataSource.m */,
+				4D544BA41944F1E9000718D7 /* EELDispensaryInfoListDataSource.h */,
+				4D544BA51944F1E9000718D7 /* EELDispensaryInfoListDataSource.m */,
+				4D75E0CC1943F96C00A25AB6 /* EELReviewsDataSource.h */,
+				4D75E0CD1943F96C00A25AB6 /* EELReviewsDataSource.m */,
+			);
+			name = "Merchant Detail sources";
+			sourceTree = "<group>";
+		};
+		4DC960791948FB4800FEABB6 /* Map / list sources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Map / list sources";
+			sourceTree = "<group>";
+		};
 		4DD1FFF119461E730072D5B4 /* 3rd Party */ = {
 			isa = PBXGroup;
 			children = (
@@ -616,7 +624,6 @@
 				4DC1A11C1912F9A200228F5A /* InfoPlist.strings in Resources */,
 				4DCFE51A1948BE3100139D52 /* EELDetailListCell.xib in Resources */,
 				4DC1A1251912F9A200228F5A /* Main.storyboard in Resources */,
-				4D9DDE101917152A006E5B03 /* EELItemHeaderViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -707,7 +714,6 @@
 				4D9DDDFF1915BAA4006E5B03 /* EELSmokinOn.m in Sources */,
 				4DD1FFF519461E7E0072D5B4 /* DKScrollingTabController.m in Sources */,
 				4D75E0A81943F42200A25AB6 /* AAPLLayoutMetrics.m in Sources */,
-				4D9DDE0F1917152A006E5B03 /* EELItemHeaderViewCell.m in Sources */,
 				4D75E0A51943F42200A25AB6 /* AAPLCollectionViewGridLayout.m in Sources */,
 				4D75E0A31943F42200A25AB6 /* AAPLDataSource.m in Sources */,
 				4D75E0A61943F42200A25AB6 /* AAPLCollectionViewGridLayout_Internal.m in Sources */,
