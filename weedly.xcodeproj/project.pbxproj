@@ -68,6 +68,10 @@
 		4DC1A13B1912F9A200228F5A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4DC1A1391912F9A200228F5A /* InfoPlist.strings */; };
 		4DC1A13D1912F9A200228F5A /* weedlyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC1A13C1912F9A200228F5A /* weedlyTests.m */; };
 		4DC1A1471912FAA300228F5A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC1A1461912FAA300228F5A /* MapKit.framework */; };
+		4DCFE51A1948BE3100139D52 /* EELDetailListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DCFE5191948BE3100139D52 /* EELDetailListCell.xib */; };
+		4DCFE51D1948BEA500139D52 /* EELDeal.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DCFE51C1948BEA500139D52 /* EELDeal.m */; };
+		4DCFE5201948BF1400139D52 /* EELDetailListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DCFE51F1948BF1400139D52 /* EELDetailListCell.m */; };
+		4DCFE5221948C05300139D52 /* EELDispensaryDetailHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DCFE5211948C05300139D52 /* EELDispensaryDetailHeader.xib */; };
 		4DD1FFF519461E7E0072D5B4 /* DKScrollingTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD1FFF419461E7E0072D5B4 /* DKScrollingTabController.m */; };
 		4DD1FFF8194641650072D5B4 /* EELListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD1FFF7194641650072D5B4 /* EELListTableView.m */; };
 		4DD4930C1915827D001A6203 /* EELMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4930B1915827D001A6203 /* EELMainViewController.m */; };
@@ -201,6 +205,12 @@
 		4DC1A13C1912F9A200228F5A /* weedlyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = weedlyTests.m; sourceTree = "<group>"; };
 		4DC1A1461912FAA300228F5A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		4DC1A1481912FB6E00228F5A /* EELUsefulConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EELUsefulConstants.h; sourceTree = "<group>"; };
+		4DCFE5191948BE3100139D52 /* EELDetailListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EELDetailListCell.xib; path = views/EELDetailListCell.xib; sourceTree = "<group>"; };
+		4DCFE51B1948BEA500139D52 /* EELDeal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELDeal.h; path = models/EELDeal.h; sourceTree = "<group>"; };
+		4DCFE51C1948BEA500139D52 /* EELDeal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELDeal.m; path = models/EELDeal.m; sourceTree = "<group>"; };
+		4DCFE51E1948BF1400139D52 /* EELDetailListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELDetailListCell.h; path = views/EELDetailListCell.h; sourceTree = "<group>"; };
+		4DCFE51F1948BF1400139D52 /* EELDetailListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELDetailListCell.m; path = views/EELDetailListCell.m; sourceTree = "<group>"; };
+		4DCFE5211948C05300139D52 /* EELDispensaryDetailHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EELDispensaryDetailHeader.xib; path = views/EELDispensaryDetailHeader.xib; sourceTree = "<group>"; };
 		4DD1FFF319461E7E0072D5B4 /* DKScrollingTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKScrollingTabController.h; sourceTree = "<group>"; };
 		4DD1FFF419461E7E0072D5B4 /* DKScrollingTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKScrollingTabController.m; sourceTree = "<group>"; };
 		4DD1FFF6194641650072D5B4 /* EELListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EELListTableView.h; sourceTree = "<group>"; };
@@ -373,6 +383,8 @@
 		4D9DDDED1915AA50006E5B03 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4DCFE51B1948BEA500139D52 /* EELDeal.h */,
+				4DCFE51C1948BEA500139D52 /* EELDeal.m */,
 				4D9DDDEE1915AC89006E5B03 /* EELWMClient.h */,
 				4D9DDDEF1915AC89006E5B03 /* EELWMClient.m */,
 				4D06F69519186AF1005597F9 /* EELMenu.h */,
@@ -407,8 +419,12 @@
 				4D75E0D01943FBE200A25AB6 /* EELDispensaryDetailViewController.m */,
 				4D75E0D21944022800A25AB6 /* EELDispensaryDetailHeader.h */,
 				4D75E0D31944022800A25AB6 /* EELDispensaryDetailHeader.m */,
+				4DCFE5211948C05300139D52 /* EELDispensaryDetailHeader.xib */,
 				4D544BA019441518000718D7 /* EELDispensaryReviewCell.h */,
 				4D544BA119441518000718D7 /* EELDispensaryReviewCell.m */,
+				4DCFE5191948BE3100139D52 /* EELDetailListCell.xib */,
+				4DCFE51E1948BF1400139D52 /* EELDetailListCell.h */,
+				4DCFE51F1948BF1400139D52 /* EELDetailListCell.m */,
 			);
 			name = "detail controllers";
 			sourceTree = "<group>";
@@ -618,7 +634,9 @@
 			files = (
 				4DC1A12A1912F9A200228F5A /* Images.xcassets in Resources */,
 				4D75E0D61944079600A25AB6 /* EELDetailHeaderView.xib in Resources */,
+				4DCFE5221948C05300139D52 /* EELDispensaryDetailHeader.xib in Resources */,
 				4DC1A11C1912F9A200228F5A /* InfoPlist.strings in Resources */,
+				4DCFE51A1948BE3100139D52 /* EELDetailListCell.xib in Resources */,
 				4D9DDE1819172142006E5B03 /* EELMapHeaderTableViewCell.xib in Resources */,
 				4DC1A1251912F9A200228F5A /* Main.storyboard in Resources */,
 				4D9DDE101917152A006E5B03 /* EELItemHeaderViewCell.xib in Resources */,
@@ -710,6 +728,7 @@
 				4D75E0A01943F42200A25AB6 /* AAPLBasicDataSource.m in Sources */,
 				4D75E09A1943F42200A25AB6 /* AAPLContentLoading.m in Sources */,
 				4DC1A1221912F9A200228F5A /* EELAppDelegate.m in Sources */,
+				4DCFE51D1948BEA500139D52 /* EELDeal.m in Sources */,
 				4D9DDE0719169B2E006E5B03 /* EELMenuTableViewController.m in Sources */,
 				4D9DDDFF1915BAA4006E5B03 /* EELSmokinOn.m in Sources */,
 				4DD1FFF519461E7E0072D5B4 /* DKScrollingTabController.m in Sources */,
@@ -723,6 +742,7 @@
 				4D9DDDF61915AFEB006E5B03 /* EELDispensary.m in Sources */,
 				4D75E0BC1943F44800A25AB6 /* AAPLCollectionViewCell.m in Sources */,
 				4D9DDE0B1916AD74006E5B03 /* EELArrayDataSource.m in Sources */,
+				4DCFE5201948BF1400139D52 /* EELDetailListCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

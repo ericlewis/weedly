@@ -17,6 +17,8 @@
 #import "AAPLAction.h"
 #import "AAPLCollectionViewController.h"
 
+#import "EELDetailListCell.h"
+
 @interface EELDispensaryInfoListDataSource ()
 @property (nonatomic, strong) EELDispensary *dispensary;
 @end
@@ -61,13 +63,13 @@
 - (void)registerReusableViewsWithCollectionView:(UICollectionView *)collectionView
 {
     [super registerReusableViewsWithCollectionView:collectionView];
-    [collectionView registerClass:[AAPLBasicCell class] forCellWithReuseIdentifier:NSStringFromClass([AAPLBasicCell class])];
+    [collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([EELDetailListCell class]) bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:NSStringFromClass([EELDetailListCell class])];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDictionary *menuItem = [self itemAtIndexPath:indexPath];
-    AAPLBasicCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([AAPLBasicCell class]) forIndexPath:indexPath];
+    EELDetailListCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([EELDetailListCell class]) forIndexPath:indexPath];
     cell.style = AAPLBasicCellStyleSubtitle;
     cell.primaryLabel.text = menuItem[@"name"];
     cell.primaryLabel.font = [UIFont systemFontOfSize:14];
