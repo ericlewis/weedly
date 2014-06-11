@@ -7,12 +7,10 @@
 //
 
 #import "EELMainViewController.h"
-
 #import "EELDetailViewController.h"
 
 #import "EELArrayDataSource.h"
-
-#define LATITUDE_OFFSET 0.035f
+#import "EELDetailHeader.h"
 
 @interface EELMainViewController ()
 
@@ -46,20 +44,21 @@
     
     [self getInitialListings];
     
-    [self performSelector:@selector(zoomToUserNotAnimated) withObject:self afterDelay:0.2];
     
-    self.navigationController.navigationBar.translucent = NO;
-
-    self.mapView.delegate = self;
     
     self.collectionView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
+    self.collectionView.contentInset = UIEdgeInsetsMake(self.mapView.frame.size.height-40, 0, 0, 0);
+    [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([EELDetailHeader class]) bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:NSStringFromClass([EELDetailHeader class])];
     
     UIPanGestureRecognizer* panRec = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didDragMap:)];
     [panRec setDelegate:self];
     [self.mapView addGestureRecognizer:panRec];
+    self.mapView.delegate = self;
+    [self performSelector:@selector(zoomToUserNotAnimated) withObject:self afterDelay:0.2];
+
+    self.navigationController.navigationBar.translucent = NO;
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:self.navigationItem.backBarButtonItem.style target:nil action:nil];
     
-    self.collectionView.contentInset = UIEdgeInsetsMake(self.mapView.frame.size.height-40, 0, 0, 0);
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
@@ -146,7 +145,7 @@
     [[MTLocationManager sharedInstance] whenLocationChanged:^(CLLocation *location) {
         MKCoordinateRegion region;
         CLLocationCoordinate2D coords = location.coordinate;
-        coords.latitude = coords.latitude - LATITUDE_OFFSET;
+        coords.latitude = coords.latitude;
         region.center = coords;
         
         MKCoordinateSpan span;
@@ -207,7 +206,7 @@
             self.dataSource = [EELArrayDataSource dataSourceWithItems:sortedArray];
             
             [self addPins];
-            //[self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+            [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
         }];
     }else if(self.searchBar.tag == 911){
         [[EELWMClient sharedClient] searchDoctorsWithTerm:searchTerm lat:lat lng:lng completionBlock:^(NSArray *results, NSError *error) {
@@ -232,7 +231,7 @@
             self.dataSource = [EELArrayDataSource dataSourceWithItems:sortedArray];
             
             [self addPins];
-            //[self.tableView reloadData];
+            [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
         }];
     }else{
         
@@ -254,7 +253,7 @@
         [sortedArray sortUsingDescriptors:@[sort]];
         
         self.dataSource = [EELArrayDataSource dataSourceWithItems:sortedArray];
-        //[self.tableView reloadData];
+        [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
 
         [self addPins];
     }
@@ -295,7 +294,7 @@
                                                                 NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:FAVORITES_KEY];
                                                                 self.dataSource = [EELArrayDataSource dataSourceWithItems:[NSKeyedUnarchiver unarchiveObjectWithData:data]];
                                                                 [self addPins];
-                                                                //[self.tableView reloadData];
+                                                                [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
                                                             }];
         
         self.filterMenu = [[REMenu alloc] initWithItems:@[dispensaryItem, doctorItem, favoriteItem]];
@@ -447,94 +446,29 @@
 }
 
 #pragma mark -
-#pragma mark - Table view data source
-/*- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    // Return the number of sections.
+#pragma mark - Collection view data source
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    // Return the number of rows in the section.
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return self.dataSource.items.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    EELItemHeaderViewCell *cell;
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
+    return UIEdgeInsetsMake(0, 0, 0, 0);
+}
+
+- (EELDetailHeader *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    EELDetailHeader *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([EELDetailHeader class]) forIndexPath:indexPath];
     EELDispensary *dispensary = [self.dataSource.items objectAtIndex:indexPath.row];
     
-    if (indexPath.row == 0) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"ItemHeaderFirstCell" forIndexPath:indexPath];
-        cell.clipsToBounds = YES;
-        CALayer *rightBorder = [CALayer layer];
-        rightBorder.borderColor = [UIColor lightGrayColor].CGColor;
-        rightBorder.borderWidth = 1;
-        rightBorder.frame = CGRectMake(0, 0, 1000, 1);
-        [cell.layer addSublayer:rightBorder];
-        
-    }else{
-        cell = [tableView dequeueReusableCellWithIdentifier:@"ItemHeaderCell" forIndexPath:indexPath];
-    }
+    cell.backgroundColor = [UIColor whiteColor];
     
-    // Configure the header cell
-    cell.nameLabel.text = [dispensary formattedNameString];
-    cell.typeLabel.text = [dispensary formattedTypeString];
-    
-    if (dispensary.opensAt.length > 0 && dispensary.closesAt.length > 0) {
-        cell.hoursLabel.text = [NSString stringWithFormat:@"Hours: %@ - %@", dispensary.opensAt, dispensary.closesAt];
-    }else{
-        cell.hoursLabel.text = @"Hours unavailable";
-    }
-    
-    // switch the text and color if we are closed
-    if (dispensary.isOpen.boolValue) {
-        cell.isOpenLabel.text = @"Currently Open";
-    }else{
-        cell.isOpenLabel.text = @"Currently Closed";
-    }
-    
-    cell.isOpenLabel.textColor = MAIN_COLOR;
-    
-    // hide reviews if we don't have a count
-    if (dispensary.ratingCount == 0) {
-        [cell.reviewsView setHidden:YES];
-    }else{
-        [cell.reviewsView setHidden:NO];
-        
-        cell.reviewsLabel.text = [NSString stringWithFormat:@"%.1f • %i reviews", dispensary.rating, dispensary.ratingCount];
-        [cell.reviewsLabel sizeToFit];
-        
-        CGFloat reviewStarsWidth = cell.reviewsStarsImage.frame.size.width;
-        reviewStarsWidth = (reviewStarsWidth*2) * (dispensary.rating * 0.1);
-        
-        CALayer *maskLayer = [CALayer layer];
-        maskLayer.backgroundColor = [UIColor blackColor].CGColor;
-        maskLayer.frame = CGRectMake(0.0, 0.0, reviewStarsWidth, reviewStarsWidth);
-        
-        cell.reviewsStarsImage.layer.mask = maskLayer;
-    }
-    
-    cell.addressLabel.text = [dispensary formattedAddressString];
+    [cell configureWithDispensary:dispensary];
     
     return cell;
 }
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 122;
-}
-
-- (NSIndexPath*)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    self.selectedDispensary = [self.dataSource.items objectAtIndex:indexPath.row];
-    
-    return indexPath;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self performSegueWithIdentifier:@"ShowItemDetail" sender:self];
-}*/
 
 #pragma mark -
 #pragma mark - UIScrollViewDelegate

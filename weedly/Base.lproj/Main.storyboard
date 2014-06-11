@@ -58,6 +58,10 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="qgd-iU-Sjy"/>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="cIe-9d-P91"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -147,7 +151,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewLayout key="collectionViewLayout" id="FXk-M4-r7C" customClass="AAPLCollectionViewGridLayout"/>
+                        <collectionViewLayout key="collectionViewLayout" id="8ZZ-8r-b3c" customClass="AAPLCollectionViewGridLayout"/>
                         <cells/>
                         <connections>
                             <outlet property="delegate" destination="ERD-op-I1L" id="VGz-yS-J8S"/>
