@@ -462,11 +462,11 @@
     if (indexPath.row == 0) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"ItemHeaderFirstCell" forIndexPath:indexPath];
         cell.clipsToBounds = YES;
-        CALayer *rightBorder = [CALayer layer];
-        rightBorder.borderColor = [UIColor lightGrayColor].CGColor;
-        rightBorder.borderWidth = 1;
-        rightBorder.frame = CGRectMake(0, 0, 1000, 1);
-        [cell.layer addSublayer:rightBorder];
+        CALayer *topBorder = [CALayer layer];
+        topBorder.borderColor = [UIColor lightGrayColor].CGColor;
+        topBorder.borderWidth = 0.25;
+        topBorder.frame = CGRectMake(0, 0, 1000, 1);
+        [cell.layer addSublayer:topBorder];
         
     }else{
         cell = [tableView dequeueReusableCellWithIdentifier:@"ItemHeaderCell" forIndexPath:indexPath];
