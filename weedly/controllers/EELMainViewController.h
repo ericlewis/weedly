@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EELMainViewController : UIViewController<MKMapViewDelegate, UISearchBarDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate>
+@interface EELMainViewController : UIViewController<MKMapViewDelegate, UISearchBarDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) EELDispensary *selectedDispensary;
 

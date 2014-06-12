@@ -298,14 +298,13 @@
         
         self.filterMenu = [[REMenu alloc] initWithItems:@[dispensaryItem, doctorItem, favoriteItem]];
         self.filterMenu.backgroundColor = MAIN_COLOR;
+        self.filterMenu.backgroundAlpha = 0.0;
         self.filterMenu.borderColor = [UIColor grayColor];
         self.filterMenu.borderWidth = 0.5f;
         self.filterMenu.separatorColor = [UIColor clearColor];
         self.filterMenu.textColor = [UIColor whiteColor];
         self.filterMenu.textAlignment = NSTextAlignmentLeft;
         self.filterMenu.textOffset = CGSizeMake(50, 0);
-        
-        self.filterMenu.liveBlur = NO;
         
         [self.filterMenu showFromNavigationController:self.navigationController];
     }
@@ -474,7 +473,6 @@
     }
     
     [cell configureWithDispensary:dispensary];
-
     
     return cell;
 }
@@ -502,6 +500,12 @@
     }
 }
 
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    if (self.tableView.contentInset.top != self.mapView.frame.size.height-40) {
+        [self.tableView setContentInset:UIEdgeInsetsMake(self.mapView.frame.size.height-40, 0, 0, 0)];
+    }
+}
+
 #pragma mark -
 #pragma mark - UISearchDelegate
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
@@ -510,7 +514,18 @@
 }
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
-    [self.tableView setContentOffset:CGPointMake(0, 0) animated:YES];
+    if (self.dataSource.items.count > 0) {
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.2];
+        [self.tableView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+        [UIView commitAnimations];
+        
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    }
+}
+
+- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar{
+    return YES;
 }
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar{
