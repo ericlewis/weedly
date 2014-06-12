@@ -21,6 +21,7 @@
 @property (strong, nonatomic) REMenu *filterMenu;
 @property (strong, nonatomic) UISearchBar *searchBar;
 @property (strong, nonatomic) EELArrayDataSource *dataSource;
+@property (strong, nonatomic) CWStatusBarNotification *notifcationCenter;
 
 @end
 
@@ -58,6 +59,8 @@
     self.navigationController.navigationBar.translucent = NO;
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:self.navigationItem.backBarButtonItem.style target:nil action:nil];
     
+    self.notifcationCenter = [CWStatusBarNotification new];
+    self.notifcationCenter.notificationLabelBackgroundColor = MAIN_COLOR;
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
@@ -67,6 +70,8 @@
 - (void)didDragMap:(UIGestureRecognizer*)gestureRecognizer {
     if (gestureRecognizer.state == UIGestureRecognizerStateEnded){
         [self performSearch:self.searchBar.text];
+    }else if (gestureRecognizer.state == UIGestureRecognizerStateBegan){
+        [self.notifcationCenter dismissNotification];
     }
 }
 
@@ -130,6 +135,12 @@
     }
     
     [self.mapView removeAnnotations:oldAnnotations];
+    
+    NSSet *annSet = [self.mapView annotationsInMapRect:self.mapView.visibleMapRect];
+    if (annSet.count > 0) {
+        [self.notifcationCenter displayNotificationWithMessage:[NSString stringWithFormat:@"%d Results", annSet.count]
+                                                   forDuration:3.5f];
+    }
 }
 
 - (void)setupLocationManager{
@@ -427,6 +438,9 @@
     if (self.searchBar.isFirstResponder) {
         [self.searchBar resignFirstResponder];
     }
+    
+    NSSet *annSet = [mapView annotationsInMapRect:mapView.visibleMapRect];
+    NSLog(@"regionDidChangeAnimated: annSet count = %d", annSet.count);
 }
 
 #pragma mark - Segue
@@ -451,6 +465,13 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
+    
+    if (!!!self.dataSource.items.count) {
+        self.tableView.backgroundColor = [UIColor whiteColor];
+    }else{
+        self.tableView.backgroundColor = [UIColor clearColor];
+    }
+    
     return self.dataSource.items.count;
 }
 
