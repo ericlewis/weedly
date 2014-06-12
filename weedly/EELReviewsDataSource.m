@@ -61,7 +61,7 @@
 - (void)registerReusableViewsWithCollectionView:(UICollectionView *)collectionView
 {
     [super registerReusableViewsWithCollectionView:collectionView];
-    [collectionView registerClass:[EELReviewCell class] forCellWithReuseIdentifier:NSStringFromClass([EELReviewCell class])];
+    [collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([EELReviewCell class]) bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:NSStringFromClass([EELReviewCell class])];
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView sizeFittingSize:(CGSize)size forItemAtIndexPath:(NSIndexPath *)indexPath

@@ -11,10 +11,10 @@
 #import "EELReviewCell.h"
 
 @interface EELReviewCell ()
-@property (nonatomic, strong) UILabel *dateLabel;
-@property (nonatomic, strong) UILabel *textLabel;
-@property (nonatomic, strong) UILabel *ratingLabel;
-@property (nonatomic, strong) UILabel *shortDescriptionLabel;
+@property (nonatomic, strong) IBOutlet UILabel *dateLabel;
+@property (nonatomic, strong) IBOutlet UILabel *textLabel;
+@property (nonatomic, strong) IBOutlet UILabel *ratingLabel;
+@property (nonatomic, strong) IBOutlet UILabel *shortDescriptionLabel;
 @end
 
 @implementation EELReviewCell
