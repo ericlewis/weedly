@@ -14,6 +14,8 @@
 #import "EELConcentratesMenuItemsDataSource.h"
 #import "EELEdiblesMenuItemsDataSource.h"
 
+#import "EELDetailHeader.h"
+
 @interface EELMenuViewController ()
 @property (nonatomic, strong) AAPLSegmentedDataSource *dataSource;
 @property (nonatomic, strong) EELMenuDataSource *menuDataSource;
@@ -29,7 +31,7 @@
 {
     [super viewDidLoad];
     
-    self.title = [self.dispensary formattedNameString];
+    self.title = @"Menu";
     
     self.dataSource = [[AAPLSegmentedDataSource alloc] init];
     self.menuDataSource = [self newMenuDataSource];
@@ -41,6 +43,20 @@
     [self.dataSource addDataSource:self.itemsDataSource];
     [self.dataSource addDataSource:self.itemsConcentrateDataSource];
     [self.dataSource addDataSource:self.itemsEdibleDataSource];
+    
+    __weak typeof(&*self) weakself = self;
+    
+    AAPLLayoutSupplementaryMetrics *globalHeader = [self.dataSource newHeaderForKey:@"globalHeader"];
+    globalHeader.visibleWhileShowingPlaceholder = YES;
+    globalHeader.height = 110;
+    globalHeader.supplementaryViewClass = [EELDetailHeader class];
+    globalHeader.configureView = ^(UICollectionReusableView *view, AAPLDataSource *dataSource, NSIndexPath *indexPath) {
+        NSLog(@"%@", [self.menuDataSource itemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]]);
+        
+        EELDetailHeader *headerView = (EELDetailHeader *)view;
+        headerView.bottomBorderColor = nil;
+        [headerView configureWithDispensary:weakself.dispensary];
+    };
     
     self.collectionView.dataSource = self.dataSource;
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:self.navigationItem.backBarButtonItem.style target:nil action:nil];
@@ -60,7 +76,7 @@
     dataSource.errorMessage = [NSString localizedStringWithFormat:errorMessage, self.dispensary.name];
     
     dataSource.defaultMetrics.separatorColor = [UIColor colorWithWhite:224/255.0 alpha:1];
-    dataSource.defaultMetrics.separatorInsets = UIEdgeInsetsMake(0, 15, 0, 0);
+    dataSource.defaultMetrics.separatorInsets = UIEdgeInsetsMake(0, 0, 0, 0);
     
     return dataSource;
 }
@@ -73,7 +89,7 @@
     dataSource.noContentMessage = NSLocalizedString(@"No flowers are currently available.", @"The message to show when the flowers are empty");
     
     dataSource.defaultMetrics.separatorColor = [UIColor colorWithWhite:224/255.0 alpha:1];
-    dataSource.defaultMetrics.separatorInsets = UIEdgeInsetsMake(0, 15, 0, 0);
+    dataSource.defaultMetrics.separatorInsets = UIEdgeInsetsMake(0, 0, 0, 0);
     dataSource.defaultMetrics.rowHeight = 55;
     
     return dataSource;
@@ -87,7 +103,7 @@
     dataSource.noContentMessage = NSLocalizedString(@"No concentrates are currently available.", @"The message to show when the concentrates are empty");
     
     dataSource.defaultMetrics.separatorColor = [UIColor colorWithWhite:224/255.0 alpha:1];
-    dataSource.defaultMetrics.separatorInsets = UIEdgeInsetsMake(0, 15, 0, 0);
+    dataSource.defaultMetrics.separatorInsets = UIEdgeInsetsMake(0, 0, 0, 0);
     dataSource.defaultMetrics.rowHeight = 55;
     
     return dataSource;
@@ -101,7 +117,7 @@
     dataSource.noContentMessage = NSLocalizedString(@"No edibles are currently available.", @"The message to show when the edibles are empty");
     
     dataSource.defaultMetrics.separatorColor = [UIColor colorWithWhite:224/255.0 alpha:1];
-    dataSource.defaultMetrics.separatorInsets = UIEdgeInsetsMake(0, 15, 0, 0);
+    dataSource.defaultMetrics.separatorInsets = UIEdgeInsetsMake(0, 0, 0, 0);
     dataSource.defaultMetrics.rowHeight = 55;
     
     return dataSource;

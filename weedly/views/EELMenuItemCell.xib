@@ -27,11 +27,17 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view appearanceType="aqua" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B5o-lg-4hj">
+                        <rect key="frame" x="0.0" y="0.5" width="5" height="55"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <size key="customSize" width="320" height="57"/>
             <connections>
+                <outlet property="leftBorder" destination="B5o-lg-4hj" id="mfV-2q-9TQ"/>
                 <outlet property="subtitleLabel" destination="34J-BA-lnj" id="MVI-lz-h2K"/>
                 <outlet property="textLabel" destination="dfQ-nL-w8B" id="25C-u5-3cA"/>
             </connections>

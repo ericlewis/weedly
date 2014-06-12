@@ -11,6 +11,7 @@
 @interface EELMenuItemCell()
 @property (nonatomic, weak) IBOutlet UILabel *textLabel;
 @property (nonatomic, weak) IBOutlet UILabel *subtitleLabel;
+@property (nonatomic, weak) IBOutlet UIView *leftBorder;
 @end
 
 @implementation EELMenuItemCell
@@ -19,6 +20,16 @@
     self.textLabel.text = [menuItem formattedNameString];
     
     NSString *pricesString = @"";
+    
+    if (menuItem.catID == 1) {
+        self.leftBorder.backgroundColor = [UIColor colorWithRed:115/255.0f green:73/255.0f blue:121/255.0f alpha:1.0f];
+    } else if (menuItem.catID == 2) {
+        self.leftBorder.backgroundColor = [UIColor colorWithRed:182/255.0f green:75/255.0f blue:48/255.0f alpha:1.0f];
+    } else if (menuItem.catID == 3) {
+        self.leftBorder.backgroundColor = [UIColor colorWithRed:132/255.0f green:176/255.0f blue:43/255.0f alpha:1.0f];
+    }else{
+        self.leftBorder.backgroundColor = [UIColor clearColor];
+    }
     
     if (menuItem.priceHalfGram > 0) {
         pricesString = [pricesString stringByAppendingString:[NSString stringWithFormat:@"%d 1/2gm  ", menuItem.priceHalfGram]];
