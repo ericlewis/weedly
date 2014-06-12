@@ -3,12 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "delivery_marker.png"
+      "filename" : "deliveryIcon@2x-1.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "delivery_marker@2x.png"
+      "filename" : "deliveryIcon@2x.png"
     }
   ],
   "info" : {

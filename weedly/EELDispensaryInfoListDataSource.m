@@ -31,24 +31,41 @@
     
     _dispensary = dispensary;
     
-    if ([[self.dispensary formattedTypeString] isEqualToString:@"Delivery"] || self.dispensary.address.length < 4) {
-        self.items = @[
-                       @{@"name": @"Menu", @"subtitle": @"Check out menu options", @"segue": @"ShowMenu"},
-                       @{@"name": @"Phone", @"subtitle": [self.dispensary formattedPhoneString], @"segue": @"ShowPhonePrompt"},
-                       ];
-    }else if([[self.dispensary formattedTypeString] isEqualToString:@"Doctor"]){
-        self.items = @[
-                       @{@"name": @"Directions", @"subtitle": @"Get directions from current location", @"segue": @"ShowDirections"},
-                       @{@"name": @"Phone", @"subtitle": [self.dispensary formattedPhoneString], @"segue": @"ShowPhonePrompt"},
-                       ];
-    }else{
-        self.items = @[
-                       @{@"name": @"Menu", @"subtitle": @"Check out menu options", @"segue": @"ShowMenu"},
-                       @{@"name": @"Directions", @"subtitle": @"Get directions from current location", @"segue": @"ShowDirections"},
-                       @{@"name": @"Phone", @"subtitle": [self.dispensary formattedPhoneString], @"segue": @"ShowPhonePrompt"},
-                       ];
+    NSMutableArray *itemsToUse = [NSMutableArray new];
+    
+    // menu if delivery / dispensary
+    if ([[self.dispensary formattedTypeString] isEqualToString:@"Delivery"] || [[self.dispensary formattedTypeString] isEqualToString:@"Dispensary"]){
+        [itemsToUse addObject:@{
+                                @"name": @"Menu",
+                                @"subtitle": @"Check out menu options",
+                                @"segue": @"ShowMenu",
+                                @"imageName": @"list_ingredients-128"
+                                }
+         ];
     }
     
+    // directions if able to
+    if(self.dispensary.address.length > 4){
+        [itemsToUse addObject:@{
+                                @"name": @"Directions",
+                                @"subtitle": @"Get directions from current location",
+                                @"segue": @"ShowDirections",
+                                @"imageName": @"map_marker-128"
+                                }
+         ];
+    }
+    
+    if (self.dispensary.phone.length > 4) {
+        [itemsToUse addObject:@{
+                                @"name": @"Phone",
+                                @"subtitle": [self.dispensary formattedPhoneString],
+                                @"segue": @"ShowPhonePrompt",
+                                @"imageName": @"phone1-128"
+                                }
+         ];
+    }
+
+    self.items = itemsToUse;
     
     return self;
 }
@@ -70,6 +87,7 @@
     EELDetailListCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([EELDetailListCell class]) forIndexPath:indexPath];
     
     cell.nameLabel.text = menuItem[@"name"];
+    cell.imageView.image = [UIImage imageNamed:menuItem[@"imageName"]];
     
     return cell;
 }

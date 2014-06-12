@@ -41,6 +41,7 @@
             </constraints>
             <size key="customSize" width="276" height="50"/>
             <connections>
+                <outlet property="imageView" destination="bH6-ga-fnw" id="8di-Rw-d1Y"/>
                 <outlet property="nameLabel" destination="THh-po-Ib5" id="n4B-m8-PX5"/>
             </connections>
         </collectionViewCell>

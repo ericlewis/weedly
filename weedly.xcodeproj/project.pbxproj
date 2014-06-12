@@ -240,6 +240,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D09EB5C1949726300161685 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4D37D46819494F9F00034769 /* EELListHeaderTableViewCell.h */,
+				4D37D46919494F9F00034769 /* EELListHeaderTableViewCell.m */,
+				4D37D46A19494F9F00034769 /* EELListHeaderTableViewCell.xib */,
+				4D37D4611949139500034769 /* EELListTableViewCell.h */,
+				4D37D4621949139500034769 /* EELListTableViewCell.m */,
+				4D37D4631949139500034769 /* EELListTableViewCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		4D09EB5D1949726E00161685 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4D75E0D21944022800A25AB6 /* EELDetailHeader.h */,
+				4D75E0D31944022800A25AB6 /* EELDetailHeader.m */,
+				4DCFE5211948C05300139D52 /* EELDetailHeader.xib */,
+				4D544BA019441518000718D7 /* EELReviewCell.h */,
+				4D544BA119441518000718D7 /* EELReviewCell.m */,
+				4D37D4661949284D00034769 /* EELReviewCell.xib */,
+				4DCFE5191948BE3100139D52 /* EELDetailListCell.xib */,
+				4DCFE51E1948BF1400139D52 /* EELDetailListCell.h */,
+				4DCFE51F1948BF1400139D52 /* EELDetailListCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		4D75E06C1943F3D700A25AB6 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
@@ -394,15 +423,7 @@
 				4D9DDE0619169B2E006E5B03 /* EELMenuTableViewController.m */,
 				4D75E0CF1943FBE200A25AB6 /* EELDetailViewController.h */,
 				4D75E0D01943FBE200A25AB6 /* EELDetailViewController.m */,
-				4D75E0D21944022800A25AB6 /* EELDetailHeader.h */,
-				4D75E0D31944022800A25AB6 /* EELDetailHeader.m */,
-				4DCFE5211948C05300139D52 /* EELDetailHeader.xib */,
-				4D544BA019441518000718D7 /* EELReviewCell.h */,
-				4D544BA119441518000718D7 /* EELReviewCell.m */,
-				4D37D4661949284D00034769 /* EELReviewCell.xib */,
-				4DCFE5191948BE3100139D52 /* EELDetailListCell.xib */,
-				4DCFE51E1948BF1400139D52 /* EELDetailListCell.h */,
-				4DCFE51F1948BF1400139D52 /* EELDetailListCell.m */,
+				4D09EB5D1949726E00161685 /* Cells */,
 			);
 			name = "detail controllers";
 			sourceTree = "<group>";
@@ -412,12 +433,7 @@
 			children = (
 				4DD4930A1915827D001A6203 /* EELMainViewController.h */,
 				4DD4930B1915827D001A6203 /* EELMainViewController.m */,
-				4D37D46819494F9F00034769 /* EELListHeaderTableViewCell.h */,
-				4D37D46919494F9F00034769 /* EELListHeaderTableViewCell.m */,
-				4D37D46A19494F9F00034769 /* EELListHeaderTableViewCell.xib */,
-				4D37D4611949139500034769 /* EELListTableViewCell.h */,
-				4D37D4621949139500034769 /* EELListTableViewCell.m */,
-				4D37D4631949139500034769 /* EELListTableViewCell.xib */,
+				4D09EB5C1949726300161685 /* Cells */,
 				4DD1FFF6194641650072D5B4 /* EELListTableView.h */,
 				4DD1FFF7194641650072D5B4 /* EELListTableView.m */,
 			);

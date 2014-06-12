@@ -342,7 +342,7 @@
         [self performSearch:self.searchBar.text];
     }else{
         MKCoordinateRegion region;
-        region.center = CLLocationCoordinate2DMake(37.733972, -122.431297);
+        region.center = CLLocationCoordinate2DMake(37.7733, -122.431297);
         MKCoordinateSpan span;
         span.latitudeDelta  = 0.1; // Change these values to change the zoom
         span.longitudeDelta = 0.1;
@@ -504,10 +504,10 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        return 40;
+        return 37;
     }
     
-    return 122;
+    return 107;
 }
 
 - (NSIndexPath*)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{

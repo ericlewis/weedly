@@ -7,55 +7,74 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EELDispensaryDetailHeader"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="1CS-wj-Pj1" customClass="EELDetailHeader">
-            <rect key="frame" x="0.0" y="0.0" width="300" height="110"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tgP-ci-EN1">
-                    <rect key="frame" x="20" y="15" width="170" height="21"/>
+                <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tcm-00-f0F">
+                    <rect key="frame" x="20" y="40" width="226" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9eq-nc-5iu">
-                    <rect key="frame" x="20" y="44" width="170" height="21"/>
+                <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="USL-xy-9Ha">
+                    <rect key="frame" x="20" y="75" width="170" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="170" id="GHj-i0-heY"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lFD-dR-V1Y">
+                    <rect key="frame" x="160" y="75" width="140" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="140" id="yhZ-7G-2XE"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZBy-fV-LcQ">
+                    <rect key="frame" x="20" y="13" width="226" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KZe-qq-upA">
-                    <rect key="frame" x="20" y="69" width="170" height="21"/>
+                <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VtR-oH-RTl">
+                    <rect key="frame" x="260" y="13" width="40" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhp-Tc-gFS">
-                    <rect key="frame" x="238" y="69" width="42" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t5P-5c-Gqr">
-                    <rect key="frame" x="234" y="15" width="46" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Button">
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" image="favorite">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="xhp-Tc-gFS" firstAttribute="top" secondItem="t5P-5c-Gqr" secondAttribute="bottom" constant="24" id="3zI-gS-4k0"/>
-                <constraint firstItem="t5P-5c-Gqr" firstAttribute="top" secondItem="1CS-wj-Pj1" secondAttribute="top" constant="15" id="R0R-5e-aAy"/>
-                <constraint firstAttribute="trailing" secondItem="xhp-Tc-gFS" secondAttribute="trailing" constant="20" id="cDG-Bp-RqI"/>
-                <constraint firstAttribute="trailing" secondItem="t5P-5c-Gqr" secondAttribute="trailing" constant="20" id="dka-6b-FCV"/>
+                <constraint firstItem="lFD-dR-V1Y" firstAttribute="baseline" secondItem="USL-xy-9Ha" secondAttribute="baseline" id="7MY-p3-IWJ"/>
+                <constraint firstItem="USL-xy-9Ha" firstAttribute="top" secondItem="Tcm-00-f0F" secondAttribute="bottom" constant="14" id="BtN-uU-vpl"/>
+                <constraint firstItem="Tcm-00-f0F" firstAttribute="top" secondItem="ZBy-fV-LcQ" secondAttribute="bottom" constant="6" id="C8S-kB-U6Q"/>
+                <constraint firstItem="ZBy-fV-LcQ" firstAttribute="top" secondItem="1CS-wj-Pj1" secondAttribute="top" constant="13" id="Cef-WP-9c4"/>
+                <constraint firstAttribute="trailing" secondItem="Tcm-00-f0F" secondAttribute="trailing" constant="74" id="IVw-qL-ORv"/>
+                <constraint firstAttribute="trailing" secondItem="VtR-oH-RTl" secondAttribute="trailing" constant="20" symbolic="YES" id="IxK-h4-M4a"/>
+                <constraint firstItem="Tcm-00-f0F" firstAttribute="leading" secondItem="ZBy-fV-LcQ" secondAttribute="leading" id="OGS-5B-jAL"/>
+                <constraint firstItem="ZBy-fV-LcQ" firstAttribute="leading" secondItem="1CS-wj-Pj1" secondAttribute="leading" constant="20" symbolic="YES" id="R4i-o6-j9A"/>
+                <constraint firstItem="USL-xy-9Ha" firstAttribute="leading" secondItem="Tcm-00-f0F" secondAttribute="leading" id="YCs-KK-zDB"/>
+                <constraint firstItem="VtR-oH-RTl" firstAttribute="top" secondItem="ZBy-fV-LcQ" secondAttribute="top" id="dh4-Rw-6Zr"/>
+                <constraint firstItem="VtR-oH-RTl" firstAttribute="trailing" secondItem="lFD-dR-V1Y" secondAttribute="trailing" id="iC8-II-VOZ"/>
+                <constraint firstItem="ZBy-fV-LcQ" firstAttribute="trailing" secondItem="Tcm-00-f0F" secondAttribute="trailing" id="jLG-VO-ACI"/>
             </constraints>
             <connections>
-                <outlet property="favoriteButton" destination="t5P-5c-Gqr" id="jGG-U9-vJQ"/>
-                <outlet property="hoursLabel" destination="9eq-nc-5iu" id="jKJ-g9-Oh6"/>
-                <outlet property="isOpenLabel" destination="KZe-qq-upA" id="gen-Kq-tMB"/>
-                <outlet property="nameLabel" destination="tgP-ci-EN1" id="r6T-yG-0GB"/>
-                <outlet property="ratingLabel" destination="xhp-Tc-gFS" id="eUr-v3-ktx"/>
+                <outlet property="favoriteButton" destination="VtR-oH-RTl" id="RtW-CQ-mcn"/>
+                <outlet property="hoursLabel" destination="Tcm-00-f0F" id="bZa-ND-EEW"/>
+                <outlet property="isOpenLabel" destination="USL-xy-9Ha" id="Ouy-Nh-XFu"/>
+                <outlet property="nameLabel" destination="ZBy-fV-LcQ" id="s2E-C3-KL6"/>
+                <outlet property="ratingLabel" destination="lFD-dR-V1Y" id="rDg-Y4-IDV"/>
             </connections>
         </collectionReusableView>
     </objects>
+    <resources>
+        <image name="favorite" width="40" height="40"/>
+    </resources>
 </document>

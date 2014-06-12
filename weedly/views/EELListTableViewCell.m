@@ -36,8 +36,19 @@
 - (void)configureWithDispensary:(EELDispensary *)dispensary
 {
     self.backgroundColor = [UIColor whiteColor];
-    self.nameLabel.text = dispensary.name;
     
+    self.nameLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:35/2];
+    self.nameLabel.text = [dispensary formattedNameString].uppercaseString;
+    
+    self.hoursLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:13];
+    self.hoursLabel.textColor = GRAY_COLOR;
+    
+    self.isOpenLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:15];
+    self.isOpenLabel.textColor = MAIN_COLOR;
+    
+    self.ratingLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12];
+    self.ratingLabel.textColor = ORANGE_COLOR;
+
     if (dispensary.isOpen.boolValue) {
         self.isOpenLabel.text = @"Currently Open";
     }else{
@@ -45,15 +56,15 @@
     }
     
     if (dispensary.ratingCount > 0) {
-        self.ratingLabel.text = [NSString stringWithFormat:@"%@ • %d Reviews", [@"" stringByPaddingToLength:dispensary.rating withString:@"★" startingAtIndex:0], dispensary.ratingCount];
+        self.ratingLabel.text = [NSString stringWithFormat:@"%d Reviews • %@", dispensary.ratingCount, [@"" stringByPaddingToLength:dispensary.rating withString:@"★" startingAtIndex:0]];
     }else{
         self.ratingLabel.text = @"No ratings";
     }
     
     if (dispensary.opensAt.length > 0 && dispensary.closesAt.length > 0) {
-        self.hoursLabel.text = [NSString stringWithFormat:@"%@\nOpen %@ to %@", [dispensary formattedTypeString], [dispensary.opensAt stringByReplacingOccurrencesOfString:@" " withString:@""].uppercaseString, [dispensary.closesAt stringByReplacingOccurrencesOfString:@" " withString:@""].uppercaseString];
+        self.hoursLabel.text = [NSString stringWithFormat:@"%@  %@ to %@", [dispensary formattedTypeString], [dispensary.opensAt stringByReplacingOccurrencesOfString:@" " withString:@""].uppercaseString, [dispensary.closesAt stringByReplacingOccurrencesOfString:@" " withString:@""].uppercaseString];
     }else{
-        self.hoursLabel.text = [NSString stringWithFormat:@"%@\nHours unavailable", [dispensary formattedTypeString]];
+        self.hoursLabel.text = [NSString stringWithFormat:@"%@  Hours unavailable", [dispensary formattedTypeString]];
     }
 }
 

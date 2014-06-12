@@ -3,12 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "ip_marker.png"
+      "filename" : "dispensaryIcon@2x-1.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "ip_marker@2x.png"
+      "filename" : "dispensaryIcon@2x.png"
     }
   ],
   "info" : {
