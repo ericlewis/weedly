@@ -306,6 +306,7 @@
         self.filterMenu.borderColor = [UIColor grayColor];
         self.filterMenu.borderWidth = 0.5f;
         self.filterMenu.separatorColor = [UIColor clearColor];
+        self.filterMenu.font = [UIFont fontWithName:@"HelveticaNue-Light" size:20];
         self.filterMenu.textColor = [UIColor whiteColor];
         self.filterMenu.textAlignment = NSTextAlignmentLeft;
         self.filterMenu.textOffset = CGSizeMake(50, 0);
@@ -394,12 +395,12 @@
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
-    [mapView deselectAnnotation:view.annotation animated:YES];
-
     if (![view.annotation isKindOfClass:[MKUserLocation class]]) {
-        self.selectedDispensary = [self.dataSource.items objectAtIndex:[view.annotation.title integerValue]];
-        [self performSegueWithIdentifier:@"ShowItemDetail" sender:self];
+        [mapView setCenterCoordinate:view.annotation.coordinate animated:YES];
+        [self performSearch:self.searchBar.text];
     }
+    
+    [mapView deselectAnnotation:view.annotation animated:YES];
 }
 
 - (void) mapView:(MKMapView *)aMapView didAddAnnotationViews:(NSArray *)views

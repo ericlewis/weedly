@@ -14,6 +14,7 @@
 @property (nonatomic, weak) IBOutlet UILabel *hoursLabel;
 @property (nonatomic, weak) IBOutlet UILabel *ratingLabel;
 @property (nonatomic, weak) IBOutlet UILabel *isOpenLabel;
+@property (nonatomic, weak) IBOutlet UILabel *distanceLabel;
 @property (nonatomic, weak) IBOutlet UIButton *favoriteButton;
 @property (nonatomic, getter=isFavorite) BOOL favorite;
 
@@ -40,6 +41,9 @@
     self.nameLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:35/2];
     self.nameLabel.text = [dispensary formattedNameString].uppercaseString;
     
+    self.distanceLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:15];
+    self.distanceLabel.textColor = GRAY_COLOR;
+
     self.hoursLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:13];
     self.hoursLabel.textColor = GRAY_COLOR;
     
@@ -65,6 +69,17 @@
         self.hoursLabel.text = [NSString stringWithFormat:@"%@  %@ to %@", [dispensary formattedTypeString], [dispensary.opensAt stringByReplacingOccurrencesOfString:@" " withString:@""].uppercaseString, [dispensary.closesAt stringByReplacingOccurrencesOfString:@" " withString:@""].uppercaseString];
     }else{
         self.hoursLabel.text = [NSString stringWithFormat:@"%@  Hours unavailable", [dispensary formattedTypeString]];
+    }
+    
+    CLLocation *locA = [MTLocationManager sharedInstance].lastKnownLocation;
+    CLLocation *locB = [[CLLocation alloc] initWithLatitude:dispensary.lat longitude:dispensary.lng];
+    CLLocationDistance distance = [locA distanceFromLocation:locB];
+
+    if ((distance/1609.344) > 0 && (distance/1609.344) < 0.2) {
+        self.distanceLabel.text = [NSString stringWithFormat:@"%.0fft", (distance*3.28084)];
+    }
+    else if ((distance/1609.344) > 0) {
+        self.distanceLabel.text = [NSString stringWithFormat:@"%.1f mi", (distance/1609.344)];
     }
 }
 
