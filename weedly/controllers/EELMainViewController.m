@@ -468,9 +468,10 @@
     // Return the number of rows in the section.
     
     if (!!!self.dataSource.items.count) {
-        self.tableView.backgroundColor = [UIColor whiteColor];
+        self.tableView.hidden = YES;
+        NSLog(@"show nothing found screen?");
     }else{
-        self.tableView.backgroundColor = [UIColor clearColor];
+        self.tableView.hidden = NO;
     }
     
     return self.dataSource.items.count;
