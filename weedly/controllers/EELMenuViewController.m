@@ -69,8 +69,8 @@
 {
     EELFlowerMenuItemsDataSource *dataSource = [[EELFlowerMenuItemsDataSource alloc] initWithDispensary:self.dispensary];
     dataSource.title = NSLocalizedString(@"Flowers", @"Title of reviews section");
-    dataSource.noContentTitle = NSLocalizedString(@"No Reviews", @"Title of the no reviews placeholder message");
-    dataSource.noContentMessage = NSLocalizedString(@"No reviews are currently available.", @"The message to show when the reviews are empty");
+    dataSource.noContentTitle = NSLocalizedString(@"No menu items", @"Title of the no reviews placeholder message");
+    dataSource.noContentMessage = NSLocalizedString(@"No flowers are currently available.", @"The message to show when the flowers are empty");
     
     dataSource.defaultMetrics.separatorColor = [UIColor colorWithWhite:224/255.0 alpha:1];
     dataSource.defaultMetrics.separatorInsets = UIEdgeInsetsMake(0, 15, 0, 0);
@@ -83,8 +83,8 @@
 {
     EELConcentratesMenuItemsDataSource *dataSource = [[EELConcentratesMenuItemsDataSource alloc] initWithDispensary:self.dispensary];
     dataSource.title = NSLocalizedString(@"Concentrates", @"Title of reviews section");
-    dataSource.noContentTitle = NSLocalizedString(@"No Reviews", @"Title of the no reviews placeholder message");
-    dataSource.noContentMessage = NSLocalizedString(@"No reviews are currently available.", @"The message to show when the reviews are empty");
+    dataSource.noContentTitle = NSLocalizedString(@"No menu items", @"Title of the no reviews placeholder message");
+    dataSource.noContentMessage = NSLocalizedString(@"No concentrates are currently available.", @"The message to show when the concentrates are empty");
     
     dataSource.defaultMetrics.separatorColor = [UIColor colorWithWhite:224/255.0 alpha:1];
     dataSource.defaultMetrics.separatorInsets = UIEdgeInsetsMake(0, 15, 0, 0);
@@ -97,8 +97,8 @@
 {
     EELEdiblesMenuItemsDataSource *dataSource = [[EELEdiblesMenuItemsDataSource alloc] initWithDispensary:self.dispensary];
     dataSource.title = NSLocalizedString(@"Edibles", @"Title of reviews section");
-    dataSource.noContentTitle = NSLocalizedString(@"No Reviews", @"Title of the no reviews placeholder message");
-    dataSource.noContentMessage = NSLocalizedString(@"No reviews are currently available.", @"The message to show when the reviews are empty");
+    dataSource.noContentTitle = NSLocalizedString(@"No menu items", @"Title of the no reviews placeholder message");
+    dataSource.noContentMessage = NSLocalizedString(@"No edibles are currently available.", @"The message to show when the edibles are empty");
     
     dataSource.defaultMetrics.separatorColor = [UIColor colorWithWhite:224/255.0 alpha:1];
     dataSource.defaultMetrics.separatorInsets = UIEdgeInsetsMake(0, 15, 0, 0);
