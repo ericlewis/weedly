@@ -38,7 +38,6 @@
     #import "NSString+USStateMap.h"
     #import "NSDate+DateTools.h"
     #import <POP/POP.h>
-    #import "CWStatusBarNotification.h"
 
     // models
     #import "EELAccount.h"

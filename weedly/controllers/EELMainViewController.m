@@ -8,7 +8,7 @@
 
 #import "EELMainViewController.h"
 #import "EELDetailViewController.h"
-
+#import "EELListHeaderTableViewCell.h"
 #import "EELArrayDataSource.h"
 #import "EELListTableViewCell.h"
 
@@ -21,7 +21,6 @@
 @property (strong, nonatomic) REMenu *filterMenu;
 @property (strong, nonatomic) UISearchBar *searchBar;
 @property (strong, nonatomic) EELArrayDataSource *dataSource;
-@property (strong, nonatomic) CWStatusBarNotification *notifcationCenter;
 
 @end
 
@@ -48,7 +47,7 @@
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     self.tableView.contentInset = UIEdgeInsetsMake(self.mapView.frame.size.height-40, 0, 0, 0);
     self.tableView.tableFooterView = [UIView new];
-    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([EELListTableViewCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"ItemHeaderFirstCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([EELListHeaderTableViewCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"NearbyCell"];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([EELListTableViewCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"ItemHeaderCell"];
 
     UIPanGestureRecognizer* panRec = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didDragMap:)];
@@ -59,9 +58,6 @@
 
     self.navigationController.navigationBar.translucent = NO;
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:self.navigationItem.backBarButtonItem.style target:nil action:nil];
-    
-    self.notifcationCenter = [CWStatusBarNotification new];
-    self.notifcationCenter.notificationLabelBackgroundColor = MAIN_COLOR;
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
@@ -71,8 +67,6 @@
 - (void)didDragMap:(UIGestureRecognizer*)gestureRecognizer {
     if (gestureRecognizer.state == UIGestureRecognizerStateEnded){
         [self performSearch:self.searchBar.text];
-    }else if (gestureRecognizer.state == UIGestureRecognizerStateBegan){
-        [self.notifcationCenter dismissNotification];
     }
 }
 
@@ -106,7 +100,6 @@
 
 - (void)viewWillDisappear:(BOOL)animated{
     [self.searchBar resignFirstResponder];
-    [self.notifcationCenter dismissNotification];
     
     if (self.filterMenu.isOpen) {
         [self.filterMenu close];
@@ -138,10 +131,8 @@
     
     [self.mapView removeAnnotations:oldAnnotations];
     
-    NSSet *annSet = [self.mapView annotationsInMapRect:self.mapView.visibleMapRect];
-    if (annSet.count > 0) {
-        [self.notifcationCenter displayNotificationWithMessage:[NSString stringWithFormat:@"%lu Results", (unsigned long)annSet.count]
-                                                   forDuration:3.5f];
+    if (self.dataSource.items.count > 0) {
+        [self.tableView reloadData];
     }
 }
 
@@ -218,7 +209,7 @@
             self.dataSource = [EELArrayDataSource dataSourceWithItems:sortedArray];
             
             [self addPins];
-            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
         }];
     }else if(self.searchBar.tag == 911){
         [[EELWMClient sharedClient] searchDoctorsWithTerm:searchTerm lat:lat lng:lng completionBlock:^(NSArray *results, NSError *error) {
@@ -243,8 +234,9 @@
             self.dataSource = [EELArrayDataSource dataSourceWithItems:sortedArray];
             
             [self addPins];
-            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
         }];
+        
     }else{
         
         // needs to actually allow search on the objects
@@ -265,7 +257,7 @@
         [sortedArray sortUsingDescriptors:@[sort]];
         
         self.dataSource = [EELArrayDataSource dataSourceWithItems:sortedArray];
-        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
 
         [self addPins];
     }
@@ -306,7 +298,7 @@
                                                                 NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:FAVORITES_KEY];
                                                                 self.dataSource = [EELArrayDataSource dataSourceWithItems:[NSKeyedUnarchiver unarchiveObjectWithData:data]];
                                                                 [self addPins];
-                                                                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+                                                                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
                                                             }];
         
         self.filterMenu = [[REMenu alloc] initWithItems:@[dispensaryItem, doctorItem, favoriteItem]];
@@ -339,8 +331,8 @@
         MKCoordinateSpan span;
         
         if (self.mapView.region.span.latitudeDelta > 1) {
-            span.latitudeDelta  = 0.17; // Change these values to change the zoom
-            span.longitudeDelta = 0.17;
+            span.latitudeDelta  = 0.1; // Change these values to change the zoom
+            span.longitudeDelta = 0.1;
             region.span = span;
         }else{
             region.span = self.mapView.region.span;
@@ -352,8 +344,8 @@
         MKCoordinateRegion region;
         region.center = CLLocationCoordinate2DMake(37.733972, -122.431297);
         MKCoordinateSpan span;
-        span.latitudeDelta  = 0.17; // Change these values to change the zoom
-        span.longitudeDelta = 0.17;
+        span.latitudeDelta  = 0.1; // Change these values to change the zoom
+        span.longitudeDelta = 0.1;
         region.span = span;
         
         [self.mapView setRegion:region animated:animated];
@@ -460,12 +452,15 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
+    if (section == 0) {
+        return 1;
+    }
     
     if (!!!self.dataSource.items.count) {
         self.tableView.hidden = YES;
@@ -479,28 +474,41 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    EELListTableViewCell *cell;
+    UITableViewCell *cell;
+    EELListHeaderTableViewCell *nearbyCountCell;
+    EELListTableViewCell *listTableCell;
     EELDispensary *dispensary = [self.dataSource.items objectAtIndex:indexPath.row];
     
-    if (indexPath.row == 0) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"ItemHeaderFirstCell" forIndexPath:indexPath];
-        cell.clipsToBounds = YES;
+    if (indexPath.section == 0) {
+        nearbyCountCell = [tableView dequeueReusableCellWithIdentifier:@"NearbyCell" forIndexPath:indexPath];
+        nearbyCountCell.clipsToBounds = YES;
         CALayer *topBorder = [CALayer layer];
         topBorder.borderColor = [UIColor lightGrayColor].CGColor;
         topBorder.borderWidth = 0.25;
         topBorder.frame = CGRectMake(0, 0, 1000, 1);
-        [cell.layer addSublayer:topBorder];
+        [nearbyCountCell.layer addSublayer:topBorder];
         
+        NSSet *annSet = [self.mapView annotationsInMapRect:self.mapView.visibleMapRect];
+        [nearbyCountCell configureWithAmount:annSet.count];
+        
+        cell = nearbyCountCell;
+
     }else{
-        cell = [tableView dequeueReusableCellWithIdentifier:@"ItemHeaderCell" forIndexPath:indexPath];
+        listTableCell = [tableView dequeueReusableCellWithIdentifier:@"ItemHeaderCell" forIndexPath:indexPath];
+        [listTableCell configureWithDispensary:dispensary];
+        cell = listTableCell;
     }
     
-    [cell configureWithDispensary:dispensary];
+    cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
     
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 0) {
+        return 40;
+    }
+    
     return 122;
 }
 
@@ -543,7 +551,7 @@
         [self.tableView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
         [UIView commitAnimations];
         
-        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1] atScrollPosition:UITableViewScrollPositionTop animated:YES];
     }
 }
 
