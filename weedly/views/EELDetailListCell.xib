@@ -7,42 +7,56 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="3Is-73-K6T" customClass="EELDetailListCell">
-            <rect key="frame" x="0.0" y="0.0" width="276" height="44"/>
+            <rect key="frame" x="0.0" y="0.0" width="276" height="68"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="276" height="44"/>
+                <rect key="frame" x="0.0" y="0.0" width="276" height="68"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="THh-po-Ib5">
-                        <rect key="frame" x="55" y="2" width="221" height="40"/>
+                        <rect key="frame" x="65" y="13" width="200" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="KSq-PP-pt8"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DY9-FC-awl">
+                        <rect key="frame" x="65" y="34" width="200" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView appearanceType="aqua" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dealsIcon" translatesAutoresizingMaskIntoConstraints="NO" id="bH6-ga-fnw">
-                        <rect key="frame" x="20" y="12" width="20" height="20"/>
+                        <rect key="frame" x="15" y="18" width="32" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="20" id="ooz-jJ-oq9"/>
+                            <constraint firstAttribute="width" constant="32" id="qK4-sm-0gj"/>
                         </constraints>
                     </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
-                <constraint firstItem="bH6-ga-fnw" firstAttribute="centerY" secondItem="THh-po-Ib5" secondAttribute="centerY" id="2d8-Ab-rQN"/>
-                <constraint firstItem="bH6-ga-fnw" firstAttribute="centerY" secondItem="3Is-73-K6T" secondAttribute="centerY" id="80V-eL-qRG"/>
-                <constraint firstItem="bH6-ga-fnw" firstAttribute="leading" secondItem="3Is-73-K6T" secondAttribute="leading" constant="20" id="PLV-TJ-XWA"/>
-                <constraint firstAttribute="trailing" secondItem="THh-po-Ib5" secondAttribute="trailing" id="buI-1W-wRe"/>
-                <constraint firstItem="THh-po-Ib5" firstAttribute="top" secondItem="3Is-73-K6T" secondAttribute="top" constant="2" id="hBg-Qb-326"/>
-                <constraint firstItem="bH6-ga-fnw" firstAttribute="top" secondItem="3Is-73-K6T" secondAttribute="top" constant="12" id="kwd-Ew-LMS"/>
-                <constraint firstItem="THh-po-Ib5" firstAttribute="leading" secondItem="bH6-ga-fnw" secondAttribute="trailing" constant="15" id="y5Q-nT-sbW"/>
+                <constraint firstAttribute="trailing" secondItem="THh-po-Ib5" secondAttribute="trailing" constant="11" id="284-pj-3zy"/>
+                <constraint firstItem="bH6-ga-fnw" firstAttribute="top" secondItem="3Is-73-K6T" secondAttribute="top" constant="18" id="6O2-Dn-7xk"/>
+                <constraint firstItem="DY9-FC-awl" firstAttribute="top" secondItem="THh-po-Ib5" secondAttribute="bottom" constant="1" id="Tob-Ae-NKT"/>
+                <constraint firstItem="THh-po-Ib5" firstAttribute="leading" secondItem="bH6-ga-fnw" secondAttribute="trailing" constant="18" id="URq-H4-8JA"/>
+                <constraint firstItem="bH6-ga-fnw" firstAttribute="leading" secondItem="3Is-73-K6T" secondAttribute="leading" constant="15" id="Xw7-ZR-S0Z"/>
+                <constraint firstItem="THh-po-Ib5" firstAttribute="leading" secondItem="DY9-FC-awl" secondAttribute="leading" id="Y6x-Fi-ICi"/>
+                <constraint firstItem="THh-po-Ib5" firstAttribute="top" secondItem="3Is-73-K6T" secondAttribute="top" constant="13" id="nRn-0g-zYm"/>
+                <constraint firstItem="bH6-ga-fnw" firstAttribute="centerY" secondItem="3Is-73-K6T" secondAttribute="centerY" id="pnR-dN-w27"/>
+                <constraint firstItem="DY9-FC-awl" firstAttribute="trailing" secondItem="THh-po-Ib5" secondAttribute="trailing" id="qA7-S4-2fC"/>
+                <constraint firstAttribute="bottom" secondItem="DY9-FC-awl" secondAttribute="bottom" constant="14" id="z1r-v7-LW0"/>
             </constraints>
-            <size key="customSize" width="276" height="50"/>
+            <size key="customSize" width="276" height="74"/>
             <connections>
                 <outlet property="imageView" destination="bH6-ga-fnw" id="8di-Rw-d1Y"/>
                 <outlet property="nameLabel" destination="THh-po-Ib5" id="n4B-m8-PX5"/>
+                <outlet property="subtitleLabel" destination="DY9-FC-awl" id="kwh-Sx-Zeg"/>
             </connections>
         </collectionViewCell>
     </objects>

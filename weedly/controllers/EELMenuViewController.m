@@ -44,20 +44,6 @@
     [self.dataSource addDataSource:self.itemsConcentrateDataSource];
     [self.dataSource addDataSource:self.itemsEdibleDataSource];
     
-    __weak typeof(&*self) weakself = self;
-    
-    AAPLLayoutSupplementaryMetrics *globalHeader = [self.dataSource newHeaderForKey:@"globalHeader"];
-    globalHeader.visibleWhileShowingPlaceholder = YES;
-    globalHeader.height = 110;
-    globalHeader.supplementaryViewClass = [EELDetailHeader class];
-    globalHeader.configureView = ^(UICollectionReusableView *view, AAPLDataSource *dataSource, NSIndexPath *indexPath) {
-        NSLog(@"%@", [self.menuDataSource itemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]]);
-        
-        EELDetailHeader *headerView = (EELDetailHeader *)view;
-        headerView.bottomBorderColor = nil;
-        [headerView configureWithDispensary:weakself.dispensary];
-    };
-    
     self.collectionView.dataSource = self.dataSource;
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:self.navigationItem.backBarButtonItem.style target:nil action:nil];
 }
@@ -90,7 +76,7 @@
     
     dataSource.defaultMetrics.separatorColor = [UIColor colorWithWhite:224/255.0 alpha:1];
     dataSource.defaultMetrics.separatorInsets = UIEdgeInsetsMake(0, 0, 0, 0);
-    dataSource.defaultMetrics.rowHeight = 55;
+    dataSource.defaultMetrics.rowHeight = 70;
     
     return dataSource;
 }
@@ -104,7 +90,7 @@
     
     dataSource.defaultMetrics.separatorColor = [UIColor colorWithWhite:224/255.0 alpha:1];
     dataSource.defaultMetrics.separatorInsets = UIEdgeInsetsMake(0, 0, 0, 0);
-    dataSource.defaultMetrics.rowHeight = 55;
+    dataSource.defaultMetrics.rowHeight = 70;
     
     return dataSource;
 }
@@ -118,7 +104,7 @@
     
     dataSource.defaultMetrics.separatorColor = [UIColor colorWithWhite:224/255.0 alpha:1];
     dataSource.defaultMetrics.separatorInsets = UIEdgeInsetsMake(0, 0, 0, 0);
-    dataSource.defaultMetrics.rowHeight = 55;
+    dataSource.defaultMetrics.rowHeight = 70;
     
     return dataSource;
 }

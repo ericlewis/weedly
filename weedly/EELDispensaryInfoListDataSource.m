@@ -37,7 +37,7 @@
     if ([[self.dispensary formattedTypeString] isEqualToString:@"Delivery"] || [[self.dispensary formattedTypeString] isEqualToString:@"Dispensary"]){
         [itemsToUse addObject:@{
                                 @"name": @"Menu",
-                                @"subtitle": @"Check out menu options",
+                                @"subtitle": @"Our menu is frequently updated.",
                                 @"segue": @"ShowMenu",
                                 @"imageName": @"list_ingredients-128"
                                 }
@@ -48,7 +48,7 @@
     if(self.dispensary.address.length > 4){
         [itemsToUse addObject:@{
                                 @"name": @"Directions",
-                                @"subtitle": @"Get directions from current location",
+                                @"subtitle": @"Find your way here",
                                 @"segue": @"ShowDirections",
                                 @"imageName": @"map_marker-128"
                                 }
@@ -57,7 +57,7 @@
     
     if (self.dispensary.phone.length > 4) {
         [itemsToUse addObject:@{
-                                @"name": @"Phone",
+                                @"name": @"Call Us",
                                 @"subtitle": [self.dispensary formattedPhoneString],
                                 @"segue": @"ShowPhonePrompt",
                                 @"imageName": @"phone1-128"
@@ -87,6 +87,9 @@
     EELDetailListCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([EELDetailListCell class]) forIndexPath:indexPath];
     
     cell.nameLabel.text = menuItem[@"name"];
+    cell.nameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
+    cell.subtitleLabel.text = menuItem[@"subtitle"];
+    cell.subtitleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:13];
     cell.imageView.image = [UIImage imageNamed:menuItem[@"imageName"]];
     
     return cell;

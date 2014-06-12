@@ -73,6 +73,7 @@
     
     dataSource.defaultMetrics.separatorColor = [UIColor colorWithWhite:224/255.0 alpha:1];
     dataSource.defaultMetrics.separatorInsets = UIEdgeInsetsMake(0, 15, 0, 0);
+    dataSource.defaultMetrics.rowHeight = 68;
     
     return dataSource;
 }

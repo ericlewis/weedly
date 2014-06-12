@@ -32,34 +32,41 @@
     }
     
     if (menuItem.priceHalfGram > 0) {
-        pricesString = [pricesString stringByAppendingString:[NSString stringWithFormat:@"%d 1/2gm  ", menuItem.priceHalfGram]];
+        pricesString = [pricesString stringByAppendingString:[NSString stringWithFormat:@" %d |HG  •", menuItem.priceHalfGram]];
     }
     
     if (menuItem.priceGram > 0) {
-        pricesString = [pricesString stringByAppendingString:[NSString stringWithFormat:@"%d 1gm  ", menuItem.priceGram]];
+        pricesString = [pricesString stringByAppendingString:[NSString stringWithFormat:@" %d |G  •", menuItem.priceGram]];
     }
     
     if (menuItem.priceEighth > 0) {
-        pricesString = [pricesString stringByAppendingString:[NSString stringWithFormat:@"%d 1/8  ", menuItem.priceEighth]];
+        pricesString = [pricesString stringByAppendingString:[NSString stringWithFormat:@" %d |1/8  •", menuItem.priceEighth]];
     }
     
     if (menuItem.priceQtr > 0) {
-        pricesString = [pricesString stringByAppendingString:[NSString stringWithFormat:@"%d 1/4  ", menuItem.priceQtr]];
+        pricesString = [pricesString stringByAppendingString:[NSString stringWithFormat:@" %d |1/4  •", menuItem.priceQtr]];
     }
     
     if (menuItem.priceHalfOZ > 0) {
-        pricesString = [pricesString stringByAppendingString:[NSString stringWithFormat:@"%d 1/2  ", menuItem.priceHalfOZ]];
+        pricesString = [pricesString stringByAppendingString:[NSString stringWithFormat:@" %d |1/2  •", menuItem.priceHalfOZ]];
     }
     
     if (menuItem.priceOZ > 0) {
-        pricesString = [pricesString stringByAppendingString:[NSString stringWithFormat:@"%d OZ  ", menuItem.priceOZ]];
+        pricesString = [pricesString stringByAppendingString:[NSString stringWithFormat:@" %d |OZ  •", menuItem.priceOZ]];
     }
     
     if (menuItem.priceUnit > 0) {
-        pricesString = [pricesString stringByAppendingString:[NSString stringWithFormat:@"%d Per  ", menuItem.priceUnit]];
+        pricesString = [pricesString stringByAppendingString:[NSString stringWithFormat:@" %d |Per  •", menuItem.priceUnit]];
+    }
+    
+    if (pricesString.length > 0) {
+        pricesString = [[pricesString substringToIndex:pricesString.length-(pricesString.length>0)] substringFromIndex:1];
     }
     
     self.subtitleLabel.text = pricesString;
+
+    self.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18];
+    self.subtitleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:15];
 
 }
 
