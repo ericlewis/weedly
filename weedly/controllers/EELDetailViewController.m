@@ -7,7 +7,8 @@
 //
 
 #import "EELDetailViewController.h"
-#import "EELMenuTableViewController.h"
+#import "EELMenuViewController.h"
+
 #import "AAPLSegmentedDataSource.h"
 #import "EELDispensaryDetailDataSource.h"
 #import "EELReviewsDataSource.h"
@@ -18,7 +19,6 @@
 @property (nonatomic, strong) AAPLSegmentedDataSource *dataSource;
 @property (nonatomic, strong) EELDispensaryDetailDataSource *detailDataSource;
 @property (nonatomic, strong) EELReviewsDataSource *reviewsDataSource;
-@property (nonatomic, strong) id selectedDataSourceObserver;
 @end
 
 @implementation EELDetailViewController
@@ -96,7 +96,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"ShowMenu"]) {
-        EELMenuTableViewController *controller = segue.destinationViewController;
+        EELMenuViewController *controller = segue.destinationViewController;
         controller.dispensary = self.dispensary;
     }
 }

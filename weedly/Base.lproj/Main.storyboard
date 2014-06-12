@@ -85,59 +85,31 @@
             </objects>
             <point key="canvasLocation" x="-69" y="-1652"/>
         </scene>
-        <!--Menu Table View Controller - Menu-->
-        <scene sceneID="adN-eC-AZB">
+        <!--Menu View Controller-->
+        <scene sceneID="gyD-gH-yuk">
             <objects>
-                <tableViewController id="ThX-tb-Utd" customClass="EELMenuTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" id="ao9-eH-ft7">
+                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="Sfh-PX-bkF" customClass="EELMenuViewController" sceneMemberID="viewController">
+                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="xei-P4-GRD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MenuItem" textLabel="tF8-Dq-VQf" detailTextLabel="eqM-Yw-hUf" style="IBUITableViewCellStyleSubtitle" id="U0n-qJ-VpN">
-                                <rect key="frame" x="0.0" y="86" width="320" height="50"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U0n-qJ-VpN" id="SJH-l3-b9l">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tF8-Dq-VQf">
-                                            <rect key="frame" x="15" y="6" width="34" height="22"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eqM-Yw-hUf">
-                                            <rect key="frame" x="15" y="28" width="43" height="15"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <collectionViewLayout key="collectionViewLayout" id="ZMb-X0-HJa" customClass="AAPLCollectionViewGridLayout"/>
+                        <cells/>
                         <connections>
-                            <outlet property="dataSource" destination="ThX-tb-Utd" id="QUu-e8-Dn6"/>
-                            <outlet property="delegate" destination="ThX-tb-Utd" id="V4D-yd-Peu"/>
+                            <outlet property="dataSource" destination="Sfh-PX-bkF" id="Ps4-9F-vok"/>
+                            <outlet property="delegate" destination="Sfh-PX-bkF" id="1Fs-b1-Blf"/>
                         </connections>
-                    </tableView>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Menu" id="VN4-Ux-gIg">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="DCJ-xD-ZsY"/>
-                    </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xul-PZ-zI2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="H1J-bI-OP4"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E4S-lF-TWp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="803" y="-1652"/>
+            <point key="canvasLocation" x="809" y="-1652"/>
         </scene>
-        <!--Detail View Controller - Cat Detail-->
+        <!--Detail View Controller - Merch Detail-->
         <scene sceneID="go3-Ot-aMd">
             <objects>
-                <collectionViewController title="Cat Detail" id="ERD-op-I1L" customClass="EELDetailViewController" sceneMemberID="viewController">
+                <collectionViewController title="Merch Detail" id="ERD-op-I1L" customClass="EELDetailViewController" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="b2k-Rf-DoU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -150,7 +122,7 @@
                     </collectionView>
                     <navigationItem key="navigationItem" id="HzU-dp-llG"/>
                     <connections>
-                        <segue destination="ThX-tb-Utd" kind="push" identifier="ShowMenu" id="geA-yh-M22"/>
+                        <segue destination="Sfh-PX-bkF" kind="push" identifier="ShowMenu" id="dsT-Bg-kE7"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Avj-Sd-BUH" userLabel="First Responder" sceneMemberID="firstResponder"/>

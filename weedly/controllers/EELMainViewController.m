@@ -459,14 +459,7 @@
     if (section == 0) {
         return 1;
     }
-    
-    if (!!!self.dataSource.items.count) {
-        self.tableView.hidden = YES;
-        NSLog(@"show nothing found screen?");
-    }else{
-        self.tableView.hidden = NO;
-    }
-    
+
     return self.dataSource.items.count;
 }
 
