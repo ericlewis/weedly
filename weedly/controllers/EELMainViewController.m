@@ -310,8 +310,7 @@
                                                             }];
         
         self.filterMenu = [[REMenu alloc] initWithItems:@[dispensaryItem, doctorItem, favoriteItem]];
-        self.filterMenu.backgroundColor = MAIN_COLOR;
-        self.filterMenu.backgroundAlpha = 0.0;
+        self.filterMenu.backgroundColor = MAIN_COLOR_TRANSLUCENT;
         self.filterMenu.borderColor = [UIColor grayColor];
         self.filterMenu.borderWidth = 0.5f;
         self.filterMenu.separatorColor = [UIColor clearColor];
