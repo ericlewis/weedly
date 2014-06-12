@@ -22,8 +22,11 @@
 }
 
 - (void)configureWithAmount:(NSUInteger)amount{
-    if (amount > 0) {
-        self.titleLabel.text = [NSString stringWithFormat:@"%d Results", amount];
+    if (amount == 1) {
+        self.titleLabel.text = [NSString stringWithFormat:@"%lu Result", (unsigned long)amount];
+    }
+    else if (amount > 0) {
+        self.titleLabel.text = [NSString stringWithFormat:@"%lu Results", (unsigned long)amount];
     }
 }
 

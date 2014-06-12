@@ -432,8 +432,6 @@
         [self.searchBar resignFirstResponder];
     }
     
-    NSSet *annSet = [mapView annotationsInMapRect:mapView.visibleMapRect];
-    NSLog(@"regionDidChangeAnimated: annSet count = %d", annSet.count);
 }
 
 #pragma mark - Segue

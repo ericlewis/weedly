@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface EELArrayDataSource : NSObject<UITableViewDataSource>
+@interface EELArrayDataSource : NSObject
 
 @property (copy, nonatomic, readonly) NSArray *items;
 
