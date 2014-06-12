@@ -47,6 +47,7 @@
     
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     self.tableView.contentInset = UIEdgeInsetsMake(self.mapView.frame.size.height-40, 0, 0, 0);
+    self.tableView.tableFooterView = [UIView new];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([EELListTableViewCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"ItemHeaderFirstCell"];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([EELListTableViewCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"ItemHeaderCell"];
 
@@ -105,6 +106,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated{
     [self.searchBar resignFirstResponder];
+    [self.notifcationCenter dismissNotification];
     
     if (self.filterMenu.isOpen) {
         [self.filterMenu close];
@@ -138,7 +140,7 @@
     
     NSSet *annSet = [self.mapView annotationsInMapRect:self.mapView.visibleMapRect];
     if (annSet.count > 0) {
-        [self.notifcationCenter displayNotificationWithMessage:[NSString stringWithFormat:@"%d Results", annSet.count]
+        [self.notifcationCenter displayNotificationWithMessage:[NSString stringWithFormat:@"%lu Results", (unsigned long)annSet.count]
                                                    forDuration:3.5f];
     }
 }

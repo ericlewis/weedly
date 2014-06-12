@@ -77,7 +77,7 @@
         self.textLabel.text = @"Review";
     }
     
-    self.ratingLabel.text = [NSString stringWithFormat:@"%@ • %@", [@"" stringByPaddingToLength:review.rating withString:@"★" startingAtIndex:0], review.name];
+    self.ratingLabel.text = [@"" stringByPaddingToLength:review.rating withString:@"★" startingAtIndex:0];
 
     self.shortDescriptionLabel.text = review.comment;
     self.dateLabel.text = review.timeAgo;

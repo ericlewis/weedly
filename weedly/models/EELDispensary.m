@@ -48,6 +48,7 @@
     
     // doctors
     else if(self.type == 1){
+        dispensaryType = [dispensaryType stringByReplacingOccurrencesOfString:@"lp" withString:@"Doctor"];
         dispensaryType = [dispensaryType stringByReplacingOccurrencesOfString:@"free" withString:@"Doctor"];
         dispensaryType = [dispensaryType stringByReplacingOccurrencesOfString:@"bronze" withString:@"Doctor"];
         dispensaryType = [dispensaryType stringByReplacingOccurrencesOfString:@"silver" withString:@"Doctor"];
