@@ -38,7 +38,9 @@
             }
             
             [loading updateWithContent:^(EELMenuItemsDataSource *me){
-                me.items = results;
+                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"catID = 1 OR catID = 2 OR catID = 3"];
+                NSArray *filteredArray = [results filteredArrayUsingPredicate:predicate];
+                me.items = filteredArray;
             }];
         }];
     }];

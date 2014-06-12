@@ -10,12 +10,17 @@
 
 #import "AAPLSegmentedDataSource.h"
 #import "EELMenuDataSource.h"
-#import "EELMenuItemsDataSource.h"
+#import "EELFlowerMenuItemsDataSource.h"
+#import "EELConcentratesMenuItemsDataSource.h"
+#import "EELEdiblesMenuItemsDataSource.h"
 
 @interface EELMenuViewController ()
 @property (nonatomic, strong) AAPLSegmentedDataSource *dataSource;
 @property (nonatomic, strong) EELMenuDataSource *menuDataSource;
-@property (nonatomic, strong) EELMenuItemsDataSource *itemsDataSource;
+@property (nonatomic, strong) EELFlowerMenuItemsDataSource *itemsDataSource;
+@property (nonatomic, strong) EELConcentratesMenuItemsDataSource *itemsConcentrateDataSource;
+@property (nonatomic, strong) EELEdiblesMenuItemsDataSource *itemsEdibleDataSource;
+
 @end
 
 @implementation EELMenuViewController
@@ -30,8 +35,12 @@
     self.menuDataSource = [self newMenuDataSource];
     
     self.itemsDataSource = [self newMenuItemsDataSource];
+    self.itemsConcentrateDataSource = [self newMenuItemsConcentratesDataSource];
+    self.itemsEdibleDataSource = [self newMenuItemsEdiblesDataSource];
     
     [self.dataSource addDataSource:self.itemsDataSource];
+    [self.dataSource addDataSource:self.itemsConcentrateDataSource];
+    [self.dataSource addDataSource:self.itemsEdibleDataSource];
     
     self.collectionView.dataSource = self.dataSource;
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:self.navigationItem.backBarButtonItem.style target:nil action:nil];
@@ -56,10 +65,38 @@
     return dataSource;
 }
 
-- (EELMenuItemsDataSource *)newMenuItemsDataSource
+- (EELFlowerMenuItemsDataSource *)newMenuItemsDataSource
 {
-    EELMenuItemsDataSource *dataSource = [[EELMenuItemsDataSource alloc] initWithDispensary:self.dispensary];
-    dataSource.title = NSLocalizedString(@"Menu", @"Title of reviews section");
+    EELFlowerMenuItemsDataSource *dataSource = [[EELFlowerMenuItemsDataSource alloc] initWithDispensary:self.dispensary];
+    dataSource.title = NSLocalizedString(@"Flowers", @"Title of reviews section");
+    dataSource.noContentTitle = NSLocalizedString(@"No Reviews", @"Title of the no reviews placeholder message");
+    dataSource.noContentMessage = NSLocalizedString(@"No reviews are currently available.", @"The message to show when the reviews are empty");
+    
+    dataSource.defaultMetrics.separatorColor = [UIColor colorWithWhite:224/255.0 alpha:1];
+    dataSource.defaultMetrics.separatorInsets = UIEdgeInsetsMake(0, 15, 0, 0);
+    dataSource.defaultMetrics.rowHeight = 55;
+    
+    return dataSource;
+}
+
+- (EELConcentratesMenuItemsDataSource *)newMenuItemsConcentratesDataSource
+{
+    EELConcentratesMenuItemsDataSource *dataSource = [[EELConcentratesMenuItemsDataSource alloc] initWithDispensary:self.dispensary];
+    dataSource.title = NSLocalizedString(@"Concentrates", @"Title of reviews section");
+    dataSource.noContentTitle = NSLocalizedString(@"No Reviews", @"Title of the no reviews placeholder message");
+    dataSource.noContentMessage = NSLocalizedString(@"No reviews are currently available.", @"The message to show when the reviews are empty");
+    
+    dataSource.defaultMetrics.separatorColor = [UIColor colorWithWhite:224/255.0 alpha:1];
+    dataSource.defaultMetrics.separatorInsets = UIEdgeInsetsMake(0, 15, 0, 0);
+    dataSource.defaultMetrics.rowHeight = 55;
+    
+    return dataSource;
+}
+
+- (EELEdiblesMenuItemsDataSource *)newMenuItemsEdiblesDataSource
+{
+    EELEdiblesMenuItemsDataSource *dataSource = [[EELEdiblesMenuItemsDataSource alloc] initWithDispensary:self.dispensary];
+    dataSource.title = NSLocalizedString(@"Edibles", @"Title of reviews section");
     dataSource.noContentTitle = NSLocalizedString(@"No Reviews", @"Title of the no reviews placeholder message");
     dataSource.noContentMessage = NSLocalizedString(@"No reviews are currently available.", @"The message to show when the reviews are empty");
     

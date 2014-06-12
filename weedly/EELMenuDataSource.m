@@ -9,8 +9,6 @@
 #import "EELMenuDataSource.h"
 #import "EELMenuItemsDataSource.h"
 
-#import "EELReviewCell.h"
-
 #import "UICollectionView+Helpers.h"
 
 @interface EELMenuDataSource ()
