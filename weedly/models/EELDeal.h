@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Eric Lewis. All rights reserved.
 //
 
-@interface EELDeal : MTLModel <MTLJSONSerializing, MTLManagedObjectSerializing>
+@interface EELDeal : NSObject <RestGoateeSerialization>
 
 @property (nonatomic, strong, readonly) NSNumber* id;
 @property (nonatomic, strong, readonly) NSString* lat;

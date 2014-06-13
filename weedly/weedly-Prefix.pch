@@ -31,8 +31,7 @@
     #endif
 
     // pods
-    #import <Overcoat/Overcoat.h>
-    #import <Mantle/Mantle.h>
+    #import <RestGoatee/RestGoatee.h>
     #import "MTLocation.h"
     #import "REMenu.h"
     #import "NSString+USStateMap.h"

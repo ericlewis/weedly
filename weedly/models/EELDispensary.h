@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Eric Lewis. All rights reserved.
 //
 
-@interface EELDispensary : MTLModel <MTLJSONSerializing, MTLManagedObjectSerializing>
+@interface EELDispensary : NSObject
 
 @property (copy, nonatomic, readonly) NSNumber *id;
 @property (copy, nonatomic, readonly) NSString *name;

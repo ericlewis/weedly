@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Eric Lewis. All rights reserved.
 //
 
-@interface EELMenu : MTLModel <MTLJSONSerializing, MTLManagedObjectSerializing>
+@interface EELMenu : NSObject
 
 @property (copy, nonatomic, readonly) NSDate *lastUpdated;
 

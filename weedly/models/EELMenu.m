@@ -8,36 +8,12 @@
 
 #import "EELMenu.h"
 
-#define kAPIDateFormat @"yyyy-MM-dd'T'HH:mm:ssz"
-
 @implementation EELMenu
 
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
++ (NSDictionary*) overrideKeysForMapping {
     return @{
-             @"lastUpdated"       : @"menu_updated_at",
+             @"menu_updated_at" : @"lastUpdated"
              };
-}
-
-+ (NSValueTransformer *)lastUpdatedJSONTransformer{
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:kAPIDateFormat];
-    
-    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSString *str) {
-        return [dateFormatter dateFromString:str];
-    } reverseBlock:^(NSDate *date) {
-        return [dateFormatter stringFromDate:date];
-    }];
-}
-
-#pragma mark - Managed object serialization
-
-
-+ (NSString *)managedObjectEntityName {
-    return @"Menu";
-}
-
-+ (NSDictionary *)managedObjectKeysByPropertyKey {
-    return nil;
 }
 
 @end

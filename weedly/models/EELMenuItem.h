@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Eric Lewis. All rights reserved.
 //
 
-@interface EELMenuItem : MTLModel <MTLJSONSerializing, MTLManagedObjectSerializing>
+@interface EELMenuItem : NSObject
 
 @property (copy, nonatomic, readonly) NSNumber *id;
 @property (copy, nonatomic, readonly) NSString *name;

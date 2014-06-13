@@ -12,29 +12,13 @@
 
 @implementation EELSmokinOn
 
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
++ (NSDictionary*) overrideKeysForMapping {
     return @{
-             @"id"          : @"id",
-             @"name"        : @"u",
-             @"status"      : @"s",
-             @"timeAgo"     : @"c",
-             @"photo"       : @"photo_url",
+             @"u" : @"name",
+             @"s" : @"status",
+             @"c" : @"timeAgo",
+             @"photo_url" : @"photo"
              };
-}
-
-+ (NSValueTransformer *)timeAgoJSONTransformer{
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:kAPIDateFormat];
-    
-    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSString *str) {
-        return [dateFormatter dateFromString:str];
-    } reverseBlock:^(NSDate *date) {
-        return [dateFormatter stringFromDate:date];
-    }];
-}
-
-+ (NSValueTransformer *)photoURLJSONTransformer {
-    return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
 }
 
 - (NSString*)formattedStatusString{
@@ -42,20 +26,6 @@
                                                                          options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: [NSNumber numberWithInt:NSUTF8StringEncoding]} documentAttributes:nil error:nil];
     
     return formattedName.string;
-}
-
-#pragma mark - Managed object serialization
-
-+ (NSString *)managedObjectEntityName {
-    return @"SmokinOn";
-}
-
-+ (NSDictionary *)managedObjectKeysByPropertyKey {
-    return nil;
-}
-
-+ (NSValueTransformer *)photoURLEntityAttributeTransformer {
-    return [[NSValueTransformer valueTransformerForName:MTLURLValueTransformerName] mtl_invertedTransformer];
 }
 
 @end

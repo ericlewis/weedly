@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Eric Lewis. All rights reserved.
 //
 
-@interface EELSmokinOn : MTLModel <MTLJSONSerializing, MTLManagedObjectSerializing>
+@interface EELSmokinOn : NSObject
 
 @property (copy, nonatomic, readonly) NSNumber *id;
 @property (copy, nonatomic, readonly) NSString *status;

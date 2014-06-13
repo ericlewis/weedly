@@ -1,6 +1,6 @@
 platform :ios, '7.0'
 
-pod 'Overcoat'
+pod 'RestGoatee'
 pod 'MTLocation'
 pod 'REMenu'
 pod 'SDWebImage'

@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Eric Lewis. All rights reserved.
 //
 
-@interface EELWMClient : OVCClient
+@interface EELWMClient : RGAPIClient
 
 // users account for singleton usage
 @property (nonatomic, strong) EELAccount *account;

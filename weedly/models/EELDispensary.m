@@ -116,49 +116,22 @@
     return simpleNumber;
 }
 
-#pragma mark - JSON serialization
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
++ (NSDictionary*) overrideKeysForMapping {
     return @{
-             @"id"          : @"id",
-             @"name"        : @"n",
-             @"address"     : @"a",
-             @"city"        : @"c",
-             @"state"       : @"state",
-             @"zip"         : @"zip",
-             @"rating"      : @"r",
-             @"ratingCount" : @"rc",
-             @"type"        : @"type",
-             @"icon"        : @"marker",
-             @"lng"         : @"longitude",
-             @"lat"         : @"latitude",
-             @"photoURL"    : @"photo1",
-             @"phone"       : @"phone",
-             @"license"     : @"license_type",
-             @"closesAt"    : @"todaysHours.closes_at",
-             @"opensAt"     : @"todaysHours.opens_at",
-             @"dayOTW"      : @"todaysHours.day_of_the_week",
-             @"isOpen"      : @"is_open",
-             @"featured"    : @"featured",
+             @"n" : @"name",
+             @"a" : @"address",
+             @"c" : @"city",
+             @"r" : @"rating",
+             @"rc" : @"ratingCount",
+             @"marker" : @"icon",
+             @"longitude" : @"lng",
+             @"latitude" : @"lat",
+             @"photo1" : @"photoURL",
+             @"license_type" : @"license",
+             @"todaysHours.closes_at" : @"closesAt",
+             @"todaysHours.opens_at" : @"opensAt",
+             @"todaysHours.day_of_the_week" : @"dayOTW"
              };
-}
-
-+ (NSValueTransformer *)photoURLJSONTransformer {
-    return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
-}
-
-#pragma mark - Managed object serialization
-
-+ (NSString *)managedObjectEntityName {
-    return @"Dispensary";
-}
-
-+ (NSDictionary *)managedObjectKeysByPropertyKey {
-    return nil;
-}
-
-+ (NSValueTransformer *)photoURLEntityAttributeTransformer {
-    return [[NSValueTransformer valueTransformerForName:MTLURLValueTransformerName] mtl_invertedTransformer];
 }
 
 @end

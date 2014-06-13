@@ -28,33 +28,14 @@
 @implementation EELDeal
 
 static NSDictionary* _sDealsMapping;
-+ (NSDictionary*) JSONKeyPathsByPropertyKey {
++ (NSDictionary*) overrideKeysForMapping {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _sDealsMapping = @{
-                           @"id" : @"id",
-                           @"lat" : @"lat",
-                           @"lng" : @"lng",
-                           @"dispensaryId" : @"dispensary_id",
-                           @"dispensaryName" : @"dispensary_name",
-                           @"dispensaryCity" : @"dispensary_city",
-                           @"dispensaryCatId" : @"dispensary_catid",
-                           @"distance" : @"distance",
-                           @"text" : @"text",
-                           @"hits" : @"hits",
-                           @"slug" : @"slug",
-                           @"catSlug" : @"cat_slug"
+                           @"dispensary_catid" : @"dispensaryCatId"
         };
     });
     return _sDealsMapping;
-}
-
-+ (NSString*) managedObjectEntityName {
-    return NSStringFromClass([self class]);
-}
-
-+ (NSDictionary*) managedObjectKeysByPropertyKey {
-    return nil;
 }
 
 @end
