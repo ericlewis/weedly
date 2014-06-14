@@ -505,8 +505,9 @@
 }
 
 - (NSIndexPath*)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    self.selectedDispensary = [self.dataSource.items objectAtIndex:indexPath.row];
-    
+    if (indexPath.section != 0) {
+        self.selectedDispensary = [self.dataSource.items objectAtIndex:indexPath.row];
+    }
     return indexPath;
 }
 
