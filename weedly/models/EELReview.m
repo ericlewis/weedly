@@ -14,7 +14,8 @@
     return @{
              @"r" : @"rating",
              @"when" : @"timeAgo",
-             @"thumb" : @"photo"
+             @"thumb" : @"photo",
+             @"comments" : @"comment"
              };
 }
 
