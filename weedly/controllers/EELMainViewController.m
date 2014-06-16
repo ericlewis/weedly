@@ -473,6 +473,7 @@
     
     if (indexPath.section == 0) {
         nearbyCountCell = [tableView dequeueReusableCellWithIdentifier:@"NearbyCell" forIndexPath:indexPath];
+        nearbyCountCell.userInteractionEnabled = NO;
         nearbyCountCell.clipsToBounds = YES;
         CALayer *topBorder = [CALayer layer];
         topBorder.borderColor = [UIColor lightGrayColor].CGColor;
