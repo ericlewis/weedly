@@ -20,12 +20,11 @@
     return result;
 }
 
-/*- (NSURL*)photoURL{
+- (NSURL*) formattedPhotoURL {
     NSString *urlString = self.photoURL.absoluteString;
     [urlString stringByReplacingOccurrencesOfString:@"/square_" withString:@"/"];
-    
     return [NSURL URLWithString:urlString];
-}*/
+}
 
 - (NSString*)formattedNameString{
     NSAttributedString *formattedName = [[NSAttributedString alloc] initWithData:[self.name dataUsingEncoding:NSUTF8StringEncoding]

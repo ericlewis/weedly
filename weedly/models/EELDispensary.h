@@ -38,4 +38,6 @@
 - (NSString*)formattedAddressString;
 - (NSString*)formattedPhoneString;
 
+- (NSURL*) formattedPhotoURL;
+
 @end
