@@ -395,6 +395,7 @@
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
+    NSLog(@"Did select annotation: %@", NSStringFromCGRect(view.frame));
     if (![view.annotation isKindOfClass:[MKUserLocation class]]) {
         [mapView setCenterCoordinate:view.annotation.coordinate animated:YES];
         [self performSearch:self.searchBar.text];
@@ -473,16 +474,17 @@
     
     if (indexPath.section == 0) {
         nearbyCountCell = [tableView dequeueReusableCellWithIdentifier:@"NearbyCell" forIndexPath:indexPath];
-        nearbyCountCell.userInteractionEnabled = NO;
-        nearbyCountCell.clipsToBounds = YES;
-        CALayer *topBorder = [CALayer layer];
-        topBorder.borderColor = [UIColor lightGrayColor].CGColor;
-        topBorder.borderWidth = 0.25;
-        topBorder.frame = CGRectMake(0, 0, 1000, 1);
-        [nearbyCountCell.layer addSublayer:topBorder];
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            CALayer *topBorder = [CALayer layer];
+            topBorder.borderColor = [UIColor lightGrayColor].CGColor;
+            topBorder.borderWidth = 0.25;
+            topBorder.frame = CGRectMake(0, 0, 1000, 1);
+            [nearbyCountCell.layer addSublayer:topBorder];
+        });
         
         NSSet *annSet = [self.mapView annotationsInMapRect:self.mapView.visibleMapRect];
-        [nearbyCountCell configureWithAmount:annSet.count];
+        [nearbyCountCell configureWithAmount:annSet.count - self.mapView.userLocationVisible];
         
         cell = nearbyCountCell;
 
