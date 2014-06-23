@@ -19,7 +19,7 @@ $ gem install cocoapods # If necessary
 $ cd weedly
 $ pod install
 ```
-Once CocoaPods has finished the installation, open weedly.xcworkspace using Xcode and run the sample.
+Once CocoaPods has finished the installation, open weedly.xcworkspace using Xcode and run the app.
 
 ## Author(s)
 **Eric Lewis**
