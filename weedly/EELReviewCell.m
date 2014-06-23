@@ -80,7 +80,7 @@
     NSString *reviewStars = [[@"" stringByPaddingToLength:review.rating withString:@"★" startingAtIndex:0] stringByPaddingToLength:5 withString:@"☆" startingAtIndex:0];
     self.ratingLabel.text = reviewStars;
 
-    self.shortDescriptionLabel.text = review.comment;
+    self.shortDescriptionLabel.text = [NSString stringWithFormat:@"%@\n\t", review.comment];
     self.dateLabel.text = review.timeAgo;
 }
 @end
