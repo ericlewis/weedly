@@ -92,6 +92,24 @@
     return dataSource;
 }
 
+- (void)toggleFavorite:(id)sender
+{
+    self.dispensary.favorite = !self.dispensary.favorite;
+    
+    // should check + write the favorites here with NSArchiver into a KV array- hash of dispensary : dispensary
+    NSMutableArray *favoritesOnDisk = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:FAVORITES_KEY]];
+    
+    if ([favoritesOnDisk containsObject:self.dispensary]) {
+        [favoritesOnDisk removeObject:self.dispensary];
+    }else{
+        favoritesOnDisk = [[NSMutableArray alloc] initWithObjects:self.dispensary, nil];
+    }
+
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:favoritesOnDisk];
+    [[NSUserDefaults standardUserDefaults] setObject:data forKey:FAVORITES_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 #pragma mark - Segue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

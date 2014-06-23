@@ -10,6 +10,8 @@
 
 @implementation EELDispensary
 
+NSString * const EELDispensaryFavoriteToggledNotificationName = @"EELDispensaryFavoriteToggledNotificationName";
+
 - (NSUInteger)hash
 {
     NSUInteger prime = 31;
@@ -18,6 +20,17 @@
     result = prime * result + [self.name hash];
     result = prime * result + [[self formattedTypeString] hash];
     return result;
+}
+
+- (void)setFavorite:(BOOL)favorite
+{
+    if (_favorite == favorite)
+        return;
+    
+    _favorite = favorite;
+    
+    // Let everyone know our favorite status has changed.
+    [[NSNotificationCenter defaultCenter] postNotificationName:EELDispensaryFavoriteToggledNotificationName object:self];
 }
 
 /*- (NSURL*)photoURL{

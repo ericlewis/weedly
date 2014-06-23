@@ -91,6 +91,16 @@
     }];
 }
 
+- (void)getReviewsWithDoctorID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
+    NSParameterAssert(ID);
+    
+    [self GET:[NSString stringWithFormat:@"api/v4/reviews/doctor/%@", ID] parameters:nil resultClass:[EELReview class] resultKeyPath:nil completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^(void){
+            block(responseObject, error);
+        });
+    }];
+}
+
 - (void)postReviewForDispensaryWithID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
     NSParameterAssert(ID);
     

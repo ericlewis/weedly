@@ -60,9 +60,10 @@
     }
     
     if (dispensary.ratingCount > 0) {
-        self.ratingLabel.text = [NSString stringWithFormat:@"%d Reviews • %@", dispensary.ratingCount, [@"" stringByPaddingToLength:dispensary.rating withString:@"★" startingAtIndex:0]];
+        NSString *reviewStars = [[@"" stringByPaddingToLength:dispensary.rating withString:@"★" startingAtIndex:0] stringByPaddingToLength:5 withString:@"☆" startingAtIndex:0];
+        self.ratingLabel.text = [NSString stringWithFormat:@"%d Reviews • %@", dispensary.ratingCount, reviewStars];
     }else{
-        self.ratingLabel.text = @"No ratings";
+        self.ratingLabel.text = @"No reviews";
     }
     
     if (dispensary.opensAt.length > 0 && dispensary.closesAt.length > 0) {

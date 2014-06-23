@@ -9,7 +9,6 @@
  */
 
 #import "EELDetailHeader.h"
-
 #import "UIView+Helpers.h"
 
 @interface NSObject ()
@@ -35,10 +34,11 @@
     _favorite = favorite;
     
     UIImage *image;
-    if (favorite)
-        image = [UIImage imageNamed:@"liked-75"];
-    else
-        image = [UIImage imageNamed:@"like-75"];
+    if (favorite){
+        image = [UIImage imageNamed:@"favorited"];
+    }else{
+        image = [UIImage imageNamed:@"favorite"];
+    }
     
     [_favoriteButton setImage:image forState:UIControlStateNormal];
 }
@@ -67,9 +67,10 @@
     }
     
     if (dispensary.ratingCount > 0) {
-        self.ratingLabel.text = [NSString stringWithFormat:@"%d Reviews • %@", dispensary.ratingCount, [@"" stringByPaddingToLength:dispensary.rating withString:@"★" startingAtIndex:0]];
+        NSString *reviewStars = [[@"" stringByPaddingToLength:dispensary.rating withString:@"★" startingAtIndex:0] stringByPaddingToLength:5 withString:@"☆" startingAtIndex:0];
+        self.ratingLabel.text = [NSString stringWithFormat:@"%d Reviews • %@", dispensary.ratingCount, reviewStars];
     }else{
-        self.ratingLabel.text = @"No ratings";
+        self.ratingLabel.text = @"No reviews";
     }
     
     if (dispensary.opensAt.length > 0 && dispensary.closesAt.length > 0) {
@@ -77,14 +78,24 @@
     }else{
         self.hoursLabel.text = [NSString stringWithFormat:@"%@  Hours unavailable", [dispensary formattedTypeString]];
     }
+    
     [self.favoriteButton setTintColor:[UIColor blackColor]];
-    [self setFavorite:NO];
+    [self.favoriteButton addTarget:self action:@selector(favoriteTapped:) forControlEvents:UIControlEventTouchUpInside];
+    
+    NSArray *favoritesOnDisk = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:FAVORITES_KEY]];
+    if ([favoritesOnDisk containsObject:dispensary]) {
+        dispensary.favorite = YES;
+    }else{
+        dispensary.favorite = NO;
+    }
+    
+    [self setFavorite:dispensary.favorite];
+    [self.favoriteButton setHidden:YES];
 }
 
 - (void)favoriteTapped:(id)sender
 {
     self.favorite = !self.favorite;
-    
     [self.superview aapl_sendAction:@selector(toggleFavorite:) from:self];
 }
 @end

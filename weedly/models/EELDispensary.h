@@ -32,6 +32,7 @@
 
 @property (nonatomic, readonly) int type;
 @property (nonatomic, readonly) int featured;
+@property (nonatomic, getter=isFavorite) BOOL favorite;
 
 - (NSString*)formattedNameString;
 - (NSString*)formattedTypeString;

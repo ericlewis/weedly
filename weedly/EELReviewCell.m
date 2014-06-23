@@ -76,8 +76,9 @@
     }else{
         self.textLabel.text = @"Review";
     }
-    
-    self.ratingLabel.text = [@"" stringByPaddingToLength:review.rating withString:@"★" startingAtIndex:0];
+
+    NSString *reviewStars = [[@"" stringByPaddingToLength:review.rating withString:@"★" startingAtIndex:0] stringByPaddingToLength:5 withString:@"☆" startingAtIndex:0];
+    self.ratingLabel.text = reviewStars;
 
     self.shortDescriptionLabel.text = review.comment;
     self.dateLabel.text = review.timeAgo;

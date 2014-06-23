@@ -40,21 +40,41 @@
 - (void)loadContent
 {
     [self loadContentWithBlock:^(AAPLLoading *loading) {
-        [[EELWMClient sharedClient] getReviewsWithDispensaryID:self.dispensary.id.stringValue completionBlock:^(NSArray *reviews, NSError *error) {
-            if (!loading.current) {
-                [loading ignore];
-                return;
-            }
-            
-            if (error) {
-                [loading doneWithError:error];
-                return;
-            }
-            
-            [loading updateWithContent:^(EELReviewsDataSource *me){
-                me.items = reviews;
+        // get dispensary or doctor reviews
+        if (self.dispensary.type == 0) {
+            [[EELWMClient sharedClient] getReviewsWithDispensaryID:self.dispensary.id.stringValue completionBlock:^(NSArray *reviews, NSError *error) {
+                if (!loading.current) {
+                    [loading ignore];
+                    return;
+                }
+                
+                if (error) {
+                    [loading doneWithError:error];
+                    return;
+                }
+                
+                [loading updateWithContent:^(EELReviewsDataSource *me){
+                    me.items = reviews;
+                }];
             }];
-        }];
+        }else{
+            [[EELWMClient sharedClient] getReviewsWithDoctorID:self.dispensary.id.stringValue completionBlock:^(NSArray *reviews, NSError *error) {
+                if (!loading.current) {
+                    [loading ignore];
+                    return;
+                }
+                
+                if (error) {
+                    [loading doneWithError:error];
+                    return;
+                }
+                
+                [loading updateWithContent:^(EELReviewsDataSource *me){
+                    me.items = reviews;
+                }];
+            }];
+        }
+        
     }];
 }
 

@@ -27,6 +27,8 @@
     }
     else if (amount > 0) {
         self.titleLabel.text = [NSString stringWithFormat:@"%lu Results", (unsigned long)amount];
+    }else {
+        self.titleLabel.text = @"No Results";
     }
 }
 

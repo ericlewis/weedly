@@ -132,7 +132,11 @@
     [self.mapView removeAnnotations:oldAnnotations];
     
     if (self.dataSource.items.count > 0) {
-        [self.tableView reloadData];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationFade];
+        [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+        self.tableView.userInteractionEnabled = YES;
+    }else{
+        self.tableView.userInteractionEnabled = NO;
     }
 }
 
@@ -242,8 +246,9 @@
         // needs to actually allow search on the objects
         
         NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:FAVORITES_KEY];
-        
         NSMutableArray *sortedArray = [[NSKeyedUnarchiver unarchiveObjectWithData:data] mutableCopy]; // your mutable copy of the fetched objects
+        
+        // pull favorites in a KV array with hashes as the root object
         
         for (EELDispensary *project in sortedArray) {
             CLLocationDegrees lat = project.lat;
@@ -286,22 +291,8 @@
                                                               self.searchBar.tag = 911;
                                                               [self performSearch:self.searchBar.text];
                                                           }];
-        
-        REMenuItem *favoriteItem = [[REMenuItem alloc] initWithTitle:@"Favorites"
-                                                             image:nil
-                                                  highlightedImage:nil
-                                                            action:^(REMenuItem *item) {
-                                                                NSLog(@"Item: %@", item);
-                                                                self.searchBar.placeholder = @"Search Favorites";
-                                                                self.searchBar.tag = 421;
-                                                                
-                                                                NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:FAVORITES_KEY];
-                                                                self.dataSource = [EELArrayDataSource dataSourceWithItems:[NSKeyedUnarchiver unarchiveObjectWithData:data]];
-                                                                [self addPins];
-                                                                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
-                                                            }];
-        
-        self.filterMenu = [[REMenu alloc] initWithItems:@[dispensaryItem, doctorItem, favoriteItem]];
+
+        self.filterMenu = [[REMenu alloc] initWithItems:@[dispensaryItem, doctorItem]];
         self.filterMenu.backgroundColor = MAIN_COLOR_TRANSLUCENT;
         self.filterMenu.borderColor = [UIColor grayColor];
         self.filterMenu.borderWidth = 0.5f;
@@ -375,19 +366,7 @@
     
     // doctor
     else if(disp.type == 1){
-        if (disp.featured == 4) {
-            // gold
-            annotationView.image = [UIImage imageNamed:@"doctor_marker_featured"];
-        }else if (disp.featured == 1){
-            // bronze
-            annotationView.image = [UIImage imageNamed:@"dr_bronze_marker"];
-        }else if (disp.featured == 0){
-            // free
-            annotationView.image = [UIImage imageNamed:@"doctor_marker"];
-        }else{
-            // else
-            annotationView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_marker", disp.icon]];
-        }
+        annotationView.image = [UIImage imageNamed:@"doctor_marker"];
     }
     
     return annotationView;
@@ -498,7 +477,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        return 37;
+        return 40;
     }
     
     return 107;
