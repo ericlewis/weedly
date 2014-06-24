@@ -38,19 +38,4 @@
     return self;
 }
 
-- (void)loadContent
-{
-    [self loadContentWithBlock:^(AAPLLoading *loading) {
-        if (!loading.current) {
-            [loading ignore];
-            return;
-        }
-        
-        // There's always content, because this is a composed data source
-        [loading updateWithContent:^(EELDispensaryDetailDataSource *me) {
-            
-        }];
-    }];
-}
-
 @end
