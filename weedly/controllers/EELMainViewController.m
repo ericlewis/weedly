@@ -213,7 +213,12 @@
             self.dataSource = [EELArrayDataSource dataSourceWithItems:sortedArray];
             
             [self addPins];
-            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
+            
+            if (sortedArray.count > 0) {
+                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
+            }else{
+                // no results found (show no results found maybe)
+            }
         }];
     }else if(self.searchBar.tag == 911){
         [[EELWMClient sharedClient] searchDoctorsWithTerm:searchTerm lat:lat lng:lng completionBlock:^(NSArray *results, NSError *error) {
@@ -238,7 +243,12 @@
             self.dataSource = [EELArrayDataSource dataSourceWithItems:sortedArray];
             
             [self addPins];
-            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
+            if (sortedArray.count > 0) {
+                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
+
+            }else{
+                // no results found (show no results found maybe)
+            }
         }];
         
     }else{
