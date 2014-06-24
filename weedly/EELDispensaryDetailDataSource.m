@@ -41,21 +41,14 @@
 - (void)loadContent
 {
     [self loadContentWithBlock:^(AAPLLoading *loading) {
-        [[EELWMClient sharedClient] getDispensaryWithID:self.dispensary.id.stringValue completionBlock:^(EELDispensary *dispensary, NSError *error) {
-            if (!loading.current) {
-                [loading ignore];
-                return;
-            }
+        if (!loading.current) {
+            [loading ignore];
+            return;
+        }
+        
+        // There's always content, because this is a composed data source
+        [loading updateWithContent:^(EELDispensaryDetailDataSource *me) {
             
-            if (error) {
-                [loading doneWithError:error];
-                return;
-            }
-            
-            // There's always content, because this is a composed data source
-            [loading updateWithContent:^(EELDispensaryDetailDataSource *me) {
-                
-            }];
         }];
     }];
 }
