@@ -34,14 +34,8 @@
     self.detailDataSource = [self newDetailDataSource];
     self.reviewsDataSource = [self newReviewsDataSource];
     
-    // HACK FOR IOS8 !!!!!!!! CRASHES OTHERWISE!!!!
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
-        [self.dataSource addDataSource:self.reviewsDataSource];
-        [self.dataSource addDataSource:self.detailDataSource];
-    }else{
-        [self.dataSource addDataSource:self.detailDataSource];
-        [self.dataSource addDataSource:self.reviewsDataSource];
-    }
+    [self.dataSource addDataSource:self.detailDataSource];
+    [self.dataSource addDataSource:self.reviewsDataSource];
 
     __weak typeof(&*self) weakself = self;
 
