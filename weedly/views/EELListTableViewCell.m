@@ -40,6 +40,7 @@
     
     self.nameLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:35/2];
     self.nameLabel.text = [dispensary formattedNameString];
+    self.nameLabel.textColor = [UIColor colorWithRed:85.0f/255.0f green:85.0f/255.0f blue:85.0f/255.0f alpha:1.0f];
     
     self.distanceLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:15];
     self.distanceLabel.textColor = GRAY_COLOR;

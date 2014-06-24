@@ -97,7 +97,9 @@
     
     cell.nameLabel.text = menuItem[@"name"];
     cell.nameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
+    cell.nameLabel.textColor = [UIColor colorWithRed:85.0f/255.0f green:85.0f/255.0f blue:85.0f/255.0f alpha:1.0f];
     cell.subtitleLabel.text = menuItem[@"subtitle"];
+    cell.subtitleLabel.textColor = [UIColor colorWithRed:180.0f/255.0f green:180.0f/255.0f blue:180.0f/255.0f alpha:1.0f];
     cell.subtitleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:13];
     cell.imageView.image = [UIImage imageNamed:menuItem[@"imageName"]];
     cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
