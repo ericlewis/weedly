@@ -77,7 +77,6 @@
 		4DCFE51D1948BEA500139D52 /* EELDeal.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DCFE51C1948BEA500139D52 /* EELDeal.m */; };
 		4DCFE5201948BF1400139D52 /* EELDetailListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DCFE51F1948BF1400139D52 /* EELDetailListCell.m */; };
 		4DCFE5221948C05300139D52 /* EELDetailHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DCFE5211948C05300139D52 /* EELDetailHeader.xib */; };
-		4DD1FFF519461E7E0072D5B4 /* DKScrollingTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD1FFF419461E7E0072D5B4 /* DKScrollingTabController.m */; };
 		4DD1FFF8194641650072D5B4 /* EELListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD1FFF7194641650072D5B4 /* EELListTableView.m */; };
 		4DD4930C1915827D001A6203 /* EELMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4930B1915827D001A6203 /* EELMainViewController.m */; };
 		4DD86E171959F28B002D0A3C /* EELDealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD86E161959F28B002D0A3C /* EELDealViewController.m */; };
@@ -225,8 +224,6 @@
 		4DCFE51E1948BF1400139D52 /* EELDetailListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELDetailListCell.h; path = views/EELDetailListCell.h; sourceTree = "<group>"; };
 		4DCFE51F1948BF1400139D52 /* EELDetailListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELDetailListCell.m; path = views/EELDetailListCell.m; sourceTree = "<group>"; };
 		4DCFE5211948C05300139D52 /* EELDetailHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EELDetailHeader.xib; path = views/EELDetailHeader.xib; sourceTree = "<group>"; };
-		4DD1FFF319461E7E0072D5B4 /* DKScrollingTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKScrollingTabController.h; sourceTree = "<group>"; };
-		4DD1FFF419461E7E0072D5B4 /* DKScrollingTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKScrollingTabController.m; sourceTree = "<group>"; };
 		4DD1FFF6194641650072D5B4 /* EELListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EELListTableView.h; sourceTree = "<group>"; };
 		4DD1FFF7194641650072D5B4 /* EELListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EELListTableView.m; sourceTree = "<group>"; };
 		4DD4930A1915827D001A6203 /* EELMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELMainViewController.h; path = controllers/EELMainViewController.h; sourceTree = "<group>"; };
@@ -571,7 +568,6 @@
 		4DC1A1181912F9A200228F5A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				4DD1FFF119461E730072D5B4 /* 3rd Party */,
 				4DC1A1291912F9A200228F5A /* Images.xcassets */,
 				4DC1A1201912F9A200228F5A /* EELAppDelegate.h */,
 				4DC1A1211912F9A200228F5A /* EELAppDelegate.m */,
@@ -618,23 +614,6 @@
 				4D9DDE0A1916AD74006E5B03 /* EELArrayDataSource.m */,
 			);
 			name = "Map / list sources";
-			sourceTree = "<group>";
-		};
-		4DD1FFF119461E730072D5B4 /* 3rd Party */ = {
-			isa = PBXGroup;
-			children = (
-				4DD1FFF219461E7E0072D5B4 /* DKScrollingTabController */,
-			);
-			name = "3rd Party";
-			sourceTree = "<group>";
-		};
-		4DD1FFF219461E7E0072D5B4 /* DKScrollingTabController */ = {
-			isa = PBXGroup;
-			children = (
-				4DD1FFF319461E7E0072D5B4 /* DKScrollingTabController.h */,
-				4DD1FFF419461E7E0072D5B4 /* DKScrollingTabController.m */,
-			);
-			path = DKScrollingTabController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -820,7 +799,6 @@
 				4DC1A1221912F9A200228F5A /* EELAppDelegate.m in Sources */,
 				4DCFE51D1948BEA500139D52 /* EELDeal.m in Sources */,
 				4D9DDDFF1915BAA4006E5B03 /* EELSmokinOn.m in Sources */,
-				4DD1FFF519461E7E0072D5B4 /* DKScrollingTabController.m in Sources */,
 				4D87F4CE19499D7D00740558 /* EELFlowerMenuItemsDataSource.m in Sources */,
 				4D75E0A81943F42200A25AB6 /* AAPLLayoutMetrics.m in Sources */,
 				4D75E0A51943F42200A25AB6 /* AAPLCollectionViewGridLayout.m in Sources */,
