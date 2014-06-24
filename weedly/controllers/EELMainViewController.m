@@ -132,7 +132,7 @@
     [self.mapView removeAnnotations:oldAnnotations];
     
     if (self.dataSource.items.count > 0) {
-        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationFade];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
         [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
         self.tableView.userInteractionEnabled = YES;
     }else{
@@ -386,10 +386,37 @@
 {
     if (![view.annotation isKindOfClass:[MKUserLocation class]]) {
         [mapView setCenterCoordinate:view.annotation.coordinate animated:YES];
-        [self performSearch:self.searchBar.text];
+        
+        NSMutableArray *sortedArray = [self.dataSource.items mutableCopy]; // your mutable copy of the fetched objects
+        
+        for (EELDispensary *project in sortedArray) {
+            CLLocationDegrees lat = project.lat;
+            CLLocationDegrees lng = project.lng;
+            CLLocation *dispensaryLocation = [[CLLocation alloc] initWithLatitude:lat longitude:lng];
+            CLLocationDistance meters = [dispensaryLocation distanceFromLocation:[[CLLocation alloc] initWithLatitude:view.annotation.coordinate.latitude longitude:view.annotation.coordinate.longitude]];
+            project.currentDistance = @(meters);
+        }
+        
+        NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"currentDistance" ascending:YES];
+        [sortedArray sortUsingDescriptors:@[sort]];
+        
+        self.dataSource = [EELArrayDataSource dataSourceWithItems:sortedArray];
+        
+        if (sortedArray.count > 0) {
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
+        }
     }
     
-    [mapView deselectAnnotation:view.annotation animated:YES];
+    // pop to make it bigger
+    POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerBounds];
+    anim.toValue = [NSValue valueWithCGRect:CGRectMake(0, 0, view.frame.size.width + 10, view.frame.size.height + 10)];
+    [view pop_addAnimation:anim forKey:@"size"];
+}
+
+- (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view{
+    POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerBounds];
+    anim.toValue = [NSValue valueWithCGRect:CGRectMake(0, 0, view.frame.size.width - 10, view.frame.size.height - 10)];
+    [view pop_addAnimation:anim forKey:@"size"];
 }
 
 - (void) mapView:(MKMapView *)aMapView didAddAnnotationViews:(NSArray *)views
@@ -421,7 +448,6 @@
     if (self.searchBar.isFirstResponder) {
         [self.searchBar resignFirstResponder];
     }
-    
 }
 
 #pragma mark - Segue
