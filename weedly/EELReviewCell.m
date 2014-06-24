@@ -37,6 +37,7 @@
 
     _textLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     _textLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    _textLabel.textColor = [UIColor colorWithRed:85.0f/255.0f green:85.0f/255.0f blue:85.0f/255.0f alpha:1.0f];
     _textLabel.font = [UIFont systemFontOfSize:14];
 
     [contentView addSubview:_textLabel];
