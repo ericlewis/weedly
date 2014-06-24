@@ -131,8 +131,11 @@
     
     [self.mapView removeAnnotations:oldAnnotations];
     
-    if (self.dataSource.items.count > 0) {
+    if (oldAnnotations.count == 0) {
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
+    }
+    
+    if (self.dataSource.items.count > 0) {
         [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
         self.tableView.userInteractionEnabled = YES;
     }else{
