@@ -30,15 +30,23 @@
         return nil;
     
     _dispensary = dispensary;
-    
+
     NSMutableArray *itemsToUse = [NSMutableArray new];
     
-    // menu if delivery / dispensary
+    // menu & coupons if delivery / dispensary
     if ([[self.dispensary formattedTypeString] isEqualToString:@"Delivery"] || [[self.dispensary formattedTypeString] isEqualToString:@"Dispensary"]){
         [itemsToUse addObject:@{
                                 @"name": @"Menu",
                                 @"subtitle": @"Our menu is frequently updated.",
                                 @"segue": @"ShowMenu",
+                                @"imageName": @"list_ingredients-128"
+                                }
+         ];
+        
+        [itemsToUse addObject:@{
+                                @"name": @"Deals",
+                                @"subtitle": @"Find great offers.",
+                                @"segue": @"ShowDeals",
                                 @"imageName": @"list_ingredients-128"
                                 }
          ];
@@ -55,6 +63,7 @@
          ];
     }
     
+    // phone if avail
     if (self.dispensary.phone.length > 4) {
         [itemsToUse addObject:@{
                                 @"name": @"Call Us",

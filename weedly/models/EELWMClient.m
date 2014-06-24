@@ -72,7 +72,7 @@
 
 - (void)getMenuItemsWithDispensaryID:(NSString*)ID completionBlock:(void (^)(NSArray *results, NSError *error))block{
     NSParameterAssert(ID);
-
+    NSLog(@"%@", [NSString stringWithFormat:@"dispensaries/%@/menu_items.json", ID]);
     [self GET:[NSString stringWithFormat:@"dispensaries/%@/menu_items.json", ID] parameters:nil resultClass:[EELMenuItem class] resultKeyPath:nil completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^(void){
             block(responseObject, error);

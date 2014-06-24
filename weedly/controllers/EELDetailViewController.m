@@ -8,6 +8,7 @@
 
 #import "EELDetailViewController.h"
 #import "EELMenuViewController.h"
+#import "EELDealViewController.h"
 
 #import "AAPLSegmentedDataSource.h"
 #import "EELDispensaryDetailDataSource.h"
@@ -117,6 +118,9 @@
     if ([segue.identifier isEqualToString:@"ShowMenu"]) {
         EELMenuViewController *controller = segue.destinationViewController;
         controller.dispensary = self.dispensary;
+    }else if ([segue.identifier isEqualToString:@"ShowDeals"]) {
+        EELDealViewController *controller = segue.destinationViewController;
+        [controller loadDealsWithDispensary:self.dispensary];
     }
 }
 
@@ -127,7 +131,7 @@
     if ([self.dataSource.selectedDataSource isKindOfClass:[EELDispensaryDetailDataSource class]]) {
         NSDictionary *menuItem = [self.dataSource.selectedDataSource itemAtIndexPath:indexPath];
         
-        if ([menuItem[@"segue"] isEqualToString:@"ShowMenu"]) {
+        if ([menuItem[@"segue"] isEqualToString:@"ShowMenu"] || [menuItem[@"segue"] isEqualToString:@"ShowDeals"]) {
             [self performSegueWithIdentifier:menuItem[@"segue"] sender:self];
 
         }else if([menuItem[@"segue"] isEqualToString:@"ShowDirections"]){

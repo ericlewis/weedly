@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="14A238x" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4Ij-oe-8ya">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="14A261i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4Ij-oe-8ya">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -104,7 +104,45 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E4S-lF-TWp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="809" y="-1652"/>
+            <point key="canvasLocation" x="931" y="-1652"/>
+        </scene>
+        <!--Deal View Controller-->
+        <scene sceneID="7Xb-zB-zwA">
+            <objects>
+                <viewController id="TS6-Ur-VoW" customClass="EELDealViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MHN-ee-ckj"/>
+                        <viewControllerLayoutGuide type="bottom" id="Dn4-w0-3S1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pkZ-3C-7Ck">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView appearanceType="aqua" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zd0-ns-0tA">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="TS6-Ur-VoW" id="I5m-qJ-O9s"/>
+                                </connections>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Zd0-ns-0tA" firstAttribute="top" secondItem="pkZ-3C-7Ck" secondAttribute="top" id="8S8-Hf-Tpf"/>
+                            <constraint firstAttribute="bottom" secondItem="Zd0-ns-0tA" secondAttribute="bottom" id="OCi-DC-mOt"/>
+                            <constraint firstAttribute="trailing" secondItem="Zd0-ns-0tA" secondAttribute="trailing" id="ZOw-XN-uzq"/>
+                            <constraint firstItem="Zd0-ns-0tA" firstAttribute="leading" secondItem="pkZ-3C-7Ck" secondAttribute="leading" id="gqx-Cn-NKh"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="V8K-hL-0sG"/>
+                    <connections>
+                        <outlet property="webView" destination="Zd0-ns-0tA" id="YS9-wr-7Im"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i0A-3O-ENc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="931" y="-963"/>
         </scene>
         <!--Detail View Controller - Merch Detail-->
         <scene sceneID="go3-Ot-aMd">
@@ -123,6 +161,7 @@
                     <navigationItem key="navigationItem" id="HzU-dp-llG"/>
                     <connections>
                         <segue destination="Sfh-PX-bkF" kind="push" identifier="ShowMenu" id="dsT-Bg-kE7"/>
+                        <segue destination="TS6-Ur-VoW" kind="push" identifier="ShowDeals" id="B4K-9J-NjJ"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Avj-Sd-BUH" userLabel="First Responder" sceneMemberID="firstResponder"/>
