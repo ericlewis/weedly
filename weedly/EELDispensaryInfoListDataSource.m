@@ -47,7 +47,7 @@
                                 @"name": @"Deals",
                                 @"subtitle": @"Find great offers.",
                                 @"segue": @"ShowDeals",
-                                @"imageName": @"list_ingredients-128"
+                                @"imageName": @"coupon"
                                 }
          ];
     }
@@ -100,6 +100,7 @@
     cell.subtitleLabel.text = menuItem[@"subtitle"];
     cell.subtitleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:13];
     cell.imageView.image = [UIImage imageNamed:menuItem[@"imageName"]];
+    cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
     
     return cell;
 }
