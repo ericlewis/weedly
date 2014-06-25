@@ -536,8 +536,15 @@
 #pragma mark -
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    if (scrollView.contentOffset.y < self.mapView.frame.size.height*-1 ) {
+    if (scrollView.contentOffset.y < self.mapView.frame.size.height*-1) {
         [scrollView setContentOffset:CGPointMake(scrollView.contentOffset.x, self.mapView.frame.size.height*-1)];
+        
+        // center on the user
+        if(self.mapView.userLocationVisible){
+            [self.mapView setCenterCoordinate:self.mapView.userLocation.coordinate];
+        }else if ([[MTLocationManager sharedInstance] lastKnownLocation]){
+            [self.mapView setCenterCoordinate:[[[MTLocationManager sharedInstance] lastKnownLocation] coordinate]];
+        }
     }
 }
 
