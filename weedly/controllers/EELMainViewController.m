@@ -367,14 +367,16 @@
     MKAnnotationView *annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"loc"];
     
     EELDispensary *disp = [self.dataSource.items objectAtIndex:[annotation.title integerValue]];
-    
+
     // disp
     if (disp.type == 0) {
-        if (disp.featured == 4) {
-            annotationView.image = [UIImage imageNamed:@"featured_marker"];
-        }else{
-            annotationView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_marker", disp.icon]];
+        NSString *iconName = @"delivery";
+        
+        if([[[disp formattedTypeString] lowercaseString] isEqualToString:@"dispensary"]){
+            iconName = @"lp";
         }
+        
+        annotationView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_marker", iconName]];
     }
     
     // doctor
