@@ -368,22 +368,20 @@
     
     EELDispensary *disp = [self.dataSource.items objectAtIndex:[annotation.title integerValue]];
 
+    NSString *iconName = @"delivery";
+    
     // disp
-    if (disp.type == 0) {
-        NSString *iconName = @"delivery";
-        
-        if([[[disp formattedTypeString] lowercaseString] isEqualToString:@"dispensary"]){
-            iconName = @"lp";
-        }
-        
-        annotationView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_marker", iconName]];
+    if([[[disp formattedTypeString] lowercaseString] isEqualToString:@"dispensary"]){
+        iconName = @"lp";
     }
     
     // doctor
     else if(disp.type == 1){
-        annotationView.image = [UIImage imageNamed:@"doctor_marker"];
+        iconName = @"doctor";
     }
     
+    annotationView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_marker", iconName]];
+
     return annotationView;
 }
 
