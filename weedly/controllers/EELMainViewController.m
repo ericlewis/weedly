@@ -409,6 +409,13 @@
         [sortedArray sortUsingDescriptors:@[sort]];
         
         self.dataSource = [EELArrayDataSource dataSourceWithItems:sortedArray];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSSet *annSet = [self.mapView annotationsInMapRect:self.mapView.visibleMapRect];
+            EELListHeaderTableViewCell *countCell = (EELListHeaderTableViewCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+            [countCell configureWithAmount:annSet.count];
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
+        });
     }
     
     // pop to make it bigger
