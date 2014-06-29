@@ -480,6 +480,16 @@
         return 1;
     }
 
+    if (self.searchBar.text.length == 0) {
+        NSSet *annSet = [self.mapView annotationsInMapRect:self.mapView.visibleMapRect];
+        
+        if (annSet.count > self.dataSource.items.count) {
+            return annSet.count-1;
+        }
+        
+        return annSet.count;
+    }
+    
     return self.dataSource.items.count;
 }
 
