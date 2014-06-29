@@ -109,6 +109,12 @@
     UIPanGestureRecognizer* panRec = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didDragMap:)];
     [panRec setDelegate:self];
     [self.mapView addGestureRecognizer:panRec];
+    
+    UITapGestureRecognizer *doubletapRec = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didDragMap:)];
+    doubletapRec.numberOfTapsRequired = 2;
+    [doubletapRec setDelegate:self];
+    [self.mapView addGestureRecognizer:doubletapRec];
+    
     self.mapView.delegate = self;
     [self performSelector:@selector(zoomToUserNotAnimated) withObject:self afterDelay:0.2];
 }
@@ -141,7 +147,13 @@
     }
     
     [self.mapView removeAnnotations:oldAnnotations];
-    [self.tableView reloadData];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSSet *annSet = [self.mapView annotationsInMapRect:self.mapView.visibleMapRect];
+        EELListHeaderTableViewCell *countCell = (EELListHeaderTableViewCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+        [countCell configureWithAmount:annSet.count];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
+    });
 }
 
 - (void)setupLocationManager{
@@ -485,10 +497,7 @@
         topBorder.borderWidth = 0.25;
         topBorder.frame = CGRectMake(0, 0, 1000, 1);
         [nearbyCountCell.layer addSublayer:topBorder];
-        
-        NSSet *annSet = [self.mapView annotationsInMapRect:self.mapView.visibleMapRect];
-        [nearbyCountCell configureWithAmount:annSet.count];
-        
+
         cell = nearbyCountCell;
 
     }else{
