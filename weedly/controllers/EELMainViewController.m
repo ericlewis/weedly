@@ -22,6 +22,8 @@
 @property (strong, nonatomic) UISearchBar *searchBar;
 @property (strong, nonatomic) EELArrayDataSource *dataSource;
 
+@property (nonatomic) BOOL didZoomToUser;
+
 @end
 
 @implementation EELMainViewController
@@ -39,40 +41,23 @@
 {
     [super viewDidLoad];
     
-    [self setupLocationManager];
+    [self setupMapView];
+    [self setupTableView];
     [self setupSearchBar];
     
-    [self getInitialListings];
-    
-    self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
-    self.tableView.contentInset = UIEdgeInsetsMake(self.mapView.frame.size.height-40, 0, 0, 0);
-    self.tableView.tableFooterView = [UIView new];
-    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([EELListHeaderTableViewCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"NearbyCell"];
-    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([EELListTableViewCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"ItemHeaderCell"];
+    [self setupLocationManager];
 
-    UIPanGestureRecognizer* panRec = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didDragMap:)];
-    [panRec setDelegate:self];
-    [self.mapView addGestureRecognizer:panRec];
-    self.mapView.delegate = self;
-    [self performSelector:@selector(zoomToUserNotAnimated) withObject:self afterDelay:0.2];
+    // pull initial values
+    [self getInitialListings];
 
     self.navigationController.navigationBar.translucent = NO;
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:self.navigationItem.backBarButtonItem.style target:nil action:nil];
 }
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-    return YES;
-}
-
-- (void)didDragMap:(UIGestureRecognizer*)gestureRecognizer {
-    if (gestureRecognizer.state == UIGestureRecognizerStateEnded){
-        [self performSearch:self.searchBar.text];
-    }
-}
 
 - (void)viewWillAppear:(BOOL)animated{
     [self performSelector:@selector(showSearchBar) withObject:self afterDelay:0.15];
-
+    
     // landscape fix search
     if (UIDeviceOrientationIsLandscape(self.interfaceOrientation)) {
         if (IS_IPHONE_5) {
@@ -112,6 +97,32 @@
 
 #pragma mark -
 #pragma mark setup
+- (void)setupTableView{
+    self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
+    self.tableView.contentInset = UIEdgeInsetsMake(self.mapView.frame.size.height-40, 0, 0, 0);
+    self.tableView.tableFooterView = [UIView new];
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([EELListHeaderTableViewCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"NearbyCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([EELListTableViewCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"ItemHeaderCell"];
+}
+
+- (void)setupMapView{
+    UIPanGestureRecognizer* panRec = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didDragMap:)];
+    [panRec setDelegate:self];
+    [self.mapView addGestureRecognizer:panRec];
+    self.mapView.delegate = self;
+    [self performSelector:@selector(zoomToUserNotAnimated) withObject:self afterDelay:0.2];
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return YES;
+}
+
+- (void)didDragMap:(UIGestureRecognizer*)gestureRecognizer {
+    if (gestureRecognizer.state == UIGestureRecognizerStateEnded){
+        [self performSearch:self.searchBar.text];
+    }
+}
+
 - (void)getInitialListings{
 }
 
@@ -130,17 +141,7 @@
     }
     
     [self.mapView removeAnnotations:oldAnnotations];
-    
-    if (oldAnnotations.count == 0) {
-        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
-    }
-    
-    if (self.dataSource.items.count > 0) {
-        [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
-        self.tableView.userInteractionEnabled = YES;
-    }else{
-        self.tableView.userInteractionEnabled = NO;
-    }
+    [self.tableView reloadData];
 }
 
 - (void)setupLocationManager{
@@ -153,17 +154,22 @@
     [[MTLocationManager sharedInstance] setTrackingMode:MTUserTrackingModeFollow];
     
     [[MTLocationManager sharedInstance] whenLocationChanged:^(CLLocation *location) {
-        MKCoordinateRegion region;
-        CLLocationCoordinate2D coords = location.coordinate;
-        coords.latitude = coords.latitude;
-        region.center = coords;
-        
-        MKCoordinateSpan span;
-        span.latitudeDelta  = 0.12; // Change these values to change the zoom
-        span.longitudeDelta = 0.12;
-        region.span = span;
-        
-        [self.mapView setRegion:region animated:YES];
+        if (!_didZoomToUser) {
+            MKCoordinateRegion region;
+            CLLocationCoordinate2D coords = location.coordinate;
+            coords.latitude = coords.latitude;
+            region.center = coords;
+            
+            MKCoordinateSpan span;
+            span.latitudeDelta  = 0.12; // Change these values to change the zoom
+            span.longitudeDelta = 0.12;
+            region.span = span;
+            
+            [self.mapView setRegion:region animated:YES];
+            _didZoomToUser = YES;
+        }else{
+            [[MTLocationManager sharedInstance] setTrackingMode:MTUserTrackingModeNone];
+        }
     }];
 }
 
@@ -216,12 +222,6 @@
             self.dataSource = [EELArrayDataSource dataSourceWithItems:sortedArray];
             
             [self addPins];
-            
-            if (sortedArray.count > 0) {
-                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
-            }else{
-                // no results found (show no results found maybe)
-            }
         }];
     }else if(self.searchBar.tag == 911){
         [[EELWMClient sharedClient] searchDoctorsWithTerm:searchTerm lat:lat lng:lng completionBlock:^(NSArray *results, NSError *error) {
@@ -246,12 +246,6 @@
             self.dataSource = [EELArrayDataSource dataSourceWithItems:sortedArray];
             
             [self addPins];
-            if (sortedArray.count > 0) {
-                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
-
-            }else{
-                // no results found (show no results found maybe)
-            }
         }];
         
     }else{
@@ -275,8 +269,6 @@
         [sortedArray sortUsingDescriptors:@[sort]];
         
         self.dataSource = [EELArrayDataSource dataSourceWithItems:sortedArray];
-        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
-
         [self addPins];
     }
 }
@@ -318,8 +310,6 @@
         [self.filterMenu showFromNavigationController:self.navigationController];
     }
 }
-#pragma mark -
-#pragma mark - MapKitDelegate
 
 - (void)zoomToUser{
     [self zoomToUser:YES];
@@ -357,6 +347,9 @@
         [self performSearch:self.searchBar.text];
     }
 }
+
+#pragma mark -
+#pragma mark - MapKitDelegate
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
@@ -404,10 +397,6 @@
         [sortedArray sortUsingDescriptors:@[sort]];
         
         self.dataSource = [EELArrayDataSource dataSourceWithItems:sortedArray];
-        
-        if (sortedArray.count > 0) {
-            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
-        }
     }
     
     // pop to make it bigger
@@ -487,7 +476,6 @@
     UITableViewCell *cell;
     EELListHeaderTableViewCell *nearbyCountCell;
     EELListTableViewCell *listTableCell;
-    EELDispensary *dispensary = [self.dataSource.items objectAtIndex:indexPath.row];
     
     if (indexPath.section == 0) {
         nearbyCountCell = [tableView dequeueReusableCellWithIdentifier:@"NearbyCell" forIndexPath:indexPath];
@@ -504,6 +492,7 @@
         cell = nearbyCountCell;
 
     }else{
+        EELDispensary *dispensary = [self.dataSource.items objectAtIndex:indexPath.row];
         listTableCell = [tableView dequeueReusableCellWithIdentifier:@"ItemHeaderCell" forIndexPath:indexPath];
         [listTableCell configureWithDispensary:dispensary];
         cell = listTableCell;
@@ -576,6 +565,20 @@
     }
 }
 
+- (void)showSearchBar{
+    POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerOpacity];
+    anim.springSpeed = 15.0;
+    anim.toValue = @(1.0);
+    [self.searchBar.layer pop_addAnimation:anim forKey:@"searchBarShow"];
+}
+
+- (void)hideSearchBar{
+    POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerOpacity];
+    anim.springSpeed = 20.0;
+    anim.toValue = @(0.0);
+    [self.searchBar.layer pop_addAnimation:anim forKey:@"searchBarShow"];
+}
+
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
     
     if (toInterfaceOrientation==UIInterfaceOrientationLandscapeRight || toInterfaceOrientation==UIInterfaceOrientationLandscapeLeft) {
@@ -599,20 +602,6 @@
             self.searchBar.frame = CGRectMake(0, 0, 275, 44);
         }
     }
-}
-
-- (void)showSearchBar{
-    POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerOpacity];
-    anim.springSpeed = 15.0;
-    anim.toValue = @(1.0);
-    [self.searchBar.layer pop_addAnimation:anim forKey:@"searchBarShow"];
-}
-
-- (void)hideSearchBar{
-    POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerOpacity];
-    anim.springSpeed = 20.0;
-    anim.toValue = @(0.0);
-    [self.searchBar.layer pop_addAnimation:anim forKey:@"searchBarShow"];
 }
 
 
