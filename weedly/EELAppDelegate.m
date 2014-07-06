@@ -27,6 +27,7 @@
     NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
     NSString *alarm_preference = [standardUserDefaults objectForKey:@"420_alarm_preference"];
     if (!alarm_preference) {
+        [self cancelAlarm];
         [self registerDefaultsFromSettingsBundle];
     }
     
