@@ -14,7 +14,7 @@
 			<key>DefaultValue</key>
 			<false/>
 			<key>Key</key>
-			<string>enabled_420_alarm</string>
+			<string>420_alarm_preference</string>
 			<key>Title</key>
 			<string>4:20 Alarm</string>
 			<key>Type</key>
