@@ -76,7 +76,7 @@
     
     dataSource.defaultMetrics.separatorColor = [UIColor colorWithWhite:224/255.0 alpha:1];
     dataSource.defaultMetrics.separatorInsets = UIEdgeInsetsMake(0, 0, 0, 0);
-    dataSource.defaultMetrics.rowHeight = 70;
+    dataSource.defaultMetrics.rowHeight = 44;
     
     return dataSource;
 }
@@ -90,7 +90,7 @@
     
     dataSource.defaultMetrics.separatorColor = [UIColor colorWithWhite:224/255.0 alpha:1];
     dataSource.defaultMetrics.separatorInsets = UIEdgeInsetsMake(0, 0, 0, 0);
-    dataSource.defaultMetrics.rowHeight = 70;
+    dataSource.defaultMetrics.rowHeight = 44;
     
     return dataSource;
 }
@@ -104,7 +104,7 @@
     
     dataSource.defaultMetrics.separatorColor = [UIColor colorWithWhite:224/255.0 alpha:1];
     dataSource.defaultMetrics.separatorInsets = UIEdgeInsetsMake(0, 0, 0, 0);
-    dataSource.defaultMetrics.rowHeight = 70;
+    dataSource.defaultMetrics.rowHeight = 44;
     
     return dataSource;
 }
