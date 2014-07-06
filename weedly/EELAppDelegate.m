@@ -54,4 +54,33 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (void)scheduleAlarm{
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    
+    UILocalNotification *notif = [[UILocalNotification alloc] init];
+    
+    NSDate *today = [NSDate date];
+    NSCalendar *gregorian = [[NSCalendar alloc]
+                             initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *weekdayComponents =
+    [gregorian components:(NSDayCalendarUnit | NSWeekdayCalendarUnit) fromDate:today];
+    [weekdayComponents setHour:16];
+    [weekdayComponents setMinute:19];
+    NSDate *referenceTime = [gregorian dateFromComponents:weekdayComponents];
+    
+    notif.fireDate = referenceTime;
+    notif.timeZone = [NSTimeZone defaultTimeZone];
+    
+    notif.alertBody = @"It's almost 4:20! Toke up!";
+    notif.hasAction = NO;
+    notif.soundName = UILocalNotificationDefaultSoundName;
+    notif.repeatInterval = NSDayCalendarUnit;
+    
+    [[UIApplication sharedApplication] scheduleLocalNotification:notif];
+}
+
+- (void)cancelAlarm{
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+}
+
 @end

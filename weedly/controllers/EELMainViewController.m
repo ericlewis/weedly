@@ -197,7 +197,7 @@
     
     self.searchBar.placeholder = @"Search Dispensaries";
     self.searchBar.tag = 420;
-    
+
     [self.navigationController.navigationBar addSubview:self.searchBar];
 }
 
@@ -232,6 +232,11 @@
             [sortedArray sortUsingDescriptors:@[sort]];
             
             self.dataSource = [EELArrayDataSource dataSourceWithItems:sortedArray];
+            
+            // no search results
+            if (sortedArray.count == 0 && self.searchBar.isFirstResponder) {
+                [self.searchBar resignFirstResponder];
+            }
             
             [self addPins];
         }];

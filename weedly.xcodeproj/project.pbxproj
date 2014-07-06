@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4D06F69719186AF1005597F9 /* EELMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D06F69619186AF1005597F9 /* EELMenu.m */; };
+		4D22EE1F1969DD4D00268853 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4D22EE1E1969DD4D00268853 /* Settings.bundle */; };
 		4D37D4641949139500034769 /* EELListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D37D4621949139500034769 /* EELListTableViewCell.m */; };
 		4D37D4651949139500034769 /* EELListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D37D4631949139500034769 /* EELListTableViewCell.xib */; };
 		4D37D4671949284D00034769 /* EELReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D37D4661949284D00034769 /* EELReviewCell.xib */; };
@@ -96,6 +97,7 @@
 /* Begin PBXFileReference section */
 		4D06F69519186AF1005597F9 /* EELMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELMenu.h; path = models/EELMenu.h; sourceTree = "<group>"; };
 		4D06F69619186AF1005597F9 /* EELMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELMenu.m; path = models/EELMenu.m; sourceTree = "<group>"; };
+		4D22EE1E1969DD4D00268853 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = weedly/Settings.bundle; sourceTree = "<group>"; };
 		4D37D4611949139500034769 /* EELListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELListTableViewCell.h; path = views/EELListTableViewCell.h; sourceTree = "<group>"; };
 		4D37D4621949139500034769 /* EELListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELListTableViewCell.m; path = views/EELListTableViewCell.m; sourceTree = "<group>"; };
 		4D37D4631949139500034769 /* EELListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EELListTableViewCell.xib; path = views/EELListTableViewCell.xib; sourceTree = "<group>"; };
@@ -523,6 +525,7 @@
 		4DC1A1051912F9A200228F5A = {
 			isa = PBXGroup;
 			children = (
+				4D22EE1E1969DD4D00268853 /* Settings.bundle */,
 				4DC1A1171912F9A200228F5A /* weedly */,
 				4DC1A1361912F9A200228F5A /* weedlyTests */,
 				4DC1A1101912F9A200228F5A /* Frameworks */,
@@ -700,6 +703,7 @@
 			files = (
 				4DC1A12A1912F9A200228F5A /* Images.xcassets in Resources */,
 				4DCFE5221948C05300139D52 /* EELDetailHeader.xib in Resources */,
+				4D22EE1F1969DD4D00268853 /* Settings.bundle in Resources */,
 				4DC1A11C1912F9A200228F5A /* InfoPlist.strings in Resources */,
 				4D87F4C41949887E00740558 /* EELMenuItemCell.xib in Resources */,
 				4D37D4671949284D00034769 /* EELReviewCell.xib in Resources */,

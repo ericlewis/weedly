@@ -67,6 +67,8 @@
 
     self.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18];
     self.subtitleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:15];
+    
+    self.subtitleLabel.hidden = YES;
 
 }
 
