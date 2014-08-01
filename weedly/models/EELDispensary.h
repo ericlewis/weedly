@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Eric Lewis. All rights reserved.
 //
 
+#import "EELStoreHours.h"
+
 @interface EELDispensary : MTLModel <MTLJSONSerializing, MTLManagedObjectSerializing>
 
 @property (copy, nonatomic, readonly) NSNumber *id;
@@ -18,11 +20,12 @@
 @property (copy, nonatomic, readonly) NSString *icon;
 @property (copy, nonatomic, readonly) NSString *license;
 @property (copy, nonatomic, readonly) NSString *typeString;
+@property (copy, nonatomic, readonly) NSArray *hours;
+@property (copy, nonatomic, readonly) EELStoreHours *todaysHours;
 
 @property (copy, nonatomic, readonly) NSString *isOpen;
 @property (copy, nonatomic, readonly) NSString *closesAt;
 @property (copy, nonatomic, readonly) NSString *opensAt;
-@property (copy, nonatomic, readonly) NSString *dayOTW;
 
 @property (copy, nonatomic) NSNumber *currentDistance;
 

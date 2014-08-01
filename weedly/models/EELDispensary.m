@@ -134,12 +134,12 @@ NSString * const EELDispensaryFavoriteToggledNotificationName = @"EELDispensaryF
              @"phone"       : @"_source.phone_number",
              @"license"     : @"_source.license_type",
              @"isDelivery"  : @"_source.is_delivery",
+             @"hours"       : @"_source.hours",
              
              // these no longer apply with the new searching api [fix this]
-             @"closesAt"    : @"_source.todaysHours.closes_at",
-             @"opensAt"     : @"_source.todaysHours.opens_at",
-             @"dayOTW"      : @"_source.todaysHours.day_of_the_week",
-             @"isOpen"      : @"_source.is_open",
+             //@"closesAt"    : @"_source.todaysHours.closes_at",
+             //@"opensAt"     : @"_source.todaysHours.opens_at",
+             //@"isOpen"      : @"_source.is_open",
              };
 }
 
@@ -161,6 +161,12 @@ NSString * const EELDispensaryFavoriteToggledNotificationName = @"EELDispensaryF
     return [[NSValueTransformer valueTransformerForName:MTLURLValueTransformerName] mtl_invertedTransformer];
 }
 
++ (NSValueTransformer *)hoursJSONTransformer {
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[EELStoreHours class]];
+}
+
+#pragma mark - custom getters
+
 - (int)type{
     if ([self.typeString isEqualToString:@"doctor"]) {
         return 1;
@@ -170,4 +176,56 @@ NSString * const EELDispensaryFavoriteToggledNotificationName = @"EELDispensaryF
     
     return 2;
 }
+
+- (NSString*) isOpen{
+    NSLog(@"%@", self.todaysHours.opensAt);
+    
+    NSDate *today = [NSDate date];
+    NSTimeInterval interval;
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    [cal rangeOfUnit:NSDayCalendarUnit
+           startDate:&today
+            interval:&interval
+             forDate:today];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"hh:mma"];
+    NSDate *time = [dateFormatter dateFromString:@"1:00PM"];
+    NSDateComponents *comps = [cal components:(NSHourCalendarUnit | NSMinuteCalendarUnit)
+                                     fromDate:time];
+    NSDate *dateAndTime = [cal dateByAddingComponents:comps
+                                               toDate:today
+                                              options:0];
+    
+    NSLog(@"%@",dateAndTime);
+    
+    return @"NO";
+}
+
+- (BOOL)isDate:(NSDate *)date inRangeFirstDate:(NSDate *)firstDate lastDate:(NSDate *)lastDate {
+    return [date compare:firstDate] == NSOrderedDescending && [date compare:lastDate]  == NSOrderedAscending;
+}
+
+- (NSString*) closesAt{
+    return [self.todaysHours.closesAt stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+}
+
+- (NSString*) opensAt{
+    return [self.todaysHours.opensAt stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+}
+
+- (EELStoreHours*)todaysHours {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"EEE"];
+    
+    for (int i = 0; self.hours.count > i; i++) {
+        EELStoreHours *hours = self.hours[i];
+        if ([hours.dayOTW isEqualToString:[[dateFormatter stringFromDate:[NSDate date]] lowercaseString]]) {
+            return hours;
+        }
+    }
+    
+    return nil;
+}
+
 @end
