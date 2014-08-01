@@ -126,26 +126,26 @@ NSString * const EELDispensaryFavoriteToggledNotificationName = @"EELDispensaryF
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
-             @"id"          : @"id",
-             @"name"        : @"n",
-             @"address"     : @"a",
-             @"city"        : @"c",
-             @"state"       : @"state",
-             @"zip"         : @"zip",
-             @"rating"      : @"r",
-             @"ratingCount" : @"rc",
-             @"type"        : @"type",
-             @"icon"        : @"marker",
-             @"lng"         : @"longitude",
-             @"lat"         : @"latitude",
-             @"photoURL"    : @"photo1",
-             @"phone"       : @"phone",
-             @"license"     : @"license_type",
-             @"closesAt"    : @"todaysHours.closes_at",
-             @"opensAt"     : @"todaysHours.opens_at",
-             @"dayOTW"      : @"todaysHours.day_of_the_week",
-             @"isOpen"      : @"is_open",
-             @"featured"    : @"featured",
+             @"id"          : @"_source.id",
+             @"name"        : @"_source.name",
+             @"address"     : @"_source.address",
+             @"city"        : @"_source.city",
+             @"state"       : @"_source.state",
+             @"zip"         : @"_source.zip_code",
+             @"rating"      : @"_source.rating",
+             @"ratingCount" : @"_source.reviews_count",
+             @"type"        : @"_type",
+             @"icon"        : @"_source.marker",
+             @"lng"         : @"_source.longitude",
+             @"lat"         : @"_source.latitude",
+             @"phone"       : @"_source.phone_number",
+             @"license"     : @"_source.license_type",
+             
+             // these no longer apply with the new searching api [fix this]
+             @"closesAt"    : @"_source.todaysHours.closes_at",
+             @"opensAt"     : @"_source.todaysHours.opens_at",
+             @"dayOTW"      : @"_source.todaysHours.day_of_the_week",
+             @"isOpen"      : @"_source.is_open",
              };
 }
 

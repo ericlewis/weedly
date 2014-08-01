@@ -17,6 +17,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _sharedClient = [[EELWMClient alloc] init];
+        [_sharedClient setRequestSerializer:[AFJSONRequestSerializer serializer]];
     });
     
     return _sharedClient;
@@ -102,10 +103,48 @@
                                  @"q"    : term
                                  };
 
-    [self GET:@"api/v4/search" parameters:parameters completion:^(OVCResponse *response, NSError *error) {
-        dispatch_async(dispatch_get_main_queue(), ^(void){
-            block(response.result, error);
-        });
+    
+    NSDictionary *parametersNewSearch = @{
+                                          @"size" : @"200",
+                                          @"query":
+                                              @{@"function_score":
+                                                    @{@"query":
+                                                          @{@"filtered":
+                                                                @{@"filter":
+                                                                      @{@"and":
+                                                                            @{@"filters":
+                                                                                  @[
+                                                                                      @{@"type": @{@"value": type}},
+                                                                                      @{@"term": @{@"published": @"true"}},
+                                                                                      @{@"geo_bounding_box":
+                                                                                            @{@"lat_lon": @{
+                                                                                                      @"bottom_left": @{
+                                                                                                              @"lat": @"37.58241352386545",
+                                                                                                              @"lon": @"-122.5480826789226"
+                                                                                                              },
+                                                                                                      @"top_right": @{
+                                                                                                              @"lat": @"37.9871510573685",
+                                                                                                              @"lon": @"-122.2740372934126"
+                                                                                                              }
+                                                                                                      }
+                                                                                              }
+                                                                                        }
+                                                                                      ]
+                                                                              }
+                                                                        }
+                                                                  }
+                                                            },
+                                                      @"functions": @[
+                                                              @{@"script_score":
+                                                                    @{@"script": @"sqrt(_score * doc.feature_level_raw.value)"}
+                                                                }
+                                                              ]
+                                                      }
+                                                }
+                                          };
+    
+    [self POST:@"http://search-prod.weedmaps.com:9200/weedmaps/_search?" parameters:parametersNewSearch completion:^(OVCResponse *response, NSError *error) {
+        block(response.result, error);
     }];
 }
 
@@ -117,6 +156,7 @@
 + (NSDictionary *)modelClassesByResourcePath {
     return @{
              @"api/v4/search": [EELDispensary class],
+             @"weedmaps/_search": [EELDispensary class],
              @"/api/v4/coupons": [EELDeal class],
              @"dispensaries/#/menu.json": [EELMenu class],
              @"dispensaries/#/menu_items.json": [EELMenuItem class],

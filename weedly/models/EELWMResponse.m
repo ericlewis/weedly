@@ -11,6 +11,12 @@
 @implementation EELWMResponse
 
 + (NSString *)resultKeyPathForJSONDictionary:(NSDictionary *)JSONDictionary {
+
+    // handle the new search api's desire to nest
+    if(JSONDictionary[@"_shards"] != nil){
+        return @"hits.hits";
+    }
+    
     return @"hits";
 }
 

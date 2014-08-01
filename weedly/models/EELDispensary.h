@@ -15,13 +15,14 @@
 @property (copy, nonatomic, readonly) NSString *city;
 @property (copy, nonatomic, readonly) NSString *state;
 @property (copy, nonatomic, readonly) NSString *zip;
-@property (copy, nonatomic, readonly) NSURL    *photoURL;
 @property (copy, nonatomic, readonly) NSString *icon;
 @property (copy, nonatomic, readonly) NSString *license;
+
 @property (copy, nonatomic, readonly) NSString *isOpen;
 @property (copy, nonatomic, readonly) NSString *closesAt;
 @property (copy, nonatomic, readonly) NSString *opensAt;
 @property (copy, nonatomic, readonly) NSString *dayOTW;
+
 @property (copy, nonatomic) NSNumber *currentDistance;
 
 @property (nonatomic, readonly) double lng;
@@ -31,7 +32,6 @@
 @property (nonatomic, readonly) int ratingCount;
 
 @property (nonatomic, readonly) int type;
-@property (nonatomic, readonly) int featured;
 @property (nonatomic, getter=isFavorite) BOOL favorite;
 
 - (NSString*)formattedNameString;
