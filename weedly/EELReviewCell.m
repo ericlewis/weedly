@@ -72,16 +72,18 @@
 
 - (void)configureWithReview:(EELReview *)review
 {
-    if (review.title.length > 0) {
-        self.textLabel.text = review.title;
+    NSDictionary *newReview = (NSDictionary*)review;
+    
+    if ([newReview[@"title"] length] > 0) {
+        self.textLabel.text = newReview[@"title"];
     }else{
         self.textLabel.text = @"Review";
     }
-
-    NSString *reviewStars = [[@"" stringByPaddingToLength:review.rating withString:@"★" startingAtIndex:0] stringByPaddingToLength:5 withString:@"☆" startingAtIndex:0];
+    
+    NSString *reviewStars = [[@"" stringByPaddingToLength:[newReview[@"r"] floatValue] withString:@"★" startingAtIndex:0] stringByPaddingToLength:5 withString:@"☆" startingAtIndex:0];
     self.ratingLabel.text = reviewStars;
 
-    self.shortDescriptionLabel.text = [NSString stringWithFormat:@"%@\n\t", review.comment];
-    self.dateLabel.text = review.timeAgo;
+    self.shortDescriptionLabel.text = [NSString stringWithFormat:@"%@\n\t", newReview[@"comments"]];
+    self.dateLabel.text = newReview[@"timeAgo"];
 }
 @end

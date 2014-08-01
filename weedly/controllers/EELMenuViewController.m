@@ -70,7 +70,7 @@
 - (EELFlowerMenuItemsDataSource *)newMenuItemsDataSource
 {
     EELFlowerMenuItemsDataSource *dataSource = [[EELFlowerMenuItemsDataSource alloc] initWithDispensary:self.dispensary];
-    dataSource.title = NSLocalizedString(@"Flowers", @"Title of reviews section");
+    dataSource.title = NSLocalizedString(@"Flowers", @"Title of flower section");
     dataSource.noContentTitle = NSLocalizedString(@"No menu items", @"Title of the no reviews placeholder message");
     dataSource.noContentMessage = NSLocalizedString(@"No flowers are currently available.", @"The message to show when the flowers are empty");
     
@@ -84,7 +84,7 @@
 - (EELConcentratesMenuItemsDataSource *)newMenuItemsConcentratesDataSource
 {
     EELConcentratesMenuItemsDataSource *dataSource = [[EELConcentratesMenuItemsDataSource alloc] initWithDispensary:self.dispensary];
-    dataSource.title = NSLocalizedString(@"Concentrates", @"Title of reviews section");
+    dataSource.title = NSLocalizedString(@"Concentrates", @"Title of concentrate section");
     dataSource.noContentTitle = NSLocalizedString(@"No menu items", @"Title of the no reviews placeholder message");
     dataSource.noContentMessage = NSLocalizedString(@"No concentrates are currently available.", @"The message to show when the concentrates are empty");
     
@@ -98,7 +98,7 @@
 - (EELEdiblesMenuItemsDataSource *)newMenuItemsEdiblesDataSource
 {
     EELEdiblesMenuItemsDataSource *dataSource = [[EELEdiblesMenuItemsDataSource alloc] initWithDispensary:self.dispensary];
-    dataSource.title = NSLocalizedString(@"Edibles", @"Title of reviews section");
+    dataSource.title = NSLocalizedString(@"Edibles", @"Title of edibles section");
     dataSource.noContentTitle = NSLocalizedString(@"No menu items", @"Title of the no reviews placeholder message");
     dataSource.noContentMessage = NSLocalizedString(@"No edibles are currently available.", @"The message to show when the edibles are empty");
     

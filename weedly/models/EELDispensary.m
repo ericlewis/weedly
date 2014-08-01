@@ -33,13 +33,6 @@ NSString * const EELDispensaryFavoriteToggledNotificationName = @"EELDispensaryF
     [[NSNotificationCenter defaultCenter] postNotificationName:EELDispensaryFavoriteToggledNotificationName object:self];
 }
 
-/*- (NSURL*)photoURL{
-    NSString *urlString = self.photoURL.absoluteString;
-    [urlString stringByReplacingOccurrencesOfString:@"/square_" withString:@"/"];
-    
-    return [NSURL URLWithString:urlString];
-}*/
-
 - (NSString*)formattedNameString{
     NSAttributedString *formattedName = [[NSAttributedString alloc] initWithData:[self.name dataUsingEncoding:NSUTF8StringEncoding]
                                                                          options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: [NSNumber numberWithInt:NSUTF8StringEncoding]} documentAttributes:nil error:nil];
@@ -167,7 +160,7 @@ NSString * const EELDispensaryFavoriteToggledNotificationName = @"EELDispensaryF
 }
 
 + (NSDictionary *)managedObjectKeysByPropertyKey {
-    return nil;
+    return @{};
 }
 
 + (NSValueTransformer *)photoURLEntityAttributeTransformer {
