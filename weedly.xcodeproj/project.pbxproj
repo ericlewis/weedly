@@ -16,31 +16,6 @@
 		4D37D46C19494F9F00034769 /* EELListHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D37D46A19494F9F00034769 /* EELListHeaderTableViewCell.xib */; };
 		4D544BA219441518000718D7 /* EELReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D544BA119441518000718D7 /* EELReviewCell.m */; };
 		4D544BA61944F1E9000718D7 /* EELDispensaryInfoListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D544BA51944F1E9000718D7 /* EELDispensaryInfoListDataSource.m */; };
-		4D75E0991943F42200A25AB6 /* AAPLAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E06E1943F42200A25AB6 /* AAPLAction.m */; };
-		4D75E09A1943F42200A25AB6 /* AAPLContentLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0701943F42200A25AB6 /* AAPLContentLoading.m */; };
-		4D75E09B1943F42200A25AB6 /* AAPLStateMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0721943F42200A25AB6 /* AAPLStateMachine.m */; };
-		4D75E09C1943F42200A25AB6 /* AAPLDataSource+Headers.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0751943F42200A25AB6 /* AAPLDataSource+Headers.m */; };
-		4D75E09D1943F42200A25AB6 /* NSObject+KVOBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0771943F42200A25AB6 /* NSObject+KVOBlock.m */; };
-		4D75E09E1943F42200A25AB6 /* UICollectionView+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0791943F42200A25AB6 /* UICollectionView+Helpers.m */; };
-		4D75E09F1943F42200A25AB6 /* UIView+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E07B1943F42200A25AB6 /* UIView+Helpers.m */; };
-		4D75E0A01943F42200A25AB6 /* AAPLBasicDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E07E1943F42200A25AB6 /* AAPLBasicDataSource.m */; };
-		4D75E0A11943F42200A25AB6 /* AAPLComposedDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0801943F42200A25AB6 /* AAPLComposedDataSource.m */; };
-		4D75E0A21943F42200A25AB6 /* AAPLComposedDataSource_Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0821943F42200A25AB6 /* AAPLComposedDataSource_Private.m */; };
-		4D75E0A31943F42200A25AB6 /* AAPLDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0841943F42200A25AB6 /* AAPLDataSource.m */; };
-		4D75E0A41943F42200A25AB6 /* AAPLSegmentedDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0871943F42200A25AB6 /* AAPLSegmentedDataSource.m */; };
-		4D75E0A51943F42200A25AB6 /* AAPLCollectionViewGridLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E08A1943F42200A25AB6 /* AAPLCollectionViewGridLayout.m */; };
-		4D75E0A61943F42200A25AB6 /* AAPLCollectionViewGridLayout_Internal.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E08C1943F42200A25AB6 /* AAPLCollectionViewGridLayout_Internal.m */; };
-		4D75E0A71943F42200A25AB6 /* AAPLCollectionViewGridLayoutAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E08F1943F42200A25AB6 /* AAPLCollectionViewGridLayoutAttributes.m */; };
-		4D75E0A81943F42200A25AB6 /* AAPLLayoutMetrics.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0921943F42200A25AB6 /* AAPLLayoutMetrics.m */; };
-		4D75E0A91943F42200A25AB6 /* AAPLCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0961943F42200A25AB6 /* AAPLCollectionViewController.m */; };
-		4D75E0AA1943F42200A25AB6 /* AAPLSwipeToEditStateMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0981943F42200A25AB6 /* AAPLSwipeToEditStateMachine.m */; };
-		4D75E0BB1943F44800A25AB6 /* AAPLBasicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0AD1943F44800A25AB6 /* AAPLBasicCell.m */; };
-		4D75E0BC1943F44800A25AB6 /* AAPLCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0B01943F44800A25AB6 /* AAPLCollectionViewCell.m */; };
-		4D75E0BD1943F44800A25AB6 /* AAPLHairlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0B21943F44800A25AB6 /* AAPLHairlineView.m */; };
-		4D75E0BE1943F44800A25AB6 /* AAPLPinnableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0B41943F44800A25AB6 /* AAPLPinnableHeaderView.m */; };
-		4D75E0BF1943F44800A25AB6 /* AAPLPlaceholderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0B61943F44800A25AB6 /* AAPLPlaceholderView.m */; };
-		4D75E0C01943F44800A25AB6 /* AAPLSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0B81943F44800A25AB6 /* AAPLSectionHeaderView.m */; };
-		4D75E0C11943F44800A25AB6 /* AAPLSegmentedHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0BA1943F44800A25AB6 /* AAPLSegmentedHeaderView.m */; };
 		4D75E0C51943F73A00A25AB6 /* EELDispensaryDetailDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0C41943F73A00A25AB6 /* EELDispensaryDetailDataSource.m */; };
 		4D75E0CE1943F96C00A25AB6 /* EELReviewsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0CD1943F96C00A25AB6 /* EELReviewsDataSource.m */; };
 		4D75E0D11943FBE200A25AB6 /* EELDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0D01943FBE200A25AB6 /* EELDetailViewController.m */; };
@@ -83,6 +58,31 @@
 		4DD1FFF8194641650072D5B4 /* EELListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD1FFF7194641650072D5B4 /* EELListTableView.m */; };
 		4DD4930C1915827D001A6203 /* EELMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4930B1915827D001A6203 /* EELMainViewController.m */; };
 		4DD86E171959F28B002D0A3C /* EELDealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD86E161959F28B002D0A3C /* EELDealViewController.m */; };
+		A416BC0E198C51CB00ACC39B /* AAPLAction.m in Sources */ = {isa = PBXBuildFile; fileRef = A416BBFA198C51CB00ACC39B /* AAPLAction.m */; };
+		A416BC0F198C51CB00ACC39B /* AAPLBasicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A416BBFC198C51CB00ACC39B /* AAPLBasicCell.m */; };
+		A416BC10198C51CB00ACC39B /* AAPLCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A416BBFF198C51CB00ACC39B /* AAPLCollectionViewCell.m */; };
+		A416BC11198C51CB00ACC39B /* AAPLContentLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = A416BC01198C51CB00ACC39B /* AAPLContentLoading.m */; };
+		A416BC12198C51CB00ACC39B /* AAPLHairlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = A416BC03198C51CB00ACC39B /* AAPLHairlineView.m */; };
+		A416BC13198C51CB00ACC39B /* AAPLPinnableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A416BC05198C51CB00ACC39B /* AAPLPinnableHeaderView.m */; };
+		A416BC14198C51CB00ACC39B /* AAPLPlaceholderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A416BC07198C51CB00ACC39B /* AAPLPlaceholderView.m */; };
+		A416BC15198C51CB00ACC39B /* AAPLSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A416BC09198C51CB00ACC39B /* AAPLSectionHeaderView.m */; };
+		A416BC16198C51CB00ACC39B /* AAPLSegmentedHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A416BC0B198C51CB00ACC39B /* AAPLSegmentedHeaderView.m */; };
+		A416BC17198C51CB00ACC39B /* AAPLStateMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = A416BC0D198C51CB00ACC39B /* AAPLStateMachine.m */; };
+		A416BC20198C51DB00ACC39B /* AAPLDataSource+Headers.m in Sources */ = {isa = PBXBuildFile; fileRef = A416BC19198C51DA00ACC39B /* AAPLDataSource+Headers.m */; };
+		A416BC21198C51DB00ACC39B /* NSObject+KVOBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = A416BC1B198C51DB00ACC39B /* NSObject+KVOBlock.m */; };
+		A416BC22198C51DB00ACC39B /* UICollectionView+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = A416BC1D198C51DB00ACC39B /* UICollectionView+Helpers.m */; };
+		A416BC23198C51DB00ACC39B /* UIView+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = A416BC1F198C51DB00ACC39B /* UIView+Helpers.m */; };
+		A416BC2F198C51EB00ACC39B /* AAPLBasicDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = A416BC25198C51EB00ACC39B /* AAPLBasicDataSource.m */; };
+		A416BC30198C51EB00ACC39B /* AAPLComposedDataSource_Private.m in Sources */ = {isa = PBXBuildFile; fileRef = A416BC27198C51EB00ACC39B /* AAPLComposedDataSource_Private.m */; };
+		A416BC31198C51EB00ACC39B /* AAPLComposedDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = A416BC29198C51EB00ACC39B /* AAPLComposedDataSource.m */; };
+		A416BC32198C51EB00ACC39B /* AAPLDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = A416BC2C198C51EB00ACC39B /* AAPLDataSource.m */; };
+		A416BC33198C51EB00ACC39B /* AAPLSegmentedDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = A416BC2E198C51EB00ACC39B /* AAPLSegmentedDataSource.m */; };
+		A416BC43198C522F00ACC39B /* AAPLCollectionViewGridLayout_Internal.m in Sources */ = {isa = PBXBuildFile; fileRef = A416BC35198C522F00ACC39B /* AAPLCollectionViewGridLayout_Internal.m */; };
+		A416BC44198C522F00ACC39B /* AAPLCollectionViewGridLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = A416BC38198C522F00ACC39B /* AAPLCollectionViewGridLayout.m */; };
+		A416BC45198C522F00ACC39B /* AAPLCollectionViewGridLayoutAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = A416BC3B198C522F00ACC39B /* AAPLCollectionViewGridLayoutAttributes.m */; };
+		A416BC46198C522F00ACC39B /* AAPLLayoutMetrics.m in Sources */ = {isa = PBXBuildFile; fileRef = A416BC3E198C522F00ACC39B /* AAPLLayoutMetrics.m */; };
+		A416BC47198C522F00ACC39B /* AAPLCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A416BC40198C522F00ACC39B /* AAPLCollectionViewController.m */; };
+		A416BC48198C522F00ACC39B /* AAPLSwipeToEditStateMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = A416BC42198C522F00ACC39B /* AAPLSwipeToEditStateMachine.m */; };
 		BE8BDD8F4BD4453BBD4478C3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F50009311F37485CA198D2EA /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -111,61 +111,6 @@
 		4D544BA119441518000718D7 /* EELReviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EELReviewCell.m; sourceTree = "<group>"; };
 		4D544BA41944F1E9000718D7 /* EELDispensaryInfoListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EELDispensaryInfoListDataSource.h; sourceTree = "<group>"; };
 		4D544BA51944F1E9000718D7 /* EELDispensaryInfoListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EELDispensaryInfoListDataSource.m; sourceTree = "<group>"; };
-		4D75E06D1943F42200A25AB6 /* AAPLAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AAPLAction.h; path = ../../../Downloads/AdvancedUserInterfacesUsingCollectionView/AdvancedCollectionView/AAPLAction.h; sourceTree = "<group>"; };
-		4D75E06E1943F42200A25AB6 /* AAPLAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AAPLAction.m; path = ../../../Downloads/AdvancedUserInterfacesUsingCollectionView/AdvancedCollectionView/AAPLAction.m; sourceTree = "<group>"; };
-		4D75E06F1943F42200A25AB6 /* AAPLContentLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AAPLContentLoading.h; path = ../../../Downloads/AdvancedUserInterfacesUsingCollectionView/AdvancedCollectionView/AAPLContentLoading.h; sourceTree = "<group>"; };
-		4D75E0701943F42200A25AB6 /* AAPLContentLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AAPLContentLoading.m; path = ../../../Downloads/AdvancedUserInterfacesUsingCollectionView/AdvancedCollectionView/AAPLContentLoading.m; sourceTree = "<group>"; };
-		4D75E0711943F42200A25AB6 /* AAPLStateMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AAPLStateMachine.h; path = ../../../Downloads/AdvancedUserInterfacesUsingCollectionView/AdvancedCollectionView/AAPLStateMachine.h; sourceTree = "<group>"; };
-		4D75E0721943F42200A25AB6 /* AAPLStateMachine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AAPLStateMachine.m; path = ../../../Downloads/AdvancedUserInterfacesUsingCollectionView/AdvancedCollectionView/AAPLStateMachine.m; sourceTree = "<group>"; };
-		4D75E0741943F42200A25AB6 /* AAPLDataSource+Headers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AAPLDataSource+Headers.h"; sourceTree = "<group>"; };
-		4D75E0751943F42200A25AB6 /* AAPLDataSource+Headers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AAPLDataSource+Headers.m"; sourceTree = "<group>"; };
-		4D75E0761943F42200A25AB6 /* NSObject+KVOBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+KVOBlock.h"; sourceTree = "<group>"; };
-		4D75E0771943F42200A25AB6 /* NSObject+KVOBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+KVOBlock.m"; sourceTree = "<group>"; };
-		4D75E0781943F42200A25AB6 /* UICollectionView+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+Helpers.h"; sourceTree = "<group>"; };
-		4D75E0791943F42200A25AB6 /* UICollectionView+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+Helpers.m"; sourceTree = "<group>"; };
-		4D75E07A1943F42200A25AB6 /* UIView+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Helpers.h"; sourceTree = "<group>"; };
-		4D75E07B1943F42200A25AB6 /* UIView+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Helpers.m"; sourceTree = "<group>"; };
-		4D75E07D1943F42200A25AB6 /* AAPLBasicDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLBasicDataSource.h; sourceTree = "<group>"; };
-		4D75E07E1943F42200A25AB6 /* AAPLBasicDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLBasicDataSource.m; sourceTree = "<group>"; };
-		4D75E07F1943F42200A25AB6 /* AAPLComposedDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLComposedDataSource.h; sourceTree = "<group>"; };
-		4D75E0801943F42200A25AB6 /* AAPLComposedDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLComposedDataSource.m; sourceTree = "<group>"; };
-		4D75E0811943F42200A25AB6 /* AAPLComposedDataSource_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLComposedDataSource_Private.h; sourceTree = "<group>"; };
-		4D75E0821943F42200A25AB6 /* AAPLComposedDataSource_Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLComposedDataSource_Private.m; sourceTree = "<group>"; };
-		4D75E0831943F42200A25AB6 /* AAPLDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLDataSource.h; sourceTree = "<group>"; };
-		4D75E0841943F42200A25AB6 /* AAPLDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLDataSource.m; sourceTree = "<group>"; };
-		4D75E0851943F42200A25AB6 /* AAPLDataSource_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLDataSource_Private.h; sourceTree = "<group>"; };
-		4D75E0861943F42200A25AB6 /* AAPLSegmentedDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLSegmentedDataSource.h; sourceTree = "<group>"; };
-		4D75E0871943F42200A25AB6 /* AAPLSegmentedDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLSegmentedDataSource.m; sourceTree = "<group>"; };
-		4D75E0891943F42200A25AB6 /* AAPLCollectionViewGridLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLCollectionViewGridLayout.h; sourceTree = "<group>"; };
-		4D75E08A1943F42200A25AB6 /* AAPLCollectionViewGridLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLCollectionViewGridLayout.m; sourceTree = "<group>"; };
-		4D75E08B1943F42200A25AB6 /* AAPLCollectionViewGridLayout_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLCollectionViewGridLayout_Internal.h; sourceTree = "<group>"; };
-		4D75E08C1943F42200A25AB6 /* AAPLCollectionViewGridLayout_Internal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLCollectionViewGridLayout_Internal.m; sourceTree = "<group>"; };
-		4D75E08D1943F42200A25AB6 /* AAPLCollectionViewGridLayout_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLCollectionViewGridLayout_Private.h; sourceTree = "<group>"; };
-		4D75E08E1943F42200A25AB6 /* AAPLCollectionViewGridLayoutAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLCollectionViewGridLayoutAttributes.h; sourceTree = "<group>"; };
-		4D75E08F1943F42200A25AB6 /* AAPLCollectionViewGridLayoutAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLCollectionViewGridLayoutAttributes.m; sourceTree = "<group>"; };
-		4D75E0901943F42200A25AB6 /* AAPLCollectionViewGridLayoutAttributes_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLCollectionViewGridLayoutAttributes_Private.h; sourceTree = "<group>"; };
-		4D75E0911943F42200A25AB6 /* AAPLLayoutMetrics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLLayoutMetrics.h; sourceTree = "<group>"; };
-		4D75E0921943F42200A25AB6 /* AAPLLayoutMetrics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLLayoutMetrics.m; sourceTree = "<group>"; };
-		4D75E0931943F42200A25AB6 /* AAPLLayoutMetrics_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLLayoutMetrics_Private.h; sourceTree = "<group>"; };
-		4D75E0951943F42200A25AB6 /* AAPLCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLCollectionViewController.h; sourceTree = "<group>"; };
-		4D75E0961943F42200A25AB6 /* AAPLCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLCollectionViewController.m; sourceTree = "<group>"; };
-		4D75E0971943F42200A25AB6 /* AAPLSwipeToEditStateMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLSwipeToEditStateMachine.h; sourceTree = "<group>"; };
-		4D75E0981943F42200A25AB6 /* AAPLSwipeToEditStateMachine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLSwipeToEditStateMachine.m; sourceTree = "<group>"; };
-		4D75E0AC1943F44800A25AB6 /* AAPLBasicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLBasicCell.h; sourceTree = "<group>"; };
-		4D75E0AD1943F44800A25AB6 /* AAPLBasicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLBasicCell.m; sourceTree = "<group>"; };
-		4D75E0AE1943F44800A25AB6 /* AAPLCollectionViewCell_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLCollectionViewCell_Private.h; sourceTree = "<group>"; };
-		4D75E0AF1943F44800A25AB6 /* AAPLCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLCollectionViewCell.h; sourceTree = "<group>"; };
-		4D75E0B01943F44800A25AB6 /* AAPLCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLCollectionViewCell.m; sourceTree = "<group>"; };
-		4D75E0B11943F44800A25AB6 /* AAPLHairlineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLHairlineView.h; sourceTree = "<group>"; };
-		4D75E0B21943F44800A25AB6 /* AAPLHairlineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLHairlineView.m; sourceTree = "<group>"; };
-		4D75E0B31943F44800A25AB6 /* AAPLPinnableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLPinnableHeaderView.h; sourceTree = "<group>"; };
-		4D75E0B41943F44800A25AB6 /* AAPLPinnableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLPinnableHeaderView.m; sourceTree = "<group>"; };
-		4D75E0B51943F44800A25AB6 /* AAPLPlaceholderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLPlaceholderView.h; sourceTree = "<group>"; };
-		4D75E0B61943F44800A25AB6 /* AAPLPlaceholderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLPlaceholderView.m; sourceTree = "<group>"; };
-		4D75E0B71943F44800A25AB6 /* AAPLSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLSectionHeaderView.h; sourceTree = "<group>"; };
-		4D75E0B81943F44800A25AB6 /* AAPLSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLSectionHeaderView.m; sourceTree = "<group>"; };
-		4D75E0B91943F44800A25AB6 /* AAPLSegmentedHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLSegmentedHeaderView.h; sourceTree = "<group>"; };
-		4D75E0BA1943F44800A25AB6 /* AAPLSegmentedHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLSegmentedHeaderView.m; sourceTree = "<group>"; };
 		4D75E0C31943F73A00A25AB6 /* EELDispensaryDetailDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EELDispensaryDetailDataSource.h; sourceTree = "<group>"; };
 		4D75E0C41943F73A00A25AB6 /* EELDispensaryDetailDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EELDispensaryDetailDataSource.m; sourceTree = "<group>"; };
 		4D75E0CC1943F96C00A25AB6 /* EELReviewsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EELReviewsDataSource.h; sourceTree = "<group>"; };
@@ -238,6 +183,61 @@
 		4DD4930B1915827D001A6203 /* EELMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELMainViewController.m; path = controllers/EELMainViewController.m; sourceTree = "<group>"; };
 		4DD86E151959F28B002D0A3C /* EELDealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELDealViewController.h; path = controllers/EELDealViewController.h; sourceTree = "<group>"; };
 		4DD86E161959F28B002D0A3C /* EELDealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELDealViewController.m; path = controllers/EELDealViewController.m; sourceTree = "<group>"; };
+		A416BBF9198C51CB00ACC39B /* AAPLAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLAction.h; sourceTree = "<group>"; };
+		A416BBFA198C51CB00ACC39B /* AAPLAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLAction.m; sourceTree = "<group>"; };
+		A416BBFB198C51CB00ACC39B /* AAPLBasicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLBasicCell.h; sourceTree = "<group>"; };
+		A416BBFC198C51CB00ACC39B /* AAPLBasicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLBasicCell.m; sourceTree = "<group>"; };
+		A416BBFD198C51CB00ACC39B /* AAPLCollectionViewCell_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLCollectionViewCell_Private.h; sourceTree = "<group>"; };
+		A416BBFE198C51CB00ACC39B /* AAPLCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLCollectionViewCell.h; sourceTree = "<group>"; };
+		A416BBFF198C51CB00ACC39B /* AAPLCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLCollectionViewCell.m; sourceTree = "<group>"; };
+		A416BC00198C51CB00ACC39B /* AAPLContentLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLContentLoading.h; sourceTree = "<group>"; };
+		A416BC01198C51CB00ACC39B /* AAPLContentLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLContentLoading.m; sourceTree = "<group>"; };
+		A416BC02198C51CB00ACC39B /* AAPLHairlineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLHairlineView.h; sourceTree = "<group>"; };
+		A416BC03198C51CB00ACC39B /* AAPLHairlineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLHairlineView.m; sourceTree = "<group>"; };
+		A416BC04198C51CB00ACC39B /* AAPLPinnableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLPinnableHeaderView.h; sourceTree = "<group>"; };
+		A416BC05198C51CB00ACC39B /* AAPLPinnableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLPinnableHeaderView.m; sourceTree = "<group>"; };
+		A416BC06198C51CB00ACC39B /* AAPLPlaceholderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLPlaceholderView.h; sourceTree = "<group>"; };
+		A416BC07198C51CB00ACC39B /* AAPLPlaceholderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLPlaceholderView.m; sourceTree = "<group>"; };
+		A416BC08198C51CB00ACC39B /* AAPLSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLSectionHeaderView.h; sourceTree = "<group>"; };
+		A416BC09198C51CB00ACC39B /* AAPLSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLSectionHeaderView.m; sourceTree = "<group>"; };
+		A416BC0A198C51CB00ACC39B /* AAPLSegmentedHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLSegmentedHeaderView.h; sourceTree = "<group>"; };
+		A416BC0B198C51CB00ACC39B /* AAPLSegmentedHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLSegmentedHeaderView.m; sourceTree = "<group>"; };
+		A416BC0C198C51CB00ACC39B /* AAPLStateMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLStateMachine.h; sourceTree = "<group>"; };
+		A416BC0D198C51CB00ACC39B /* AAPLStateMachine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLStateMachine.m; sourceTree = "<group>"; };
+		A416BC18198C51DA00ACC39B /* AAPLDataSource+Headers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "AAPLDataSource+Headers.h"; path = "Categories/AAPLDataSource+Headers.h"; sourceTree = "<group>"; };
+		A416BC19198C51DA00ACC39B /* AAPLDataSource+Headers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "AAPLDataSource+Headers.m"; path = "Categories/AAPLDataSource+Headers.m"; sourceTree = "<group>"; };
+		A416BC1A198C51DB00ACC39B /* NSObject+KVOBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+KVOBlock.h"; path = "Categories/NSObject+KVOBlock.h"; sourceTree = "<group>"; };
+		A416BC1B198C51DB00ACC39B /* NSObject+KVOBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+KVOBlock.m"; path = "Categories/NSObject+KVOBlock.m"; sourceTree = "<group>"; };
+		A416BC1C198C51DB00ACC39B /* UICollectionView+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UICollectionView+Helpers.h"; path = "Categories/UICollectionView+Helpers.h"; sourceTree = "<group>"; };
+		A416BC1D198C51DB00ACC39B /* UICollectionView+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UICollectionView+Helpers.m"; path = "Categories/UICollectionView+Helpers.m"; sourceTree = "<group>"; };
+		A416BC1E198C51DB00ACC39B /* UIView+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Helpers.h"; path = "Categories/UIView+Helpers.h"; sourceTree = "<group>"; };
+		A416BC1F198C51DB00ACC39B /* UIView+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Helpers.m"; path = "Categories/UIView+Helpers.m"; sourceTree = "<group>"; };
+		A416BC24198C51EB00ACC39B /* AAPLBasicDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AAPLBasicDataSource.h; path = DataSources/AAPLBasicDataSource.h; sourceTree = "<group>"; };
+		A416BC25198C51EB00ACC39B /* AAPLBasicDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AAPLBasicDataSource.m; path = DataSources/AAPLBasicDataSource.m; sourceTree = "<group>"; };
+		A416BC26198C51EB00ACC39B /* AAPLComposedDataSource_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AAPLComposedDataSource_Private.h; path = DataSources/AAPLComposedDataSource_Private.h; sourceTree = "<group>"; };
+		A416BC27198C51EB00ACC39B /* AAPLComposedDataSource_Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AAPLComposedDataSource_Private.m; path = DataSources/AAPLComposedDataSource_Private.m; sourceTree = "<group>"; };
+		A416BC28198C51EB00ACC39B /* AAPLComposedDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AAPLComposedDataSource.h; path = DataSources/AAPLComposedDataSource.h; sourceTree = "<group>"; };
+		A416BC29198C51EB00ACC39B /* AAPLComposedDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AAPLComposedDataSource.m; path = DataSources/AAPLComposedDataSource.m; sourceTree = "<group>"; };
+		A416BC2A198C51EB00ACC39B /* AAPLDataSource_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AAPLDataSource_Private.h; path = DataSources/AAPLDataSource_Private.h; sourceTree = "<group>"; };
+		A416BC2B198C51EB00ACC39B /* AAPLDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AAPLDataSource.h; path = DataSources/AAPLDataSource.h; sourceTree = "<group>"; };
+		A416BC2C198C51EB00ACC39B /* AAPLDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AAPLDataSource.m; path = DataSources/AAPLDataSource.m; sourceTree = "<group>"; };
+		A416BC2D198C51EB00ACC39B /* AAPLSegmentedDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AAPLSegmentedDataSource.h; path = DataSources/AAPLSegmentedDataSource.h; sourceTree = "<group>"; };
+		A416BC2E198C51EB00ACC39B /* AAPLSegmentedDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AAPLSegmentedDataSource.m; path = DataSources/AAPLSegmentedDataSource.m; sourceTree = "<group>"; };
+		A416BC34198C522F00ACC39B /* AAPLCollectionViewGridLayout_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AAPLCollectionViewGridLayout_Internal.h; path = Layouts/AAPLCollectionViewGridLayout_Internal.h; sourceTree = "<group>"; };
+		A416BC35198C522F00ACC39B /* AAPLCollectionViewGridLayout_Internal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AAPLCollectionViewGridLayout_Internal.m; path = Layouts/AAPLCollectionViewGridLayout_Internal.m; sourceTree = "<group>"; };
+		A416BC36198C522F00ACC39B /* AAPLCollectionViewGridLayout_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AAPLCollectionViewGridLayout_Private.h; path = Layouts/AAPLCollectionViewGridLayout_Private.h; sourceTree = "<group>"; };
+		A416BC37198C522F00ACC39B /* AAPLCollectionViewGridLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AAPLCollectionViewGridLayout.h; path = Layouts/AAPLCollectionViewGridLayout.h; sourceTree = "<group>"; };
+		A416BC38198C522F00ACC39B /* AAPLCollectionViewGridLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AAPLCollectionViewGridLayout.m; path = Layouts/AAPLCollectionViewGridLayout.m; sourceTree = "<group>"; };
+		A416BC39198C522F00ACC39B /* AAPLCollectionViewGridLayoutAttributes_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AAPLCollectionViewGridLayoutAttributes_Private.h; path = Layouts/AAPLCollectionViewGridLayoutAttributes_Private.h; sourceTree = "<group>"; };
+		A416BC3A198C522F00ACC39B /* AAPLCollectionViewGridLayoutAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AAPLCollectionViewGridLayoutAttributes.h; path = Layouts/AAPLCollectionViewGridLayoutAttributes.h; sourceTree = "<group>"; };
+		A416BC3B198C522F00ACC39B /* AAPLCollectionViewGridLayoutAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AAPLCollectionViewGridLayoutAttributes.m; path = Layouts/AAPLCollectionViewGridLayoutAttributes.m; sourceTree = "<group>"; };
+		A416BC3C198C522F00ACC39B /* AAPLLayoutMetrics_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AAPLLayoutMetrics_Private.h; path = Layouts/AAPLLayoutMetrics_Private.h; sourceTree = "<group>"; };
+		A416BC3D198C522F00ACC39B /* AAPLLayoutMetrics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AAPLLayoutMetrics.h; path = Layouts/AAPLLayoutMetrics.h; sourceTree = "<group>"; };
+		A416BC3E198C522F00ACC39B /* AAPLLayoutMetrics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AAPLLayoutMetrics.m; path = Layouts/AAPLLayoutMetrics.m; sourceTree = "<group>"; };
+		A416BC3F198C522F00ACC39B /* AAPLCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AAPLCollectionViewController.h; path = ViewControllers/AAPLCollectionViewController.h; sourceTree = "<group>"; };
+		A416BC40198C522F00ACC39B /* AAPLCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AAPLCollectionViewController.m; path = ViewControllers/AAPLCollectionViewController.m; sourceTree = "<group>"; };
+		A416BC41198C522F00ACC39B /* AAPLSwipeToEditStateMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AAPLSwipeToEditStateMachine.h; path = ViewControllers/AAPLSwipeToEditStateMachine.h; sourceTree = "<group>"; };
+		A416BC42198C522F00ACC39B /* AAPLSwipeToEditStateMachine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AAPLSwipeToEditStateMachine.m; path = ViewControllers/AAPLSwipeToEditStateMachine.m; sourceTree = "<group>"; };
 		D13BE086C5424174BDE85D1C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		F50009311F37485CA198D2EA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -288,112 +288,6 @@
 				4D87F4C6194988D200740558 /* menu cells */,
 			);
 			name = Cells;
-			sourceTree = "<group>";
-		};
-		4D75E06C1943F3D700A25AB6 /* Framework */ = {
-			isa = PBXGroup;
-			children = (
-				4D75E06D1943F42200A25AB6 /* AAPLAction.h */,
-				4D75E06E1943F42200A25AB6 /* AAPLAction.m */,
-				4D75E06F1943F42200A25AB6 /* AAPLContentLoading.h */,
-				4D75E0701943F42200A25AB6 /* AAPLContentLoading.m */,
-				4D75E0711943F42200A25AB6 /* AAPLStateMachine.h */,
-				4D75E0721943F42200A25AB6 /* AAPLStateMachine.m */,
-				4D75E0731943F42200A25AB6 /* Categories */,
-				4D75E07C1943F42200A25AB6 /* DataSources */,
-				4D75E0881943F42200A25AB6 /* Layouts */,
-				4D75E0941943F42200A25AB6 /* ViewControllers */,
-				4D75E0AB1943F43C00A25AB6 /* Views */,
-			);
-			name = Framework;
-			sourceTree = "<group>";
-		};
-		4D75E0731943F42200A25AB6 /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				4D75E0741943F42200A25AB6 /* AAPLDataSource+Headers.h */,
-				4D75E0751943F42200A25AB6 /* AAPLDataSource+Headers.m */,
-				4D75E0761943F42200A25AB6 /* NSObject+KVOBlock.h */,
-				4D75E0771943F42200A25AB6 /* NSObject+KVOBlock.m */,
-				4D75E0781943F42200A25AB6 /* UICollectionView+Helpers.h */,
-				4D75E0791943F42200A25AB6 /* UICollectionView+Helpers.m */,
-				4D75E07A1943F42200A25AB6 /* UIView+Helpers.h */,
-				4D75E07B1943F42200A25AB6 /* UIView+Helpers.m */,
-			);
-			name = Categories;
-			path = ../../../Downloads/AdvancedUserInterfacesUsingCollectionView/AdvancedCollectionView/Categories;
-			sourceTree = "<group>";
-		};
-		4D75E07C1943F42200A25AB6 /* DataSources */ = {
-			isa = PBXGroup;
-			children = (
-				4D75E07D1943F42200A25AB6 /* AAPLBasicDataSource.h */,
-				4D75E07E1943F42200A25AB6 /* AAPLBasicDataSource.m */,
-				4D75E07F1943F42200A25AB6 /* AAPLComposedDataSource.h */,
-				4D75E0801943F42200A25AB6 /* AAPLComposedDataSource.m */,
-				4D75E0811943F42200A25AB6 /* AAPLComposedDataSource_Private.h */,
-				4D75E0821943F42200A25AB6 /* AAPLComposedDataSource_Private.m */,
-				4D75E0831943F42200A25AB6 /* AAPLDataSource.h */,
-				4D75E0841943F42200A25AB6 /* AAPLDataSource.m */,
-				4D75E0851943F42200A25AB6 /* AAPLDataSource_Private.h */,
-				4D75E0861943F42200A25AB6 /* AAPLSegmentedDataSource.h */,
-				4D75E0871943F42200A25AB6 /* AAPLSegmentedDataSource.m */,
-			);
-			name = DataSources;
-			path = ../../../Downloads/AdvancedUserInterfacesUsingCollectionView/AdvancedCollectionView/DataSources;
-			sourceTree = "<group>";
-		};
-		4D75E0881943F42200A25AB6 /* Layouts */ = {
-			isa = PBXGroup;
-			children = (
-				4D75E0891943F42200A25AB6 /* AAPLCollectionViewGridLayout.h */,
-				4D75E08A1943F42200A25AB6 /* AAPLCollectionViewGridLayout.m */,
-				4D75E08B1943F42200A25AB6 /* AAPLCollectionViewGridLayout_Internal.h */,
-				4D75E08C1943F42200A25AB6 /* AAPLCollectionViewGridLayout_Internal.m */,
-				4D75E08D1943F42200A25AB6 /* AAPLCollectionViewGridLayout_Private.h */,
-				4D75E08E1943F42200A25AB6 /* AAPLCollectionViewGridLayoutAttributes.h */,
-				4D75E08F1943F42200A25AB6 /* AAPLCollectionViewGridLayoutAttributes.m */,
-				4D75E0901943F42200A25AB6 /* AAPLCollectionViewGridLayoutAttributes_Private.h */,
-				4D75E0911943F42200A25AB6 /* AAPLLayoutMetrics.h */,
-				4D75E0921943F42200A25AB6 /* AAPLLayoutMetrics.m */,
-				4D75E0931943F42200A25AB6 /* AAPLLayoutMetrics_Private.h */,
-			);
-			name = Layouts;
-			path = ../../../Downloads/AdvancedUserInterfacesUsingCollectionView/AdvancedCollectionView/Layouts;
-			sourceTree = "<group>";
-		};
-		4D75E0941943F42200A25AB6 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				4D75E0951943F42200A25AB6 /* AAPLCollectionViewController.h */,
-				4D75E0961943F42200A25AB6 /* AAPLCollectionViewController.m */,
-				4D75E0971943F42200A25AB6 /* AAPLSwipeToEditStateMachine.h */,
-				4D75E0981943F42200A25AB6 /* AAPLSwipeToEditStateMachine.m */,
-			);
-			name = ViewControllers;
-			path = ../../../Downloads/AdvancedUserInterfacesUsingCollectionView/AdvancedCollectionView/ViewControllers;
-			sourceTree = "<group>";
-		};
-		4D75E0AB1943F43C00A25AB6 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				4D75E0AC1943F44800A25AB6 /* AAPLBasicCell.h */,
-				4D75E0AD1943F44800A25AB6 /* AAPLBasicCell.m */,
-				4D75E0AE1943F44800A25AB6 /* AAPLCollectionViewCell_Private.h */,
-				4D75E0AF1943F44800A25AB6 /* AAPLCollectionViewCell.h */,
-				4D75E0B01943F44800A25AB6 /* AAPLCollectionViewCell.m */,
-				4D75E0B11943F44800A25AB6 /* AAPLHairlineView.h */,
-				4D75E0B21943F44800A25AB6 /* AAPLHairlineView.m */,
-				4D75E0B31943F44800A25AB6 /* AAPLPinnableHeaderView.h */,
-				4D75E0B41943F44800A25AB6 /* AAPLPinnableHeaderView.m */,
-				4D75E0B51943F44800A25AB6 /* AAPLPlaceholderView.h */,
-				4D75E0B61943F44800A25AB6 /* AAPLPlaceholderView.m */,
-				4D75E0B71943F44800A25AB6 /* AAPLSectionHeaderView.h */,
-				4D75E0B81943F44800A25AB6 /* AAPLSectionHeaderView.m */,
-				4D75E0B91943F44800A25AB6 /* AAPLSegmentedHeaderView.h */,
-				4D75E0BA1943F44800A25AB6 /* AAPLSegmentedHeaderView.m */,
-			);
-			name = Views;
 			sourceTree = "<group>";
 		};
 		4D75E0C21943F71C00A25AB6 /* DataSources */ = {
@@ -577,7 +471,61 @@
 		4DC1A1171912F9A200228F5A /* weedly */ = {
 			isa = PBXGroup;
 			children = (
-				4D75E06C1943F3D700A25AB6 /* Framework */,
+				A416BC34198C522F00ACC39B /* AAPLCollectionViewGridLayout_Internal.h */,
+				A416BC35198C522F00ACC39B /* AAPLCollectionViewGridLayout_Internal.m */,
+				A416BC36198C522F00ACC39B /* AAPLCollectionViewGridLayout_Private.h */,
+				A416BC37198C522F00ACC39B /* AAPLCollectionViewGridLayout.h */,
+				A416BC38198C522F00ACC39B /* AAPLCollectionViewGridLayout.m */,
+				A416BC39198C522F00ACC39B /* AAPLCollectionViewGridLayoutAttributes_Private.h */,
+				A416BC3A198C522F00ACC39B /* AAPLCollectionViewGridLayoutAttributes.h */,
+				A416BC3B198C522F00ACC39B /* AAPLCollectionViewGridLayoutAttributes.m */,
+				A416BC3C198C522F00ACC39B /* AAPLLayoutMetrics_Private.h */,
+				A416BC3D198C522F00ACC39B /* AAPLLayoutMetrics.h */,
+				A416BC3E198C522F00ACC39B /* AAPLLayoutMetrics.m */,
+				A416BC3F198C522F00ACC39B /* AAPLCollectionViewController.h */,
+				A416BC40198C522F00ACC39B /* AAPLCollectionViewController.m */,
+				A416BC41198C522F00ACC39B /* AAPLSwipeToEditStateMachine.h */,
+				A416BC42198C522F00ACC39B /* AAPLSwipeToEditStateMachine.m */,
+				A416BC24198C51EB00ACC39B /* AAPLBasicDataSource.h */,
+				A416BC25198C51EB00ACC39B /* AAPLBasicDataSource.m */,
+				A416BC26198C51EB00ACC39B /* AAPLComposedDataSource_Private.h */,
+				A416BC27198C51EB00ACC39B /* AAPLComposedDataSource_Private.m */,
+				A416BC28198C51EB00ACC39B /* AAPLComposedDataSource.h */,
+				A416BC29198C51EB00ACC39B /* AAPLComposedDataSource.m */,
+				A416BC2A198C51EB00ACC39B /* AAPLDataSource_Private.h */,
+				A416BC2B198C51EB00ACC39B /* AAPLDataSource.h */,
+				A416BC2C198C51EB00ACC39B /* AAPLDataSource.m */,
+				A416BC2D198C51EB00ACC39B /* AAPLSegmentedDataSource.h */,
+				A416BC2E198C51EB00ACC39B /* AAPLSegmentedDataSource.m */,
+				A416BC18198C51DA00ACC39B /* AAPLDataSource+Headers.h */,
+				A416BC19198C51DA00ACC39B /* AAPLDataSource+Headers.m */,
+				A416BC1A198C51DB00ACC39B /* NSObject+KVOBlock.h */,
+				A416BC1B198C51DB00ACC39B /* NSObject+KVOBlock.m */,
+				A416BC1C198C51DB00ACC39B /* UICollectionView+Helpers.h */,
+				A416BC1D198C51DB00ACC39B /* UICollectionView+Helpers.m */,
+				A416BC1E198C51DB00ACC39B /* UIView+Helpers.h */,
+				A416BC1F198C51DB00ACC39B /* UIView+Helpers.m */,
+				A416BBF9198C51CB00ACC39B /* AAPLAction.h */,
+				A416BBFA198C51CB00ACC39B /* AAPLAction.m */,
+				A416BBFB198C51CB00ACC39B /* AAPLBasicCell.h */,
+				A416BBFC198C51CB00ACC39B /* AAPLBasicCell.m */,
+				A416BBFD198C51CB00ACC39B /* AAPLCollectionViewCell_Private.h */,
+				A416BBFE198C51CB00ACC39B /* AAPLCollectionViewCell.h */,
+				A416BBFF198C51CB00ACC39B /* AAPLCollectionViewCell.m */,
+				A416BC00198C51CB00ACC39B /* AAPLContentLoading.h */,
+				A416BC01198C51CB00ACC39B /* AAPLContentLoading.m */,
+				A416BC02198C51CB00ACC39B /* AAPLHairlineView.h */,
+				A416BC03198C51CB00ACC39B /* AAPLHairlineView.m */,
+				A416BC04198C51CB00ACC39B /* AAPLPinnableHeaderView.h */,
+				A416BC05198C51CB00ACC39B /* AAPLPinnableHeaderView.m */,
+				A416BC06198C51CB00ACC39B /* AAPLPlaceholderView.h */,
+				A416BC07198C51CB00ACC39B /* AAPLPlaceholderView.m */,
+				A416BC08198C51CB00ACC39B /* AAPLSectionHeaderView.h */,
+				A416BC09198C51CB00ACC39B /* AAPLSectionHeaderView.m */,
+				A416BC0A198C51CB00ACC39B /* AAPLSegmentedHeaderView.h */,
+				A416BC0B198C51CB00ACC39B /* AAPLSegmentedHeaderView.m */,
+				A416BC0C198C51CB00ACC39B /* AAPLStateMachine.h */,
+				A416BC0D198C51CB00ACC39B /* AAPLStateMachine.m */,
 				4D9DDDED1915AA50006E5B03 /* Models */,
 				4D9DDDEC1915AA2E006E5B03 /* Views */,
 				4DB1757719159E1D00B3A22F /* Controllers */,
@@ -780,60 +728,60 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D75E0BB1943F44800A25AB6 /* AAPLBasicCell.m in Sources */,
 				4DC1A11E1912F9A200228F5A /* main.m in Sources */,
 				4D544BA219441518000718D7 /* EELReviewCell.m in Sources */,
+				A416BC47198C522F00ACC39B /* AAPLCollectionViewController.m in Sources */,
 				4D9DDDFC1915BA81006E5B03 /* EELReview.m in Sources */,
-				4D75E09F1943F42200A25AB6 /* UIView+Helpers.m in Sources */,
-				4D75E0A41943F42200A25AB6 /* AAPLSegmentedDataSource.m in Sources */,
+				A416BC22198C51DB00ACC39B /* UICollectionView+Helpers.m in Sources */,
 				4D75E0D41944022800A25AB6 /* EELDetailHeader.m in Sources */,
-				4D75E0A91943F42200A25AB6 /* AAPLCollectionViewController.m in Sources */,
-				4D75E0BF1943F44800A25AB6 /* AAPLPlaceholderView.m in Sources */,
+				A416BC14198C51CB00ACC39B /* AAPLPlaceholderView.m in Sources */,
 				4D87F4BC1949851B00740558 /* EELMenuDataSource.m in Sources */,
-				4D75E0A71943F42200A25AB6 /* AAPLCollectionViewGridLayoutAttributes.m in Sources */,
+				A416BC33198C51EB00ACC39B /* AAPLSegmentedDataSource.m in Sources */,
+				A416BC12198C51CB00ACC39B /* AAPLHairlineView.m in Sources */,
 				4D8B0A27198C2532001ECC83 /* EELWMResponse.m in Sources */,
-				4D75E09B1943F42200A25AB6 /* AAPLStateMachine.m in Sources */,
-				4D75E09E1943F42200A25AB6 /* UICollectionView+Helpers.m in Sources */,
-				4D75E0AA1943F42200A25AB6 /* AAPLSwipeToEditStateMachine.m in Sources */,
+				A416BC21198C51DB00ACC39B /* NSObject+KVOBlock.m in Sources */,
+				A416BC45198C522F00ACC39B /* AAPLCollectionViewGridLayoutAttributes.m in Sources */,
 				4DD1FFF8194641650072D5B4 /* EELListTableView.m in Sources */,
+				A416BC48198C522F00ACC39B /* AAPLSwipeToEditStateMachine.m in Sources */,
 				4D544BA61944F1E9000718D7 /* EELDispensaryInfoListDataSource.m in Sources */,
-				4D75E09D1943F42200A25AB6 /* NSObject+KVOBlock.m in Sources */,
+				A416BC16198C51CB00ACC39B /* AAPLSegmentedHeaderView.m in Sources */,
 				4D87F4B9194984CF00740558 /* EELMenuViewController.m in Sources */,
+				A416BC23198C51DB00ACC39B /* UIView+Helpers.m in Sources */,
 				4D75E0C51943F73A00A25AB6 /* EELDispensaryDetailDataSource.m in Sources */,
-				4D75E09C1943F42200A25AB6 /* AAPLDataSource+Headers.m in Sources */,
 				4D8B0A2A198C3EE2001ECC83 /* EELStoreHours.m in Sources */,
+				A416BC0E198C51CB00ACC39B /* AAPLAction.m in Sources */,
 				4D37D46B19494F9F00034769 /* EELListHeaderTableViewCell.m in Sources */,
-				4D75E0C11943F44800A25AB6 /* AAPLSegmentedHeaderView.m in Sources */,
+				A416BC13198C51CB00ACC39B /* AAPLPinnableHeaderView.m in Sources */,
 				4D06F69719186AF1005597F9 /* EELMenu.m in Sources */,
+				A416BC11198C51CB00ACC39B /* AAPLContentLoading.m in Sources */,
+				A416BC43198C522F00ACC39B /* AAPLCollectionViewGridLayout_Internal.m in Sources */,
 				4D75E0CE1943F96C00A25AB6 /* EELReviewsDataSource.m in Sources */,
-				4D75E0A11943F42200A25AB6 /* AAPLComposedDataSource.m in Sources */,
 				4D37D4641949139500034769 /* EELListTableViewCell.m in Sources */,
 				4D87F4C21949884000740558 /* EELMenuItemCell.m in Sources */,
-				4D75E0BD1943F44800A25AB6 /* AAPLHairlineView.m in Sources */,
-				4D75E0A21943F42200A25AB6 /* AAPLComposedDataSource_Private.m in Sources */,
 				4D9DDE0419169629006E5B03 /* EELMenuItem.m in Sources */,
+				A416BC20198C51DB00ACC39B /* AAPLDataSource+Headers.m in Sources */,
 				4DD4930C1915827D001A6203 /* EELMainViewController.m in Sources */,
-				4D75E0991943F42200A25AB6 /* AAPLAction.m in Sources */,
-				4D75E0C01943F44800A25AB6 /* AAPLSectionHeaderView.m in Sources */,
-				4D75E0BE1943F44800A25AB6 /* AAPLPinnableHeaderView.m in Sources */,
+				A416BC10198C51CB00ACC39B /* AAPLCollectionViewCell.m in Sources */,
+				A416BC17198C51CB00ACC39B /* AAPLStateMachine.m in Sources */,
+				A416BC46198C522F00ACC39B /* AAPLLayoutMetrics.m in Sources */,
+				A416BC2F198C51EB00ACC39B /* AAPLBasicDataSource.m in Sources */,
+				A416BC31198C51EB00ACC39B /* AAPLComposedDataSource.m in Sources */,
 				4D9DDDF91915BA75006E5B03 /* EELAccount.m in Sources */,
-				4D75E0A01943F42200A25AB6 /* AAPLBasicDataSource.m in Sources */,
+				A416BC30198C51EB00ACC39B /* AAPLComposedDataSource_Private.m in Sources */,
+				A416BC15198C51CB00ACC39B /* AAPLSectionHeaderView.m in Sources */,
 				4D87F4D419499E6200740558 /* EELEdiblesMenuItemsDataSource.m in Sources */,
-				4D75E09A1943F42200A25AB6 /* AAPLContentLoading.m in Sources */,
 				4DC1A1221912F9A200228F5A /* EELAppDelegate.m in Sources */,
 				4DCFE51D1948BEA500139D52 /* EELDeal.m in Sources */,
+				A416BC44198C522F00ACC39B /* AAPLCollectionViewGridLayout.m in Sources */,
 				4D9DDDFF1915BAA4006E5B03 /* EELSmokinOn.m in Sources */,
 				4D87F4CE19499D7D00740558 /* EELFlowerMenuItemsDataSource.m in Sources */,
-				4D75E0A81943F42200A25AB6 /* AAPLLayoutMetrics.m in Sources */,
-				4D75E0A51943F42200A25AB6 /* AAPLCollectionViewGridLayout.m in Sources */,
-				4D75E0A31943F42200A25AB6 /* AAPLDataSource.m in Sources */,
-				4D75E0A61943F42200A25AB6 /* AAPLCollectionViewGridLayout_Internal.m in Sources */,
+				A416BC32198C51EB00ACC39B /* AAPLDataSource.m in Sources */,
 				4D87F4D119499D9500740558 /* EELConcentratesMenuItemsDataSource.m in Sources */,
+				A416BC0F198C51CB00ACC39B /* AAPLBasicCell.m in Sources */,
 				4D9DDDF01915AC89006E5B03 /* EELWMClient.m in Sources */,
 				4D75E0D11943FBE200A25AB6 /* EELDetailViewController.m in Sources */,
 				4D87F4BF1949865600740558 /* EELMenuItemsDataSource.m in Sources */,
 				4D9DDDF61915AFEB006E5B03 /* EELDispensary.m in Sources */,
-				4D75E0BC1943F44800A25AB6 /* AAPLCollectionViewCell.m in Sources */,
 				4DD86E171959F28B002D0A3C /* EELDealViewController.m in Sources */,
 				4D9DDE0B1916AD74006E5B03 /* EELArrayDataSource.m in Sources */,
 				4DCFE5201948BF1400139D52 /* EELDetailListCell.m in Sources */,

@@ -177,27 +177,19 @@ NSString * const EELDispensaryFavoriteToggledNotificationName = @"EELDispensaryF
     return 2;
 }
 
-- (NSString*) isOpen{
-    NSLog(@"%@", self.todaysHours.opensAt);
+- (NSString*) isOpen {
+
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"HH:mmaa";
+    dateFormatter.timeZone = [NSTimeZone systemTimeZone];
+    NSDate* closeTime = [dateFormatter dateFromString:self.closesAt];
+    NSDate* openTime = [dateFormatter dateFromString:self.opensAt];
+    NSDate* currentDate = [NSDate date];
+    NSDate* nowTime = [NSDate dateWithTimeIntervalSinceReferenceDate:-31557600 - 86400 + currentDate.hour * 60 * 60 + currentDate.minute * 60];
     
-    NSDate *today = [NSDate date];
-    NSTimeInterval interval;
-    NSCalendar *cal = [NSCalendar currentCalendar];
-    [cal rangeOfUnit:NSDayCalendarUnit
-           startDate:&today
-            interval:&interval
-             forDate:today];
-    
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"hh:mma"];
-    NSDate *time = [dateFormatter dateFromString:@"1:00PM"];
-    NSDateComponents *comps = [cal components:(NSHourCalendarUnit | NSMinuteCalendarUnit)
-                                     fromDate:time];
-    NSDate *dateAndTime = [cal dateByAddingComponents:comps
-                                               toDate:today
-                                              options:0];
-    
-    NSLog(@"%@",dateAndTime);
+    if ([nowTime compare:closeTime] == NSOrderedAscending && [nowTime compare:openTime] == NSOrderedDescending) {
+        return @"YES";
+    }
     
     return @"NO";
 }
