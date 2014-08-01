@@ -44,21 +44,15 @@ NSString * const EELDispensaryFavoriteToggledNotificationName = @"EELDispensaryF
     NSString *dispensaryType  = self.icon;
     
     // disps
-    if (self.type == 0) {
-        dispensaryType = [dispensaryType stringByReplacingOccurrencesOfString:@"gold" withString:@"Dispensary"];
-        dispensaryType = [dispensaryType stringByReplacingOccurrencesOfString:@"silver" withString:@"Dispensary"];
-        dispensaryType = [dispensaryType stringByReplacingOccurrencesOfString:@"bronze" withString:@"Dispensary"];
-        dispensaryType = [dispensaryType stringByReplacingOccurrencesOfString:@"lp" withString:@"Dispensary"];
-        dispensaryType = [dispensaryType stringByReplacingOccurrencesOfString:@"free" withString:@"Dispensary"];
+    if (self.type == 0 && !self.isDelivery) {
+        dispensaryType = @"Dispensary";
+    }else if(self.type == 0 && self.isDelivery){
+        dispensaryType = @"Delivery";
     }
     
     // doctors
     else if(self.type == 1){
-        dispensaryType = [dispensaryType stringByReplacingOccurrencesOfString:@"lp" withString:@"Doctor"];
-        dispensaryType = [dispensaryType stringByReplacingOccurrencesOfString:@"free" withString:@"Doctor"];
-        dispensaryType = [dispensaryType stringByReplacingOccurrencesOfString:@"bronze" withString:@"Doctor"];
-        dispensaryType = [dispensaryType stringByReplacingOccurrencesOfString:@"silver" withString:@"Doctor"];
-        dispensaryType = [dispensaryType stringByReplacingOccurrencesOfString:@"gold" withString:@"Doctor"];
+        dispensaryType = @"Doctor";
     }
     
     return dispensaryType.capitalizedString;
@@ -134,12 +128,12 @@ NSString * const EELDispensaryFavoriteToggledNotificationName = @"EELDispensaryF
              @"zip"         : @"_source.zip_code",
              @"rating"      : @"_source.rating",
              @"ratingCount" : @"_source.reviews_count",
-             @"type"        : @"_type",
-             @"icon"        : @"_source.marker",
+             @"typeString"  : @"_type",
              @"lng"         : @"_source.longitude",
              @"lat"         : @"_source.latitude",
              @"phone"       : @"_source.phone_number",
              @"license"     : @"_source.license_type",
+             @"isDelivery"  : @"_source.is_delivery",
              
              // these no longer apply with the new searching api [fix this]
              @"closesAt"    : @"_source.todaysHours.closes_at",
@@ -167,4 +161,13 @@ NSString * const EELDispensaryFavoriteToggledNotificationName = @"EELDispensaryF
     return [[NSValueTransformer valueTransformerForName:MTLURLValueTransformerName] mtl_invertedTransformer];
 }
 
+- (int)type{
+    if ([self.typeString isEqualToString:@"doctor"]) {
+        return 1;
+    }else if([self.typeString isEqualToString:@"dispensary"]){
+        return 0;
+    }
+    
+    return 2;
+}
 @end

@@ -17,6 +17,7 @@
 @property (copy, nonatomic, readonly) NSString *zip;
 @property (copy, nonatomic, readonly) NSString *icon;
 @property (copy, nonatomic, readonly) NSString *license;
+@property (copy, nonatomic, readonly) NSString *typeString;
 
 @property (copy, nonatomic, readonly) NSString *isOpen;
 @property (copy, nonatomic, readonly) NSString *closesAt;
@@ -32,6 +33,8 @@
 @property (nonatomic, readonly) int ratingCount;
 
 @property (nonatomic, readonly) int type;
+@property (nonatomic, readonly) BOOL isDelivery;
+
 @property (nonatomic, getter=isFavorite) BOOL favorite;
 
 - (NSString*)formattedNameString;
