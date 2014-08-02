@@ -113,45 +113,52 @@
     }
     
     NSDictionary *parametersNewSearch = @{
-                                          @"size" : @"200",
-                                          @"query":
-                                              @{@"function_score":
-                                                    @{@"query":
-                                                          @{@"filtered":
-                                                                @{
-                                                                    @"query": searchQuery,
-                                                                    @"filter":
-                                                                        @{@"and":
-                                                                              @{@"filters":
-                                                                                    @[
-                                                                                        @{@"type": @{@"value": type}},
-                                                                                        @{@"term": @{@"published": @"true"}},
-                                                                                        @{@"geo_bounding_box":
-                                                                                              @{@"lat_lon": @{
-                                                                                                        @"bottom_left": @{
-                                                                                                                @"lat": [NSString stringWithFormat:@"%lf", bottomLeftCoords.latitude],
-                                                                                                                @"lon": [NSString stringWithFormat:@"%lf", bottomLeftCoords.longitude]
-                                                                                                                },
-                                                                                                        @"top_right": @{
-                                                                                                                @"lat": [NSString stringWithFormat:@"%lf", topRightCoords.latitude],
-                                                                                                                @"lon": [NSString stringWithFormat:@"%lf", topRightCoords.longitude]
-                                                                                                                }
-                                                                                                        }
-                                                                                                }
-                                                                                          }
-                                                                                        ]
-                                                                                }
-                                                                          }
-                                                                    }
-                                                            },
-                                                      @"functions": @[
-                                                              @{@"script_score":
-                                                                    @{@"script": @"sqrt(_score * doc.feature_level_raw.value)"}
-                                                                }
-                                                              ]
-                                                      }
+        @"size" : @"200",
+        @"query": @{
+            @"function_score": @{
+                @"query": @{
+                    @"filtered": @{
+                        @"query": searchQuery,
+                        @"filter": @{
+                            @"and": @{
+                                @"filters": @[
+                                    @{
+                                        @"type": @{
+                                                @"value": type
+                                        }
+                                    },
+                                    @{
+                                        @"term": @{
+                                                @"published": @"true"
+                                        }
+                                    },
+                                    @{
+                                        @"geo_bounding_box": @{
+                                            @"lat_lon": @{
+                                                @"bottom_left": @{
+                                                        @"lat" : [@(map.region.center.latitude - map.region.span.latitudeDelta) description],
+                                                        @"lon": [@(map.region.center.longitude - map.region.span.longitudeDelta) description]
+                                                },
+                                                @"top_right": @{
+                                                        @"lat": [@(map.region.center.latitude + map.region.span.latitudeDelta) description],
+                                                        @"lon": [@(map.region.center.longitude + map.region.span.longitudeDelta) description]
                                                 }
-                                          };
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                @"functions": @[
+                    @{@"script_score":
+                        @{@"script": @"sqrt(_score * doc.feature_level_raw.value)"}
+                    }
+                ]
+            }
+        }
+    };
     
     [self POST:@"http://search-prod.weedmaps.com:9200/weedmaps/_search?" parameters:parametersNewSearch completion:^(OVCResponse *response, NSError *error) {
         NSLog(@"%@", response);
