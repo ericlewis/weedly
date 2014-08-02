@@ -96,18 +96,18 @@
     NSParameterAssert(lng);
     NSParameterAssert(lat);
     
-    NSDictionary *searchQuery = @{@"bool":
-                                      @{@"should":
-                                            @[
-                                                @{@"multi_match":
-                                                      @{@"query": term,
-                                                        @"fields":
-                                                            @[@"name^5", @"_all"]
-                                                        }
-                                                  }
-                                                ]
-                                        }
-                                  };
+    id searchQuery = @{@"bool":
+                           @{@"should":
+                                 @[
+                                     @{@"multi_match":
+                                           @{@"query": term,
+                                             @"fields":
+                                                 @[@"name^5", @"_all"]
+                                             }
+                                       }
+                                     ]
+                             }
+                       };
     
     if ([[term stringByReplacingOccurrencesOfString:@" " withString:@""] length] == 0) {
         searchQuery = [NSNull null];
