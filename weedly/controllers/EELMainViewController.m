@@ -11,6 +11,7 @@
 #import "EELListHeaderTableViewCell.h"
 #import "EELArrayDataSource.h"
 #import "EELListTableViewCell.h"
+#import "EELYLocationManager.h"
 
 @interface EELMainViewController ()
 
@@ -28,15 +29,6 @@
 
 @implementation EELMainViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -46,12 +38,43 @@
     [self setupSearchBar];
     
     [self setupLocationManager];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationDidChange:) name:kEELYLocationDidChange object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(authorizationStatusDidChange:) name:kEELYLocationStatusDidChange object:nil];
+    
+    [[EELYLocationManager sharedManager] startUpdatingLocation];
 
     // pull initial values
     [self getInitialListings];
 
     self.navigationController.navigationBar.translucent = NO;
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:self.navigationItem.backBarButtonItem.style target:nil action:nil];
+}
+
+- (void) locationDidChange:(NSNotification*)notification {
+    if (!_didZoomToUser) {
+        MKCoordinateRegion region;
+        CLLocationCoordinate2D coords = [EELYLocationManager sharedManager].location.coordinate;
+        coords.latitude = coords.latitude;
+        region.center = coords;
+        
+        MKCoordinateSpan span;
+        span.latitudeDelta  = 0.12; // Change these values to change the zoom
+        span.longitudeDelta = 0.12;
+        region.span = span;
+        
+        [self.mapView setRegion:region animated:YES];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self performSearch:self.searchBar.text];
+        });
+        _didZoomToUser = YES;
+    }else{
+        [[MTLocationManager sharedInstance] setTrackingMode:MTUserTrackingModeNone];
+    }
+}
+
+- (void) authorizationStatusDidChange:(NSNotification*)notification {
+    //do something if they dont set authorization to allow
 }
 
 
@@ -165,7 +188,7 @@
     [MTLocationManager sharedInstance].mapView = self.mapView;
     [[MTLocationManager sharedInstance] setTrackingMode:MTUserTrackingModeFollow];
     
-    [[MTLocationManager sharedInstance] whenLocationChanged:^(CLLocation *location) {
+    /*[[MTLocationManager sharedInstance] whenLocationChanged:^(CLLocation *location) {
         if (!_didZoomToUser) {
             MKCoordinateRegion region;
             CLLocationCoordinate2D coords = location.coordinate;
@@ -182,7 +205,7 @@
         }else{
             [[MTLocationManager sharedInstance] setTrackingMode:MTUserTrackingModeNone];
         }
-    }];
+    }];*/
 }
 
 - (void)setupSearchBar{

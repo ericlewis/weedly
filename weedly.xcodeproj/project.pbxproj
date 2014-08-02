@@ -58,6 +58,7 @@
 		4DD1FFF8194641650072D5B4 /* EELListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD1FFF7194641650072D5B4 /* EELListTableView.m */; };
 		4DD4930C1915827D001A6203 /* EELMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4930B1915827D001A6203 /* EELMainViewController.m */; };
 		4DD86E171959F28B002D0A3C /* EELDealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD86E161959F28B002D0A3C /* EELDealViewController.m */; };
+		A40B92E6198C88EC00EB1684 /* EELYLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A40B92E5198C88EC00EB1684 /* EELYLocationManager.m */; };
 		A416BC0E198C51CB00ACC39B /* AAPLAction.m in Sources */ = {isa = PBXBuildFile; fileRef = A416BBFA198C51CB00ACC39B /* AAPLAction.m */; };
 		A416BC0F198C51CB00ACC39B /* AAPLBasicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A416BBFC198C51CB00ACC39B /* AAPLBasicCell.m */; };
 		A416BC10198C51CB00ACC39B /* AAPLCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A416BBFF198C51CB00ACC39B /* AAPLCollectionViewCell.m */; };
@@ -183,6 +184,8 @@
 		4DD4930B1915827D001A6203 /* EELMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELMainViewController.m; path = controllers/EELMainViewController.m; sourceTree = "<group>"; };
 		4DD86E151959F28B002D0A3C /* EELDealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELDealViewController.h; path = controllers/EELDealViewController.h; sourceTree = "<group>"; };
 		4DD86E161959F28B002D0A3C /* EELDealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELDealViewController.m; path = controllers/EELDealViewController.m; sourceTree = "<group>"; };
+		A40B92E4198C88EC00EB1684 /* EELYLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EELYLocationManager.h; sourceTree = "<group>"; };
+		A40B92E5198C88EC00EB1684 /* EELYLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EELYLocationManager.m; sourceTree = "<group>"; };
 		A416BBF9198C51CB00ACC39B /* AAPLAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLAction.h; sourceTree = "<group>"; };
 		A416BBFA198C51CB00ACC39B /* AAPLAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLAction.m; sourceTree = "<group>"; };
 		A416BBFB198C51CB00ACC39B /* AAPLBasicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLBasicCell.h; sourceTree = "<group>"; };
@@ -545,6 +548,8 @@
 				4DC1A11A1912F9A200228F5A /* InfoPlist.strings */,
 				4DC1A11D1912F9A200228F5A /* main.m */,
 				4DC1A11F1912F9A200228F5A /* weedly-Prefix.pch */,
+				A40B92E4198C88EC00EB1684 /* EELYLocationManager.h */,
+				A40B92E5198C88EC00EB1684 /* EELYLocationManager.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -751,6 +756,7 @@
 				4D8B0A2A198C3EE2001ECC83 /* EELStoreHours.m in Sources */,
 				A416BC0E198C51CB00ACC39B /* AAPLAction.m in Sources */,
 				4D37D46B19494F9F00034769 /* EELListHeaderTableViewCell.m in Sources */,
+				A40B92E6198C88EC00EB1684 /* EELYLocationManager.m in Sources */,
 				A416BC13198C51CB00ACC39B /* AAPLPinnableHeaderView.m in Sources */,
 				4D06F69719186AF1005597F9 /* EELMenu.m in Sources */,
 				A416BC11198C51CB00ACC39B /* AAPLContentLoading.m in Sources */,
