@@ -212,7 +212,7 @@
 
 - (void)performSearch:(NSString*)searchTerm lat:(CGFloat)lat lng:(CGFloat)lng{
     if (self.searchBar.tag == 420) {
-        [[EELWMClient sharedClient] searchDispensariesWithTerm:searchTerm lat:lat lng:lng completionBlock:^(NSArray *results, NSError *error) {
+        [[EELWMClient sharedClient] searchDispensariesWithTerm:searchTerm map:self.mapView completionBlock:^(NSArray *results, NSError *error) {
             if (error) {
                 NSLog(@"noooo: %@", error);
                 return;
@@ -241,7 +241,7 @@
             [self addPins];
         }];
     }else if(self.searchBar.tag == 911){
-        [[EELWMClient sharedClient] searchDoctorsWithTerm:searchTerm lat:lat lng:lng completionBlock:^(NSArray *results, NSError *error) {
+        [[EELWMClient sharedClient] searchDoctorsWithTerm:searchTerm map:self.mapView completionBlock:^(NSArray *results, NSError *error) {
             if (error) {
                 NSLog(@"noooo: %@", error);
                 return;

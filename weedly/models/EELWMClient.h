@@ -15,10 +15,8 @@
 
 #pragma mark -
 #pragma mark Search Actions
-- (void)searchDoctorsWithTerm:(NSString *)term completionBlock:(void (^)(NSArray *results, NSError *error))block;
-- (void)searchDispensariesWithTerm:(NSString *)term completionBlock:(void (^)(NSArray *results, NSError *error))block;
-- (void)searchDoctorsWithTerm:(NSString *)term lat:(CGFloat)lat lng:(CGFloat)lng completionBlock:(void (^)(NSArray *results, NSError *error))block;
-- (void)searchDispensariesWithTerm:(NSString *)term lat:(CGFloat)lat lng:(CGFloat)lng completionBlock:(void (^)(NSArray *results, NSError *error))block;
+- (void)searchDoctorsWithTerm:(NSString *)term map:(MKMapView*)map completionBlock:(void (^)(NSArray *results, NSError *error))block;
+- (void)searchDispensariesWithTerm:(NSString *)term map:(MKMapView*)map completionBlock:(void (^)(NSArray *results, NSError *error))block;
 
 #pragma mark -
 #pragma mark Merchant Actions

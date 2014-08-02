@@ -29,20 +29,12 @@
 
 #pragma mark -
 #pragma mark Search Actions
-- (void)searchDoctorsWithTerm:(NSString *)term completionBlock:(void (^)(NSArray *results, NSError *error))block {
-    [self searchWithType:@"doctor" model:[EELDispensary class] term:term completionBlock:block];
+- (void)searchDoctorsWithTerm:(NSString *)term map:(MKMapView*)map completionBlock:(void (^)(NSArray *results, NSError *error))block {
+    [self searchWithType:@"doctor" model:[EELDispensary class] term:term map:map completionBlock:block];
 }
 
-- (void)searchDoctorsWithTerm:(NSString *)term lat:(CGFloat)lat lng:(CGFloat)lng completionBlock:(void (^)(NSArray *results, NSError *error))block {
-    [self searchWithType:@"doctor" model:[EELDispensary class] term:term lat:lat lng:lng completionBlock:block];
-}
-
-- (void)searchDispensariesWithTerm:(NSString *)term completionBlock:(void (^)(NSArray *results, NSError *error))block {
-    [self searchWithType:@"dispensary" model:[EELDispensary class] term:term completionBlock:block];
-}
-
-- (void)searchDispensariesWithTerm:(NSString *)term lat:(CGFloat)lat lng:(CGFloat)lng completionBlock:(void (^)(NSArray *results, NSError *error))block {
-    [self searchWithType:@"dispensary" model:[EELDispensary class] term:term lat:lat lng:lng completionBlock:block];
+- (void)searchDispensariesWithTerm:(NSString *)term map:(MKMapView*)map completionBlock:(void (^)(NSArray *results, NSError *error))block {
+    [self searchWithType:@"dispensary" model:[EELDispensary class] term:term map:map completionBlock:block];
 }
 
 #pragma mark -
@@ -89,12 +81,11 @@
 
 #pragma mark -
 #pragma mark Private
-- (void)searchWithType:(NSString*)type model:(id)class term:(NSString*)term lat:(CGFloat)lat lng:(CGFloat)lng completionBlock:(void (^)(NSArray *results, NSError *error))block{
+- (void)searchWithType:(NSString*)type model:(id)class term:(NSString*)term map:(MKMapView*)map completionBlock:(void (^)(NSArray *results, NSError *error))block{
     NSParameterAssert(type);
     NSParameterAssert(term);
     NSParameterAssert(block);
-    NSParameterAssert(lng);
-    NSParameterAssert(lat);
+    NSParameterAssert(map);
     
     id searchQuery = @{@"bool":
                            @{@"should":
@@ -158,11 +149,6 @@
         NSLog(@"%@", response);
         block(response.result, error);
     }];
-}
-
-- (void)searchWithType:(NSString*)type model:(id)class term:(NSString*)term completionBlock:(void (^)(NSArray *results, NSError *error))block{
-    CLLocationCoordinate2D coords = [MTLocationManager sharedInstance].lastKnownLocation.coordinate;
-    [self searchWithType:type model:class term:type lat:coords.latitude ?: 37.773972 lng:coords.longitude ?: -122.431297 completionBlock:block];
 }
 
 + (NSDictionary *)modelClassesByResourcePath {
