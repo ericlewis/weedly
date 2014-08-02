@@ -87,14 +87,6 @@
     NSParameterAssert(block);
     NSParameterAssert(map);
     
-    CLLocationCoordinate2D topRightCoords = CLLocationCoordinate2DMake(
-                                                                  map.region.center.latitude + map.region.span.latitudeDelta / 2.0,
-                                                                  map.region.center.longitude - map.region.span.longitudeDelta / 2.0);
-    
-    CLLocationCoordinate2D bottomLeftCoords = CLLocationCoordinate2DMake(
-                                                                  map.region.center.latitude - map.region.span.latitudeDelta / 2.0,
-                                                                  map.region.center.longitude + map.region.span.longitudeDelta / 2.0);
-    
     id searchQuery = @{@"bool":
                            @{@"should":
                                  @[
