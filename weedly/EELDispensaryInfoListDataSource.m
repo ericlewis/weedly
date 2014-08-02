@@ -53,7 +53,7 @@
     }
     
     // directions if able to
-    if(self.dispensary.address.length > 4){
+    if(!self.dispensary.isDelivery){
         [itemsToUse addObject:@{
                                 @"name": @"Directions",
                                 @"subtitle": @"Find your way here",
