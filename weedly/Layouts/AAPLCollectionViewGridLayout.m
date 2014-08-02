@@ -651,7 +651,7 @@ typedef NS_ENUM(NSInteger, AAPLAutoScrollDirection) {
         if (CGRectIntersectsRect(attributes.frame, rect))
             [result addObject:attributes];
     }
-
+    
 #if LAYOUT_DEBUGGING
     LAYOUT_LOG(@"rect=%@", NSStringFromCGRect(rect));
     for (AAPLCollectionViewGridLayoutAttributes *attr in result) {

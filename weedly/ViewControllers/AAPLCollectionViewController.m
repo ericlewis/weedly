@@ -14,7 +14,7 @@
 #import "AAPLCollectionViewGridLayout_Private.h"
 #import "AAPLCollectionViewCell.h"
 
-#define UPDATE_DEBUGGING 0
+#define UPDATE_DEBUGGING 1
 
 static void * const AAPLDataSourceContext = @"DataSourceContext";
 

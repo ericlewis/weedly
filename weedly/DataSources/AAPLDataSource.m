@@ -84,14 +84,25 @@
     NSInteger numberOfSections = self.numberOfSections;
 
     AAPLLayoutSectionMetrics *globalMetrics = [self snapshotMetricsForSectionAtIndex:AAPLGlobalSection];
-    for (AAPLLayoutSupplementaryMetrics* headerMetrics in globalMetrics.headers)
-        [collectionView registerClass:headerMetrics.supplementaryViewClass forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerMetrics.reuseIdentifier];
+    for (AAPLLayoutSupplementaryMetrics* headerMetrics in globalMetrics.headers){
+        if ([[NSBundle mainBundle] pathForResource:NSStringFromClass(headerMetrics.supplementaryViewClass) ofType:@"nib"] != nil) {
+            [collectionView registerNib:[UINib nibWithNibName:NSStringFromClass(headerMetrics.supplementaryViewClass) bundle:[NSBundle mainBundle]] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerMetrics.reuseIdentifier];
+        }else{
+            [collectionView registerClass:headerMetrics.supplementaryViewClass forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerMetrics.reuseIdentifier];
+        }
+    }
 
     for (NSInteger sectionIndex = 0; sectionIndex < numberOfSections; ++sectionIndex) {
         AAPLLayoutSectionMetrics *metrics = [self snapshotMetricsForSectionAtIndex:sectionIndex];
 
-        for (AAPLLayoutSupplementaryMetrics* headerMetrics in metrics.headers)
-            [collectionView registerClass:headerMetrics.supplementaryViewClass forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerMetrics.reuseIdentifier];
+        for (AAPLLayoutSupplementaryMetrics* headerMetrics in metrics.headers){
+            if ([[NSBundle mainBundle] pathForResource:NSStringFromClass(headerMetrics.supplementaryViewClass) ofType:@"nib"] != nil) {
+                [collectionView registerNib:[UINib nibWithNibName:NSStringFromClass(headerMetrics.supplementaryViewClass) bundle:[NSBundle mainBundle]] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerMetrics.reuseIdentifier];
+            }else{
+                [collectionView registerClass:headerMetrics.supplementaryViewClass forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerMetrics.reuseIdentifier];
+            }
+        }
+        
         for (AAPLLayoutSupplementaryMetrics* footerMetrics in metrics.footers)
             [collectionView registerClass:footerMetrics.supplementaryViewClass forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:footerMetrics.reuseIdentifier];
     }
