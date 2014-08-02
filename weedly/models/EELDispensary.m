@@ -227,7 +227,7 @@ NSString * const EELDispensaryFavoriteToggledNotificationName = @"EELDispensaryF
     EELYTimeOfDay* now = [[EELYTimeOfDay alloc] init];
     now.hour = currentDate.hour;
     now.minute = currentDate.minute;
-    now.isAnteMerdiem = YES; /* it's in 24-hour mode, so always AM */
+    now.isAnteMerdiem = (currentDate.hour != 12); /* 12 on a 12 hour clock is really 0:00, but this in 24 hour time so 12 is just a 12 */
     
     NSLog(@"Start: %d Now: %d Closes: %d", [start unixTime], [now unixTime], [close unixTime]);
     
