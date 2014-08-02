@@ -581,7 +581,9 @@
         [self.tableView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
         [UIView commitAnimations];
         
-        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        if ([self.tableView numberOfRowsInSection:1] > 0) {
+            [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        }
     }
 }
 
