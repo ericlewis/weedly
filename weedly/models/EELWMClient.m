@@ -96,13 +96,22 @@
     NSParameterAssert(lng);
     NSParameterAssert(lat);
     
-    NSDictionary *parameters = @{
-                                 @"type" : type,
-                                 @"lat"  : [NSString stringWithFormat:@"%f", lat],
-                                 @"lng"  : [NSString stringWithFormat:@"%f", lng],
-                                 @"q"    : term
-                                 };
-
+    NSDictionary *searchQuery = @{@"bool":
+                                      @{@"should":
+                                            @[
+                                                @{@"multi_match":
+                                                      @{@"query": term,
+                                                        @"fields":
+                                                            @[@"name^5", @"_all"]
+                                                        }
+                                                  }
+                                                ]
+                                        }
+                                  };
+    
+    if ([[term stringByReplacingOccurrencesOfString:@" " withString:@""] length] == 0) {
+        searchQuery = [NSNull null];
+    }
     
     NSDictionary *parametersNewSearch = @{
                                           @"size" : @"200",
@@ -110,29 +119,31 @@
                                               @{@"function_score":
                                                     @{@"query":
                                                           @{@"filtered":
-                                                                @{@"filter":
-                                                                      @{@"and":
-                                                                            @{@"filters":
-                                                                                  @[
-                                                                                      @{@"type": @{@"value": type}},
-                                                                                      @{@"term": @{@"published": @"true"}},
-                                                                                      @{@"geo_bounding_box":
-                                                                                            @{@"lat_lon": @{
-                                                                                                      @"bottom_left": @{
-                                                                                                              @"lat": @"37.58241352386545",
-                                                                                                              @"lon": @"-122.5480826789226"
-                                                                                                              },
-                                                                                                      @"top_right": @{
-                                                                                                              @"lat": @"37.9871510573685",
-                                                                                                              @"lon": @"-122.2740372934126"
-                                                                                                              }
-                                                                                                      }
-                                                                                              }
-                                                                                        }
-                                                                                      ]
-                                                                              }
-                                                                        }
-                                                                  }
+                                                                @{
+                                                                    @"query": searchQuery,
+                                                                    @"filter":
+                                                                        @{@"and":
+                                                                              @{@"filters":
+                                                                                    @[
+                                                                                        @{@"type": @{@"value": type}},
+                                                                                        @{@"term": @{@"published": @"true"}},
+                                                                                        @{@"geo_bounding_box":
+                                                                                              @{@"lat_lon": @{
+                                                                                                        @"bottom_left": @{
+                                                                                                                @"lat": @"37.58241352386545",
+                                                                                                                @"lon": @"-122.5480826789226"
+                                                                                                                },
+                                                                                                        @"top_right": @{
+                                                                                                                @"lat": @"37.9871510573685",
+                                                                                                                @"lon": @"-122.2740372934126"
+                                                                                                                }
+                                                                                                        }
+                                                                                                }
+                                                                                          }
+                                                                                        ]
+                                                                                }
+                                                                          }
+                                                                    }
                                                             },
                                                       @"functions": @[
                                                               @{@"script_score":
@@ -144,6 +155,7 @@
                                           };
     
     [self POST:@"http://search-prod.weedmaps.com:9200/weedmaps/_search?" parameters:parametersNewSearch completion:^(OVCResponse *response, NSError *error) {
+        NSLog(@"%@", response);
         block(response.result, error);
     }];
 }
