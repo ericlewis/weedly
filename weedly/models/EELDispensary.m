@@ -8,6 +8,47 @@
 
 #import "EELDispensary.h"
 
+@interface EELYTimeOfDay : NSObject
+
+@property (nonatomic, assign) uint8_t hour;
+@property (nonatomic, assign) uint8_t minute;
+@property (nonatomic, assign) BOOL isAnteMerdiem; /* AM */
+
+- (uint32_t) unixTime;
+
+@end
+
+@implementation EELYTimeOfDay
+
+- (void) setHour:(uint8_t)hour {
+    if (hour == 12) {
+        _hour = 0;
+    } else {
+        _hour = hour;
+    }
+}
+
+- (uint32_t) unixTime {
+    uint32_t ret = 0;
+    if (!self.isAnteMerdiem) {
+        ret = ret + 12 * 60 * 60; /* 12 hours forward */
+    }
+    ret = ret + self.hour * 60 * 60;
+    ret = ret + self.minute * 60;
+    return ret;
+}
+
+- (instancetype) initWithString:(NSString*)string {
+    self = [super init];
+    NSArray* components = [string componentsSeparatedByString:@":"];
+    self.isAnteMerdiem = ![[[components[1] substringWithRange:NSMakeRange(2, 2)] uppercaseString] isEqualToString:@"PM"];
+    self.hour = (uint8_t)[components[0] intValue];
+    self.minute = (uint8_t)[[components[1] substringWithRange:NSMakeRange(0, 2)] intValue];
+    return self;
+}
+
+@end
+
 @implementation EELDispensary
 
 NSString * const EELDispensaryFavoriteToggledNotificationName = @"EELDispensaryFavoriteToggledNotificationName";
@@ -179,18 +220,26 @@ NSString * const EELDispensaryFavoriteToggledNotificationName = @"EELDispensaryF
 
 - (NSString*) isOpen {
 
-    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"HH:mmaa";
-    dateFormatter.timeZone = [NSTimeZone systemTimeZone];
-    NSDate* closeTime = [dateFormatter dateFromString:self.closesAt];
-    NSDate* openTime = [dateFormatter dateFromString:self.opensAt];
+    EELYTimeOfDay* start = [[EELYTimeOfDay alloc] initWithString:self.opensAt];
+    EELYTimeOfDay* close = [[EELYTimeOfDay alloc] initWithString:self.closesAt];
+    
     NSDate* currentDate = [NSDate date];
-    NSDate* nowTime = [NSDate dateWithTimeIntervalSinceReferenceDate:-31557600 - 86400 + currentDate.hour * 60 * 60 + currentDate.minute * 60];
+    EELYTimeOfDay* now = [[EELYTimeOfDay alloc] init];
+    now.hour = currentDate.hour;
+    now.minute = currentDate.minute;
+    now.isAnteMerdiem = YES; /* it's in 24-hour mode, so always AM */
     
-    if ([nowTime compare:closeTime] == NSOrderedAscending && [nowTime compare:openTime] == NSOrderedDescending) {
-        return @"YES";
+    NSLog(@"Start: %d Now: %d Closes: %d", [start unixTime], [now unixTime], [close unixTime]);
+    
+    if ([start unixTime] <= [now unixTime] && [now unixTime] <= [close unixTime]) {
+        return @"YES"; /* traditional time */
     }
-    
+    if ([start unixTime] == [close unixTime]) {
+        return @"YES"; /* 24-hours */
+    }
+    if ([close unixTime] <= [start unixTime] && ([now unixTime] <= [close unixTime] || [now unixTime] >= [start unixTime])) {
+        return @"YES"; /* wraps over midnight */
+    }
     return @"NO";
 }
 
