@@ -87,6 +87,14 @@
     NSParameterAssert(block);
     NSParameterAssert(map);
     
+    CLLocationCoordinate2D topRightCoords = CLLocationCoordinate2DMake(
+                                                                  map.region.center.latitude + map.region.span.latitudeDelta / 2.0,
+                                                                  map.region.center.longitude - map.region.span.longitudeDelta / 2.0);
+    
+    CLLocationCoordinate2D bottomLeftCoords = CLLocationCoordinate2DMake(
+                                                                  map.region.center.latitude - map.region.span.latitudeDelta / 2.0,
+                                                                  map.region.center.longitude + map.region.span.longitudeDelta / 2.0);
+    
     id searchQuery = @{@"bool":
                            @{@"should":
                                  @[
@@ -121,12 +129,12 @@
                                                                                         @{@"geo_bounding_box":
                                                                                               @{@"lat_lon": @{
                                                                                                         @"bottom_left": @{
-                                                                                                                @"lat": @"37.58241352386545",
-                                                                                                                @"lon": @"-122.5480826789226"
+                                                                                                                @"lat": [NSString stringWithFormat:@"%lf", bottomLeftCoords.latitude],
+                                                                                                                @"lon": [NSString stringWithFormat:@"%lf", bottomLeftCoords.longitude]
                                                                                                                 },
                                                                                                         @"top_right": @{
-                                                                                                                @"lat": @"37.9871510573685",
-                                                                                                                @"lon": @"-122.2740372934126"
+                                                                                                                @"lat": [NSString stringWithFormat:@"%lf", topRightCoords.latitude],
+                                                                                                                @"lon": [NSString stringWithFormat:@"%lf", topRightCoords.longitude]
                                                                                                                 }
                                                                                                         }
                                                                                                 }
