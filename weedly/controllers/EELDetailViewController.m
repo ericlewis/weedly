@@ -56,7 +56,7 @@
 - (EELDispensaryDetailDataSource *)newDetailDataSource
 {
     EELDispensaryDetailDataSource *dataSource = [[EELDispensaryDetailDataSource alloc] initWithDispensary:self.dispensary];
-    dataSource.title = NSLocalizedString(@"Info", @"Title of dispensary details section");
+    dataSource.title = NSLocalizedString(@"Options", @"Title of dispensary details section");
     
     dataSource.noContentTitle = NSLocalizedString(@"No Dispensary", @"The title of the placeholder to show if the dispensary has no data");
     dataSource.noContentMessage = NSLocalizedString(@"This dispensary has no information.", @"The message to show when the dispensary has no information");

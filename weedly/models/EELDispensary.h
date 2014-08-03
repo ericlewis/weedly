@@ -37,6 +37,9 @@
 
 @property (nonatomic, readonly) int type;
 @property (nonatomic, readonly) BOOL isDelivery;
+@property (nonatomic, readonly) BOOL creditCardsAccepted;
+@property (nonatomic, readonly) BOOL hasGuard;
+@property (nonatomic, readonly) BOOL hasTesting;
 
 @property (nonatomic, getter=isFavorite) BOOL favorite;
 

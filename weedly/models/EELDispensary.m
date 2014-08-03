@@ -161,26 +161,24 @@ NSString * const EELDispensaryFavoriteToggledNotificationName = @"EELDispensaryF
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
-             @"id"          : @"_source.id",
-             @"name"        : @"_source.name",
-             @"address"     : @"_source.address",
-             @"city"        : @"_source.city",
-             @"state"       : @"_source.state",
-             @"zip"         : @"_source.zip_code",
-             @"rating"      : @"_source.rating",
-             @"ratingCount" : @"_source.reviews_count",
-             @"typeString"  : @"_type",
-             @"lng"         : @"_source.longitude",
-             @"lat"         : @"_source.latitude",
-             @"phone"       : @"_source.phone_number",
-             @"license"     : @"_source.license_type",
-             @"isDelivery"  : @"_source.is_delivery",
-             @"hours"       : @"_source.hours",
-             
-             // these no longer apply with the new searching api [fix this]
-             //@"closesAt"    : @"_source.todaysHours.closes_at",
-             //@"opensAt"     : @"_source.todaysHours.opens_at",
-             //@"isOpen"      : @"_source.is_open",
+             @"id"                  : @"_source.id",
+             @"name"                : @"_source.name",
+             @"address"             : @"_source.address",
+             @"city"                : @"_source.city",
+             @"state"               : @"_source.state",
+             @"zip"                 : @"_source.zip_code",
+             @"rating"              : @"_source.rating",
+             @"ratingCount"         : @"_source.reviews_count",
+             @"typeString"          : @"_type",
+             @"lng"                 : @"_source.longitude",
+             @"lat"                 : @"_source.latitude",
+             @"phone"               : @"_source.phone_number",
+             @"license"             : @"_source.license_type",
+             @"isDelivery"          : @"_source.is_delivery",
+             @"hours"               : @"_source.hours",
+             @"creditCardsAccepted" : @"_source.accepts_credit_cards",
+             @"hasGuard"            : @"_source.has_security_guard",
+             @"hasTesting"          : @"_source.has_testing"
              };
 }
 
