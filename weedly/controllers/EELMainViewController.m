@@ -70,7 +70,6 @@
     //do something if they dont set authorization to allow
 }
 
-
 - (void)viewDidAppear:(BOOL)animated{
     [self performSelector:@selector(showSearchBar) withObject:self afterDelay:0.15];
     
