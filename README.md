@@ -24,3 +24,5 @@ Once CocoaPods has finished the installation, open weedly.xcworkspace using Xcod
 ## Author(s)
 **Eric Lewis**
 + http://twitter.com/ericlewis
+**Ryan Dignard**
++ https://github.com/rdignard08
