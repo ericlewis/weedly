@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *filterButton;
 
+@property (nonatomic) int selectedRow;
 @property (strong, nonatomic) REMenu *filterMenu;
 @property (strong, nonatomic) UISearchBar *searchBar;
 @property (strong, nonatomic) EELArrayDataSource *dataSource;
@@ -175,6 +176,7 @@
         NSSet *annSet = [self.mapView annotationsInMapRect:self.mapView.visibleMapRect];
         EELListHeaderTableViewCell *countCell = (EELListHeaderTableViewCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
         [countCell configureWithAmount:annSet.count];
+        self.selectedRow = 0;
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
     });
 }
@@ -442,6 +444,7 @@
             NSSet *annSet = [self.mapView annotationsInMapRect:self.mapView.visibleMapRect];
             EELListHeaderTableViewCell *countCell = (EELListHeaderTableViewCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
             [countCell configureWithAmount:annSet.count];
+            self.selectedRow = 1;
             [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
         });
     }
@@ -550,6 +553,12 @@
         listTableCell = [tableView dequeueReusableCellWithIdentifier:@"ItemHeaderCell" forIndexPath:indexPath];
         [listTableCell configureWithDispensary:dispensary];
         cell = listTableCell;
+        
+        if (self.selectedRow == 1 && indexPath.row == 0) {
+            cell.backgroundColor = [UIColor colorWithRed:238/255.0f green:250/255.0f blue:254/255.0f alpha:1.0f];
+        }else{
+            cell.backgroundColor = [UIColor whiteColor];
+        }
     }
     
     cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
