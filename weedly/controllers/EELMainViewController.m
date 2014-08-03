@@ -43,9 +43,6 @@
     
     [[EELYLocationManager sharedManager] startUpdatingLocation];
 
-    // pull initial values
-    [self getInitialListings];
-
     self.navigationController.navigationBar.translucent = NO;
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:self.navigationItem.backBarButtonItem.style target:nil action:nil];
 }
@@ -74,7 +71,7 @@
 }
 
 
-- (void)viewWillAppear:(BOOL)animated{
+- (void)viewDidAppear:(BOOL)animated{
     [self performSelector:@selector(showSearchBar) withObject:self afterDelay:0.15];
     
     // landscape fix search
@@ -144,9 +141,6 @@
     if (gestureRecognizer.state == UIGestureRecognizerStateEnded){
         [self performSearch:self.searchBar.text];
     }
-}
-
-- (void)getInitialListings{
 }
 
 - (void)addPins{
