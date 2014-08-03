@@ -34,7 +34,6 @@
 		4D9DDDF61915AFEB006E5B03 /* EELDispensary.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9DDDF51915AFEB006E5B03 /* EELDispensary.m */; };
 		4D9DDDF91915BA75006E5B03 /* EELAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9DDDF81915BA75006E5B03 /* EELAccount.m */; };
 		4D9DDDFC1915BA81006E5B03 /* EELReview.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9DDDFB1915BA81006E5B03 /* EELReview.m */; };
-		4D9DDDFF1915BAA4006E5B03 /* EELSmokinOn.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9DDDFE1915BAA4006E5B03 /* EELSmokinOn.m */; };
 		4D9DDE0419169629006E5B03 /* EELMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9DDE0319169629006E5B03 /* EELMenuItem.m */; };
 		4D9DDE0B1916AD74006E5B03 /* EELArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9DDE0A1916AD74006E5B03 /* EELArrayDataSource.m */; };
 		4DC1A1121912F9A200228F5A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC1A1111912F9A200228F5A /* Foundation.framework */; };
@@ -147,8 +146,6 @@
 		4D9DDDF81915BA75006E5B03 /* EELAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELAccount.m; path = models/EELAccount.m; sourceTree = "<group>"; };
 		4D9DDDFA1915BA81006E5B03 /* EELReview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELReview.h; path = models/EELReview.h; sourceTree = "<group>"; };
 		4D9DDDFB1915BA81006E5B03 /* EELReview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELReview.m; path = models/EELReview.m; sourceTree = "<group>"; };
-		4D9DDDFD1915BAA4006E5B03 /* EELSmokinOn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELSmokinOn.h; path = models/EELSmokinOn.h; sourceTree = "<group>"; };
-		4D9DDDFE1915BAA4006E5B03 /* EELSmokinOn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELSmokinOn.m; path = models/EELSmokinOn.m; sourceTree = "<group>"; };
 		4D9DDE0219169629006E5B03 /* EELMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELMenuItem.h; path = models/EELMenuItem.h; sourceTree = "<group>"; };
 		4D9DDE0319169629006E5B03 /* EELMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELMenuItem.m; path = models/EELMenuItem.m; sourceTree = "<group>"; };
 		4D9DDE091916AD74006E5B03 /* EELArrayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELArrayDataSource.h; path = "data sources/EELArrayDataSource.h"; sourceTree = "<group>"; };
@@ -369,6 +366,68 @@
 			name = API;
 			sourceTree = "<group>";
 		};
+		4D8B0A2B198DDC20001ECC83 /* collection fw */ = {
+			isa = PBXGroup;
+			children = (
+				A416BC34198C522F00ACC39B /* AAPLCollectionViewGridLayout_Internal.h */,
+				A416BC35198C522F00ACC39B /* AAPLCollectionViewGridLayout_Internal.m */,
+				A416BC36198C522F00ACC39B /* AAPLCollectionViewGridLayout_Private.h */,
+				A416BC37198C522F00ACC39B /* AAPLCollectionViewGridLayout.h */,
+				A416BC38198C522F00ACC39B /* AAPLCollectionViewGridLayout.m */,
+				A416BC39198C522F00ACC39B /* AAPLCollectionViewGridLayoutAttributes_Private.h */,
+				A416BC3A198C522F00ACC39B /* AAPLCollectionViewGridLayoutAttributes.h */,
+				A416BC3B198C522F00ACC39B /* AAPLCollectionViewGridLayoutAttributes.m */,
+				A416BC3C198C522F00ACC39B /* AAPLLayoutMetrics_Private.h */,
+				A416BC3D198C522F00ACC39B /* AAPLLayoutMetrics.h */,
+				A416BC3E198C522F00ACC39B /* AAPLLayoutMetrics.m */,
+				A416BC3F198C522F00ACC39B /* AAPLCollectionViewController.h */,
+				A416BC40198C522F00ACC39B /* AAPLCollectionViewController.m */,
+				A416BC41198C522F00ACC39B /* AAPLSwipeToEditStateMachine.h */,
+				A416BC42198C522F00ACC39B /* AAPLSwipeToEditStateMachine.m */,
+				A416BC24198C51EB00ACC39B /* AAPLBasicDataSource.h */,
+				A416BC25198C51EB00ACC39B /* AAPLBasicDataSource.m */,
+				A416BC26198C51EB00ACC39B /* AAPLComposedDataSource_Private.h */,
+				A416BC27198C51EB00ACC39B /* AAPLComposedDataSource_Private.m */,
+				A416BC28198C51EB00ACC39B /* AAPLComposedDataSource.h */,
+				A416BC29198C51EB00ACC39B /* AAPLComposedDataSource.m */,
+				A416BC2A198C51EB00ACC39B /* AAPLDataSource_Private.h */,
+				A416BC2B198C51EB00ACC39B /* AAPLDataSource.h */,
+				A416BC2C198C51EB00ACC39B /* AAPLDataSource.m */,
+				A416BC2D198C51EB00ACC39B /* AAPLSegmentedDataSource.h */,
+				A416BC2E198C51EB00ACC39B /* AAPLSegmentedDataSource.m */,
+				A416BC18198C51DA00ACC39B /* AAPLDataSource+Headers.h */,
+				A416BC19198C51DA00ACC39B /* AAPLDataSource+Headers.m */,
+				A416BC1A198C51DB00ACC39B /* NSObject+KVOBlock.h */,
+				A416BC1B198C51DB00ACC39B /* NSObject+KVOBlock.m */,
+				A416BC1C198C51DB00ACC39B /* UICollectionView+Helpers.h */,
+				A416BC1D198C51DB00ACC39B /* UICollectionView+Helpers.m */,
+				A416BC1E198C51DB00ACC39B /* UIView+Helpers.h */,
+				A416BC1F198C51DB00ACC39B /* UIView+Helpers.m */,
+				A416BBF9198C51CB00ACC39B /* AAPLAction.h */,
+				A416BBFA198C51CB00ACC39B /* AAPLAction.m */,
+				A416BBFB198C51CB00ACC39B /* AAPLBasicCell.h */,
+				A416BBFC198C51CB00ACC39B /* AAPLBasicCell.m */,
+				A416BBFD198C51CB00ACC39B /* AAPLCollectionViewCell_Private.h */,
+				A416BBFE198C51CB00ACC39B /* AAPLCollectionViewCell.h */,
+				A416BBFF198C51CB00ACC39B /* AAPLCollectionViewCell.m */,
+				A416BC00198C51CB00ACC39B /* AAPLContentLoading.h */,
+				A416BC01198C51CB00ACC39B /* AAPLContentLoading.m */,
+				A416BC02198C51CB00ACC39B /* AAPLHairlineView.h */,
+				A416BC03198C51CB00ACC39B /* AAPLHairlineView.m */,
+				A416BC04198C51CB00ACC39B /* AAPLPinnableHeaderView.h */,
+				A416BC05198C51CB00ACC39B /* AAPLPinnableHeaderView.m */,
+				A416BC06198C51CB00ACC39B /* AAPLPlaceholderView.h */,
+				A416BC07198C51CB00ACC39B /* AAPLPlaceholderView.m */,
+				A416BC08198C51CB00ACC39B /* AAPLSectionHeaderView.h */,
+				A416BC09198C51CB00ACC39B /* AAPLSectionHeaderView.m */,
+				A416BC0A198C51CB00ACC39B /* AAPLSegmentedHeaderView.h */,
+				A416BC0B198C51CB00ACC39B /* AAPLSegmentedHeaderView.m */,
+				A416BC0C198C51CB00ACC39B /* AAPLStateMachine.h */,
+				A416BC0D198C51CB00ACC39B /* AAPLStateMachine.m */,
+			);
+			name = "collection fw";
+			sourceTree = "<group>";
+		};
 		4D9DDDEC1915AA2E006E5B03 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -390,8 +449,6 @@
 				4D9DDE0319169629006E5B03 /* EELMenuItem.m */,
 				4D9DDDFA1915BA81006E5B03 /* EELReview.h */,
 				4D9DDDFB1915BA81006E5B03 /* EELReview.m */,
-				4D9DDDFD1915BAA4006E5B03 /* EELSmokinOn.h */,
-				4D9DDDFE1915BAA4006E5B03 /* EELSmokinOn.m */,
 				4D9DDDF71915BA75006E5B03 /* EELAccount.h */,
 				4D9DDDF81915BA75006E5B03 /* EELAccount.m */,
 				4D9DDDF41915AFEB006E5B03 /* EELDispensary.h */,
@@ -474,61 +531,7 @@
 		4DC1A1171912F9A200228F5A /* weedly */ = {
 			isa = PBXGroup;
 			children = (
-				A416BC34198C522F00ACC39B /* AAPLCollectionViewGridLayout_Internal.h */,
-				A416BC35198C522F00ACC39B /* AAPLCollectionViewGridLayout_Internal.m */,
-				A416BC36198C522F00ACC39B /* AAPLCollectionViewGridLayout_Private.h */,
-				A416BC37198C522F00ACC39B /* AAPLCollectionViewGridLayout.h */,
-				A416BC38198C522F00ACC39B /* AAPLCollectionViewGridLayout.m */,
-				A416BC39198C522F00ACC39B /* AAPLCollectionViewGridLayoutAttributes_Private.h */,
-				A416BC3A198C522F00ACC39B /* AAPLCollectionViewGridLayoutAttributes.h */,
-				A416BC3B198C522F00ACC39B /* AAPLCollectionViewGridLayoutAttributes.m */,
-				A416BC3C198C522F00ACC39B /* AAPLLayoutMetrics_Private.h */,
-				A416BC3D198C522F00ACC39B /* AAPLLayoutMetrics.h */,
-				A416BC3E198C522F00ACC39B /* AAPLLayoutMetrics.m */,
-				A416BC3F198C522F00ACC39B /* AAPLCollectionViewController.h */,
-				A416BC40198C522F00ACC39B /* AAPLCollectionViewController.m */,
-				A416BC41198C522F00ACC39B /* AAPLSwipeToEditStateMachine.h */,
-				A416BC42198C522F00ACC39B /* AAPLSwipeToEditStateMachine.m */,
-				A416BC24198C51EB00ACC39B /* AAPLBasicDataSource.h */,
-				A416BC25198C51EB00ACC39B /* AAPLBasicDataSource.m */,
-				A416BC26198C51EB00ACC39B /* AAPLComposedDataSource_Private.h */,
-				A416BC27198C51EB00ACC39B /* AAPLComposedDataSource_Private.m */,
-				A416BC28198C51EB00ACC39B /* AAPLComposedDataSource.h */,
-				A416BC29198C51EB00ACC39B /* AAPLComposedDataSource.m */,
-				A416BC2A198C51EB00ACC39B /* AAPLDataSource_Private.h */,
-				A416BC2B198C51EB00ACC39B /* AAPLDataSource.h */,
-				A416BC2C198C51EB00ACC39B /* AAPLDataSource.m */,
-				A416BC2D198C51EB00ACC39B /* AAPLSegmentedDataSource.h */,
-				A416BC2E198C51EB00ACC39B /* AAPLSegmentedDataSource.m */,
-				A416BC18198C51DA00ACC39B /* AAPLDataSource+Headers.h */,
-				A416BC19198C51DA00ACC39B /* AAPLDataSource+Headers.m */,
-				A416BC1A198C51DB00ACC39B /* NSObject+KVOBlock.h */,
-				A416BC1B198C51DB00ACC39B /* NSObject+KVOBlock.m */,
-				A416BC1C198C51DB00ACC39B /* UICollectionView+Helpers.h */,
-				A416BC1D198C51DB00ACC39B /* UICollectionView+Helpers.m */,
-				A416BC1E198C51DB00ACC39B /* UIView+Helpers.h */,
-				A416BC1F198C51DB00ACC39B /* UIView+Helpers.m */,
-				A416BBF9198C51CB00ACC39B /* AAPLAction.h */,
-				A416BBFA198C51CB00ACC39B /* AAPLAction.m */,
-				A416BBFB198C51CB00ACC39B /* AAPLBasicCell.h */,
-				A416BBFC198C51CB00ACC39B /* AAPLBasicCell.m */,
-				A416BBFD198C51CB00ACC39B /* AAPLCollectionViewCell_Private.h */,
-				A416BBFE198C51CB00ACC39B /* AAPLCollectionViewCell.h */,
-				A416BBFF198C51CB00ACC39B /* AAPLCollectionViewCell.m */,
-				A416BC00198C51CB00ACC39B /* AAPLContentLoading.h */,
-				A416BC01198C51CB00ACC39B /* AAPLContentLoading.m */,
-				A416BC02198C51CB00ACC39B /* AAPLHairlineView.h */,
-				A416BC03198C51CB00ACC39B /* AAPLHairlineView.m */,
-				A416BC04198C51CB00ACC39B /* AAPLPinnableHeaderView.h */,
-				A416BC05198C51CB00ACC39B /* AAPLPinnableHeaderView.m */,
-				A416BC06198C51CB00ACC39B /* AAPLPlaceholderView.h */,
-				A416BC07198C51CB00ACC39B /* AAPLPlaceholderView.m */,
-				A416BC08198C51CB00ACC39B /* AAPLSectionHeaderView.h */,
-				A416BC09198C51CB00ACC39B /* AAPLSectionHeaderView.m */,
-				A416BC0A198C51CB00ACC39B /* AAPLSegmentedHeaderView.h */,
-				A416BC0B198C51CB00ACC39B /* AAPLSegmentedHeaderView.m */,
-				A416BC0C198C51CB00ACC39B /* AAPLStateMachine.h */,
-				A416BC0D198C51CB00ACC39B /* AAPLStateMachine.m */,
+				4D8B0A2B198DDC20001ECC83 /* collection fw */,
 				4D9DDDED1915AA50006E5B03 /* Models */,
 				4D9DDDEC1915AA2E006E5B03 /* Views */,
 				4DB1757719159E1D00B3A22F /* Controllers */,
@@ -779,7 +782,6 @@
 				4DC1A1221912F9A200228F5A /* EELAppDelegate.m in Sources */,
 				4DCFE51D1948BEA500139D52 /* EELDeal.m in Sources */,
 				A416BC44198C522F00ACC39B /* AAPLCollectionViewGridLayout.m in Sources */,
-				4D9DDDFF1915BAA4006E5B03 /* EELSmokinOn.m in Sources */,
 				4D87F4CE19499D7D00740558 /* EELFlowerMenuItemsDataSource.m in Sources */,
 				A416BC32198C51EB00ACC39B /* AAPLDataSource.m in Sources */,
 				4D87F4D119499D9500740558 /* EELConcentratesMenuItemsDataSource.m in Sources */,

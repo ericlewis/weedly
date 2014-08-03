@@ -153,7 +153,6 @@
     };
     
     [self POST:@"http://search-prod.weedmaps.com:9200/weedmaps/_search?" parameters:parametersNewSearch completion:^(OVCResponse *response, NSError *error) {
-        NSLog(@"%@", response);
         block(response.result, error);
     }];
 }

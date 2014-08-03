@@ -43,7 +43,6 @@
     #import "EELAccount.h"
     #import "EELDispensary.h"
     #import "EELReview.h"
-    #import "EELSmokinOn.h"
     #import "EELMenu.h"
     #import "EELMenuItem.h"
     #import "EELDeal.h"
