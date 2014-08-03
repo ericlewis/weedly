@@ -38,8 +38,6 @@
     [self setupTableView];
     [self setupSearchBar];
     
-    [self setupLocationManager];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationDidChange:) name:kEELYLocationDidChange object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(authorizationStatusDidChange:) name:kEELYLocationStatusDidChange object:nil];
     
@@ -138,9 +136,7 @@
     doubletapRec.numberOfTapsRequired = 2;
     [doubletapRec setDelegate:self];
     [self.mapView addGestureRecognizer:doubletapRec];
-    
     self.mapView.delegate = self;
-    [self performSelector:@selector(zoomToUserNotAnimated) withObject:self afterDelay:0.2];
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
@@ -179,35 +175,6 @@
         self.selectedRow = 0;
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
     });
-}
-
-- (void)setupLocationManager{
-    // Configure Location Manager
-    [MTLocationManager sharedInstance].locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    [MTLocationManager sharedInstance].locationManager.distanceFilter = kCLDistanceFilterNone;
-    [MTLocationManager sharedInstance].locationManager.headingFilter = 5; // 5 Degrees
-    
-    [MTLocationManager sharedInstance].mapView = self.mapView;
-    [[MTLocationManager sharedInstance] setTrackingMode:MTUserTrackingModeFollow];
-    
-    /*[[MTLocationManager sharedInstance] whenLocationChanged:^(CLLocation *location) {
-        if (!_didZoomToUser) {
-            MKCoordinateRegion region;
-            CLLocationCoordinate2D coords = location.coordinate;
-            coords.latitude = coords.latitude;
-            region.center = coords;
-            
-            MKCoordinateSpan span;
-            span.latitudeDelta  = 0.12; // Change these values to change the zoom
-            span.longitudeDelta = 0.12;
-            region.span = span;
-            
-            [self.mapView setRegion:region animated:YES];
-            _didZoomToUser = YES;
-        }else{
-            [[MTLocationManager sharedInstance] setTrackingMode:MTUserTrackingModeNone];
-        }
-    }];*/
 }
 
 - (void)setupSearchBar{
@@ -352,43 +319,6 @@
         self.filterMenu.textOffset = CGSizeMake(50, 0);
         
         [self.filterMenu showFromNavigationController:self.navigationController];
-    }
-}
-
-- (void)zoomToUser{
-    [self zoomToUser:YES];
-}
-
-- (void)zoomToUserNotAnimated{
-    [self zoomToUser:NO];
-}
-
-- (void)zoomToUser:(BOOL)animated{
-    if (self.mapView.userLocationVisible) {
-        MKCoordinateRegion region;
-        region.center = CLLocationCoordinate2DMake(self.mapView.userLocation.coordinate.latitude, self.mapView.userLocation.coordinate.longitude);
-        MKCoordinateSpan span;
-        
-        if (self.mapView.region.span.latitudeDelta > 1) {
-            span.latitudeDelta  = 0.1; // Change these values to change the zoom
-            span.longitudeDelta = 0.1;
-            region.span = span;
-        }else{
-            region.span = self.mapView.region.span;
-        }
-        
-        [self.mapView setRegion:region animated:animated];
-        [self performSearch:self.searchBar.text];
-    }else{
-        MKCoordinateRegion region;
-        region.center = CLLocationCoordinate2DMake(37.7733, -122.431297);
-        MKCoordinateSpan span;
-        span.latitudeDelta  = 0.1; // Change these values to change the zoom
-        span.longitudeDelta = 0.1;
-        region.span = span;
-        
-        [self.mapView setRegion:region animated:animated];
-        [self performSearch:self.searchBar.text];
     }
 }
 
