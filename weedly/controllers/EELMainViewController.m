@@ -229,6 +229,8 @@
 #pragma mark -
 #pragma mark - Actions
 - (void)performSearch:(NSString*)searchTerm{
+    self.selectedRow = 0;
+    
     NSString *latVal = [NSString stringWithFormat:@"%.1f", self.mapView.centerCoordinate.latitude];
     NSString *lngVal = [NSString stringWithFormat:@"%.1f", self.mapView.centerCoordinate.longitude];
 
