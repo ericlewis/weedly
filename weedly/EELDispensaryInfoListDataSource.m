@@ -80,7 +80,7 @@
                                 @"name": @"Credit Cards",
                                 @"subtitle": @"Use your credit or debit card to shop",
                                 @"infoItem": @YES,
-                                //@"imageName": @"phone1-128"
+                                @"imageName": @"enabledFeature"
                                 }
          ];
     }
@@ -89,9 +89,9 @@
     if ([self.dispensary hasTesting]) {
         [itemsToUse addObject:@{
                                 @"name": @"Lab Testing",
-                                @"subtitle": @"Use your credit or debit card to shop",
+                                @"subtitle": @"Use your card to shop",
                                 @"infoItem": @YES,
-                                //@"imageName": @"phone1-128"
+                                @"imageName": @"enabledFeature"
                                 }
          ];
     }
@@ -100,9 +100,9 @@
     if ([self.dispensary hasGuard]) {
         [itemsToUse addObject:@{
                                 @"name": @"Security Guard",
-                                @"subtitle": @"Protection agency is provided at this place",
+                                @"subtitle": @"Security is provided at this place",
                                 @"infoItem": @YES,
-                                //@"imageName": @"phone1-128"
+                                @"imageName": @"enabledFeature"
                                 }
          ];
     }
@@ -113,7 +113,6 @@
                                 @"name": @"Monday's Hours",
                                 @"subtitle": [NSString stringWithFormat:@"%@-%@", [[self.dispensary todaysHours] closesAt], [[self.dispensary todaysHours] closesAt]],
                                 @"infoItem": @YES,
-                                //@"imageName": @"phone1-128"
                                 }
          ];
     }
@@ -123,7 +122,6 @@
                                 @"name": @"Tuesday's Hours",
                                 @"subtitle": [NSString stringWithFormat:@"%@-%@", [[self.dispensary todaysHours] closesAt], [[self.dispensary todaysHours] closesAt]],
                                 @"infoItem": @YES,
-                                //@"imageName": @"phone1-128"
                                 }
          ];
     }
@@ -133,7 +131,6 @@
                                 @"name": @"Wednesday's Hours",
                                 @"subtitle": [NSString stringWithFormat:@"%@-%@", [[self.dispensary todaysHours] closesAt], [[self.dispensary todaysHours] closesAt]],
                                 @"infoItem": @YES,
-                                //@"imageName": @"phone1-128"
                                 }
          ];
     }
@@ -143,7 +140,6 @@
                                 @"name": @"Thursday's Hours",
                                 @"subtitle": [NSString stringWithFormat:@"%@-%@", [[self.dispensary todaysHours] closesAt], [[self.dispensary todaysHours] closesAt]],
                                 @"infoItem": @YES,
-                                //@"imageName": @"phone1-128"
                                 }
          ];
     }
@@ -153,7 +149,6 @@
                                 @"name": @"Friday's Hours",
                                 @"subtitle": [NSString stringWithFormat:@"%@-%@", [[self.dispensary todaysHours] closesAt], [[self.dispensary todaysHours] closesAt]],
                                 @"infoItem": @YES,
-                                //@"imageName": @"phone1-128"
                                 }
          ];
     }
@@ -163,7 +158,6 @@
                                 @"name": @"Saturday's Hours",
                                 @"subtitle": [NSString stringWithFormat:@"%@-%@", [[self.dispensary todaysHours] closesAt], [[self.dispensary todaysHours] closesAt]],
                                 @"infoItem": @YES,
-                                //@"imageName": @"phone1-128"
                                 }
          ];
     }
@@ -173,7 +167,6 @@
                                 @"name": @"Sunday's Hours",
                                 @"subtitle": [NSString stringWithFormat:@"%@-%@", [[self.dispensary todaysHours] closesAt], [[self.dispensary todaysHours] closesAt]],
                                 @"infoItem": @YES,
-                                //@"imageName": @"phone1-128"
                                 }
          ];
     }
