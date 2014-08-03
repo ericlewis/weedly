@@ -31,6 +31,9 @@
         [self registerDefaultsFromSettingsBundle];
     }
     
+    [UAAppReviewManager setAppID:@"885158116"];
+    [UAAppReviewManager setSignificantEventsUntilPrompt:8];
+
     return YES;
 }
 

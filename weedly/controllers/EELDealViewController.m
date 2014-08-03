@@ -23,6 +23,8 @@
     self.title = @"Deals";
     
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://weedmaps.com/dispensaries/%@/deals/420", self.dispensary.id.stringValue]]]];
+    
+    [UAAppReviewManager userDidSignificantEvent:YES];
 }
 
 - (void)loadDealsWithDispensary:(EELDispensary *)dispensary{

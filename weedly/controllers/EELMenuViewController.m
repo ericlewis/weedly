@@ -46,6 +46,8 @@
     
     self.collectionView.dataSource = self.dataSource;
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:self.navigationItem.backBarButtonItem.style target:nil action:nil];
+    
+    [UAAppReviewManager userDidSignificantEvent:YES];
 }
 
 - (EELMenuDataSource *)newMenuDataSource

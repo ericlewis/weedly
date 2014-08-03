@@ -38,6 +38,7 @@
     #import "NSString+USStateMap.h"
     #import "NSDate+DateTools.h"
     #import <POP/POP.h>
+    #import <UAAppReviewManager.h>
 
     // models
     #import "EELAccount.h"
