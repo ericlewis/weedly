@@ -63,9 +63,6 @@
         region.span = span;
         
         [self.mapView setRegion:region animated:YES];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self performSearch:self.searchBar.text];
-        });
         _didZoomToUser = YES;
     }else{
         [[MTLocationManager sharedInstance] setTrackingMode:MTUserTrackingModeNone];
@@ -421,6 +418,10 @@
 
     if (self.searchBar.isFirstResponder) {
         [self.searchBar resignFirstResponder];
+    }
+    
+    if (self.selectedRow == 0) {
+        [self performSearch:self.searchBar.text];
     }
 }
 
