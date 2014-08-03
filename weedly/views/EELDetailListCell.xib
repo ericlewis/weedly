@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="14A261i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -13,47 +13,58 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="THh-po-Ib5">
+                    <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="THh-po-Ib5">
                         <rect key="frame" x="85" y="13" width="191" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="20" id="KSq-PP-pt8"/>
+                            <constraint firstAttribute="height" constant="20" id="8Nw-Le-IXK"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DY9-FC-awl">
+                    <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DY9-FC-awl">
                         <rect key="frame" x="85" y="34" width="191" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView appearanceType="aqua" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="dealsIcon" translatesAutoresizingMaskIntoConstraints="NO" id="bH6-ga-fnw">
+                    <imageView appearanceType="aqua" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dealsIcon" translatesAutoresizingMaskIntoConstraints="NO" id="bH6-ga-fnw">
                         <rect key="frame" x="35" y="18" width="32" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="32" id="qK4-sm-0gj"/>
+                            <constraint firstAttribute="width" constant="32" id="7IS-Wj-erG"/>
+                        </constraints>
+                    </imageView>
+                    <imageView appearanceType="aqua" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="disclosureArrow" translatesAutoresizingMaskIntoConstraints="NO" id="8jo-61-qks">
+                        <rect key="frame" x="285" y="26" width="8" height="15"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="10" id="P7n-VO-1pA"/>
                         </constraints>
                     </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="THh-po-Ib5" secondAttribute="trailing" constant="11" id="284-pj-3zy"/>
-                <constraint firstItem="bH6-ga-fnw" firstAttribute="top" secondItem="3Is-73-K6T" secondAttribute="top" constant="18" id="6O2-Dn-7xk"/>
-                <constraint firstItem="DY9-FC-awl" firstAttribute="top" secondItem="THh-po-Ib5" secondAttribute="bottom" constant="1" id="Tob-Ae-NKT"/>
-                <constraint firstItem="THh-po-Ib5" firstAttribute="leading" secondItem="bH6-ga-fnw" secondAttribute="trailing" constant="18" id="URq-H4-8JA"/>
-                <constraint firstItem="bH6-ga-fnw" firstAttribute="leading" secondItem="3Is-73-K6T" secondAttribute="leading" constant="15" id="Xw7-ZR-S0Z"/>
-                <constraint firstItem="THh-po-Ib5" firstAttribute="leading" secondItem="DY9-FC-awl" secondAttribute="leading" id="Y6x-Fi-ICi"/>
-                <constraint firstItem="THh-po-Ib5" firstAttribute="top" secondItem="3Is-73-K6T" secondAttribute="top" constant="13" id="nRn-0g-zYm"/>
-                <constraint firstItem="bH6-ga-fnw" firstAttribute="centerY" secondItem="3Is-73-K6T" secondAttribute="centerY" id="pnR-dN-w27"/>
-                <constraint firstItem="DY9-FC-awl" firstAttribute="trailing" secondItem="THh-po-Ib5" secondAttribute="trailing" id="qA7-S4-2fC"/>
-                <constraint firstAttribute="bottom" secondItem="DY9-FC-awl" secondAttribute="bottom" constant="14" id="z1r-v7-LW0"/>
+                <constraint firstItem="THh-po-Ib5" firstAttribute="top" secondItem="3Is-73-K6T" secondAttribute="top" constant="13" id="0ZV-Hk-LE2"/>
+                <constraint firstItem="8jo-61-qks" firstAttribute="top" secondItem="3Is-73-K6T" secondAttribute="top" constant="26" id="1rJ-VP-kkc"/>
+                <constraint firstItem="THh-po-Ib5" firstAttribute="leading" secondItem="DY9-FC-awl" secondAttribute="leading" id="1rl-fo-2UV"/>
+                <constraint firstAttribute="bottom" secondItem="8jo-61-qks" secondAttribute="bottom" constant="27" id="F5Z-rv-Uq8"/>
+                <constraint firstItem="bH6-ga-fnw" firstAttribute="top" secondItem="3Is-73-K6T" secondAttribute="top" constant="18" id="Fel-Na-IdZ"/>
+                <constraint firstItem="8jo-61-qks" firstAttribute="leading" secondItem="THh-po-Ib5" secondAttribute="trailing" constant="8" symbolic="YES" id="I17-Aq-EB1"/>
+                <constraint firstItem="THh-po-Ib5" firstAttribute="leading" secondItem="bH6-ga-fnw" secondAttribute="trailing" constant="18" id="fwa-22-1pV"/>
+                <constraint firstItem="DY9-FC-awl" firstAttribute="top" secondItem="THh-po-Ib5" secondAttribute="bottom" constant="1" id="iNP-Um-17w"/>
+                <constraint firstAttribute="bottom" secondItem="DY9-FC-awl" secondAttribute="bottom" constant="14" id="k6a-FW-eaa"/>
+                <constraint firstItem="8jo-61-qks" firstAttribute="leading" secondItem="DY9-FC-awl" secondAttribute="trailing" constant="8" symbolic="YES" id="mPh-sb-GrX"/>
+                <constraint firstItem="bH6-ga-fnw" firstAttribute="leading" secondItem="3Is-73-K6T" secondAttribute="leading" constant="35" id="mjc-Xe-YWg"/>
+                <constraint firstAttribute="trailing" secondItem="8jo-61-qks" secondAttribute="trailing" constant="26" id="qEJ-cD-xM0"/>
+                <constraint firstItem="bH6-ga-fnw" firstAttribute="centerY" secondItem="3Is-73-K6T" secondAttribute="centerY" id="uiF-Uj-bWy"/>
             </constraints>
             <size key="customSize" width="276" height="74"/>
             <connections>
+                <outlet property="disclosureView" destination="8jo-61-qks" id="XZZ-Jq-X6d"/>
                 <outlet property="imageView" destination="bH6-ga-fnw" id="8di-Rw-d1Y"/>
                 <outlet property="nameLabel" destination="THh-po-Ib5" id="n4B-m8-PX5"/>
                 <outlet property="subtitleLabel" destination="DY9-FC-awl" id="kwh-Sx-Zeg"/>
@@ -62,5 +73,6 @@
     </objects>
     <resources>
         <image name="dealsIcon" width="21" height="21"/>
+        <image name="disclosureArrow" width="6" height="10"/>
     </resources>
 </document>

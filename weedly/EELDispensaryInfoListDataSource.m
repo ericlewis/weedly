@@ -79,6 +79,7 @@
         [itemsToUse addObject:@{
                                 @"name": @"Credit Cards",
                                 @"subtitle": @"Use your credit or debit card to shop",
+                                @"infoItem": @YES,
                                 //@"imageName": @"phone1-128"
                                 }
          ];
@@ -89,6 +90,7 @@
         [itemsToUse addObject:@{
                                 @"name": @"Lab Testing",
                                 @"subtitle": @"Use your credit or debit card to shop",
+                                @"infoItem": @YES,
                                 //@"imageName": @"phone1-128"
                                 }
          ];
@@ -99,6 +101,7 @@
         [itemsToUse addObject:@{
                                 @"name": @"Security Guard",
                                 @"subtitle": @"Protection agency is provided at this place",
+                                @"infoItem": @YES,
                                 //@"imageName": @"phone1-128"
                                 }
          ];
@@ -109,6 +112,7 @@
         [itemsToUse addObject:@{
                                 @"name": @"Monday's Hours",
                                 @"subtitle": [NSString stringWithFormat:@"%@-%@", [[self.dispensary todaysHours] closesAt], [[self.dispensary todaysHours] closesAt]],
+                                @"infoItem": @YES,
                                 //@"imageName": @"phone1-128"
                                 }
          ];
@@ -118,6 +122,7 @@
         [itemsToUse addObject:@{
                                 @"name": @"Tuesday's Hours",
                                 @"subtitle": [NSString stringWithFormat:@"%@-%@", [[self.dispensary todaysHours] closesAt], [[self.dispensary todaysHours] closesAt]],
+                                @"infoItem": @YES,
                                 //@"imageName": @"phone1-128"
                                 }
          ];
@@ -127,6 +132,7 @@
         [itemsToUse addObject:@{
                                 @"name": @"Wednesday's Hours",
                                 @"subtitle": [NSString stringWithFormat:@"%@-%@", [[self.dispensary todaysHours] closesAt], [[self.dispensary todaysHours] closesAt]],
+                                @"infoItem": @YES,
                                 //@"imageName": @"phone1-128"
                                 }
          ];
@@ -136,6 +142,7 @@
         [itemsToUse addObject:@{
                                 @"name": @"Thursday's Hours",
                                 @"subtitle": [NSString stringWithFormat:@"%@-%@", [[self.dispensary todaysHours] closesAt], [[self.dispensary todaysHours] closesAt]],
+                                @"infoItem": @YES,
                                 //@"imageName": @"phone1-128"
                                 }
          ];
@@ -145,6 +152,7 @@
         [itemsToUse addObject:@{
                                 @"name": @"Friday's Hours",
                                 @"subtitle": [NSString stringWithFormat:@"%@-%@", [[self.dispensary todaysHours] closesAt], [[self.dispensary todaysHours] closesAt]],
+                                @"infoItem": @YES,
                                 //@"imageName": @"phone1-128"
                                 }
          ];
@@ -154,6 +162,7 @@
         [itemsToUse addObject:@{
                                 @"name": @"Saturday's Hours",
                                 @"subtitle": [NSString stringWithFormat:@"%@-%@", [[self.dispensary todaysHours] closesAt], [[self.dispensary todaysHours] closesAt]],
+                                @"infoItem": @YES,
                                 //@"imageName": @"phone1-128"
                                 }
          ];
@@ -163,6 +172,7 @@
         [itemsToUse addObject:@{
                                 @"name": @"Sunday's Hours",
                                 @"subtitle": [NSString stringWithFormat:@"%@-%@", [[self.dispensary todaysHours] closesAt], [[self.dispensary todaysHours] closesAt]],
+                                @"infoItem": @YES,
                                 //@"imageName": @"phone1-128"
                                 }
          ];
@@ -197,6 +207,14 @@
     cell.subtitleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:13];
     cell.imageView.image = [UIImage imageNamed:menuItem[@"imageName"]];
     cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    
+    if ([menuItem objectForKey:@"infoItem"]) {
+        cell.backgroundColor = [UIColor colorWithRed:248/255.0f green:248/255.0f blue:248/255.0f alpha:1.0f];
+        cell.disclosureView.hidden = YES;
+    }else{
+        cell.backgroundColor = [UIColor whiteColor];
+        cell.disclosureView.hidden = NO;
+    }
     
     return cell;
 }
