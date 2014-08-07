@@ -26,13 +26,17 @@
     
     NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
     NSString *alarm_preference = [standardUserDefaults objectForKey:@"420_alarm_preference"];
-    if (!alarm_preference) {
-        [self cancelAlarm];
+    NSString *seventen_alarm_preference = [standardUserDefaults objectForKey:@"710_alarm_preference"];
+
+    if (!alarm_preference || !seventen_alarm_preference) {
+        [self cancel420Alarm];
+        [self cancel710Alarm];
+        
         [self registerDefaultsFromSettingsBundle];
     }
     
     [UAAppReviewManager setAppID:@"885158116"];
-    [UAAppReviewManager setSignificantEventsUntilPrompt:8];
+    [UAAppReviewManager setSignificantEventsUntilPrompt:5];
 
     return YES;
 }
@@ -84,8 +88,11 @@
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     
     NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
-    BOOL alarm_preference = [[standardUserDefaults objectForKey:@"420_alarm_preference"] boolValue];
-    [self toggleAlarm:alarm_preference];
+    BOOL fourtwenty_alarm_preference = [[standardUserDefaults objectForKey:@"420_alarm_preference"] boolValue];
+    [self toggle420Alarm:fourtwenty_alarm_preference];
+    
+    BOOL seventen_alarm_preference = [[standardUserDefaults objectForKey:@"710_alarm_preference"] boolValue];
+    [self toggle710Alarm:seventen_alarm_preference];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -93,16 +100,40 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-- (void)toggleAlarm:(BOOL)switchEnabled {
+- (void)toggle710Alarm:(BOOL)switchEnabled {
     if (switchEnabled) {
-        [self scheduleAlarm];
+        [self schedule420Alarm];
     }else{
-        [self cancelAlarm];
+        [self cancel420Alarm];
     }
 }
 
-- (void)scheduleAlarm{
-    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+- (void)schedule710Alarm{
+    [self createAlarmsWithID:@"710" notificationText:@"It's almost 7:10! Dab up!" andHour:19 andMinute:9];
+}
+
+- (void)cancel710Alarm{
+    [self cancelAlarmsWithID:@"710"];
+}
+
+- (void)toggle420Alarm:(BOOL)switchEnabled {
+    if (switchEnabled) {
+        [self schedule420Alarm];
+    }else{
+        [self cancel420Alarm];
+    }
+}
+
+- (void)schedule420Alarm{
+    [self createAlarmsWithID:@"420" notificationText:@"It's almost 4:20! Toke up!" andHour:16 andMinute:19];
+}
+
+- (void)cancel420Alarm{
+    [self cancelAlarmsWithID:@"420"];
+}
+
+- (void)createAlarmsWithID:(NSString*)id notificationText:(NSString*)text andHour:(int)hour andMinute:(int)minute{
+    [self cancelAlarmsWithID:id];
     
     UILocalNotification *notif = [[UILocalNotification alloc] init];
     
@@ -111,23 +142,35 @@
                              initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *weekdayComponents =
     [gregorian components:(NSDayCalendarUnit | NSWeekdayCalendarUnit) fromDate:today];
-    [weekdayComponents setHour:16];
-    [weekdayComponents setMinute:19];
+    [weekdayComponents setHour:hour];
+    [weekdayComponents setMinute:minute];
     NSDate *referenceTime = [gregorian dateFromComponents:weekdayComponents];
     
     notif.fireDate = referenceTime;
     notif.timeZone = [NSTimeZone defaultTimeZone];
     
-    notif.alertBody = @"It's almost 4:20! Toke up!";
+    notif.alertBody = text;
     notif.hasAction = NO;
     notif.soundName = UILocalNotificationDefaultSoundName;
     notif.repeatInterval = NSDayCalendarUnit;
+    notif.userInfo = @{@"id": id};
     
     [[UIApplication sharedApplication] scheduleLocalNotification:notif];
 }
 
-- (void)cancelAlarm{
-    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+- (void)cancelAlarmsWithID:(NSString*)id{
+    UIApplication *app = [UIApplication sharedApplication];
+    NSArray *eventArray = [app scheduledLocalNotifications];
+    for (int i=0; i<[eventArray count]; i++)
+    {
+        UILocalNotification* oneEvent = [eventArray objectAtIndex:i];
+        NSDictionary *userInfoCurrent = oneEvent.userInfo;
+        NSString *uid = [NSString stringWithFormat:@"%@",[userInfoCurrent valueForKey:@"id"]];
+        if ([uid isEqualToString:id])
+        {
+            [app cancelLocalNotification:oneEvent];
+        }
+    }
 }
 
 @end
