@@ -48,19 +48,23 @@
 
 - (void) locationDidChange:(NSNotification*)notification {
     if (!_didZoomToUser) {
-        MKCoordinateRegion region;
-        CLLocationCoordinate2D coords = [EELYLocationManager sharedManager].location.coordinate;
-        coords.latitude = coords.latitude;
-        region.center = coords;
-        
-        MKCoordinateSpan span;
-        span.latitudeDelta  = 0.12; // Change these values to change the zoom
-        span.longitudeDelta = 0.12;
-        region.span = span;
-        
-        [self.mapView setRegion:region animated:YES];
+        [self zoomToUser];
         _didZoomToUser = YES;
     }
+}
+
+- (void)zoomToUser{
+    MKCoordinateRegion region;
+    CLLocationCoordinate2D coords = [EELYLocationManager sharedManager].location.coordinate;
+    coords.latitude = coords.latitude - 0.025f;
+    region.center = coords;
+    
+    MKCoordinateSpan span;
+    span.latitudeDelta  = 0.12; // Change these values to change the zoom
+    span.longitudeDelta = 0.12;
+    region.span = span;
+    
+    [self.mapView setRegion:region animated:YES];
 }
 
 - (void) authorizationStatusDidChange:(NSNotification*)notification {
@@ -111,7 +115,9 @@
 #pragma mark setup
 - (void)setupTableView{
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
-    self.tableView.contentInset = UIEdgeInsetsMake(self.mapView.frame.size.height-40, 0, 0, 0);
+    
+    self.tableView.contentInset = UIEdgeInsetsMake(CGRectGetHeight(self.mapView.bounds)*0.50f, 0, 0, 0);
+    
     self.tableView.tableFooterView = [UIView new];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([EELListHeaderTableViewCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"NearbyCell"];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([EELListTableViewCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"ItemHeaderCell"];
@@ -127,6 +133,27 @@
     [doubletapRec setDelegate:self];
     [self.mapView addGestureRecognizer:doubletapRec];
     self.mapView.delegate = self;
+    
+    [self setupMyLocationButton];
+}
+
+- (void)setupMyLocationButton{
+    UIButton *myLocationButton = [[UIButton alloc] initWithFrame:CGRectMake(15.f, CGRectGetHeight(self.mapView.bounds)*0.75f, 44, 44)];
+    [myLocationButton setImage:[UIImage imageNamed:@"myLocation"] forState:UIControlStateNormal];
+    [myLocationButton addTarget:self action:@selector(zoomToUser) forControlEvents:UIControlEventTouchUpInside];
+    myLocationButton.backgroundColor = [UIColor whiteColor];
+    
+    myLocationButton.layer.cornerRadius = 10.0;
+    myLocationButton.layer.masksToBounds = NO;
+    myLocationButton.layer.borderWidth = 1.0f;
+    myLocationButton.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    
+    myLocationButton.layer.shadowColor = [UIColor blackColor].CGColor;
+    myLocationButton.layer.shadowOpacity = 0.5;
+    myLocationButton.layer.shadowRadius = 3;
+    myLocationButton.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
+
+    [self.mapView addSubview:myLocationButton];
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
@@ -439,19 +466,26 @@
     // Return the number of rows in the section.
     if (section == 0) {
         return 1;
-    }
-
-    if (self.searchBar.text.length == 0) {
-        NSSet *annSet = [self.mapView annotationsInMapRect:self.mapView.visibleMapRect];
+    }else if(section == 1){
         
-        if (annSet.count > self.dataSource.items.count) {
-            return annSet.count-1;
+        int amountToReturn = 0;
+        
+        if (self.searchBar.text.length == 0) {
+            NSSet *annSet = [self.mapView annotationsInMapRect:self.mapView.visibleMapRect];
+            
+            if (annSet.count > self.dataSource.items.count) {
+                amountToReturn = annSet.count-1;
+            }
+            
+            amountToReturn = annSet.count;
+        }else{
+            amountToReturn = self.dataSource.items.count;
         }
         
-        return annSet.count;
+        return amountToReturn;
     }
     
-    return self.dataSource.items.count;
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -573,6 +607,7 @@
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
     
+    // landscape
     if (toInterfaceOrientation==UIInterfaceOrientationLandscapeRight || toInterfaceOrientation==UIInterfaceOrientationLandscapeLeft) {
         if (IS_IPHONE_5) {
             if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
@@ -587,7 +622,10 @@
                 self.searchBar.frame = CGRectMake(40, -6.5f, 400, 40);
             }
         }
-    }else{
+    }
+    
+    // normal
+    else{
         if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
             self.searchBar.frame = CGRectMake(10, 0, 260, 44);
         }else{
