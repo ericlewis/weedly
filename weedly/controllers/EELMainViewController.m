@@ -56,7 +56,7 @@
 - (void)zoomToUser{
     MKCoordinateRegion region;
     CLLocationCoordinate2D coords = [EELYLocationManager sharedManager].location.coordinate;
-    coords.latitude = coords.latitude - 0.025f;
+    coords.latitude = coords.latitude - 0.024f;
     region.center = coords;
     
     MKCoordinateSpan span;
@@ -365,7 +365,10 @@
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
     if (![view.annotation isKindOfClass:[MKUserLocation class]]) {
-        [mapView setCenterCoordinate:view.annotation.coordinate animated:YES];
+        
+        CLLocationCoordinate2D coords = view.annotation.coordinate;
+        coords.latitude = coords.latitude - 0.024f;
+        [mapView setCenterCoordinate:coords animated:YES];
         
         NSMutableArray *sortedArray = [self.dataSource.items mutableCopy]; // your mutable copy of the fetched objects
         
