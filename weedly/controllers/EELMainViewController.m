@@ -107,10 +107,6 @@
     }
 }
 
-- (void)viewDidDisappear:(BOOL)animated{
-    self.mapView.showsUserLocation = NO;
-}
-
 #pragma mark -
 #pragma mark setup
 - (void)setupTableView{
