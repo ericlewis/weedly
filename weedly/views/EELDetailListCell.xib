@@ -17,7 +17,7 @@
                         <rect key="frame" x="85" y="13" width="191" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="20" id="8Nw-Le-IXK"/>
+                            <constraint firstAttribute="height" constant="20" id="RU8-Fx-bTT"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -34,33 +34,32 @@
                         <rect key="frame" x="35" y="18" width="32" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="32" id="7IS-Wj-erG"/>
+                            <constraint firstAttribute="width" constant="32" id="cSP-jj-d4m"/>
                         </constraints>
                     </imageView>
-                    <imageView appearanceType="aqua" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="disclosureArrow" translatesAutoresizingMaskIntoConstraints="NO" id="8jo-61-qks">
-                        <rect key="frame" x="285" y="26" width="8" height="15"/>
+                    <imageView appearanceType="aqua" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="disclosureArrow" translatesAutoresizingMaskIntoConstraints="NO" id="8jo-61-qks">
+                        <rect key="frame" x="293" y="28" width="7" height="12"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="10" id="P7n-VO-1pA"/>
+                            <constraint firstAttribute="width" constant="7" id="gXT-Dt-pHg"/>
                         </constraints>
                     </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
-                <constraint firstItem="THh-po-Ib5" firstAttribute="top" secondItem="3Is-73-K6T" secondAttribute="top" constant="13" id="0ZV-Hk-LE2"/>
-                <constraint firstItem="8jo-61-qks" firstAttribute="top" secondItem="3Is-73-K6T" secondAttribute="top" constant="26" id="1rJ-VP-kkc"/>
-                <constraint firstItem="THh-po-Ib5" firstAttribute="leading" secondItem="DY9-FC-awl" secondAttribute="leading" id="1rl-fo-2UV"/>
-                <constraint firstAttribute="bottom" secondItem="8jo-61-qks" secondAttribute="bottom" constant="27" id="F5Z-rv-Uq8"/>
-                <constraint firstItem="bH6-ga-fnw" firstAttribute="top" secondItem="3Is-73-K6T" secondAttribute="top" constant="18" id="Fel-Na-IdZ"/>
-                <constraint firstItem="8jo-61-qks" firstAttribute="leading" secondItem="THh-po-Ib5" secondAttribute="trailing" constant="8" symbolic="YES" id="I17-Aq-EB1"/>
-                <constraint firstItem="THh-po-Ib5" firstAttribute="leading" secondItem="bH6-ga-fnw" secondAttribute="trailing" constant="18" id="fwa-22-1pV"/>
-                <constraint firstItem="DY9-FC-awl" firstAttribute="top" secondItem="THh-po-Ib5" secondAttribute="bottom" constant="1" id="iNP-Um-17w"/>
-                <constraint firstAttribute="bottom" secondItem="DY9-FC-awl" secondAttribute="bottom" constant="14" id="k6a-FW-eaa"/>
-                <constraint firstItem="8jo-61-qks" firstAttribute="leading" secondItem="DY9-FC-awl" secondAttribute="trailing" constant="8" symbolic="YES" id="mPh-sb-GrX"/>
-                <constraint firstItem="bH6-ga-fnw" firstAttribute="leading" secondItem="3Is-73-K6T" secondAttribute="leading" constant="35" id="mjc-Xe-YWg"/>
-                <constraint firstAttribute="trailing" secondItem="8jo-61-qks" secondAttribute="trailing" constant="26" id="qEJ-cD-xM0"/>
-                <constraint firstItem="bH6-ga-fnw" firstAttribute="centerY" secondItem="3Is-73-K6T" secondAttribute="centerY" id="uiF-Uj-bWy"/>
+                <constraint firstAttribute="trailing" secondItem="8jo-61-qks" secondAttribute="trailing" constant="20" id="4Td-6b-MYW"/>
+                <constraint firstAttribute="bottom" secondItem="DY9-FC-awl" secondAttribute="bottom" constant="14" id="6eW-ef-tBY"/>
+                <constraint firstItem="THh-po-Ib5" firstAttribute="top" secondItem="3Is-73-K6T" secondAttribute="top" constant="13" id="9p4-vr-UIo"/>
+                <constraint firstItem="THh-po-Ib5" firstAttribute="leading" secondItem="bH6-ga-fnw" secondAttribute="trailing" constant="18" id="Aut-yM-irX"/>
+                <constraint firstItem="DY9-FC-awl" firstAttribute="trailing" secondItem="THh-po-Ib5" secondAttribute="trailing" id="IwL-mg-OhH"/>
+                <constraint firstItem="8jo-61-qks" firstAttribute="leading" secondItem="THh-po-Ib5" secondAttribute="trailing" constant="17" id="QFn-cE-oGI"/>
+                <constraint firstItem="8jo-61-qks" firstAttribute="centerY" secondItem="3Is-73-K6T" secondAttribute="centerY" id="QpA-Fz-ePb"/>
+                <constraint firstItem="bH6-ga-fnw" firstAttribute="top" secondItem="3Is-73-K6T" secondAttribute="top" constant="18" id="Xm7-WV-D2f"/>
+                <constraint firstItem="DY9-FC-awl" firstAttribute="leading" secondItem="THh-po-Ib5" secondAttribute="leading" id="dYr-z5-FzK"/>
+                <constraint firstItem="bH6-ga-fnw" firstAttribute="leading" secondItem="3Is-73-K6T" secondAttribute="leading" constant="35" id="kXg-rC-Saj"/>
+                <constraint firstItem="bH6-ga-fnw" firstAttribute="centerY" secondItem="8jo-61-qks" secondAttribute="centerY" id="kkY-bw-xdo"/>
+                <constraint firstItem="DY9-FC-awl" firstAttribute="top" secondItem="THh-po-Ib5" secondAttribute="bottom" constant="1" id="s9i-hw-YSk"/>
             </constraints>
             <size key="customSize" width="276" height="74"/>
             <connections>
@@ -73,6 +72,6 @@
     </objects>
     <resources>
         <image name="dealsIcon" width="21" height="21"/>
-        <image name="disclosureArrow" width="6" height="10"/>
+        <image name="disclosureArrow" width="6" height="12"/>
     </resources>
 </document>
