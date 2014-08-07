@@ -11,7 +11,6 @@
 #import "EELListHeaderTableViewCell.h"
 #import "EELArrayDataSource.h"
 #import "EELListTableViewCell.h"
-#import "EELYLocationManager.h"
 
 @interface EELMainViewController ()
 
@@ -61,8 +60,6 @@
         
         [self.mapView setRegion:region animated:YES];
         _didZoomToUser = YES;
-    }else{
-        [[MTLocationManager sharedInstance] setTrackingMode:MTUserTrackingModeNone];
     }
 }
 

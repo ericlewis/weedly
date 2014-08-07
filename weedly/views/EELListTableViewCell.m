@@ -75,7 +75,7 @@
         self.hoursLabel.text = [NSString stringWithFormat:@"%@  Hours unavailable", [dispensary formattedTypeString]];
     }
     
-    CLLocation *locA = [MTLocationManager sharedInstance].lastKnownLocation;
+    CLLocation *locA = [EELYLocationManager sharedManager].location;
     CLLocation *locB = [[CLLocation alloc] initWithLatitude:dispensary.lat longitude:dispensary.lng];
     CLLocationDistance distance = [locA distanceFromLocation:locB];
 

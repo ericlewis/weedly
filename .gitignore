@@ -164,3 +164,12 @@ xcuserdata
 # ...none. Everything is now explained.
 
 Pods/
+Crashlytics.framework/Crashlytics
+Crashlytics.framework/Versions/A/Crashlytics
+Crashlytics.framework/Versions/A/Headers/Crashlytics.h
+Crashlytics.framework/Versions/Current
+Crashlytics.framework/Headers
+Crashlytics.framework/Versions/A/Resources/Info.plist
+Crashlytics.framework/Resources
+Crashlytics.framework/run
+Crashlytics.framework/submit
