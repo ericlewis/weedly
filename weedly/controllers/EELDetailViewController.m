@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Eric Lewis. All rights reserved.
 //
 
+#import "EELMainViewController.h"
 #import "EELDetailViewController.h"
 #import "EELMenuViewController.h"
 #import "EELDealViewController.h"
@@ -20,6 +21,7 @@
 @property (nonatomic, strong) AAPLSegmentedDataSource *dataSource;
 @property (nonatomic, strong) EELDispensaryDetailDataSource *detailDataSource;
 @property (nonatomic, strong) EELReviewsDataSource *reviewsDataSource;
+@property (nonatomic, strong) UIViewController *backViewController;
 @end
 
 @implementation EELDetailViewController
@@ -51,6 +53,24 @@
         
     self.collectionView.dataSource = self.dataSource;
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:self.navigationItem.backBarButtonItem.style target:nil action:nil];
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    if ([self.backViewController isKindOfClass:[EELMainViewController class]]) {
+        [(id)self.backViewController hideSearchBar];
+    }
+}
+
+- (UIViewController *)backViewController
+{
+    NSInteger numberOfViewControllers = self.navigationController.viewControllers.count;
+    
+    if (numberOfViewControllers < 2)
+        return nil;
+    else
+        return [self.navigationController.viewControllers objectAtIndex:numberOfViewControllers - 2];
 }
 
 - (EELDispensaryDetailDataSource *)newDetailDataSource

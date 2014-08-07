@@ -12,4 +12,6 @@
 
 @property (strong, nonatomic) EELDispensary *selectedDispensary;
 
+- (void)hideSearchBar;
+
 @end

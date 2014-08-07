@@ -70,7 +70,7 @@
     //do something if they dont set authorization to allow
 }
 
-- (void)viewDidAppear:(BOOL)animated{
+- (void)viewWillAppear:(BOOL)animated{
     [self performSelector:@selector(showSearchBar) withObject:self afterDelay:0.15];
     
     // landscape fix search
@@ -567,7 +567,7 @@
     [self.searchBar.layer pop_addAnimation:anim forKey:@"searchBarShow"];
 }
 
-- (void)hideSearchBar{
+- (void)hideSearchBar{    
     POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerOpacity];
     anim.springSpeed = 20.0;
     anim.toValue = @(0.0);
