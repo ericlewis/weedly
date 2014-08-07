@@ -59,7 +59,7 @@
     self.ratingLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12];
     self.ratingLabel.textColor = ORANGE_COLOR;
     
-    self.nameLabel.text = dispensary.name;
+    self.nameLabel.text = [dispensary formattedNameString];
     
     if (dispensary.isOpen.boolValue) {
         self.isOpenLabel.text = @"Currently Open";
