@@ -37,8 +37,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView appearanceType="aqua" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" rotateEnabled="NO" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3xA-xn-xhL">
-                                <rect key="frame" x="0.0" y="30" width="320" height="400"/>
+                            <mapView appearanceType="aqua" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" rotateEnabled="NO" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3xA-xn-xhL">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <connections>
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="Ysh-r2-IrO"/>
                                 </connections>
@@ -61,13 +61,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="3xA-xn-xhL" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="09S-Nt-1dU"/>
-                            <constraint firstItem="3xA-xn-xhL" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="2HY-aE-1DF"/>
-                            <constraint firstAttribute="trailing" secondItem="3xA-xn-xhL" secondAttribute="trailing" id="XJQ-3i-0rS"/>
-                            <constraint firstItem="T0e-Ca-QFW" firstAttribute="trailing" secondItem="3xA-xn-xhL" secondAttribute="trailing" id="b2e-yq-dE6"/>
-                            <constraint firstItem="T0e-Ca-QFW" firstAttribute="leading" secondItem="3xA-xn-xhL" secondAttribute="leading" id="glY-2e-5Kf"/>
-                            <constraint firstItem="T0e-Ca-QFW" firstAttribute="top" secondItem="3xA-xn-xhL" secondAttribute="top" id="kTI-BZ-w29"/>
-                            <constraint firstAttribute="bottom" secondItem="T0e-Ca-QFW" secondAttribute="bottom" id="m7N-0I-Fti"/>
+                            <constraint firstItem="T0e-Ca-QFW" firstAttribute="leading" secondItem="3xA-xn-xhL" secondAttribute="leading" id="5jM-Yd-QsY"/>
+                            <constraint firstAttribute="bottom" secondItem="T0e-Ca-QFW" secondAttribute="bottom" id="6WG-jN-JUc"/>
+                            <constraint firstItem="T0e-Ca-QFW" firstAttribute="top" secondItem="3xA-xn-xhL" secondAttribute="top" id="QbM-rA-cDu"/>
+                            <constraint firstItem="T0e-Ca-QFW" firstAttribute="bottom" secondItem="3xA-xn-xhL" secondAttribute="bottom" id="Qjl-af-eU5"/>
+                            <constraint firstItem="3xA-xn-xhL" firstAttribute="trailing" secondItem="T0e-Ca-QFW" secondAttribute="trailing" id="gbw-kR-2Al"/>
+                            <constraint firstItem="3xA-xn-xhL" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="m09-QT-qAA"/>
+                            <constraint firstItem="T0e-Ca-QFW" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="q9S-TL-wEm"/>
+                            <constraint firstAttribute="trailing" secondItem="3xA-xn-xhL" secondAttribute="trailing" id="r58-5w-kYu"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="68Z-QI-bP2">

@@ -58,7 +58,9 @@
     CLLocationCoordinate2D coords = [EELYLocationManager sharedManager].location.coordinate;
     
     if (self.tableView.contentOffset.y > -300) {
-        coords.latitude = coords.latitude - 0.024f;
+        coords.latitude = coords.latitude - 0.04f;
+    }else{
+        coords.latitude = coords.latitude - 0.02f;
     }
     
     region.center = coords;
@@ -116,7 +118,7 @@
 - (void)setupTableView{
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     
-    self.tableView.contentInset = UIEdgeInsetsMake(CGRectGetHeight(self.mapView.bounds)*0.50f, 0, 0, 0);
+    self.tableView.contentInset = UIEdgeInsetsMake(CGRectGetHeight(self.view.bounds)*0.40f, 0, 0, 0);
     
     self.tableView.tableFooterView = [UIView new];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([EELListHeaderTableViewCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"NearbyCell"];
@@ -138,7 +140,7 @@
 }
 
 - (void)setupMyLocationButton{
-    UIButton *myLocationButton = [[UIButton alloc] initWithFrame:CGRectMake(15.f, CGRectGetHeight(self.mapView.bounds)*0.75f, 44, 44)];
+    UIButton *myLocationButton = [[UIButton alloc] initWithFrame:CGRectMake(15.f, CGRectGetHeight(self.mapView.bounds)*0.53f, 44, 44)];
     [myLocationButton setImage:[UIImage imageNamed:@"myLocation"] forState:UIControlStateNormal];
     [myLocationButton addTarget:self action:@selector(zoomToUser) forControlEvents:UIControlEventTouchUpInside];
     myLocationButton.backgroundColor = [UIColor whiteColor];
@@ -373,8 +375,11 @@
         CLLocationCoordinate2D coords = view.annotation.coordinate;
         
         if (self.tableView.contentOffset.y > -300) {
-            coords.latitude = coords.latitude - 0.024f;
+            coords.latitude = coords.latitude - 0.04f;
+        }else{
+            coords.latitude = coords.latitude - 0.02f;
         }
+        
         
         [mapView setCenterCoordinate:coords animated:YES];
         
@@ -556,14 +561,14 @@
 #pragma mark -
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    if (scrollView.contentOffset.y < self.mapView.frame.size.height*-1) {
-        [scrollView setContentOffset:CGPointMake(scrollView.contentOffset.x, self.mapView.frame.size.height*-1)];
+    if (scrollView.contentOffset.y < (self.mapView.frame.size.height*-1) + 100) {
+        [scrollView setContentOffset:CGPointMake(scrollView.contentOffset.x, (self.mapView.frame.size.height*-1) + 100)];
     }
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
-    if (self.tableView.contentInset.top != self.mapView.frame.size.height-40) {
-        [self.tableView setContentInset:UIEdgeInsetsMake(self.mapView.frame.size.height-40, 0, 0, 0)];
+    if (self.tableView.contentInset.top != self.mapView.frame.size.height-140) {
+        [self.tableView setContentInset:UIEdgeInsetsMake(self.mapView.frame.size.height-140, 0, 0, 0)];
     }
 }
 
