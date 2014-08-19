@@ -40,6 +40,18 @@ CGFloat percentOfScreen = 0.635f;
 {
     [super viewDidLoad];
     
+    if (!IS_IPHONE_5) {
+        percentOfScreen = 0.58;
+    }
+    
+    if (UIInterfaceOrientationIsPortrait([[UIDevice currentDevice] orientation])) {
+        topPixelsPortrait = CGRectGetHeight(self.view.bounds)*percentOfScreen;
+        topPixelsLandscape = CGRectGetWidth(self.view.bounds)*percentOfScreen;
+    }else{
+        topPixelsPortrait = CGRectGetWidth(self.view.bounds)*percentOfScreen;
+        topPixelsLandscape = CGRectGetHeight(self.view.bounds)*percentOfScreen;
+    }
+    
     [self setupMapView];
     [self setupTableView];
     [self setupSearchBar];
@@ -51,14 +63,6 @@ CGFloat percentOfScreen = 0.635f;
 
     self.navigationController.navigationBar.translucent = NO;
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:self.navigationItem.backBarButtonItem.style target:nil action:nil];
-    
-    if (UIInterfaceOrientationIsPortrait([[UIDevice currentDevice] orientation])) {
-        topPixelsPortrait = CGRectGetHeight(self.view.bounds)*percentOfScreen;
-        topPixelsLandscape = CGRectGetWidth(self.view.bounds)*percentOfScreen;
-    }else{
-        topPixelsPortrait = CGRectGetWidth(self.view.bounds)*percentOfScreen;
-        topPixelsLandscape = CGRectGetHeight(self.view.bounds)*percentOfScreen;
-    }
 }
 
 - (void) locationDidChange:(NSNotification*)notification {
@@ -701,8 +705,6 @@ CGFloat percentOfScreen = 0.635f;
     }else{
         self.tableView.contentInset = UIEdgeInsetsMake(topPixelsLandscape, 0, 0, 0);
     }
-    
-    self.tableView.contentOffset = CGPointMake(0, self.tableView.contentInset.top*-1);
 }
 
 @end

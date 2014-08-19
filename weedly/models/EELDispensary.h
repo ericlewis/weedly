@@ -47,5 +47,6 @@
 - (NSString*)formattedTypeString;
 - (NSString*)formattedAddressString;
 - (NSString*)formattedPhoneString;
+- (EELStoreHours*)hoursForDay:(NSString*)dayOTW;
 
 @end

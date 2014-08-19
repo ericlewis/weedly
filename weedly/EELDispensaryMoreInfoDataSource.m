@@ -13,13 +13,25 @@
 #import "AAPLAction.h"
 #import "AAPLCollectionViewController.h"
 
-#import "EELDetailListCell.h"
+#import "EELDetailInfoCell.h"
 
 @interface EELDispensaryMoreInfoDataSource ()
 @property (nonatomic, strong) EELDispensary *dispensary;
 @end
 
 @implementation EELDispensaryMoreInfoDataSource
+
+- (NSString*)stringFromBool:(BOOL)value{
+    return [self.dispensary creditCardsAccepted] ? @"YES" : @"NO";
+}
+
+- (NSString*)hoursStringFromStoreHours:(EELStoreHours*)hours{
+    if (hours.opensAt != nil && hours.opensAt != nil) {
+        return [NSString stringWithFormat:@"%@-%@", [[hours opensAt] stringByReplacingOccurrencesOfString:@" " withString:@""], [[hours closesAt] stringByReplacingOccurrencesOfString:@" " withString:@""]];
+    }
+    
+    return @"N/A";
+}
 
 - (instancetype)initWithDispensary:(EELDispensary *)dispensary
 {
@@ -28,154 +40,76 @@
         return nil;
     
     _dispensary = dispensary;
-    self.defaultMetrics.rowHeight = 128;
+    self.defaultMetrics.rowHeight = 50;
 
     NSMutableArray *itemsToUse = [NSMutableArray new];
     
-    // menu & coupons if delivery / dispensary
-    if ([[self.dispensary formattedTypeString] isEqualToString:@"Delivery"] || [[self.dispensary formattedTypeString] isEqualToString:@"Dispensary"]){
-        [itemsToUse addObject:@{
-                                @"name": @"Menu",
-                                @"subtitle": @"Our menu is frequently updated.",
-                                @"segue": @"ShowMenu",
-                                @"imageName": @"list_ingredients-128"
-                                }
-         ];
-        
-        /*[itemsToUse addObject:@{
-         @"name": @"Deals",
-         @"subtitle": @"Find great offers.",
-         @"segue": @"ShowDeals",
-         @"imageName": @"coupon"
-         }
-         ];*/
-    }
-    
-    // directions if able to
-    if(!self.dispensary.isDelivery){
-        [itemsToUse addObject:@{
-                                @"name": @"Directions",
-                                @"subtitle": @"Find your way here",
-                                @"segue": @"ShowDirections",
-                                @"imageName": @"map_marker-128"
-                                }
-         ];
-    }
-    
-    // phone if avail
-    if (self.dispensary.phone.length > 4 && [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"tel://"]]) {
-        [itemsToUse addObject:@{
-                                @"name": @"Call Us",
-                                @"subtitle": [self.dispensary formattedPhoneString],
-                                @"segue": @"ShowPhonePrompt",
-                                @"imageName": @"phone1-128"
-                                }
-         ];
-    }
-    
     // CC accepted
-    if ([self.dispensary creditCardsAccepted]) {
-        [itemsToUse addObject:@{
-                                @"name": @"Credit Cards",
-                                @"subtitle": @"Use your credit card to shop.",
-                                @"infoItem": @YES,
-                                @"imageName": @"checkbox"
-                                }
-         ];
-    }
+    [itemsToUse addObject:@{
+                            @"name": @"Credit Cards",
+                            @"subtitle": [self stringFromBool:[self.dispensary creditCardsAccepted]],
+                            }
+     ];
     
     // testing exists
-    if ([self.dispensary hasTesting]) {
-        [itemsToUse addObject:@{
-                                @"name": @"Lab Testing",
-                                @"subtitle": @"Lab tested products.",
-                                @"infoItem": @YES,
-                                @"imageName": @"checkbox"
-                                }
-         ];
-    }
+    [itemsToUse addObject:@{
+                            @"name": @"Lab Testing",
+                            @"subtitle": [self stringFromBool:[self.dispensary hasTesting]],
+                            }
+     ];
     
     // guard exists
-    if ([self.dispensary hasGuard]) {
-        [itemsToUse addObject:@{
-                                @"name": @"Security Guard",
-                                @"subtitle": @"Security is provided at this place",
-                                @"infoItem": @YES,
-                                @"imageName": @"checkbox"
-                                }
-         ];
-    }
+    [itemsToUse addObject:@{
+                            @"name": @"Security",
+                            @"subtitle": [self stringFromBool:[self.dispensary hasGuard]],
+                            }
+     ];
+    
     
     // hours
-    if ([self.dispensary todaysHours] != nil) {
-        [itemsToUse addObject:@{
-                                @"name": @"Monday's Hours",
-                                @"subtitle": [NSString stringWithFormat:@"%@-%@", [[self.dispensary todaysHours] closesAt], [[self.dispensary todaysHours] closesAt]],
-                                @"infoItem": @YES,
-                                @"imageName": @"calendar"
-                                }
-         ];
-    }
+    [itemsToUse addObject:@{
+                            @"name": @"Monday",
+                            @"subtitle": [self hoursStringFromStoreHours:[self.dispensary hoursForDay:@"mon"]],
+                            }
+     ];
     
-    if ([self.dispensary todaysHours] != nil) {
-        [itemsToUse addObject:@{
-                                @"name": @"Tuesday's Hours",
-                                @"subtitle": [NSString stringWithFormat:@"%@-%@", [[self.dispensary todaysHours] closesAt], [[self.dispensary todaysHours] closesAt]],
-                                @"infoItem": @YES,
-                                @"imageName": @"calendar"
-                                }
-         ];
-    }
+    [itemsToUse addObject:@{
+                            @"name": @"Tuesday",
+                            @"subtitle": [self hoursStringFromStoreHours:[self.dispensary hoursForDay:@"tue"]],
+                            }
+     ];
     
-    if ([self.dispensary todaysHours] != nil) {
-        [itemsToUse addObject:@{
-                                @"name": @"Wednesday's Hours",
-                                @"subtitle": [NSString stringWithFormat:@"%@-%@", [[self.dispensary todaysHours] closesAt], [[self.dispensary todaysHours] closesAt]],
-                                @"infoItem": @YES,
-                                @"imageName": @"calendar"
-                                }
-         ];
-    }
+    [itemsToUse addObject:@{
+                            @"name": @"Wednesday",
+                            @"subtitle": [self hoursStringFromStoreHours:[self.dispensary hoursForDay:@"wed"]],
+                            }
+     ];
     
-    if ([self.dispensary todaysHours] != nil) {
-        [itemsToUse addObject:@{
-                                @"name": @"Thursday's Hours",
-                                @"subtitle": [NSString stringWithFormat:@"%@-%@", [[self.dispensary todaysHours] closesAt], [[self.dispensary todaysHours] closesAt]],
-                                @"infoItem": @YES,
-                                @"imageName": @"calendar"
-                                }
-         ];
-    }
+    [itemsToUse addObject:@{
+                            @"name": @"Thursday",
+                            @"subtitle": [self hoursStringFromStoreHours:[self.dispensary hoursForDay:@"thu"]],
+                            @"infoItem": @YES,
+                            @"imageName": @"calendar"
+                            }
+     ];
     
-    if ([self.dispensary todaysHours] != nil) {
-        [itemsToUse addObject:@{
-                                @"name": @"Friday's Hours",
-                                @"subtitle": [NSString stringWithFormat:@"%@-%@", [[self.dispensary todaysHours] closesAt], [[self.dispensary todaysHours] closesAt]],
-                                @"infoItem": @YES,
-                                @"imageName": @"calendar"
-                                }
-         ];
-    }
+    [itemsToUse addObject:@{
+                            @"name": @"Friday",
+                            @"subtitle": [self hoursStringFromStoreHours:[self.dispensary hoursForDay:@"fri"]],
+                            }
+     ];
     
-    if ([self.dispensary todaysHours] != nil) {
-        [itemsToUse addObject:@{
-                                @"name": @"Saturday's Hours",
-                                @"subtitle": [NSString stringWithFormat:@"%@-%@", [[self.dispensary todaysHours] closesAt], [[self.dispensary todaysHours] closesAt]],
-                                @"infoItem": @YES,
-                                @"imageName": @"calendar"
-                                }
-         ];
-    }
+    [itemsToUse addObject:@{
+                            @"name": @"Saturday",
+                            @"subtitle": [self hoursStringFromStoreHours:[self.dispensary hoursForDay:@"sat"]],
+                            }
+     ];
     
-    if ([self.dispensary todaysHours] != nil) {
-        [itemsToUse addObject:@{
-                                @"name": @"Sunday's Hours",
-                                @"subtitle": [NSString stringWithFormat:@"%@-%@", [[self.dispensary todaysHours] closesAt], [[self.dispensary todaysHours] closesAt]],
-                                @"infoItem": @YES,
-                                @"imageName": @"calendar"
-                                }
-         ];
-    }
+    [itemsToUse addObject:@{
+                            @"name": @"Sunday",
+                            @"subtitle": [self hoursStringFromStoreHours:[self.dispensary hoursForDay:@"sun"]],
+                            }
+     ];
     
     self.items = itemsToUse;
     
@@ -190,31 +124,23 @@
 - (void)registerReusableViewsWithCollectionView:(UICollectionView *)collectionView
 {
     [super registerReusableViewsWithCollectionView:collectionView];
-    [collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([EELDetailListCell class]) bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:NSStringFromClass([EELDetailListCell class])];
+    [collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([EELDetailInfoCell class]) bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:NSStringFromClass([EELDetailInfoCell class])];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDictionary *menuItem = [self itemAtIndexPath:indexPath];
     
-    EELDetailListCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([EELDetailListCell class]) forIndexPath:indexPath];
+    EELDetailInfoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([EELDetailInfoCell class]) forIndexPath:indexPath];
     
-    cell.nameLabel.text = menuItem[@"name"];
-    cell.nameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
-    cell.nameLabel.textColor = [UIColor colorWithRed:85.0f/255.0f green:85.0f/255.0f blue:85.0f/255.0f alpha:1.0f];
-    cell.subtitleLabel.text = menuItem[@"subtitle"];
-    cell.subtitleLabel.textColor = [UIColor colorWithRed:180.0f/255.0f green:180.0f/255.0f blue:180.0f/255.0f alpha:1.0f];
-    cell.subtitleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:13];
-    cell.imageView.image = [UIImage imageNamed:menuItem[@"imageName"]];
-    cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    cell.nameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:16];
+    cell.nameLabel.textColor = [UIColor colorWithRed:145.0f/255.0f green:145.0f/255.0f blue:145.0f/255.0f alpha:1.0f];
     
-    if ([menuItem objectForKey:@"infoItem"]) {
-        cell.backgroundColor = [UIColor colorWithRed:248/255.0f green:248/255.0f blue:248/255.0f alpha:1.0f];
-        cell.disclosureView.hidden = YES;
-    }else{
-        cell.backgroundColor = [UIColor whiteColor];
-        cell.disclosureView.hidden = NO;
-    }
+    cell.nameLabel.text = menuItem[@"subtitle"];
+    cell.subtitleLabel.text = [NSString stringWithFormat:@"%@:", menuItem[@"name"]];
+    cell.subtitleLabel.textColor = cell.nameLabel.textColor;
+    cell.subtitleLabel.font = cell.nameLabel.font;
+    
     
     return cell;
 }

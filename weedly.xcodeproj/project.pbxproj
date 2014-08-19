@@ -21,6 +21,8 @@
 		4D75E0D11943FBE200A25AB6 /* EELDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0D01943FBE200A25AB6 /* EELDetailViewController.m */; };
 		4D75E0D41944022800A25AB6 /* EELDetailHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0D31944022800A25AB6 /* EELDetailHeader.m */; };
 		4D8718D419A2DA8C000DBC94 /* EELDispensaryMoreInfoDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8718D319A2DA8C000DBC94 /* EELDispensaryMoreInfoDataSource.m */; };
+		4D8718D719A3BF89000DBC94 /* EELDetailInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8718D619A3BF89000DBC94 /* EELDetailInfoCell.m */; };
+		4D8718D919A3BFB2000DBC94 /* EELDetailInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D8718D819A3BFB2000DBC94 /* EELDetailInfoCell.xib */; };
 		4D87F4B9194984CF00740558 /* EELMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D87F4B8194984CF00740558 /* EELMenuViewController.m */; };
 		4D87F4BC1949851B00740558 /* EELMenuDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D87F4BB1949851B00740558 /* EELMenuDataSource.m */; };
 		4D87F4BF1949865600740558 /* EELMenuItemsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D87F4BE1949865600740558 /* EELMenuItemsDataSource.m */; };
@@ -122,6 +124,9 @@
 		4D75E0D31944022800A25AB6 /* EELDetailHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EELDetailHeader.m; sourceTree = "<group>"; };
 		4D8718D219A2DA8C000DBC94 /* EELDispensaryMoreInfoDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EELDispensaryMoreInfoDataSource.h; sourceTree = "<group>"; };
 		4D8718D319A2DA8C000DBC94 /* EELDispensaryMoreInfoDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EELDispensaryMoreInfoDataSource.m; sourceTree = "<group>"; };
+		4D8718D519A3BF89000DBC94 /* EELDetailInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELDetailInfoCell.h; path = views/EELDetailInfoCell.h; sourceTree = "<group>"; };
+		4D8718D619A3BF89000DBC94 /* EELDetailInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELDetailInfoCell.m; path = views/EELDetailInfoCell.m; sourceTree = "<group>"; };
+		4D8718D819A3BFB2000DBC94 /* EELDetailInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EELDetailInfoCell.xib; path = views/EELDetailInfoCell.xib; sourceTree = "<group>"; };
 		4D87F4B7194984CF00740558 /* EELMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELMenuViewController.h; path = controllers/EELMenuViewController.h; sourceTree = "<group>"; };
 		4D87F4B8194984CF00740558 /* EELMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELMenuViewController.m; path = controllers/EELMenuViewController.m; sourceTree = "<group>"; };
 		4D87F4BA1949851B00740558 /* EELMenuDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EELMenuDataSource.h; sourceTree = "<group>"; };
@@ -314,6 +319,9 @@
 				4DCFE5191948BE3100139D52 /* EELDetailListCell.xib */,
 				4DCFE51E1948BF1400139D52 /* EELDetailListCell.h */,
 				4DCFE51F1948BF1400139D52 /* EELDetailListCell.m */,
+				4D8718D519A3BF89000DBC94 /* EELDetailInfoCell.h */,
+				4D8718D619A3BF89000DBC94 /* EELDetailInfoCell.m */,
+				4D8718D819A3BFB2000DBC94 /* EELDetailInfoCell.xib */,
 			);
 			name = "detail cells";
 			sourceTree = "<group>";
@@ -681,6 +689,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D8718D919A3BFB2000DBC94 /* EELDetailInfoCell.xib in Resources */,
 				4DC1A12A1912F9A200228F5A /* Images.xcassets in Resources */,
 				4DCFE5221948C05300139D52 /* EELDetailHeader.xib in Resources */,
 				4D22EE1F1969DD4D00268853 /* Settings.bundle in Resources */,
@@ -788,6 +797,7 @@
 				4D87F4C21949884000740558 /* EELMenuItemCell.m in Sources */,
 				4D9DDE0419169629006E5B03 /* EELMenuItem.m in Sources */,
 				A416BC20198C51DB00ACC39B /* AAPLDataSource+Headers.m in Sources */,
+				4D8718D719A3BF89000DBC94 /* EELDetailInfoCell.m in Sources */,
 				4DD4930C1915827D001A6203 /* EELMainViewController.m in Sources */,
 				A416BC10198C51CB00ACC39B /* AAPLCollectionViewCell.m in Sources */,
 				A416BC17198C51CB00ACC39B /* AAPLStateMachine.m in Sources */,

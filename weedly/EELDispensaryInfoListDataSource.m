@@ -67,118 +67,14 @@
     // phone if avail
     if (self.dispensary.phone.length > 4 && [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"tel://"]]) {
         [itemsToUse addObject:@{
-                                @"name": @"Call Us",
+                                @"name": @"Call",
                                 @"subtitle": [self.dispensary formattedPhoneString],
                                 @"segue": @"ShowPhonePrompt",
                                 @"imageName": @"phone1-128"
                                 }
          ];
     }
-    
-    // CC accepted
-    if ([self.dispensary creditCardsAccepted]) {
-        [itemsToUse addObject:@{
-                                @"name": @"Credit Cards",
-                                @"subtitle": @"Use your credit card to shop.",
-                                @"infoItem": @YES,
-                                @"imageName": @"checkbox"
-                                }
-         ];
-    }
-    
-    // testing exists
-    if ([self.dispensary hasTesting]) {
-        [itemsToUse addObject:@{
-                                @"name": @"Lab Testing",
-                                @"subtitle": @"Lab tested products.",
-                                @"infoItem": @YES,
-                                @"imageName": @"checkbox"
-                                }
-         ];
-    }
-    
-    // guard exists
-    if ([self.dispensary hasGuard]) {
-        [itemsToUse addObject:@{
-                                @"name": @"Security Guard",
-                                @"subtitle": @"Security is provided at this place",
-                                @"infoItem": @YES,
-                                @"imageName": @"checkbox"
-                                }
-         ];
-    }
-    
-    // hours
-    if ([self.dispensary todaysHours] != nil) {
-        [itemsToUse addObject:@{
-                                @"name": @"Monday's Hours",
-                                @"subtitle": [NSString stringWithFormat:@"%@-%@", [[self.dispensary todaysHours] closesAt], [[self.dispensary todaysHours] closesAt]],
-                                @"infoItem": @YES,
-                                @"imageName": @"calendar"
-                                }
-         ];
-    }
-    
-    if ([self.dispensary todaysHours] != nil) {
-        [itemsToUse addObject:@{
-                                @"name": @"Tuesday's Hours",
-                                @"subtitle": [NSString stringWithFormat:@"%@-%@", [[self.dispensary todaysHours] closesAt], [[self.dispensary todaysHours] closesAt]],
-                                @"infoItem": @YES,
-                                @"imageName": @"calendar"
-                                }
-         ];
-    }
-    
-    if ([self.dispensary todaysHours] != nil) {
-        [itemsToUse addObject:@{
-                                @"name": @"Wednesday's Hours",
-                                @"subtitle": [NSString stringWithFormat:@"%@-%@", [[self.dispensary todaysHours] closesAt], [[self.dispensary todaysHours] closesAt]],
-                                @"infoItem": @YES,
-                                @"imageName": @"calendar"
-                                }
-         ];
-    }
-    
-    if ([self.dispensary todaysHours] != nil) {
-        [itemsToUse addObject:@{
-                                @"name": @"Thursday's Hours",
-                                @"subtitle": [NSString stringWithFormat:@"%@-%@", [[self.dispensary todaysHours] closesAt], [[self.dispensary todaysHours] closesAt]],
-                                @"infoItem": @YES,
-                                @"imageName": @"calendar"
-                                }
-         ];
-    }
-    
-    if ([self.dispensary todaysHours] != nil) {
-        [itemsToUse addObject:@{
-                                @"name": @"Friday's Hours",
-                                @"subtitle": [NSString stringWithFormat:@"%@-%@", [[self.dispensary todaysHours] closesAt], [[self.dispensary todaysHours] closesAt]],
-                                @"infoItem": @YES,
-                                @"imageName": @"calendar"
-                                }
-         ];
-    }
-    
-    if ([self.dispensary todaysHours] != nil) {
-        [itemsToUse addObject:@{
-                                @"name": @"Saturday's Hours",
-                                @"subtitle": [NSString stringWithFormat:@"%@-%@", [[self.dispensary todaysHours] closesAt], [[self.dispensary todaysHours] closesAt]],
-                                @"infoItem": @YES,
-                                @"imageName": @"calendar"
-                                }
-         ];
-    }
-    
-    if ([self.dispensary todaysHours] != nil) {
-        [itemsToUse addObject:@{
-                                @"name": @"Sunday's Hours",
-                                @"subtitle": [NSString stringWithFormat:@"%@-%@", [[self.dispensary todaysHours] closesAt], [[self.dispensary todaysHours] closesAt]],
-                                @"infoItem": @YES,
-                                @"imageName": @"calendar"
-                                }
-         ];
-    }
-    
+      
     self.items = itemsToUse;
     
     return self;

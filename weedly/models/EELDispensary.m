@@ -267,4 +267,15 @@ NSString * const EELDispensaryFavoriteToggledNotificationName = @"EELDispensaryF
     return nil;
 }
 
+- (EELStoreHours*)hoursForDay:(NSString*)dayOTW {
+    for (int i = 0; self.hours.count > i; i++) {
+        EELStoreHours *hours = self.hours[i];
+        if ([hours.dayOTW isEqualToString:dayOTW]) {
+            return hours;
+        }
+    }
+    
+    return nil;
+}
+
 @end

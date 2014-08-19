@@ -37,6 +37,7 @@
     _moreinfoDataSource = [[EELDispensaryMoreInfoDataSource alloc] initWithDispensary:dispensary];
     
     [self addDataSource:_listDataSource];
+    [self addDataSource:_moreinfoDataSource];
 
     return self;
 }
