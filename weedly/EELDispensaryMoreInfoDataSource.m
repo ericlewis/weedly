@@ -22,7 +22,7 @@
 @implementation EELDispensaryMoreInfoDataSource
 
 - (NSString*)stringFromBool:(BOOL)value{
-    return [self.dispensary creditCardsAccepted] ? @"YES" : @"NO";
+    return value ? @"YES" : @"NO";
 }
 
 - (NSString*)hoursStringFromStoreHours:(EELStoreHours*)hours{
