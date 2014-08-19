@@ -12,6 +12,8 @@
 #import "EELArrayDataSource.h"
 #import "EELListTableViewCell.h"
 
+#define ZOOM_OFFSET 0.1
+
 @interface EELMainViewController ()
 
 @property (weak, nonatomic) IBOutlet MKMapView   *mapView;
@@ -75,7 +77,7 @@
         [self.mapView setRegion:region];
     }
     
-    coords.latitude -= self.mapView.region.span.latitudeDelta * (0.1);
+    coords.latitude -= self.mapView.region.span.latitudeDelta * ZOOM_OFFSET;
     [self.mapView setCenterCoordinate:coords animated:NO];
 }
 
@@ -391,7 +393,7 @@
         
         CLLocationCoordinate2D coords = view.annotation.coordinate;
         CLLocationCoordinate2D center = coords;
-        center.latitude -= self.mapView.region.span.latitudeDelta * 0.20;
+        center.latitude -= self.mapView.region.span.latitudeDelta * ZOOM_OFFSET;
         [self.mapView setCenterCoordinate:center animated:YES];
         
         NSMutableArray *sortedArray = [self.dataSource.items mutableCopy]; // your mutable copy of the fetched objects
