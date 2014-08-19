@@ -705,9 +705,9 @@ CGFloat percentOfScreen = 0.635f;
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
     if (UIInterfaceOrientationIsPortrait(fromInterfaceOrientation)) {
-        self.tableView.contentInset = UIEdgeInsetsMake(topPixelsPortrait, 0, 0, 0);
+        self.tableView.contentOffset = CGPointMake(0, 0);
     }else{
-        self.tableView.contentInset = UIEdgeInsetsMake(topPixelsLandscape, 0, 0, 0);
+        self.tableView.contentOffset = CGPointMake(0, 0);
     }
 }
 
