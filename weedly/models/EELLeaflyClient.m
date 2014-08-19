@@ -34,7 +34,7 @@
 - (void)getStrainWithName:(NSString*)name completionBlock:(void (^)(EELStrain *result, NSError *error))block{
     NSParameterAssert(name);
     
-    NSString *correctedName = [[name stringByReplacingOccurrencesOfString:@" " withString:@"-"] lowercaseString];
+    NSMutableString *correctedName = [[NSMutableString alloc] initWithString:[[[name stringByReplacingOccurrencesOfString:@" " withString:@"-"] lowercaseString] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
     
     [self GET:[NSString stringWithFormat:@"strains/%@", correctedName] parameters:nil completion:^(OVCResponse *response, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^(void){

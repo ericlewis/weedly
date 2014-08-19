@@ -31,7 +31,6 @@
 
 #pragma mark - Managed object serialization
 
-
 + (NSString *)managedObjectEntityName {
     return @"Menu";
 }

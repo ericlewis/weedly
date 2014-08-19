@@ -338,10 +338,7 @@
 				4D06F69619186AF1005597F9 /* EELMenu.m */,
 				4D9DDE0219169629006E5B03 /* EELMenuItem.h */,
 				4D9DDE0319169629006E5B03 /* EELMenuItem.m */,
-				4D8718E019A3D0E1000DBC94 /* EELStrain.h */,
-				4D8718E119A3D0E1000DBC94 /* EELStrain.m */,
-				4D8718E619A3DB50000DBC94 /* EELStrainInfo.h */,
-				4D8718E719A3DB50000DBC94 /* EELStrainInfo.m */,
+				4D8718E919A3DD5F000DBC94 /* strain */,
 			);
 			name = menu;
 			sourceTree = "<group>";
@@ -353,6 +350,17 @@
 				4D9DDDF81915BA75006E5B03 /* EELAccount.m */,
 			);
 			name = user;
+			sourceTree = "<group>";
+		};
+		4D8718E919A3DD5F000DBC94 /* strain */ = {
+			isa = PBXGroup;
+			children = (
+				4D8718E019A3D0E1000DBC94 /* EELStrain.h */,
+				4D8718E119A3D0E1000DBC94 /* EELStrain.m */,
+				4D8718E619A3DB50000DBC94 /* EELStrainInfo.h */,
+				4D8718E719A3DB50000DBC94 /* EELStrainInfo.m */,
+			);
+			name = strain;
 			sourceTree = "<group>";
 		};
 		4D87F4C5194988C600740558 /* detail cells */ = {
