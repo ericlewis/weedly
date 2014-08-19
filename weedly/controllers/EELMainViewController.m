@@ -32,6 +32,10 @@
 
 @implementation EELMainViewController
 
+CGFloat topPixelsPortrait = 0;
+CGFloat topPixelsLandscape = 0;
+CGFloat percentOfScreen = 0.635f;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -47,6 +51,14 @@
 
     self.navigationController.navigationBar.translucent = NO;
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:self.navigationItem.backBarButtonItem.style target:nil action:nil];
+    
+    if (UIInterfaceOrientationIsPortrait([[UIDevice currentDevice] orientation])) {
+        topPixelsPortrait = CGRectGetHeight(self.view.bounds)*percentOfScreen;
+        topPixelsLandscape = CGRectGetWidth(self.view.bounds)*percentOfScreen;
+    }else{
+        topPixelsPortrait = CGRectGetWidth(self.view.bounds)*percentOfScreen;
+        topPixelsLandscape = CGRectGetHeight(self.view.bounds)*percentOfScreen;
+    }
 }
 
 - (void) locationDidChange:(NSNotification*)notification {
@@ -137,7 +149,7 @@
 - (void)setupTableView{
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     
-    self.tableView.contentInset = UIEdgeInsetsMake(CGRectGetHeight(self.view.bounds)*0.59f, 0, 0, 0);
+    self.tableView.contentInset = UIEdgeInsetsMake(CGRectGetHeight(self.view.bounds)*percentOfScreen, 0, 0, 0);
     
     self.tableView.tableFooterView = [UIView new];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([EELListHeaderTableViewCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"NearbyCell"];
@@ -630,7 +642,7 @@
 }
 
 - (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar{
-    self.tableView.contentInset = UIEdgeInsetsMake(CGRectGetHeight(self.view.bounds)*0.635f, 0, 0, 0);
+    self.tableView.contentInset = UIEdgeInsetsMake(CGRectGetHeight(self.view.bounds)*percentOfScreen, 0, 0, 0);
     return YES;
 }
 
@@ -684,7 +696,12 @@
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
-    self.tableView.contentInset = UIEdgeInsetsMake(CGRectGetHeight(self.view.bounds)*0.635f, 0, 0, 0);
+    if (UIInterfaceOrientationIsPortrait(fromInterfaceOrientation)) {
+        self.tableView.contentInset = UIEdgeInsetsMake(topPixelsPortrait, 0, 0, 0);
+    }else{
+        self.tableView.contentInset = UIEdgeInsetsMake(topPixelsLandscape, 0, 0, 0);
+    }
+    
     self.tableView.contentOffset = CGPointMake(0, self.tableView.contentInset.top*-1);
 }
 
