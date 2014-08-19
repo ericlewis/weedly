@@ -316,6 +316,43 @@
 			name = DataSources;
 			sourceTree = "<group>";
 		};
+		4D8718E319A3D1E6000DBC94 /* dispensary */ = {
+			isa = PBXGroup;
+			children = (
+				4DCFE51B1948BEA500139D52 /* EELDeal.h */,
+				4DCFE51C1948BEA500139D52 /* EELDeal.m */,
+				4D9DDDF41915AFEB006E5B03 /* EELDispensary.h */,
+				4D9DDDF51915AFEB006E5B03 /* EELDispensary.m */,
+				4D9DDDFA1915BA81006E5B03 /* EELReview.h */,
+				4D9DDDFB1915BA81006E5B03 /* EELReview.m */,
+				4D8B0A28198C3EE2001ECC83 /* EELStoreHours.h */,
+				4D8B0A29198C3EE2001ECC83 /* EELStoreHours.m */,
+			);
+			name = dispensary;
+			sourceTree = "<group>";
+		};
+		4D8718E419A3D1F4000DBC94 /* menu */ = {
+			isa = PBXGroup;
+			children = (
+				4D06F69519186AF1005597F9 /* EELMenu.h */,
+				4D06F69619186AF1005597F9 /* EELMenu.m */,
+				4D9DDE0219169629006E5B03 /* EELMenuItem.h */,
+				4D9DDE0319169629006E5B03 /* EELMenuItem.m */,
+				4D8718E019A3D0E1000DBC94 /* EELStrain.h */,
+				4D8718E119A3D0E1000DBC94 /* EELStrain.m */,
+			);
+			name = menu;
+			sourceTree = "<group>";
+		};
+		4D8718E519A3D1FE000DBC94 /* user */ = {
+			isa = PBXGroup;
+			children = (
+				4D9DDDF71915BA75006E5B03 /* EELAccount.h */,
+				4D9DDDF81915BA75006E5B03 /* EELAccount.m */,
+			);
+			name = user;
+			sourceTree = "<group>";
+		};
 		4D87F4C5194988C600740558 /* detail cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -377,7 +414,7 @@
 			name = "detail data sources";
 			sourceTree = "<group>";
 		};
-		4D8B0A24198C155C001ECC83 /* API */ = {
+		4D8B0A24198C155C001ECC83 /* APIs */ = {
 			isa = PBXGroup;
 			children = (
 				4D9DDDEE1915AC89006E5B03 /* EELWMClient.h */,
@@ -389,10 +426,10 @@
 				4D8718DD19A3D042000DBC94 /* EELLeaflyResponse.h */,
 				4D8718DE19A3D042000DBC94 /* EELLeaflyResponse.m */,
 			);
-			name = API;
+			name = APIs;
 			sourceTree = "<group>";
 		};
-		4D8B0A2B198DDC20001ECC83 /* collection fw */ = {
+		4D8B0A2B198DDC20001ECC83 /* Collection View FW */ = {
 			isa = PBXGroup;
 			children = (
 				A416BC34198C522F00ACC39B /* AAPLCollectionViewGridLayout_Internal.h */,
@@ -451,7 +488,7 @@
 				A416BC0C198C51CB00ACC39B /* AAPLStateMachine.h */,
 				A416BC0D198C51CB00ACC39B /* AAPLStateMachine.m */,
 			);
-			name = "collection fw";
+			name = "Collection View FW";
 			sourceTree = "<group>";
 		};
 		4D9DDDEC1915AA2E006E5B03 /* Views */ = {
@@ -465,43 +502,30 @@
 		4D9DDDED1915AA50006E5B03 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4D8B0A24198C155C001ECC83 /* APIs */,
 				4D75E0C21943F71C00A25AB6 /* DataSources */,
-				4DCFE51B1948BEA500139D52 /* EELDeal.h */,
-				4DCFE51C1948BEA500139D52 /* EELDeal.m */,
-				4D8B0A24198C155C001ECC83 /* API */,
-				4D06F69519186AF1005597F9 /* EELMenu.h */,
-				4D06F69619186AF1005597F9 /* EELMenu.m */,
-				4D9DDE0219169629006E5B03 /* EELMenuItem.h */,
-				4D9DDE0319169629006E5B03 /* EELMenuItem.m */,
-				4D8718E019A3D0E1000DBC94 /* EELStrain.h */,
-				4D8718E119A3D0E1000DBC94 /* EELStrain.m */,
-				4D9DDDFA1915BA81006E5B03 /* EELReview.h */,
-				4D9DDDFB1915BA81006E5B03 /* EELReview.m */,
-				4D9DDDF71915BA75006E5B03 /* EELAccount.h */,
-				4D9DDDF81915BA75006E5B03 /* EELAccount.m */,
-				4D9DDDF41915AFEB006E5B03 /* EELDispensary.h */,
-				4D9DDDF51915AFEB006E5B03 /* EELDispensary.m */,
-				4D8B0A28198C3EE2001ECC83 /* EELStoreHours.h */,
-				4D8B0A29198C3EE2001ECC83 /* EELStoreHours.m */,
+				4D8718E519A3D1FE000DBC94 /* user */,
+				4D8718E319A3D1E6000DBC94 /* dispensary */,
+				4D8718E419A3D1F4000DBC94 /* menu */,
 			);
 			name = Models;
 			sourceTree = "<group>";
 		};
-		4DB1757419159DD400B3A22F /* detail controllers */ = {
+		4DB1757419159DD400B3A22F /* detail */ = {
 			isa = PBXGroup;
 			children = (
-				4D87F4B7194984CF00740558 /* EELMenuViewController.h */,
-				4D87F4B8194984CF00740558 /* EELMenuViewController.m */,
-				4D75E0CF1943FBE200A25AB6 /* EELDetailViewController.h */,
-				4D75E0D01943FBE200A25AB6 /* EELDetailViewController.m */,
+				4D09EB5D1949726E00161685 /* Cells */,
 				4DD86E151959F28B002D0A3C /* EELDealViewController.h */,
 				4DD86E161959F28B002D0A3C /* EELDealViewController.m */,
-				4D09EB5D1949726E00161685 /* Cells */,
+				4D75E0CF1943FBE200A25AB6 /* EELDetailViewController.h */,
+				4D75E0D01943FBE200A25AB6 /* EELDetailViewController.m */,
+				4D87F4B7194984CF00740558 /* EELMenuViewController.h */,
+				4D87F4B8194984CF00740558 /* EELMenuViewController.m */,
 			);
-			name = "detail controllers";
+			name = detail;
 			sourceTree = "<group>";
 		};
-		4DB1757619159E1400B3A22F /* main view controllers */ = {
+		4DB1757619159E1400B3A22F /* main */ = {
 			isa = PBXGroup;
 			children = (
 				4DD4930A1915827D001A6203 /* EELMainViewController.h */,
@@ -510,14 +534,14 @@
 				4DD1FFF6194641650072D5B4 /* EELListTableView.h */,
 				4DD1FFF7194641650072D5B4 /* EELListTableView.m */,
 			);
-			name = "main view controllers";
+			name = main;
 			sourceTree = "<group>";
 		};
 		4DB1757719159E1D00B3A22F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4DB1757419159DD400B3A22F /* detail controllers */,
-				4DB1757619159E1400B3A22F /* main view controllers */,
+				4DB1757419159DD400B3A22F /* detail */,
+				4DB1757619159E1400B3A22F /* main */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -559,11 +583,10 @@
 		4DC1A1171912F9A200228F5A /* weedly */ = {
 			isa = PBXGroup;
 			children = (
-				4D8B0A2B198DDC20001ECC83 /* collection fw */,
-				4D9DDDED1915AA50006E5B03 /* Models */,
-				4D9DDDEC1915AA2E006E5B03 /* Views */,
 				4DB1757719159E1D00B3A22F /* Controllers */,
+				4D9DDDED1915AA50006E5B03 /* Models */,
 				4DC1A1181912F9A200228F5A /* Supporting Files */,
+				4D9DDDEC1915AA2E006E5B03 /* Views */,
 			);
 			path = weedly;
 			sourceTree = "<group>";
@@ -571,6 +594,7 @@
 		4DC1A1181912F9A200228F5A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4D8B0A2B198DDC20001ECC83 /* Collection View FW */,
 				4DC1A1291912F9A200228F5A /* Images.xcassets */,
 				4DC1A1201912F9A200228F5A /* EELAppDelegate.h */,
 				4DC1A1211912F9A200228F5A /* EELAppDelegate.m */,
