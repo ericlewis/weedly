@@ -12,6 +12,7 @@
 
 @property (copy, nonatomic, readonly) NSNumber *id;
 @property (copy, nonatomic, readonly) NSString *name;
+@property (copy, nonatomic, readonly) NSString *slug;
 @property (copy, nonatomic, readonly) NSString *description;
 @property (copy, nonatomic, readonly) NSString *descriptionPlain;
 @property (copy, nonatomic, readonly) NSString *symbol;

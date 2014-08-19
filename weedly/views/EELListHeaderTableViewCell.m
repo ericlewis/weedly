@@ -2,7 +2,7 @@
 //  EELListHeaderTableViewCell.m
 //  weedly
 //
-//  Created by Eric LEwis on 6/11/14.
+//  Created by Eric Lewis on 6/11/14.
 //  Copyright (c) 2014 Eric Lewis. All rights reserved.
 //
 

@@ -2,11 +2,12 @@
 //  EELMenuViewController.m
 //  weedly
 //
-//  Created by Eric LEwis on 6/11/14.
+//  Created by Eric Lewis on 6/11/14.
 //  Copyright (c) 2014 Eric Lewis. All rights reserved.
 //
 
 #import "EELMenuViewController.h"
+#import "EELStrainInfoViewController.h"
 
 #import "AAPLSegmentedDataSource.h"
 #import "EELMenuDataSource.h"
@@ -22,6 +23,7 @@
 @property (nonatomic, strong) EELFlowerMenuItemsDataSource *itemsDataSource;
 @property (nonatomic, strong) EELConcentratesMenuItemsDataSource *itemsConcentrateDataSource;
 @property (nonatomic, strong) EELEdiblesMenuItemsDataSource *itemsEdibleDataSource;
+@property (nonatomic, strong) EELStrain *selectedStrain;
 
 @end
 
@@ -118,9 +120,27 @@
     // start a loading indicator
     [[EELLeaflyClient sharedClient] getStrainWithName:menuItem.name completionBlock:^(EELStrain *result, NSError *error) {
         if (result != nil) {
+            _selectedStrain = result;
             [self performSegueWithIdentifier:@"ShowStrain" sender:self];
+        }else{
+            _selectedStrain = nil;
+
+            UIAlertView * alert =[[UIAlertView alloc ] initWithTitle:@""
+                                                             message:@"This strain's info isn't available."
+                                                            delegate:self
+                                                   cancelButtonTitle:@":("
+                                                   otherButtonTitles: nil];
+            [alert show];
         }
     }];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"ShowStrain"]) {
+        EELStrainInfoViewController *controller = segue.destinationViewController;
+        [controller loadInfoWithStrain:_selectedStrain];
+    }
 }
 
 - (IBAction)openMenuPricesInBrowser:(id)sender {

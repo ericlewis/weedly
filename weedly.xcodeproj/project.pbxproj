@@ -26,6 +26,7 @@
 		4D8718DC19A3D024000DBC94 /* EELLeaflyClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8718DB19A3D024000DBC94 /* EELLeaflyClient.m */; };
 		4D8718E219A3D0E1000DBC94 /* EELStrain.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8718E119A3D0E1000DBC94 /* EELStrain.m */; };
 		4D8718E819A3DB50000DBC94 /* EELStrainInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8718E719A3DB50000DBC94 /* EELStrainInfo.m */; };
+		4D8718EC19A3DF52000DBC94 /* EELStrainInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8718EB19A3DF52000DBC94 /* EELStrainInfoViewController.m */; };
 		4D87F4B9194984CF00740558 /* EELMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D87F4B8194984CF00740558 /* EELMenuViewController.m */; };
 		4D87F4BC1949851B00740558 /* EELMenuDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D87F4BB1949851B00740558 /* EELMenuDataSource.m */; };
 		4D87F4BF1949865600740558 /* EELMenuItemsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D87F4BE1949865600740558 /* EELMenuItemsDataSource.m */; };
@@ -136,6 +137,8 @@
 		4D8718E119A3D0E1000DBC94 /* EELStrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELStrain.m; path = models/EELStrain.m; sourceTree = "<group>"; };
 		4D8718E619A3DB50000DBC94 /* EELStrainInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELStrainInfo.h; path = models/EELStrainInfo.h; sourceTree = "<group>"; };
 		4D8718E719A3DB50000DBC94 /* EELStrainInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELStrainInfo.m; path = models/EELStrainInfo.m; sourceTree = "<group>"; };
+		4D8718EA19A3DF52000DBC94 /* EELStrainInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELStrainInfoViewController.h; path = controllers/EELStrainInfoViewController.h; sourceTree = "<group>"; };
+		4D8718EB19A3DF52000DBC94 /* EELStrainInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELStrainInfoViewController.m; path = controllers/EELStrainInfoViewController.m; sourceTree = "<group>"; };
 		4D87F4B7194984CF00740558 /* EELMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELMenuViewController.h; path = controllers/EELMenuViewController.h; sourceTree = "<group>"; };
 		4D87F4B8194984CF00740558 /* EELMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELMenuViewController.m; path = controllers/EELMenuViewController.m; sourceTree = "<group>"; };
 		4D87F4BA1949851B00740558 /* EELMenuDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EELMenuDataSource.h; sourceTree = "<group>"; };
@@ -529,6 +532,8 @@
 				4D75E0D01943FBE200A25AB6 /* EELDetailViewController.m */,
 				4D87F4B7194984CF00740558 /* EELMenuViewController.h */,
 				4D87F4B8194984CF00740558 /* EELMenuViewController.m */,
+				4D8718EA19A3DF52000DBC94 /* EELStrainInfoViewController.h */,
+				4D8718EB19A3DF52000DBC94 /* EELStrainInfoViewController.m */,
 			);
 			name = detail;
 			sourceTree = "<group>";
@@ -869,6 +874,7 @@
 				4D87F4BF1949865600740558 /* EELMenuItemsDataSource.m in Sources */,
 				4D9DDDF61915AFEB006E5B03 /* EELDispensary.m in Sources */,
 				4D8718E219A3D0E1000DBC94 /* EELStrain.m in Sources */,
+				4D8718EC19A3DF52000DBC94 /* EELStrainInfoViewController.m in Sources */,
 				4D8718D419A2DA8C000DBC94 /* EELDispensaryMoreInfoDataSource.m in Sources */,
 				4DD86E171959F28B002D0A3C /* EELDealViewController.m in Sources */,
 				4D9DDE0B1916AD74006E5B03 /* EELArrayDataSource.m in Sources */,
