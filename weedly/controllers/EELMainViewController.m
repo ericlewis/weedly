@@ -628,6 +628,7 @@
 }
 
 - (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar{
+    self.tableView.contentInset = UIEdgeInsetsMake(CGRectGetHeight(self.view.bounds)*0.635f, 0, 0, 0);
     return YES;
 }
 
