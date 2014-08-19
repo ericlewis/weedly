@@ -653,7 +653,6 @@
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    
     // landscape
     if (toInterfaceOrientation==UIInterfaceOrientationLandscapeRight || toInterfaceOrientation==UIInterfaceOrientationLandscapeLeft) {
         if (IS_IPHONE_5) {
@@ -681,6 +680,8 @@
     }
 }
 
-
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
+    self.tableView.contentInset = UIEdgeInsetsMake(CGRectGetHeight(self.view.bounds)*0.635f, 0, 0, 0);
+}
 
 @end
