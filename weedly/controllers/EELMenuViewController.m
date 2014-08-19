@@ -111,4 +111,8 @@
     return dataSource;
 }
 
+- (IBAction)openMenuPricesInBrowser:(id)sender {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://weedmaps.com/dispensaries/%@/menu.mobile", self.dispensary.id]]];
+}
+
 @end

@@ -22,6 +22,7 @@
 @property (strong, nonatomic) REMenu *filterMenu;
 @property (strong, nonatomic) UISearchBar *searchBar;
 @property (strong, nonatomic) EELArrayDataSource *dataSource;
+@property (strong, nonatomic) UIButton *myLocationButton;
 
 @property (nonatomic) BOOL didZoomToUser;
 
@@ -57,20 +58,36 @@
     MKCoordinateRegion region;
     CLLocationCoordinate2D coords = [EELYLocationManager sharedManager].location.coordinate;
     
-    if (self.tableView.contentOffset.y > -300) {
-        coords.latitude = coords.latitude - 0.04f;
+    MKCoordinateSpan span;
+    
+    if (self.mapView.region.span.latitudeDelta > 0.12) {
+        span.latitudeDelta  = 0.05; // Change these values to change the zoom
+        span.longitudeDelta = 0.05;
     }else{
-        coords.latitude = coords.latitude - 0.02f;
+        span.latitudeDelta = self.mapView.region.span.latitudeDelta;
+        span.longitudeDelta = self.mapView.region.span.longitudeDelta;
     }
     
+    region.span = span;
     region.center = coords;
     
-    MKCoordinateSpan span;
-    span.latitudeDelta  = 0.12; // Change these values to change the zoom
-    span.longitudeDelta = 0.12;
-    region.span = span;
+    if (self.mapView.region.span.latitudeDelta != region.span.latitudeDelta && self.mapView.region.span.longitudeDelta != region.span.longitudeDelta) {
+        [self.mapView setRegion:region];
+    }
     
-    [self.mapView setRegion:region animated:YES];
+    coords.latitude -= self.mapView.region.span.latitudeDelta * (0.1);
+    [self.mapView setCenterCoordinate:coords animated:NO];
+}
+
+-(MKMapRect)MKMapRectForCoordinateRegion:(MKCoordinateRegion)region
+{
+    MKMapPoint a = MKMapPointForCoordinate(CLLocationCoordinate2DMake(
+                                                                      region.center.latitude + region.span.latitudeDelta / 2,
+                                                                      region.center.longitude - region.span.longitudeDelta / 2));
+    MKMapPoint b = MKMapPointForCoordinate(CLLocationCoordinate2DMake(
+                                                                      region.center.latitude - region.span.latitudeDelta / 2,
+                                                                      region.center.longitude + region.span.longitudeDelta / 2));
+    return MKMapRectMake(MIN(a.x,b.x), MIN(a.y,b.y), ABS(a.x-b.x), ABS(a.y-b.y));
 }
 
 - (void) authorizationStatusDidChange:(NSNotification*)notification {
@@ -118,7 +135,7 @@
 - (void)setupTableView{
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     
-    self.tableView.contentInset = UIEdgeInsetsMake(CGRectGetHeight(self.view.bounds)*0.40f, 0, 0, 0);
+    self.tableView.contentInset = UIEdgeInsetsMake(CGRectGetHeight(self.view.bounds)*0.635f, 0, 0, 0);
     
     self.tableView.tableFooterView = [UIView new];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([EELListHeaderTableViewCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"NearbyCell"];
@@ -140,22 +157,22 @@
 }
 
 - (void)setupMyLocationButton{
-    UIButton *myLocationButton = [[UIButton alloc] initWithFrame:CGRectMake(15.f, CGRectGetHeight(self.mapView.bounds)*0.53f, 44, 44)];
-    [myLocationButton setImage:[UIImage imageNamed:@"myLocation"] forState:UIControlStateNormal];
-    [myLocationButton addTarget:self action:@selector(zoomToUser) forControlEvents:UIControlEventTouchUpInside];
-    myLocationButton.backgroundColor = [UIColor whiteColor];
+    self.myLocationButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+    [self.myLocationButton setImage:[UIImage imageNamed:@"myLocation"] forState:UIControlStateNormal];
+    [self.myLocationButton addTarget:self action:@selector(zoomToUser) forControlEvents:UIControlEventTouchUpInside];
+    self.myLocationButton.backgroundColor = [UIColor whiteColor];
     
-    myLocationButton.layer.cornerRadius = 10.0;
-    myLocationButton.layer.masksToBounds = NO;
-    myLocationButton.layer.borderWidth = 1.0f;
-    myLocationButton.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.myLocationButton.layer.cornerRadius = 5.0;
+    self.myLocationButton.layer.masksToBounds = NO;
+    self.myLocationButton.layer.borderWidth = 1.0f;
+    self.myLocationButton.layer.borderColor = [UIColor lightGrayColor].CGColor;
     
-    myLocationButton.layer.shadowColor = [UIColor blackColor].CGColor;
-    myLocationButton.layer.shadowOpacity = 0.5;
-    myLocationButton.layer.shadowRadius = 3;
-    myLocationButton.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
+    self.myLocationButton.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.myLocationButton.layer.shadowOpacity = 0.4;
+    self.myLocationButton.layer.shadowRadius = 3;
+    self.myLocationButton.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
 
-    [self.mapView addSubview:myLocationButton];
+    [self.mapView addSubview:self.myLocationButton];
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
@@ -373,15 +390,9 @@
     if (![view.annotation isKindOfClass:[MKUserLocation class]]) {
         
         CLLocationCoordinate2D coords = view.annotation.coordinate;
-        
-        if (self.tableView.contentOffset.y > -300) {
-            coords.latitude = coords.latitude - 0.04f;
-        }else{
-            coords.latitude = coords.latitude - 0.02f;
-        }
-        
-        
-        [mapView setCenterCoordinate:coords animated:YES];
+        CLLocationCoordinate2D center = coords;
+        center.latitude -= self.mapView.region.span.latitudeDelta * 0.20;
+        [self.mapView setCenterCoordinate:center animated:YES];
         
         NSMutableArray *sortedArray = [self.dataSource.items mutableCopy]; // your mutable copy of the fetched objects
         
@@ -480,21 +491,46 @@
         return 1;
     }else if(section == 1){
         
-        int amountToReturn = 0;
-        
         if (self.searchBar.text.length == 0) {
             NSSet *annSet = [self.mapView annotationsInMapRect:self.mapView.visibleMapRect];
             
-            if (annSet.count > self.dataSource.items.count) {
-                amountToReturn = annSet.count-1;
+            if (annSet.count == 0) {
+                POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerOpacity];
+                anim.springSpeed = 1.0;
+                anim.toValue = @(0.0);
+                [self.tableView.layer pop_addAnimation:anim forKey:@"showTable"];
+                
+                [self.myLocationButton setFrame:CGRectMake(self.myLocationButton.frame.size.width/2, -self.tableView.contentOffset.y-60, self.myLocationButton.frame.size.width, self.myLocationButton.frame.size.width)];
+            }else{
+                POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerOpacity];
+                anim.springSpeed = 1.0;
+                anim.toValue = @(1.0);
+                [self.tableView.layer pop_addAnimation:anim forKey:@"hideTable"];
             }
             
-            amountToReturn = annSet.count;
+            if (annSet.count > self.dataSource.items.count) {
+                return annSet.count-1;
+            }
+            
+            return annSet.count;
         }else{
-            amountToReturn = self.dataSource.items.count;
+            
+            if (self.dataSource.items.count == 0) {
+                POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerOpacity];
+                anim.springSpeed = 15.0;
+                anim.toValue = @(0.0);
+                [self.tableView.layer pop_addAnimation:anim forKey:@"showTable"];
+                
+                [self.myLocationButton setFrame:CGRectMake(self.myLocationButton.frame.size.width/2, -self.tableView.contentOffset.y-60, self.myLocationButton.frame.size.width, self.myLocationButton.frame.size.width)];
+            }else{
+                POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerOpacity];
+                anim.springSpeed = 15.0;
+                anim.toValue = @(1.0);
+                [self.tableView.layer pop_addAnimation:anim forKey:@"hideTable"];
+            }
+            
+            return self.dataSource.items.count;
         }
-        
-        return amountToReturn;
     }
     
     return 0;
@@ -561,14 +597,13 @@
 #pragma mark -
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    if (self.tableView.hidden == NO) {
+        [self.myLocationButton setFrame:CGRectMake(self.myLocationButton.frame.size.width/2, -self.tableView.contentOffset.y-60, self.myLocationButton.frame.size.width, self.myLocationButton.frame.size.width)];
+    }
+
     if (scrollView.contentOffset.y < (self.mapView.frame.size.height*-1) + 100) {
         [scrollView setContentOffset:CGPointMake(scrollView.contentOffset.x, (self.mapView.frame.size.height*-1) + 100)];
-    }
-}
-
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
-    if (self.tableView.contentInset.top != self.mapView.frame.size.height-140) {
-        [self.tableView setContentInset:UIEdgeInsetsMake(self.mapView.frame.size.height-140, 0, 0, 0)];
     }
 }
 

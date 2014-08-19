@@ -20,6 +20,7 @@
 		4D75E0CE1943F96C00A25AB6 /* EELReviewsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0CD1943F96C00A25AB6 /* EELReviewsDataSource.m */; };
 		4D75E0D11943FBE200A25AB6 /* EELDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0D01943FBE200A25AB6 /* EELDetailViewController.m */; };
 		4D75E0D41944022800A25AB6 /* EELDetailHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0D31944022800A25AB6 /* EELDetailHeader.m */; };
+		4D8718D419A2DA8C000DBC94 /* EELDispensaryMoreInfoDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8718D319A2DA8C000DBC94 /* EELDispensaryMoreInfoDataSource.m */; };
 		4D87F4B9194984CF00740558 /* EELMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D87F4B8194984CF00740558 /* EELMenuViewController.m */; };
 		4D87F4BC1949851B00740558 /* EELMenuDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D87F4BB1949851B00740558 /* EELMenuDataSource.m */; };
 		4D87F4BF1949865600740558 /* EELMenuItemsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D87F4BE1949865600740558 /* EELMenuItemsDataSource.m */; };
@@ -119,6 +120,8 @@
 		4D75E0D01943FBE200A25AB6 /* EELDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELDetailViewController.m; path = controllers/EELDetailViewController.m; sourceTree = "<group>"; };
 		4D75E0D21944022800A25AB6 /* EELDetailHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EELDetailHeader.h; sourceTree = "<group>"; };
 		4D75E0D31944022800A25AB6 /* EELDetailHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EELDetailHeader.m; sourceTree = "<group>"; };
+		4D8718D219A2DA8C000DBC94 /* EELDispensaryMoreInfoDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EELDispensaryMoreInfoDataSource.h; sourceTree = "<group>"; };
+		4D8718D319A2DA8C000DBC94 /* EELDispensaryMoreInfoDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EELDispensaryMoreInfoDataSource.m; sourceTree = "<group>"; };
 		4D87F4B7194984CF00740558 /* EELMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELMenuViewController.h; path = controllers/EELMenuViewController.h; sourceTree = "<group>"; };
 		4D87F4B8194984CF00740558 /* EELMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELMenuViewController.m; path = controllers/EELMenuViewController.m; sourceTree = "<group>"; };
 		4D87F4BA1949851B00740558 /* EELMenuDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EELMenuDataSource.h; sourceTree = "<group>"; };
@@ -349,6 +352,8 @@
 				4D75E0C41943F73A00A25AB6 /* EELDispensaryDetailDataSource.m */,
 				4D544BA41944F1E9000718D7 /* EELDispensaryInfoListDataSource.h */,
 				4D544BA51944F1E9000718D7 /* EELDispensaryInfoListDataSource.m */,
+				4D8718D219A2DA8C000DBC94 /* EELDispensaryMoreInfoDataSource.h */,
+				4D8718D319A2DA8C000DBC94 /* EELDispensaryMoreInfoDataSource.m */,
 				4D75E0CC1943F96C00A25AB6 /* EELReviewsDataSource.h */,
 				4D75E0CD1943F96C00A25AB6 /* EELReviewsDataSource.m */,
 			);
@@ -804,6 +809,7 @@
 				4D75E0D11943FBE200A25AB6 /* EELDetailViewController.m in Sources */,
 				4D87F4BF1949865600740558 /* EELMenuItemsDataSource.m in Sources */,
 				4D9DDDF61915AFEB006E5B03 /* EELDispensary.m in Sources */,
+				4D8718D419A2DA8C000DBC94 /* EELDispensaryMoreInfoDataSource.m in Sources */,
 				4DD86E171959F28B002D0A3C /* EELDealViewController.m in Sources */,
 				4D9DDE0B1916AD74006E5B03 /* EELArrayDataSource.m in Sources */,
 				4DCFE5201948BF1400139D52 /* EELDetailListCell.m in Sources */,

@@ -1,14 +1,12 @@
-/*
- Copyright (C) 2014 Apple Inc. All Rights Reserved.
- See LICENSE.txt for this sample’s licensing information
- 
- Abstract:
- 
- A basic data source that either fetches the list info cell options available
- 
- */
+//
+//  EELDispensaryMoreInfoDataSource.m
+//  weedly
+//
+//  Created by 1debit on 8/18/14.
+//  Copyright (c) 2014 Eric Lewis. All rights reserved.
+//
 
-#import "EELDispensaryInfoListDataSource.h"
+#import "EELDispensaryMoreInfoDataSource.h"
 
 #import "UICollectionView+Helpers.h"
 
@@ -17,11 +15,11 @@
 
 #import "EELDetailListCell.h"
 
-@interface EELDispensaryInfoListDataSource ()
+@interface EELDispensaryMoreInfoDataSource ()
 @property (nonatomic, strong) EELDispensary *dispensary;
 @end
 
-@implementation EELDispensaryInfoListDataSource
+@implementation EELDispensaryMoreInfoDataSource
 
 - (instancetype)initWithDispensary:(EELDispensary *)dispensary
 {
@@ -30,7 +28,7 @@
         return nil;
     
     _dispensary = dispensary;
-    self.defaultMetrics.rowHeight = 68;
+    self.defaultMetrics.rowHeight = 128;
 
     NSMutableArray *itemsToUse = [NSMutableArray new];
     
@@ -45,11 +43,11 @@
          ];
         
         /*[itemsToUse addObject:@{
-                                @"name": @"Deals",
-                                @"subtitle": @"Find great offers.",
-                                @"segue": @"ShowDeals",
-                                @"imageName": @"coupon"
-                                }
+         @"name": @"Deals",
+         @"subtitle": @"Find great offers.",
+         @"segue": @"ShowDeals",
+         @"imageName": @"coupon"
+         }
          ];*/
     }
     
@@ -198,8 +196,9 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDictionary *menuItem = [self itemAtIndexPath:indexPath];
+    
     EELDetailListCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([EELDetailListCell class]) forIndexPath:indexPath];
-
+    
     cell.nameLabel.text = menuItem[@"name"];
     cell.nameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
     cell.nameLabel.textColor = [UIColor colorWithRed:85.0f/255.0f green:85.0f/255.0f blue:85.0f/255.0f alpha:1.0f];
@@ -219,5 +218,6 @@
     
     return cell;
 }
+
 
 @end

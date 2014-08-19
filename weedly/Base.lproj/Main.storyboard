@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4Ij-oe-8ya">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="14A314h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4Ij-oe-8ya">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -104,7 +104,13 @@
                             <outlet property="delegate" destination="Sfh-PX-bkF" id="1Fs-b1-Blf"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="H1J-bI-OP4"/>
+                    <navigationItem key="navigationItem" id="H1J-bI-OP4">
+                        <barButtonItem key="rightBarButtonItem" image="priceButton" id="eCv-og-tIL">
+                            <connections>
+                                <action selector="openMenuPricesInBrowser:" destination="Sfh-PX-bkF" id="Isq-FJ-ySV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E4S-lF-TWp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -175,6 +181,7 @@
     </scenes>
     <resources>
         <image name="filter" width="20" height="20"/>
+        <image name="priceButton" width="25" height="25"/>
     </resources>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
