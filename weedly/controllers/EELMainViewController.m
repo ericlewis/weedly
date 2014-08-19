@@ -73,6 +73,9 @@ CGFloat percentOfScreen = 0.635f;
 }
 
 - (void)zoomToUser{
+    
+    _selectedRow = 0;
+    
     MKCoordinateRegion region;
     CLLocationCoordinate2D coords = [EELYLocationManager sharedManager].location.coordinate;
     
@@ -222,7 +225,13 @@ CGFloat percentOfScreen = 0.635f;
     dispatch_async(dispatch_get_main_queue(), ^{
         NSSet *annSet = [self.mapView annotationsInMapRect:self.mapView.visibleMapRect];
         EELListHeaderTableViewCell *countCell = (EELListHeaderTableViewCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-        [countCell configureWithAmount:annSet.count];
+        
+        if (self.mapView.userLocationVisible && annSet.count > 0) {
+            [countCell configureWithAmount:annSet.count-1];
+        }else{
+            [countCell configureWithAmount:annSet.count];
+        }
+        
         self.selectedRow = 0;
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
     });
@@ -430,7 +439,11 @@ CGFloat percentOfScreen = 0.635f;
         dispatch_async(dispatch_get_main_queue(), ^{
             NSSet *annSet = [self.mapView annotationsInMapRect:self.mapView.visibleMapRect];
             EELListHeaderTableViewCell *countCell = (EELListHeaderTableViewCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-            [countCell configureWithAmount:annSet.count];
+            if (self.mapView.userLocationVisible && annSet.count > 0) {
+                [countCell configureWithAmount:annSet.count-1];
+            }else{
+                [countCell configureWithAmount:annSet.count];
+            }
             self.selectedRow = 1;
             [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
         });
@@ -511,8 +524,13 @@ CGFloat percentOfScreen = 0.635f;
         
         if (self.searchBar.text.length == 0) {
             NSSet *annSet = [self.mapView annotationsInMapRect:self.mapView.visibleMapRect];
+            NSInteger count = annSet.count;
             
-            if (annSet.count == 0) {
+            if (self.mapView.userLocationVisible) {
+                count--;
+            }
+            
+            if (count == 0) {
                 POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerOpacity];
                 anim.springSpeed = 1.0;
                 anim.toValue = @(0.0);
@@ -526,11 +544,7 @@ CGFloat percentOfScreen = 0.635f;
                 [self.tableView.layer pop_addAnimation:anim forKey:@"hideTable"];
             }
             
-            if (annSet.count > self.dataSource.items.count) {
-                return annSet.count-1;
-            }
-            
-            return annSet.count;
+            return count;
         }else{
             
             if (self.dataSource.items.count == 0) {
@@ -634,20 +648,10 @@ CGFloat percentOfScreen = 0.635f;
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
     if (self.dataSource.items.count > 0) {
-        [UIView beginAnimations:nil context:NULL];
-        [UIView setAnimationDuration:0.2];
-        [self.tableView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
-        [UIView commitAnimations];
-        
         if ([self.tableView numberOfRowsInSection:1] > 0) {
-            [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+            [self.tableView setContentOffset:CGPointMake(0, 0) animated:YES];
         }
     }
-}
-
-- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar{
-    self.tableView.contentInset = UIEdgeInsetsMake(CGRectGetHeight(self.view.bounds)*percentOfScreen, 0, 0, 0);
-    return YES;
 }
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar{
