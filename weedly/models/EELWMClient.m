@@ -42,7 +42,7 @@
 - (void)getMenuWithDispensaryID:(NSString*)ID completionBlock:(void (^)(EELMenu *result, NSError *error))block{
     NSParameterAssert(ID);
     
-    [self GET:[NSString stringWithFormat:@"dispensaries/%@/menu.json", ID] parameters:nil completion:^(OVCResponse *response, NSError *error) {
+    [self GET:[NSString stringWithFormat:@"dispensaries/%@/filtered_menu.json", ID] parameters:nil completion:^(OVCResponse *response, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^(void){
             block(response.result, error);
         });
