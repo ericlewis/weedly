@@ -2,7 +2,7 @@
 //  EELListHeaderTableViewCell.h
 //  weedly
 //
-//  Created by 1debit on 6/11/14.
+//  Created by Eric LEwis on 6/11/14.
 //  Copyright (c) 2014 Eric Lewis. All rights reserved.
 //
 

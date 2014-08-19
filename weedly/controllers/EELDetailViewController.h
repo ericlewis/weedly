@@ -2,7 +2,7 @@
 //  EELDispensaryDetailViewController.h
 //  weedly
 //
-//  Created by 1debit on 6/7/14.
+//  Created by Eric LEwis on 6/7/14.
 //  Copyright (c) 2014 Eric Lewis. All rights reserved.
 //
 

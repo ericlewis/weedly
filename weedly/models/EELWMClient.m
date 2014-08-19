@@ -157,6 +157,16 @@
     }];
 }
 
+#pragma mark - Offers API
+- (void) getDealsAround:(CLLocation*)location completionBlock:(void(^)(NSArray*, NSError*))block {
+    [self GET:@"/api/v4/coupons" parameters:@{ @"lat" : @(location.coordinate.latitude), @"lng" : @(location.coordinate.longitude) } completion:^(OVCResponse *response, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            block(response.result, error);
+        });
+    }];
+}
+
+#pragma mark - Overcoat
 + (NSDictionary *)modelClassesByResourcePath {
     return @{
              @"api/v4/search": [EELDispensary class],
@@ -170,15 +180,6 @@
 
 + (Class)responseClass {
     return [EELWMResponse class];
-}
-
-#pragma mark - Offers API
-- (void) getDealsAround:(CLLocation*)location completionBlock:(void(^)(NSArray*, NSError*))block {
-    [self GET:@"/api/v4/coupons" parameters:@{ @"lat" : @(location.coordinate.latitude), @"lng" : @(location.coordinate.longitude) } completion:^(OVCResponse *response, NSError *error) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            block(response.result, error);
-        });
-    }];
 }
 
 @end
