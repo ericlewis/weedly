@@ -135,7 +135,7 @@
 - (void)setupTableView{
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     
-    self.tableView.contentInset = UIEdgeInsetsMake(CGRectGetHeight(self.view.bounds)*0.635f, 0, 0, 0);
+    self.tableView.contentInset = UIEdgeInsetsMake(CGRectGetHeight(self.view.bounds)*0.59f, 0, 0, 0);
     
     self.tableView.tableFooterView = [UIView new];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([EELListHeaderTableViewCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"NearbyCell"];
@@ -682,6 +682,7 @@
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
     self.tableView.contentInset = UIEdgeInsetsMake(CGRectGetHeight(self.view.bounds)*0.635f, 0, 0, 0);
+    self.tableView.contentOffset = CGPointMake(0, self.tableView.contentInset.top*-1);
 }
 
 @end
