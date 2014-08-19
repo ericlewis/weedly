@@ -111,10 +111,39 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="fYy-cD-21n" kind="push" identifier="ShowStrain" id="WX4-JO-AZB"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E4S-lF-TWp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="931" y="-1652"/>
+        </scene>
+        <!--Collection View Controller-->
+        <scene sceneID="ibH-ys-D8E">
+            <objects>
+                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="fYy-cD-21n" sceneMemberID="viewController">
+                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="RMu-fh-m4S">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wzn-BL-eUn">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="fYy-cD-21n" id="tE0-az-G3c"/>
+                            <outlet property="delegate" destination="fYy-cD-21n" id="2Wo-d7-f0C"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="8CN-hf-UEg"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bd8-fC-uVX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1432" y="-1652"/>
         </scene>
         <!--Deal View Controller-->
         <scene sceneID="7Xb-zB-zwA">

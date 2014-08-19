@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="14A261i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="14A314h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -25,17 +25,26 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <imageView appearanceType="aqua" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="disclosureArrow" translatesAutoresizingMaskIntoConstraints="NO" id="tnQ-lX-uZf">
+                        <rect key="frame" x="297" y="16" width="7" height="12"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="7" id="U1T-yh-dai"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
-                <constraint firstItem="dfQ-nL-w8B" firstAttribute="leading" secondItem="B5o-lg-4hj" secondAttribute="trailing" constant="15" id="8W7-4l-vOc"/>
-                <constraint firstAttribute="bottom" secondItem="B5o-lg-4hj" secondAttribute="bottom" constant="-1" id="Bxd-PT-7Wo"/>
-                <constraint firstItem="B5o-lg-4hj" firstAttribute="top" secondItem="Rpf-hT-bIr" secondAttribute="top" constant="1" id="Iog-1b-e8K"/>
-                <constraint firstItem="dfQ-nL-w8B" firstAttribute="centerY" secondItem="Rpf-hT-bIr" secondAttribute="centerY" id="SXG-Wz-u4b"/>
-                <constraint firstAttribute="trailing" secondItem="dfQ-nL-w8B" secondAttribute="trailing" constant="20" id="Wor-tI-QgW"/>
-                <constraint firstItem="B5o-lg-4hj" firstAttribute="leading" secondItem="Rpf-hT-bIr" secondAttribute="leading" id="Y5D-Oc-H1B"/>
-                <constraint firstItem="dfQ-nL-w8B" firstAttribute="leading" secondItem="Rpf-hT-bIr" secondAttribute="leading" constant="20" id="mg0-6E-Gti"/>
+                <constraint firstItem="dfQ-nL-w8B" firstAttribute="leading" secondItem="Rpf-hT-bIr" secondAttribute="leading" constant="20" id="40D-xU-r85"/>
+                <constraint firstItem="dfQ-nL-w8B" firstAttribute="leading" secondItem="B5o-lg-4hj" secondAttribute="trailing" constant="15" id="9k1-hc-hNa"/>
+                <constraint firstItem="dfQ-nL-w8B" firstAttribute="centerY" secondItem="tnQ-lX-uZf" secondAttribute="centerY" id="Crb-6l-y1c"/>
+                <constraint firstAttribute="bottom" secondItem="B5o-lg-4hj" secondAttribute="bottom" constant="-1" id="UJv-GK-reS"/>
+                <constraint firstAttribute="trailing" secondItem="tnQ-lX-uZf" secondAttribute="trailing" constant="16" id="YVB-ep-aXu"/>
+                <constraint firstAttribute="trailing" secondItem="dfQ-nL-w8B" secondAttribute="trailing" constant="20" id="gxR-dh-v0Y"/>
+                <constraint firstItem="dfQ-nL-w8B" firstAttribute="centerY" secondItem="Rpf-hT-bIr" secondAttribute="centerY" id="pMW-da-YNO"/>
+                <constraint firstItem="B5o-lg-4hj" firstAttribute="leading" secondItem="Rpf-hT-bIr" secondAttribute="leading" id="yLT-r1-lNf"/>
+                <constraint firstItem="B5o-lg-4hj" firstAttribute="top" secondItem="Rpf-hT-bIr" secondAttribute="top" constant="1" id="zgL-3v-R8I"/>
             </constraints>
             <size key="customSize" width="320" height="46"/>
             <connections>
@@ -44,4 +53,7 @@
             </connections>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="disclosureArrow" width="6" height="12"/>
+    </resources>
 </document>

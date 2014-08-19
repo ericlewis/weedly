@@ -111,6 +111,18 @@
     return dataSource;
 }
 
+#pragma mark - UICollectionViewDelegate
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    EELMenuItem *menuItem = [self.dataSource.selectedDataSource itemAtIndexPath:indexPath];
+    
+    // start a loading indicator
+    [[EELLeaflyClient sharedClient] getStrainWithName:menuItem.name completionBlock:^(EELStrain *result, NSError *error) {
+        if (result != nil) {
+            [self performSegueWithIdentifier:@"ShowStrain" sender:self];
+        }
+    }];
+}
+
 - (IBAction)openMenuPricesInBrowser:(id)sender {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://weedmaps.com/dispensaries/%@/menu.mobile", self.dispensary.id]]];
 }

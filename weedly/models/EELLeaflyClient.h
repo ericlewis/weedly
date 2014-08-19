@@ -10,4 +10,6 @@
 
 + (instancetype)sharedClient;
 
+- (void)getStrainWithName:(NSString*)name completionBlock:(void (^)(EELStrain *result, NSError *error))block;
+
 @end

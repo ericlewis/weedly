@@ -7,7 +7,6 @@
 //
 
 #import "EELLeaflyClient.h"
-#import "EELLeaflyResponse.h"
 
 @implementation EELLeaflyClient
 
@@ -23,18 +22,32 @@
 }
 
 - (id)init {
-    return [super initWithBaseURL:[NSURL URLWithString:@"http://data.leafly.com"]];
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    [configuration setHTTPAdditionalHeaders:@{
+                                              @"app_id"  : @"77cf69e2",
+                                              @"app_key" : @"05f80bbbc14826df4a7c14b38b854732"
+                                              }];
+
+    return [super initWithBaseURL:[NSURL URLWithString:@"http://data.leafly.com"] sessionConfiguration:configuration];
+}
+
+- (void)getStrainWithName:(NSString*)name completionBlock:(void (^)(EELStrain *result, NSError *error))block{
+    NSParameterAssert(name);
+    
+    NSString *correctedName = [[name stringByReplacingOccurrencesOfString:@" " withString:@"-"] lowercaseString];
+    
+    [self GET:[NSString stringWithFormat:@"strains/%@", correctedName] parameters:nil completion:^(OVCResponse *response, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^(void){
+            block(response.result, error);
+        });
+    }];
 }
 
 #pragma mark - Overcoat
 + (NSDictionary *)modelClassesByResourcePath {
     return @{
-             @"strains/*": [EELDispensary class],
+             @"strains/*": [EELStrain class],
              };
-}
-
-+ (Class)responseClass {
-    return [EELLeaflyResponse class];
 }
 
 @end

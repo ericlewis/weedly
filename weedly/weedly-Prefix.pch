@@ -48,9 +48,11 @@
     #import "EELMenu.h"
     #import "EELMenuItem.h"
     #import "EELDeal.h"
+    #import "EELStrain.h"
 
     // api client
     #import "EELWMClient.h"
+    #import "EELLeaflyClient.h"
     #import "EELUsefulConstants.h"
 
 #endif
