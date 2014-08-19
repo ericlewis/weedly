@@ -44,13 +44,13 @@
                                 }
          ];
         
-        /*[itemsToUse addObject:@{
+        [itemsToUse addObject:@{
                                 @"name": @"Deals",
                                 @"subtitle": @"Find great offers.",
                                 @"segue": @"ShowDeals",
                                 @"imageName": @"coupon"
                                 }
-         ];*/
+         ];
     }
     
     // directions if able to

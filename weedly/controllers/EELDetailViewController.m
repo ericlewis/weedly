@@ -145,7 +145,7 @@
     if ([self.dataSource.selectedDataSource isKindOfClass:[EELDispensaryDetailDataSource class]]) {
         NSDictionary *menuItem = [self.dataSource.selectedDataSource itemAtIndexPath:indexPath];
         
-        if ([menuItem[@"segue"] isEqualToString:@"ShowMenu"] || [menuItem[@"segue"] isEqualToString:@"ShowDeals"]) {
+        if ([menuItem[@"segue"] isEqualToString:@"ShowMenu"]) {
             [self performSegueWithIdentifier:menuItem[@"segue"] sender:self];
 
         }else if([menuItem[@"segue"] isEqualToString:@"ShowDirections"]){
@@ -170,6 +170,8 @@
                 // can't open phones
             }
 
+        }else if([menuItem[@"segue"] isEqualToString:@"ShowDeals"]){
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://weedmaps.com/dispensaries/%@/deals/420", self.dispensary.id]]];
         }
     }
 }
