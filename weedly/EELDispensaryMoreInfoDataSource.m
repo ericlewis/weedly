@@ -44,6 +44,13 @@
 
     NSMutableArray *itemsToUse = [NSMutableArray new];
     
+    // handicap accessible
+    [itemsToUse addObject:@{
+                            @"name": @"ADA Accessible",
+                            @"subtitle": [self stringFromBool:[self.dispensary hasHandicapAccess]],
+                            }
+     ];
+    
     // CC accepted
     [itemsToUse addObject:@{
                             @"name": @"Credit Cards",
@@ -55,6 +62,13 @@
     [itemsToUse addObject:@{
                             @"name": @"Lab Testing",
                             @"subtitle": [self stringFromBool:[self.dispensary hasTesting]],
+                            }
+     ];
+    
+    // lounge exists
+    [itemsToUse addObject:@{
+                            @"name": @"Lounge",
+                            @"subtitle": [self stringFromBool:[self.dispensary hasLounge]],
                             }
      ];
     

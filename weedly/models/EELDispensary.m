@@ -178,7 +178,9 @@ NSString * const EELDispensaryFavoriteToggledNotificationName = @"EELDispensaryF
              @"hours"               : @"_source.hours",
              @"creditCardsAccepted" : @"_source.accepts_credit_cards",
              @"hasGuard"            : @"_source.has_security_guard",
-             @"hasTesting"          : @"_source.has_testing"
+             @"hasTesting"          : @"_source.has_testing",
+             @"hasHandicapAccess"   : @"_source.has_handicap_access",
+             @"hasLounge"           : @"_source.has_lounge",
              };
 }
 
@@ -227,7 +229,7 @@ NSString * const EELDispensaryFavoriteToggledNotificationName = @"EELDispensaryF
     now.minute = currentDate.minute;
     now.isAnteMerdiem = (currentDate.hour != 12); /* 12 on a 12 hour clock is really 0:00, but this in 24 hour time so 12 is just a 12 */
     
-    NSLog(@"Start: %d Now: %d Closes: %d", [start unixTime], [now unixTime], [close unixTime]);
+    //NSLog(@"Start: %d Now: %d Closes: %d", [start unixTime], [now unixTime], [close unixTime]);
     
     if ([start unixTime] <= [now unixTime] && [now unixTime] <= [close unixTime]) {
         return @"YES"; /* traditional time */
