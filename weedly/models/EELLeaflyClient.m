@@ -22,7 +22,13 @@
 }
 
 - (id)init {
-    return [super initWithBaseURL:[NSURL URLWithString:@"http://api.leafly.com/api2"]];
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    [configuration setHTTPAdditionalHeaders:@{
+                                              @"app_id"  : @"77cf69e2",
+                                              @"app_key" : @"05f80bbbc14826df4a7c14b38b854732"
+                                              }];
+
+    return [super initWithBaseURL:[NSURL URLWithString:@"http://data.leafly.com"] sessionConfiguration:configuration];
 }
 
 - (void)getStrainWithName:(NSString*)name completionBlock:(void (^)(EELStrain *result, NSError *error))block{
