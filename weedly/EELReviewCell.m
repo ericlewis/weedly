@@ -84,6 +84,6 @@
     self.ratingLabel.text = reviewStars;
 
     self.shortDescriptionLabel.text = [NSString stringWithFormat:@"%@\n\t", newReview[@"comments"]];
-    self.dateLabel.text = newReview[@"timeAgo"];
+    self.dateLabel.text = [[newReview[@"when"] stringByReplacingOccurrencesOfString:@"about" withString:@""] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 @end
