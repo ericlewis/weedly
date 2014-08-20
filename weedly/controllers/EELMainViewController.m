@@ -34,14 +34,14 @@
 
 CGFloat topPixelsPortrait = 0;
 CGFloat topPixelsLandscape = 0;
-CGFloat percentOfScreen = 0.635f;
+CGFloat percentOfScreen = 0.649f;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     if (!IS_IPHONE_5) {
-        percentOfScreen = 0.58;
+        percentOfScreen = 0.585f;
     }
     
     if (UIInterfaceOrientationIsPortrait([[UIDevice currentDevice] orientation])) {
@@ -608,7 +608,7 @@ CGFloat percentOfScreen = 0.635f;
         return 40;
     }
     
-    return 107;
+    return 95;
 }
 
 - (NSIndexPath*)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
