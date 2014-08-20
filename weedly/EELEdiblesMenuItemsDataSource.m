@@ -12,25 +12,27 @@
 
 - (void)loadContent
 {
-    [self loadContentWithBlock:^(AAPLLoading *loading) {
-        [[EELWMClient sharedClient] getMenuItemsWithDispensaryID:self.dispensary.id.stringValue completionBlock:^(NSArray *results, NSError *error) {
-            if (!loading.current) {
-                [loading ignore];
-                return;
-            }
-            
-            if (error) {
-                [loading doneWithError:error];
-                return;
-            }
-            
-            [loading updateWithContent:^(EELMenuItemsDataSource *me){
-                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"catID = 4 or catID = 6 or catID = 11"];
-                NSArray *filteredArray = [results filteredArrayUsingPredicate:predicate];
-                me.items = filteredArray;
+    if (self.items.count == 0) {
+        [self loadContentWithBlock:^(AAPLLoading *loading) {
+            [[EELWMClient sharedClient] getMenuItemsWithDispensaryID:self.dispensary.id.stringValue completionBlock:^(NSArray *results, NSError *error) {
+                if (!loading.current) {
+                    [loading ignore];
+                    return;
+                }
+                
+                if (error) {
+                    [loading doneWithError:error];
+                    return;
+                }
+                
+                [loading updateWithContent:^(EELMenuItemsDataSource *me){
+                    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"catID = 4 or catID = 6 or catID = 11"];
+                    NSArray *filteredArray = [results filteredArrayUsingPredicate:predicate];
+                    me.items = filteredArray;
+                }];
             }];
         }];
-    }];
+    }
 }
 
 @end

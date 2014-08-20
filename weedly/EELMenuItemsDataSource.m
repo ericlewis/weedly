@@ -23,27 +23,6 @@
     return self;
 }
 
-- (void)loadContent
-{
-    [self loadContentWithBlock:^(AAPLLoading *loading) {
-        [[EELWMClient sharedClient] getMenuItemsWithDispensaryID:self.dispensary.id.stringValue completionBlock:^(NSArray *results, NSError *error) {
-            if (!loading.current) {
-                [loading ignore];
-                return;
-            }
-            
-            if (error) {
-                [loading doneWithError:error];
-                return;
-            }
-            
-            [loading updateWithContent:^(EELMenuItemsDataSource *me){
-                me.items = results;
-            }];
-        }];
-    }];
-}
-
 - (void)registerReusableViewsWithCollectionView:(UICollectionView *)collectionView
 {
     [super registerReusableViewsWithCollectionView:collectionView];

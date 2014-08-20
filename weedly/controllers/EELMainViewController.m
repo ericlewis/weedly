@@ -545,8 +545,8 @@ CGFloat percentOfScreen = 0.635f;
             }
             
             return count;
-        }else{
             
+        }else{
             if (self.dataSource.items.count == 0) {
                 POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerOpacity];
                 anim.springSpeed = 15.0;
@@ -704,11 +704,7 @@ CGFloat percentOfScreen = 0.635f;
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
-    if (UIInterfaceOrientationIsPortrait(fromInterfaceOrientation)) {
-        self.tableView.contentOffset = CGPointMake(0, 0);
-    }else{
-        self.tableView.contentOffset = CGPointMake(0, 0);
-    }
+    self.tableView.contentOffset = CGPointMake(0, 0);
 }
 
 @end

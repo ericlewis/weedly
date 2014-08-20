@@ -37,26 +37,4 @@
     return self;
 }
 
-- (void)loadContent
-{
-    [self loadContentWithBlock:^(AAPLLoading *loading) {
-        [[EELWMClient sharedClient] getMenuWithDispensaryID:self.dispensary.id.stringValue completionBlock:^(EELMenu *result, NSError *error) {
-            if (!loading.current) {
-                [loading ignore];
-                return;
-            }
-            
-            if (error) {
-                [loading doneWithError:error];
-                return;
-            }
-            
-            // There's always content, because this is a composed data source
-            [loading updateWithContent:^(EELMenuDataSource *me) {
-                
-            }];
-        }];
-    }];
-}
-
 @end
