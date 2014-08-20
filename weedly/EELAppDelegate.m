@@ -36,7 +36,7 @@
     }
     
     [UAAppReviewManager setAppID:@"885158116"];
-    [UAAppReviewManager setSignificantEventsUntilPrompt:5];
+    [UAAppReviewManager setSignificantEventsUntilPrompt:3];
     
     // IDK if this is bad practice. we will see.
     [Crashlytics startWithAPIKey:@"aa3ebef69236c7e1ec3eb569123ce003350b80c9"];
