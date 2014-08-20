@@ -11,6 +11,7 @@
 @interface EELStrainInfoViewController ()
 @property (nonatomic, weak) IBOutlet UIWebView *webView;
 @property (nonatomic, strong) EELStrain *strain;
+@property (nonatomic) BOOL loaded;
 @end
 
 @implementation EELStrainInfoViewController
@@ -44,10 +45,20 @@
                     "styleNode.appendChild(styleText);\n"
                     "document.getElementsByTagName('head')[0].appendChild(styleNode);\n",css];
     [self.webView stringByEvaluatingJavaScriptFromString:js];
+    
+    _loaded = YES;
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+    if (_loaded) {
+        return NO;
+    }
+    
+    return YES;
 }
 
 

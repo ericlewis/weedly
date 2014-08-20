@@ -37,8 +37,8 @@
     NSError *error = NULL;
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\(.*\\)" options:NSRegularExpressionCaseInsensitive error:&error];
     
-    NSString *correctedName = [[[[[[[regex stringByReplacingMatchesInString:name options:0 range:NSMakeRange(0, [name length]) withTemplate:@""] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] stringByReplacingOccurrencesOfString:@" " withString:@"-"]stringByReplacingOccurrencesOfString:@"." withString:@""] stringByReplacingOccurrencesOfString:@"'" withString:@""] stringByReplacingOccurrencesOfString:@"-" withString:@""] lowercaseString];
-    
+    NSString *correctedName = [[[[[[[regex stringByReplacingMatchesInString:name options:0 range:NSMakeRange(0, [name length]) withTemplate:@""] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] stringByReplacingOccurrencesOfString:@"." withString:@""] stringByReplacingOccurrencesOfString:@"'" withString:@""] stringByReplacingOccurrencesOfString:@"-" withString:@""] stringByReplacingOccurrencesOfString:@" " withString:@"-"] lowercaseString];
+    NSLog(@"%@", correctedName);
     [self GET:[NSString stringWithFormat:@"strains/%@", correctedName] parameters:nil completion:^(OVCResponse *response, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^(void){
             block(response.result, error);
