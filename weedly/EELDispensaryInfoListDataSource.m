@@ -55,6 +55,15 @@
     
     // directions if able to
     if(!self.dispensary.isDelivery){
+        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"uber://"]]) {
+            [itemsToUse addObject:@{
+                                    @"name": @"Uber",
+                                    @"subtitle": @"Request an Uber.",
+                                    @"segue": @"OpenUber",
+                                    @"imageName": @"uberIcon"
+                                    }];
+        }
+        
         [itemsToUse addObject:@{
                                 @"name": @"Directions",
                                 @"subtitle": @"Find your way here",
