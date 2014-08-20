@@ -37,7 +37,7 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     
-    NSString* css = @"\"#dispensaries, #global-header, .azk-block, .leafly-social-mobile, #banner-nav, #reviews, #photos, #genetics, #similar-strains, #articles, footer {display:none;} \"";
+    NSString* css = @"\"#dispensaries, #global-header, .azk-block, .leafly-social-mobile, #details #header, #mobile-nav, #banner-nav, #reviews, #photos, #genetics, #similar-strains, #articles, footer {display:none;}\"";
     NSString* js = [NSString stringWithFormat:
                     @"var styleNode = document.createElement('style');\n"
                     "styleNode.type = \"text/css\";\n"
