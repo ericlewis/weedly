@@ -125,10 +125,10 @@
         }else{
             _selectedStrain = nil;
 
-            UIAlertView * alert =[[UIAlertView alloc ] initWithTitle:@""
+            UIAlertView * alert =[[UIAlertView alloc ] initWithTitle:@"Sorry!"
                                                              message:@"This strain's info isn't available."
                                                             delegate:self
-                                                   cancelButtonTitle:@":("
+                                                   cancelButtonTitle:@"Okay"
                                                    otherButtonTitles: nil];
             [alert show];
         }

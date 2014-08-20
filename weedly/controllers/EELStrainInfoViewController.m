@@ -35,6 +35,15 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    
+    NSString* css = @"\"#dispensaries, #global-header, .azk-block, .leafly-social-mobile, #banner-nav, #reviews, #photos, #genetics, #similar-strains, #articles, footer {display:none;} \"";
+    NSString* js = [NSString stringWithFormat:
+                    @"var styleNode = document.createElement('style');\n"
+                    "styleNode.type = \"text/css\";\n"
+                    "var styleText = document.createTextNode(%@);\n"
+                    "styleNode.appendChild(styleText);\n"
+                    "document.getElementsByTagName('head')[0].appendChild(styleNode);\n",css];
+    [self.webView stringByEvaluatingJavaScriptFromString:js];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
