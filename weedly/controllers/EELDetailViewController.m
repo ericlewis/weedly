@@ -173,7 +173,12 @@
         }else if([menuItem[@"segue"] isEqualToString:@"ShowDeals"]){
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://weedmaps.com/dispensaries/%@/deals/420", self.dispensary.id]]];
         }else if([menuItem[@"segue"] isEqualToString:@"OpenUber"]){
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"uber://?action=setPickup&pickup=my_location&dropoff[latitude]=%f&dropoff[longitude]=%f", self.dispensary.lat, self.dispensary.lng]]];
+            
+            
+            NSString *addressFormatted = [[NSString stringWithFormat:@"%@, %@, %@ %@", self.dispensary.address, self.dispensary.city, self.dispensary.state, self.dispensary.zip] stringByAddingPercentEscapesUsingEncoding:
+                                          NSUTF8StringEncoding];
+            
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"uber://?action=setPickup&pickup=my_location&dropoff[latitude]=%f&dropoff[longitude]=%f&dropoff[formatted_address]=%@", self.dispensary.lat, self.dispensary.lng, addressFormatted]]];
         }
     }
 }
