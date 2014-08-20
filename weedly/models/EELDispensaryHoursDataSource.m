@@ -1,13 +1,12 @@
 //
-//  EELDispensaryMoreInfoDataSource.m
+//  EELDispensaryHoursDataSource.m
 //  weedly
 //
-//  Created by Eric Lewis on 8/18/14.
+//  Created by 1debit on 8/20/14.
 //  Copyright (c) 2014 Eric Lewis. All rights reserved.
 //
 
-#import "EELDispensaryMoreInfoDataSource.h"
-
+#import "EELDispensaryHoursDataSource.h"
 #import "UICollectionView+Helpers.h"
 
 #import "AAPLAction.h"
@@ -15,14 +14,18 @@
 
 #import "EELDetailInfoCell.h"
 
-@interface EELDispensaryMoreInfoDataSource ()
+@interface EELDispensaryHoursDataSource ()
 @property (nonatomic, strong) EELDispensary *dispensary;
 @end
 
-@implementation EELDispensaryMoreInfoDataSource
+@implementation EELDispensaryHoursDataSource
 
-- (NSString*)stringFromBool:(BOOL)value{
-    return value ? @"YES" : @"NO";
+- (NSString*)hoursStringFromStoreHours:(EELStoreHours*)hours{
+    if (hours.opensAt != nil && hours.opensAt != nil) {
+        return [NSString stringWithFormat:@"%@-%@", [[hours opensAt] stringByReplacingOccurrencesOfString:@" " withString:@""], [[hours closesAt] stringByReplacingOccurrencesOfString:@" " withString:@""]];
+    }
+    
+    return @"N/A";
 }
 
 - (instancetype)initWithDispensary:(EELDispensary *)dispensary
@@ -32,45 +35,57 @@
         return nil;
     
     _dispensary = dispensary;
-    self.defaultMetrics.rowHeight = 40;
+    self.defaultMetrics.rowHeight = 25;
+    self.defaultMetrics.separatorColor = [UIColor clearColor];
+    self.defaultMetrics.padding = UIEdgeInsetsMake(5, 0, 15, 0);
 
     NSMutableArray *itemsToUse = [NSMutableArray new];
     
-    // handicap accessible
+    // hours
     [itemsToUse addObject:@{
-                            @"name": @"ADA Accessible",
-                            @"subtitle": [self stringFromBool:[self.dispensary hasHandicapAccess]],
+                            @"name": @"Monday",
+                            @"subtitle": [self hoursStringFromStoreHours:[self.dispensary hoursForDay:@"mon"]],
                             }
      ];
     
-    // CC accepted
     [itemsToUse addObject:@{
-                            @"name": @"Credit Cards",
-                            @"subtitle": [self stringFromBool:[self.dispensary creditCardsAccepted]],
+                            @"name": @"Tuesday",
+                            @"subtitle": [self hoursStringFromStoreHours:[self.dispensary hoursForDay:@"tue"]],
                             }
      ];
     
-    // testing exists
     [itemsToUse addObject:@{
-                            @"name": @"Lab Testing",
-                            @"subtitle": [self stringFromBool:[self.dispensary hasTesting]],
+                            @"name": @"Wednesday",
+                            @"subtitle": [self hoursStringFromStoreHours:[self.dispensary hoursForDay:@"wed"]],
                             }
      ];
     
-    // lounge exists
     [itemsToUse addObject:@{
-                            @"name": @"Lounge",
-                            @"subtitle": [self stringFromBool:[self.dispensary hasLounge]],
+                            @"name": @"Thursday",
+                            @"subtitle": [self hoursStringFromStoreHours:[self.dispensary hoursForDay:@"thu"]],
+                            @"infoItem": @YES,
+                            @"imageName": @"calendar"
                             }
      ];
     
-    // guard exists
     [itemsToUse addObject:@{
-                            @"name": @"Security",
-                            @"subtitle": [self stringFromBool:[self.dispensary hasGuard]],
+                            @"name": @"Friday",
+                            @"subtitle": [self hoursStringFromStoreHours:[self.dispensary hoursForDay:@"fri"]],
                             }
      ];
- 
+    
+    [itemsToUse addObject:@{
+                            @"name": @"Saturday",
+                            @"subtitle": [self hoursStringFromStoreHours:[self.dispensary hoursForDay:@"sat"]],
+                            }
+     ];
+    
+    [itemsToUse addObject:@{
+                            @"name": @"Sunday",
+                            @"subtitle": [self hoursStringFromStoreHours:[self.dispensary hoursForDay:@"sun"]],
+                            }
+     ];
+    
     self.items = itemsToUse;
     
     return self;

@@ -20,6 +20,7 @@
 		4D75E0CE1943F96C00A25AB6 /* EELReviewsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0CD1943F96C00A25AB6 /* EELReviewsDataSource.m */; };
 		4D75E0D11943FBE200A25AB6 /* EELDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0D01943FBE200A25AB6 /* EELDetailViewController.m */; };
 		4D75E0D41944022800A25AB6 /* EELDetailHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D75E0D31944022800A25AB6 /* EELDetailHeader.m */; };
+		4D843EBD19A5507900373A91 /* EELDispensaryHoursDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D843EBC19A5507900373A91 /* EELDispensaryHoursDataSource.m */; };
 		4D8718D419A2DA8C000DBC94 /* EELDispensaryMoreInfoDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8718D319A2DA8C000DBC94 /* EELDispensaryMoreInfoDataSource.m */; };
 		4D8718D719A3BF89000DBC94 /* EELDetailInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8718D619A3BF89000DBC94 /* EELDetailInfoCell.m */; };
 		4D8718D919A3BFB2000DBC94 /* EELDetailInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D8718D819A3BFB2000DBC94 /* EELDetailInfoCell.xib */; };
@@ -126,6 +127,8 @@
 		4D75E0D01943FBE200A25AB6 /* EELDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELDetailViewController.m; path = controllers/EELDetailViewController.m; sourceTree = "<group>"; };
 		4D75E0D21944022800A25AB6 /* EELDetailHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EELDetailHeader.h; sourceTree = "<group>"; };
 		4D75E0D31944022800A25AB6 /* EELDetailHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EELDetailHeader.m; sourceTree = "<group>"; };
+		4D843EBB19A5507900373A91 /* EELDispensaryHoursDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELDispensaryHoursDataSource.h; path = models/EELDispensaryHoursDataSource.h; sourceTree = "<group>"; };
+		4D843EBC19A5507900373A91 /* EELDispensaryHoursDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELDispensaryHoursDataSource.m; path = models/EELDispensaryHoursDataSource.m; sourceTree = "<group>"; };
 		4D8718D219A2DA8C000DBC94 /* EELDispensaryMoreInfoDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EELDispensaryMoreInfoDataSource.h; sourceTree = "<group>"; };
 		4D8718D319A2DA8C000DBC94 /* EELDispensaryMoreInfoDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EELDispensaryMoreInfoDataSource.m; sourceTree = "<group>"; };
 		4D8718D519A3BF89000DBC94 /* EELDetailInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELDetailInfoCell.h; path = views/EELDetailInfoCell.h; sourceTree = "<group>"; };
@@ -421,6 +424,8 @@
 				4D544BA51944F1E9000718D7 /* EELDispensaryInfoListDataSource.m */,
 				4D8718D219A2DA8C000DBC94 /* EELDispensaryMoreInfoDataSource.h */,
 				4D8718D319A2DA8C000DBC94 /* EELDispensaryMoreInfoDataSource.m */,
+				4D843EBB19A5507900373A91 /* EELDispensaryHoursDataSource.h */,
+				4D843EBC19A5507900373A91 /* EELDispensaryHoursDataSource.m */,
 				4D75E0CC1943F96C00A25AB6 /* EELReviewsDataSource.h */,
 				4D75E0CD1943F96C00A25AB6 /* EELReviewsDataSource.m */,
 			);
@@ -861,6 +866,7 @@
 				A416BC30198C51EB00ACC39B /* AAPLComposedDataSource_Private.m in Sources */,
 				4D8718DC19A3D024000DBC94 /* EELLeaflyClient.m in Sources */,
 				A416BC15198C51CB00ACC39B /* AAPLSectionHeaderView.m in Sources */,
+				4D843EBD19A5507900373A91 /* EELDispensaryHoursDataSource.m in Sources */,
 				4D87F4D419499E6200740558 /* EELEdiblesMenuItemsDataSource.m in Sources */,
 				4DC1A1221912F9A200228F5A /* EELAppDelegate.m in Sources */,
 				4DCFE51D1948BEA500139D52 /* EELDeal.m in Sources */,

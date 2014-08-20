@@ -173,12 +173,14 @@
         }else if([menuItem[@"segue"] isEqualToString:@"ShowDeals"]){
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://weedmaps.com/dispensaries/%@/deals/420", self.dispensary.id]]];
         }else if([menuItem[@"segue"] isEqualToString:@"OpenUber"]){
-            
-            
             NSString *addressFormatted = [[NSString stringWithFormat:@"%@, %@, %@ %@", self.dispensary.address, self.dispensary.city, self.dispensary.state, self.dispensary.zip] stringByAddingPercentEscapesUsingEncoding:
                                           NSUTF8StringEncoding];
             
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"uber://?action=setPickup&pickup=my_location&dropoff[latitude]=%f&dropoff[longitude]=%f&dropoff[formatted_address]=%@", self.dispensary.lat, self.dispensary.lng, addressFormatted]]];
+            if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"uber://"]]) {
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"uber://?action=setPickup&pickup=my_location&dropoff[latitude]=%f&dropoff[longitude]=%f&dropoff[formatted_address]=%@", self.dispensary.lat, self.dispensary.lng, addressFormatted]]];
+            }else{
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://m.uber.com/sign-up?client_id=ARLnSHkDpy6EzC-h20z5iPEsHvTN5Is7"]];
+            }
         }
     }
 }
