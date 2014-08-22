@@ -16,6 +16,7 @@
 
 @interface EELDispensaryHoursDataSource ()
 @property (nonatomic, strong) EELDispensary *dispensary;
+@property (nonatomic, strong) NSDateFormatter *dateFormatter;
 @end
 
 @implementation EELDispensaryHoursDataSource
@@ -33,6 +34,9 @@
     self = [super init];
     if (!self)
         return nil;
+    
+    _dateFormatter = [[NSDateFormatter alloc] init];
+    [_dateFormatter setDateFormat:@"EEEE"];
     
     _dispensary = dispensary;
     self.defaultMetrics.rowHeight = 25;
@@ -116,11 +120,7 @@
     cell.subtitleLabel.textColor = cell.nameLabel.textColor;
     cell.subtitleLabel.font = cell.nameLabel.font;
     
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"EEEE"];
-    NSLog(@"%@", [dateFormatter stringFromDate:[NSDate date]]);
-    
-    if ([[[dateFormatter stringFromDate:[NSDate date]] lowercaseString] isEqualToString:[menuItem[@"name"] lowercaseString]]) {
+    if ([[[_dateFormatter stringFromDate:[NSDate date]] lowercaseString] isEqualToString:[menuItem[@"name"] lowercaseString]]) {
         cell.nameLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16];
         cell.subtitleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16];
         cell.nameLabel.textColor = [UIColor colorWithRed:85.0f/255.0f green:85.0f/255.0f blue:85.0f/255.0f alpha:1.0f];
