@@ -43,14 +43,6 @@
                                 @"imageName": @"list_ingredients-128"
                                 }
          ];
-        
-        [itemsToUse addObject:@{
-                                @"name": @"Deals",
-                                @"subtitle": @"Find great offers.",
-                                @"segue": @"ShowDeals",
-                                @"imageName": @"coupon"
-                                }
-         ];
     }
     
     // directions if able to
