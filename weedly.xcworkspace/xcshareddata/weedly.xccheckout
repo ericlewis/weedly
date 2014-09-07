@@ -10,29 +10,29 @@
 	<string>weedly</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>DA285BE8-772B-4080-B6D2-6B720DD82542</key>
+		<key>E96F3C6D8ADC36B5781AFE4DE0B5297BC9AD0DBE</key>
 		<string>https://github.com/ericlewis/weedly.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>weedly.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>DA285BE8-772B-4080-B6D2-6B720DD82542</key>
+		<key>E96F3C6D8ADC36B5781AFE4DE0B5297BC9AD0DBE</key>
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/ericlewis/weedly.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>DA285BE8-772B-4080-B6D2-6B720DD82542</string>
+	<string>E96F3C6D8ADC36B5781AFE4DE0B5297BC9AD0DBE</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>DA285BE8-772B-4080-B6D2-6B720DD82542</string>
+			<string>E96F3C6D8ADC36B5781AFE4DE0B5297BC9AD0DBE</string>
 			<key>IDESourceControlWCCName</key>
 			<string>weedly</string>
 		</dict>

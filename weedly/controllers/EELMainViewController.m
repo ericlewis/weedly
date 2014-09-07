@@ -117,30 +117,6 @@ CGFloat percentOfScreen = 0.649f;
 
 - (void)viewWillAppear:(BOOL)animated{
     [self performSelector:@selector(showSearchBar) withObject:self afterDelay:0.15];
-    
-    // landscape fix search
-    if (UIDeviceOrientationIsLandscape(self.interfaceOrientation)) {
-        if (IS_IPHONE_5) {
-            if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
-                self.searchBar.frame = CGRectMake(90, -4.f, 400, 40);
-            }else{
-                self.searchBar.frame = CGRectMake(90, -6.5f, 400, 40);
-            }
-        }else{
-            if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
-                self.searchBar.frame = CGRectMake(40, -4.f, 400, 40);
-            }else{
-                self.searchBar.frame = CGRectMake(40, -6.5f, 400, 40);
-            }
-        }
-    }else{
-        
-        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
-            self.searchBar.frame = CGRectMake(10, 0, 260, 44);
-        }else{
-            self.searchBar.frame = CGRectMake(0, 0, 275, 44);
-        }
-    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -249,8 +225,10 @@ CGFloat percentOfScreen = 0.649f;
     
     self.searchBar.placeholder = @"Search Dispensaries";
     self.searchBar.tag = 420;
-
-    [self.navigationController.navigationBar addSubview:self.searchBar];
+    
+    [self.searchBar sizeToFit];
+    
+    [self.navigationItem setTitleView:self.searchBar];
 }
 
 #pragma mark -
@@ -673,34 +651,6 @@ CGFloat percentOfScreen = 0.649f;
     anim.springSpeed = 20.0;
     anim.toValue = @(0.0);
     [self.searchBar.layer pop_addAnimation:anim forKey:@"searchBarShow"];
-}
-
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    // landscape
-    if (toInterfaceOrientation==UIInterfaceOrientationLandscapeRight || toInterfaceOrientation==UIInterfaceOrientationLandscapeLeft) {
-        if (IS_IPHONE_5) {
-            if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
-                self.searchBar.frame = CGRectMake(90, -4.f, 400, 40);
-            }else{
-                self.searchBar.frame = CGRectMake(90, -6.5f, 400, 40);
-            }
-        }else{
-            if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
-                self.searchBar.frame = CGRectMake(40, -4.f, 400, 40);
-            }else{
-                self.searchBar.frame = CGRectMake(40, -6.5f, 400, 40);
-            }
-        }
-    }
-    
-    // normal
-    else{
-        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
-            self.searchBar.frame = CGRectMake(10, 0, 260, 44);
-        }else{
-            self.searchBar.frame = CGRectMake(0, 0, 275, 44);
-        }
-    }
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
