@@ -23,6 +23,8 @@
 @property (nonatomic, strong) EELFlowerMenuItemsDataSource *itemsDataSource;
 @property (nonatomic, strong) EELConcentratesMenuItemsDataSource *itemsConcentrateDataSource;
 @property (nonatomic, strong) EELEdiblesMenuItemsDataSource *itemsEdibleDataSource;
+@property (nonatomic, strong) NSString *urlForStrain;
+@property (nonatomic, strong) NSString *nameOfStrain;
 @property (nonatomic, strong) EELStrain *selectedStrain;
 
 @end
@@ -118,28 +120,33 @@
     EELMenuItem *menuItem = [self.dataSource.selectedDataSource itemAtIndexPath:indexPath];
     
     // start a loading indicator
-    [[EELLeaflyClient sharedClient] getStrainWithName:menuItem.name completionBlock:^(EELStrain *result, NSError *error) {
-        if (result != nil) {
-            _selectedStrain = result;
-            [self performSegueWithIdentifier:@"ShowStrain" sender:self];
-        }else{
-            _selectedStrain = nil;
+    
+    NSError *error = NULL;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\(.*\\)" options:NSRegularExpressionCaseInsensitive error:&error];
+    
+     NSString *correctedName = [[[[[[[regex stringByReplacingMatchesInString:menuItem.name options:0 range:NSMakeRange(0, [menuItem.name length]) withTemplate:@""] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] stringByReplacingOccurrencesOfString:@"." withString:@""] stringByReplacingOccurrencesOfString:@"'" withString:@""] stringByReplacingOccurrencesOfString:@"-" withString:@""] stringByReplacingOccurrencesOfString:@" " withString:@"-"] lowercaseString];
+    
+    NSString *categoryName = @"indica";
+    
+    if (menuItem.catID == 1) {  // indica
+        categoryName = @"indica";
+    } else if (menuItem.catID == 2) { // sativa
+        categoryName = @"sativa";
+    } else if (menuItem.catID == 3) { // hybrid
+        categoryName = @"hybrid";
+    }
+    
+    _urlForStrain = [NSString stringWithFormat:@"%@/%@", categoryName, correctedName];
+    _nameOfStrain = menuItem.name;
 
-            UIAlertView * alert =[[UIAlertView alloc ] initWithTitle:@"Sorry!"
-                                                             message:@"This strain's info isn't available."
-                                                            delegate:self
-                                                   cancelButtonTitle:@"Okay"
-                                                   otherButtonTitles: nil];
-            [alert show];
-        }
-    }];
+    [self performSegueWithIdentifier:@"ShowStrain" sender:self];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"ShowStrain"]) {
         EELStrainInfoViewController *controller = segue.destinationViewController;
-        [controller loadInfoWithStrain:_selectedStrain];
+        [controller loadInfoWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.leafly.com/%@", _urlForStrain]] andName:_nameOfStrain];
     }
 }
 

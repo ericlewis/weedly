@@ -11,5 +11,6 @@
 @interface EELStrainInfoViewController : UIViewController<UIWebViewDelegate>
 
 - (void)loadInfoWithStrain:(EELStrain *)strain;
+- (void)loadInfoWithURL:(NSURL *)url andName:(NSString*)name;
 
 @end

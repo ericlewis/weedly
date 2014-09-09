@@ -11,6 +11,8 @@
 @interface EELStrainInfoViewController ()
 @property (nonatomic, weak) IBOutlet UIWebView *webView;
 @property (nonatomic, strong) EELStrain *strain;
+@property (nonatomic, strong) NSURL *URL;
+@property (nonatomic, strong) NSString *name;
 @property (nonatomic) BOOL loaded;
 @end
 
@@ -19,15 +21,28 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = self.strain.name;
     
-    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.leafly.com/%@/%@", self.strain.category.lowercaseString, self.strain.slug]]]];
+    if (_name != nil) {
+        self.title = _name;
+    }
+    
+    if (_URL != nil) {
+        [self.webView loadRequest:[NSURLRequest requestWithURL:_URL]];
+    }else{
+        self.title = self.strain.name;
+        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.leafly.com/%@/%@", self.strain.category.lowercaseString, self.strain.slug]]]];
+    }
     
     [UAAppReviewManager userDidSignificantEvent:YES];
 }
 
 - (void)loadInfoWithStrain:(EELStrain *)strain{
     _strain = strain;
+}
+
+- (void)loadInfoWithURL:(NSURL *)url andName:(NSString*)name{
+    _URL = url;
+    _name = name;
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView{
