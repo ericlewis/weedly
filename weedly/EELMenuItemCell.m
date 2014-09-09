@@ -22,11 +22,11 @@
     NSString *pricesString = @"";
     
     if (menuItem.catID == 1) {
-        self.leftBorder.backgroundColor = [UIColor colorWithRed:115/255.0f green:73/255.0f blue:121/255.0f alpha:1.0f];
+        self.leftBorder.backgroundColor = [UIColor colorWithRed:116/255.0f green:73/255.0f blue:121/255.0f alpha:1.0f];
     } else if (menuItem.catID == 2) {
-        self.leftBorder.backgroundColor = [UIColor colorWithRed:182/255.0f green:75/255.0f blue:48/255.0f alpha:1.0f];
+        self.leftBorder.backgroundColor = [UIColor colorWithRed:183/255.0f green:75/255.0f blue:48/255.0f alpha:1.0f];
     } else if (menuItem.catID == 3) {
-        self.leftBorder.backgroundColor = [UIColor colorWithRed:132/255.0f green:176/255.0f blue:43/255.0f alpha:1.0f];
+        self.leftBorder.backgroundColor = [UIColor colorWithRed:133/255.0f green:176/255.0f blue:43/255.0f alpha:1.0f];
     }else{
         self.leftBorder.backgroundColor = [UIColor clearColor];
     }
