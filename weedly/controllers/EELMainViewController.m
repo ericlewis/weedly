@@ -59,6 +59,10 @@ CGFloat percentOfScreen = 0.649f;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationDidChange:) name:kEELYLocationDidChange object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(authorizationStatusDidChange:) name:kEELYLocationStatusDidChange object:nil];
     
+    if([[EELYLocationManager sharedManager] respondsToSelector:@selector(requestAlwaysAuthorization)]) {
+        [[EELYLocationManager sharedManager] requestWhenInUseAuthorization];
+    }
+    
     [[EELYLocationManager sharedManager] startUpdatingLocation];
 
     self.navigationController.navigationBar.translucent = NO;
