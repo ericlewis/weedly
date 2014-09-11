@@ -185,9 +185,4 @@
     }
 }
 
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
-    [self.collectionView.collectionViewLayout invalidateLayout];
-}
-
 @end

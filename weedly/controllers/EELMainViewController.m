@@ -657,8 +657,8 @@ CGFloat percentOfScreen = 0.649f;
     [self.searchBar.layer pop_addAnimation:anim forKey:@"searchBarShow"];
 }
 
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
-    self.tableView.contentOffset = CGPointMake(0, 0);
+- (NSUInteger)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 @end
