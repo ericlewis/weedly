@@ -11,7 +11,6 @@
 		4D22EE1F1969DD4D00268853 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4D22EE1E1969DD4D00268853 /* Settings.bundle */; };
 		4D37D4641949139500034769 /* EELListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D37D4621949139500034769 /* EELListTableViewCell.m */; };
 		4D37D4651949139500034769 /* EELListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D37D4631949139500034769 /* EELListTableViewCell.xib */; };
-		4D37D4671949284D00034769 /* EELReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D37D4661949284D00034769 /* EELReviewCell.xib */; };
 		4D37D46B19494F9F00034769 /* EELListHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D37D46919494F9F00034769 /* EELListHeaderTableViewCell.m */; };
 		4D37D46C19494F9F00034769 /* EELListHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D37D46A19494F9F00034769 /* EELListHeaderTableViewCell.xib */; };
 		4D544BA219441518000718D7 /* EELReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D544BA119441518000718D7 /* EELReviewCell.m */; };
@@ -112,7 +111,6 @@
 		4D37D4611949139500034769 /* EELListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELListTableViewCell.h; path = views/EELListTableViewCell.h; sourceTree = "<group>"; };
 		4D37D4621949139500034769 /* EELListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELListTableViewCell.m; path = views/EELListTableViewCell.m; sourceTree = "<group>"; };
 		4D37D4631949139500034769 /* EELListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EELListTableViewCell.xib; path = views/EELListTableViewCell.xib; sourceTree = "<group>"; };
-		4D37D4661949284D00034769 /* EELReviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EELReviewCell.xib; path = views/EELReviewCell.xib; sourceTree = "<group>"; };
 		4D37D46819494F9F00034769 /* EELListHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EELListHeaderTableViewCell.h; path = views/EELListHeaderTableViewCell.h; sourceTree = "<group>"; };
 		4D37D46919494F9F00034769 /* EELListHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EELListHeaderTableViewCell.m; path = views/EELListHeaderTableViewCell.m; sourceTree = "<group>"; };
 		4D37D46A19494F9F00034769 /* EELListHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EELListHeaderTableViewCell.xib; path = views/EELListHeaderTableViewCell.xib; sourceTree = "<group>"; };
@@ -380,7 +378,6 @@
 				4DCFE5211948C05300139D52 /* EELDetailHeader.xib */,
 				4D544BA019441518000718D7 /* EELReviewCell.h */,
 				4D544BA119441518000718D7 /* EELReviewCell.m */,
-				4D37D4661949284D00034769 /* EELReviewCell.xib */,
 				4DCFE5191948BE3100139D52 /* EELDetailListCell.xib */,
 				4DCFE51E1948BF1400139D52 /* EELDetailListCell.h */,
 				4DCFE51F1948BF1400139D52 /* EELDetailListCell.m */,
@@ -757,7 +754,6 @@
 				4D22EE1F1969DD4D00268853 /* Settings.bundle in Resources */,
 				4DC1A11C1912F9A200228F5A /* InfoPlist.strings in Resources */,
 				4D87F4C41949887E00740558 /* EELMenuItemCell.xib in Resources */,
-				4D37D4671949284D00034769 /* EELReviewCell.xib in Resources */,
 				4DCFE51A1948BE3100139D52 /* EELDetailListCell.xib in Resources */,
 				4D37D46C19494F9F00034769 /* EELListHeaderTableViewCell.xib in Resources */,
 				4D37D4651949139500034769 /* EELListTableViewCell.xib in Resources */,
