@@ -159,6 +159,7 @@ CGFloat percentOfScreen = 0.649f;
 
 - (void)setupMyLocationButton{
     self.myLocationButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+    self.myLocationButton.contentEdgeInsets = UIEdgeInsetsMake(8, 8, 8, 8);
     [self.myLocationButton setImage:[UIImage imageNamed:@"myLocation"] forState:UIControlStateNormal];
     [self.myLocationButton addTarget:self action:@selector(zoomToUser) forControlEvents:UIControlEventTouchUpInside];
     self.myLocationButton.backgroundColor = [UIColor whiteColor];
@@ -166,7 +167,7 @@ CGFloat percentOfScreen = 0.649f;
     self.myLocationButton.layer.cornerRadius = 5.0;
     self.myLocationButton.layer.masksToBounds = NO;
     self.myLocationButton.layer.borderWidth = 1.0f;
-    self.myLocationButton.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.myLocationButton.layer.borderColor = [UIColor grayColor].CGColor;
     
     self.myLocationButton.layer.shadowColor = [UIColor blackColor].CGColor;
     self.myLocationButton.layer.shadowOpacity = 0.4;

@@ -46,6 +46,7 @@
             </constraints>
             <size key="customSize" width="320" height="46"/>
             <connections>
+                <outlet property="disclosureArrow" destination="tnQ-lX-uZf" id="Mjr-S0-YLO"/>
                 <outlet property="leftBorder" destination="B5o-lg-4hj" id="mfV-2q-9TQ"/>
                 <outlet property="textLabel" destination="dfQ-nL-w8B" id="25C-u5-3cA"/>
             </connections>

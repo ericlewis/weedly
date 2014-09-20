@@ -134,6 +134,8 @@
         categoryName = @"sativa";
     } else if (menuItem.catID == 3) { // hybrid
         categoryName = @"hybrid";
+    }else{
+        return;
     }
     
     _urlForStrain = [NSString stringWithFormat:@"%@/%@", categoryName, correctedName];

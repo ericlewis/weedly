@@ -40,7 +40,7 @@
                                 @"name": @"Menu",
                                 @"subtitle": @"Our menu is frequently updated.",
                                 @"segue": @"ShowMenu",
-                                @"imageName": @"list_ingredients-128"
+                                @"imageName": @"menuIcon"
                                 }
          ];
     }
@@ -58,7 +58,7 @@
                                 @"name": @"Directions",
                                 @"subtitle": @"Find your way here",
                                 @"segue": @"ShowDirections",
-                                @"imageName": @"map_marker-128"
+                                @"imageName": @"mapIcon"
                                 }
          ];
     }
@@ -69,7 +69,7 @@
                                 @"name": @"Call",
                                 @"subtitle": [self.dispensary formattedPhoneString],
                                 @"segue": @"ShowPhonePrompt",
-                                @"imageName": @"phone1-128"
+                                @"imageName": @"phoneIcon"
                                 }
          ];
     }
