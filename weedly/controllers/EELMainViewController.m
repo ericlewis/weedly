@@ -398,9 +398,15 @@ CGFloat percentOfScreen = 0.649f;
     }
     
     UIImage *iconImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@_marker", iconName]];
-    annotationView.image = iconImage;
-    annotationView.frame = CGRectMake(0, 0, iconImage.size.width/2,  iconImage.size.height/2);
     
+    annotationView.image = iconImage;
+    
+    if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ){
+        annotationView.frame = CGRectMake(0, 0, iconImage.size.width,  iconImage.size.height);
+    }else{
+        annotationView.frame = CGRectMake(0, 0, iconImage.size.width/2,  iconImage.size.height/2);
+    }
+
     return annotationView;
 }
 
