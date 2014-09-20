@@ -75,10 +75,7 @@ NSString * const EELDispensaryFavoriteToggledNotificationName = @"EELDispensaryF
 }
 
 - (NSString*)formattedNameString{
-    NSAttributedString *formattedName = [[NSAttributedString alloc] initWithData:[self.name dataUsingEncoding:NSUTF8StringEncoding]
-                                                                         options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: [NSNumber numberWithInt:NSUTF8StringEncoding]} documentAttributes:nil error:nil];
-    
-    return formattedName.string;
+    return [self.name stringByReplacingOccurrencesOfString:@"&amp;" withString:@""];
 }
 
 - (NSString*)formattedTypeString{
