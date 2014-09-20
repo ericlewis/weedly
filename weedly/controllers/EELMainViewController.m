@@ -67,6 +67,13 @@ CGFloat percentOfScreen = 0.649f;
 
     self.navigationController.navigationBar.translucent = NO;
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:self.navigationItem.backBarButtonItem.style target:nil action:nil];
+    
+    UIImage *filterImage = [UIImage imageNamed:@"filter"];
+    UIButton *filterView = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, filterImage.size.width/2, filterImage.size.height/2)];
+    
+    [filterView addTarget:self action:@selector(showFilterDropdown:) forControlEvents:UIControlEventTouchUpInside];
+    [filterView setBackgroundImage:[UIImage imageNamed:@"filter"] forState:UIControlStateNormal];
+    self.filterButton.customView = filterView;
 }
 
 - (void) locationDidChange:(NSNotification*)notification {
@@ -390,8 +397,10 @@ CGFloat percentOfScreen = 0.649f;
         iconName = @"doctor";
     }
     
-    annotationView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_marker", iconName]];
-
+    UIImage *iconImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@_marker", iconName]];
+    annotationView.image = iconImage;
+    annotationView.frame = CGRectMake(0, 0, iconImage.size.width/2,  iconImage.size.height/2);
+    
     return annotationView;
 }
 
