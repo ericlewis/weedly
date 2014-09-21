@@ -65,6 +65,7 @@
                     <constraint firstItem="dLe-Rh-d0J" firstAttribute="leading" secondItem="vTr-dU-i2Y" secondAttribute="leading" id="upN-lv-9Oz"/>
                 </constraints>
             </tableViewCellContentView>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="distanceLabel" destination="cdA-89-1tX" id="h5q-MF-Y4m"/>
                 <outlet property="hoursLabel" destination="dLe-Rh-d0J" id="0Xr-Wu-zh9"/>

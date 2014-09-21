@@ -11,7 +11,6 @@
 @interface EELListHeaderTableViewCell ()
 
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
-
 @end
 
 @implementation EELListHeaderTableViewCell
@@ -19,6 +18,14 @@
 - (void)awakeFromNib
 {
     // Initialization code
+}
+
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
+    id hitView = [super hitTest:point withEvent:event];
+    if (point.y<0) {
+        return nil;
+    }
+    return hitView;
 }
 
 - (void)configureWithAmount:(NSUInteger)amount{

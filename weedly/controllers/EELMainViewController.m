@@ -24,7 +24,6 @@
 @property (strong, nonatomic) REMenu *filterMenu;
 @property (strong, nonatomic) UISearchBar *searchBar;
 @property (strong, nonatomic) EELArrayDataSource *dataSource;
-@property (strong, nonatomic) UIButton *myLocationButton;
 
 @property (nonatomic) BOOL didZoomToUser;
 
@@ -32,25 +31,9 @@
 
 @implementation EELMainViewController
 
-CGFloat topPixelsPortrait = 0;
-CGFloat topPixelsLandscape = 0;
-CGFloat percentOfScreen = 0.649f;
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    if (!IS_IPHONE_5) {
-        percentOfScreen = 0.585f;
-    }
-    
-    if (UIInterfaceOrientationIsPortrait([[UIDevice currentDevice] orientation])) {
-        topPixelsPortrait = CGRectGetHeight(self.view.bounds)*percentOfScreen;
-        topPixelsLandscape = CGRectGetWidth(self.view.bounds)*percentOfScreen;
-    }else{
-        topPixelsPortrait = CGRectGetWidth(self.view.bounds)*percentOfScreen;
-        topPixelsLandscape = CGRectGetHeight(self.view.bounds)*percentOfScreen;
-    }
     
     [self setupMapView];
     [self setupTableView];
@@ -143,45 +126,20 @@ CGFloat percentOfScreen = 0.649f;
 - (void)setupTableView{
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     
-    self.tableView.contentInset = UIEdgeInsetsMake(CGRectGetHeight(self.view.bounds)*percentOfScreen, 0, 0, 0);
+    self.tableView.contentInset = UIEdgeInsetsMake(CGRectGetHeight(self.view.bounds)-224, 0, 0, 0);
     
     self.tableView.tableFooterView = [UIView new];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([EELListHeaderTableViewCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"NearbyCell"];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([EELListTableViewCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"ItemHeaderCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([EELListTableViewCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"EmptyHeaderCell"];
 }
 
 - (void)setupMapView{
-    UIPanGestureRecognizer* panRec = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didDragMap:)];
-    [panRec setDelegate:self];
-    [self.mapView addGestureRecognizer:panRec];
-    
     UITapGestureRecognizer *doubletapRec = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didDragMap:)];
     doubletapRec.numberOfTapsRequired = 2;
     [doubletapRec setDelegate:self];
     [self.mapView addGestureRecognizer:doubletapRec];
     self.mapView.delegate = self;
-    
-    [self setupMyLocationButton];
-}
-
-- (void)setupMyLocationButton{
-    self.myLocationButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
-    self.myLocationButton.contentEdgeInsets = UIEdgeInsetsMake(8, 8, 8, 8);
-    [self.myLocationButton setImage:[UIImage imageNamed:@"myLocation"] forState:UIControlStateNormal];
-    [self.myLocationButton addTarget:self action:@selector(zoomToUser) forControlEvents:UIControlEventTouchUpInside];
-    self.myLocationButton.backgroundColor = [UIColor whiteColor];
-    
-    self.myLocationButton.layer.cornerRadius = 5.0;
-    self.myLocationButton.layer.masksToBounds = NO;
-    self.myLocationButton.layer.borderWidth = 1.0f;
-    self.myLocationButton.layer.borderColor = [UIColor grayColor].CGColor;
-    
-    self.myLocationButton.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.myLocationButton.layer.shadowOpacity = 0.4;
-    self.myLocationButton.layer.shadowRadius = 3;
-    self.myLocationButton.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
-
-    [self.mapView addSubview:self.myLocationButton];
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
@@ -494,6 +452,12 @@ CGFloat percentOfScreen = 0.649f;
     }
 }
 
+- (void)mapViewWillStartLocatingUser:(MKMapView *)mapView{
+    if (self.dataSource.items.count == 0) {
+        [self performSearch:self.searchBar.text];
+    }
+}
+
 #pragma mark - Segue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -528,37 +492,13 @@ CGFloat percentOfScreen = 0.649f;
                 count--;
             }
             
-            if (count == 0) {
-                POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerOpacity];
-                anim.springSpeed = 1.0;
-                anim.toValue = @(0.0);
-                [self.tableView.layer pop_addAnimation:anim forKey:@"showTable"];
-                
-                [self.myLocationButton setFrame:CGRectMake(self.myLocationButton.frame.size.width/2, -self.tableView.contentOffset.y-60, self.myLocationButton.frame.size.width, self.myLocationButton.frame.size.width)];
-            }else{
-                POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerOpacity];
-                anim.springSpeed = 1.0;
-                anim.toValue = @(1.0);
-                [self.tableView.layer pop_addAnimation:anim forKey:@"hideTable"];
+            if (count > 0) {
+                return count;
             }
-            
-            return count;
+    
+            return 1;
             
         }else{
-            if (self.dataSource.items.count == 0) {
-                POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerOpacity];
-                anim.springSpeed = 15.0;
-                anim.toValue = @(0.0);
-                [self.tableView.layer pop_addAnimation:anim forKey:@"showTable"];
-                
-                [self.myLocationButton setFrame:CGRectMake(self.myLocationButton.frame.size.width/2, -self.tableView.contentOffset.y-60, self.myLocationButton.frame.size.width, self.myLocationButton.frame.size.width)];
-            }else{
-                POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerOpacity];
-                anim.springSpeed = 15.0;
-                anim.toValue = @(1.0);
-                [self.tableView.layer pop_addAnimation:anim forKey:@"hideTable"];
-            }
-            
             return self.dataSource.items.count;
         }
     }
@@ -572,18 +512,46 @@ CGFloat percentOfScreen = 0.649f;
     EELListHeaderTableViewCell *nearbyCountCell;
     EELListTableViewCell *listTableCell;
     
+    NSSet *annSet = [self.mapView annotationsInMapRect:self.mapView.visibleMapRect];
+    NSInteger count = annSet.count;
+    
+    if (self.mapView.userLocationVisible) {
+        count--;
+    }
+    
     if (indexPath.section == 0) {
         nearbyCountCell = [tableView dequeueReusableCellWithIdentifier:@"NearbyCell" forIndexPath:indexPath];
         nearbyCountCell.clipsToBounds = YES;
-        CALayer *topBorder = [CALayer layer];
-        topBorder.borderColor = [UIColor lightGrayColor].CGColor;
-        topBorder.borderWidth = 0.25;
-        topBorder.frame = CGRectMake(0, 0, 1000, 1);
-        [nearbyCountCell.layer addSublayer:topBorder];
+        
+        CALayer *topBorderBackground = [CALayer layer];
+        topBorderBackground.borderColor = [UIColor grayColor].CGColor;
+        topBorderBackground.borderWidth = 1;
+        topBorderBackground.frame = CGRectMake(0, 0, nearbyCountCell.amountBackground.bounds.size.width+100, 1);
+        [nearbyCountCell.amountBackground.layer addSublayer:topBorderBackground];
+        nearbyCountCell.amountBackground.clipsToBounds = YES;
 
+        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, nearbyCountCell.myLocationButton.frame.size.width, 1)];
+        lineView.backgroundColor = [UIColor grayColor];
+        [nearbyCountCell.myLocationButton addSubview:lineView];
+        
+        UIView *leftBorder = [[UIView alloc] initWithFrame:CGRectMake(-1.f, 0, 1, nearbyCountCell.myLocationButton.frame.size.height/2)];
+        leftBorder.backgroundColor = [UIColor grayColor];
+        
+        UIView *rightBorder = [[UIView alloc] initWithFrame:CGRectMake(nearbyCountCell.myLocationButton.frame.size.width, 0, 1, nearbyCountCell.myLocationButton.frame.size.height/2)];
+        rightBorder.backgroundColor = [UIColor grayColor];
+        
+        [nearbyCountCell.myLocationButton addSubview:leftBorder];
+        [nearbyCountCell.myLocationButton addSubview:rightBorder];
+        
+        [nearbyCountCell.myLocationButton addTarget:self action:@selector(zoomToUser) forControlEvents:UIControlEventTouchUpInside];
+        
+        nearbyCountCell.separatorInset = UIEdgeInsetsMake(0, self.view.frame.size.width, 0, 0);
+
+        nearbyCountCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
         cell = nearbyCountCell;
 
-    }else{
+    }else if(count > 0){
         EELDispensary *dispensary = [self.dataSource.items objectAtIndex:indexPath.row];
         listTableCell = [tableView dequeueReusableCellWithIdentifier:@"ItemHeaderCell" forIndexPath:indexPath];
         [listTableCell configureWithDispensary:dispensary];
@@ -594,16 +562,22 @@ CGFloat percentOfScreen = 0.649f;
         }else{
             cell.backgroundColor = [UIColor whiteColor];
         }
+        
+        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    }else{
+        listTableCell = [tableView dequeueReusableCellWithIdentifier:@"EmptyHeaderCell" forIndexPath:indexPath];
+        cell = listTableCell;
+        cell.backgroundColor = [UIColor whiteColor];
+        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
     }
     
-    cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
     
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        return 40;
+        return 64;
     }
     
     return 95;
@@ -627,14 +601,9 @@ CGFloat percentOfScreen = 0.649f;
 #pragma mark -
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    
-    if (self.tableView.hidden == NO) {
-        [self.myLocationButton setFrame:CGRectMake(self.myLocationButton.frame.size.width/2, -self.tableView.contentOffset.y-60, self.myLocationButton.frame.size.width, self.myLocationButton.frame.size.width)];
-    }
-
     if (scrollView.contentOffset.y < (self.mapView.frame.size.height*-1) + 100) {
         [scrollView setContentOffset:CGPointMake(scrollView.contentOffset.x, (self.mapView.frame.size.height*-1) + 100)];
-    }
+    }    
 }
 
 #pragma mark -
@@ -647,7 +616,7 @@ CGFloat percentOfScreen = 0.649f;
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
     if (self.dataSource.items.count > 0) {
         if ([self.tableView numberOfRowsInSection:1] > 0) {
-            [self.tableView setContentOffset:CGPointMake(0, 0) animated:YES];
+            [self.tableView setContentOffset:CGPointMake(0, 64) animated:YES];
         }
     }
 }

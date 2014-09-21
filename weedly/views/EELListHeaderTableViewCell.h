@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface EELListHeaderTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIButton *myLocationButton;
+@property (weak, nonatomic) IBOutlet UIView *amountBackground;
 
 - (void)configureWithAmount:(NSUInteger)amount;
 
