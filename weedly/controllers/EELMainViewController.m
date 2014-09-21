@@ -522,6 +522,7 @@
     if (indexPath.section == 0) {
         nearbyCountCell = [tableView dequeueReusableCellWithIdentifier:@"NearbyCell" forIndexPath:indexPath];
         nearbyCountCell.clipsToBounds = YES;
+        nearbyCountCell.backgroundColor = [UIColor clearColor];
         
         CALayer *topBorderBackground = [CALayer layer];
         topBorderBackground.borderColor = [UIColor grayColor].CGColor;
@@ -603,7 +604,7 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     if (scrollView.contentOffset.y < (self.mapView.frame.size.height*-1) + 100) {
         [scrollView setContentOffset:CGPointMake(scrollView.contentOffset.x, (self.mapView.frame.size.height*-1) + 100)];
-    }    
+    }
 }
 
 #pragma mark -
