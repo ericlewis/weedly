@@ -585,13 +585,17 @@
 }
 
 - (NSIndexPath*)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    self.selectedDispensary = [self.dataSource.items objectAtIndex:indexPath.row];
+    if(self.dataSource.items == nil || self.dataSource.items.count == 0){
+        self.selectedDispensary = nil;
+    }else{
+        self.selectedDispensary = [self.dataSource.items objectAtIndex:indexPath.row];
+    }
     
     return indexPath;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section == 1) {
+    if (indexPath.section == 1 && self.selectedDispensary) {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         [self performSegueWithIdentifier:@"ShowItemDetail" sender:self];
     }else{
