@@ -26,6 +26,7 @@
 @property (strong, nonatomic) EELArrayDataSource *dataSource;
 
 @property (nonatomic) BOOL didZoomToUser;
+@property (nonatomic) BOOL didUpdateLocation;
 
 @end
 
@@ -345,7 +346,7 @@
 
     NSString *iconName = @"delivery";
     
-    // disp
+    // dispensary
     if([[[disp formattedTypeString] lowercaseString] isEqualToString:@"dispensary"]){
         iconName = @"lp";
     }
@@ -448,12 +449,15 @@
     }
     
     if (self.selectedRow == 0) {
-        [self performSearch:self.searchBar.text];
+        if (self.didUpdateLocation) {
+            [self performSearch:self.searchBar.text];
+        }
     }
 }
 
 - (void)mapViewWillStartLocatingUser:(MKMapView *)mapView{
     if (self.dataSource.items.count == 0) {
+        self.didUpdateLocation = YES;
         [self performSearch:self.searchBar.text];
     }
 }
