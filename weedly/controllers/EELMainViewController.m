@@ -449,7 +449,7 @@
     }
     
     if (self.selectedRow == 1) {
-        // dont search, unless we moved
+        // if the selected row is 1, we probably wanna deselect it when the map is moved.
         self.selectedRow = 0;
         
     }else{
