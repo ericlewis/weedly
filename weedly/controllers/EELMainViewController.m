@@ -448,10 +448,13 @@
         [self.searchBar resignFirstResponder];
     }
     
-    if (self.selectedRow == 0) {
-        if (self.didUpdateLocation) {
-            [self performSearch:self.searchBar.text];
-        }
+    if (self.selectedRow == 1) {
+        // dont search, unless we moved
+        self.selectedRow = 0;
+        
+    }else{
+        // search if we dont have a selected row.
+        [self performSearch:self.searchBar.text];
     }
 }
 
